@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="https://i.ibb.co/SxVjc9C/phani.png">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="https://i.ibb.co/SxVjc9C/phani.png">
+
+    <link rel="icon" type="image/png" sizes="16x16" href="path/to/favicon-16x16.png">
+    <link rel="manifest" href="path/to/site.webmanifest">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+        body {
+            font-family: Arial, sans-serif;
+            background: navy;
+            margin: 0;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll */
+        }
+
+        h1 {
+            color: white;
+            font-family: cursive;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px;
+            
+            position: fixed;
+            background-color: white;
+            color: black;
+            /* Semi-transparent background */
+            z-index: 1000;
+            /* Ensure header stays above content */
+        }
+
+        header h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 1.8rem;
+            /* Increased font size for better visibility */
+            color: black;
+            margin-left: 20px;
+            /* Adjusted margin for better alignment */
+        }
+
+        
+
+        
+            
+        
+        main {
+            margin-top: 10px;
+            /* Adjusted margin to avoid overlap with header */
+            padding: 20px;
+            /* Added padding for better spacing */
+            color: white;
+        }
+
+        .profile {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .bg-pentagon {
+            background-image: url("https://i.ibb.co/CwjK8Ht/parrotsec.jpg");
+            background: repeat norepeat;
+            background-size: 100% 100%;
+            filter: contrast(1.2);
+        }
+
+        .profile img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            filter: brightness(1.2);
+        }
+
+        .profile img:hover {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            border: 3px solid #007bff;
+            margin-bottom: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            filter: grayscale(100%);
+        }
+
+        #projects {
+            text-align: center;
+            padding: 20px;
+        }
+
+        #projects img.center {
+            display: block;
+            margin: 0 auto 20px;
+        }
+
+        .project-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .project {
+            background: navy;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            padding: 20px;
+            width: 300px;
+            height: 200px;
+            text-align: center;
+            opacity: 0;
+            transition: opacity 1.0s ease-in-out;
+            box-shadow: 0 20px rgba(30, 30, 30, 0.7);
+            color: white;
+        }
+
+        .project p {
+            margin: 10px 0;
+            font-size: 25px;
+        }
+
+        .project i {
+            cursor: pointer;
+            font-size: 24px;
+            color: #007bff;
+        }
+
+        .project.visible {
+            opacity: 1;
+        }
+
+        .profile h1 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            /* Increased font size for better emphasis */
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        h2 {
+            background-color: lightblue;
+            color: navy;
+            font-size: 20px;
+            font-family: lucida;
+            text-align: left;
+            border-radius: 0px 20px 0px 20px;
+            padding: 5px;
+            border-width: auto;
+            width: auto;
+            padding: 10px;
+        }
+
+        section {
+            margin-top: 40px;
+            /* Increased margin for better section separation */
+        }
+
+        p {
+            font-size: 15px;
+            font-family: monospace;
+            color: white;
+        }
+
+        /* Media query for responsive design */
+        /* Media query for responsive design */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 200px;
+                /* Adjusted sidebar width for smaller screens */
+            }
+
+            header h2 {
+                font-size: 1.5rem;
+                /* Reduced font size for smaller screens */
+            }
+        }
+
+        hr {
+            background-color: aqua;
+            border-color: aqua;
+            border-width: 3px;
+
+        }
+
+        .enhanced-text {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 1.5em;
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            opacity: 0;
+            animation: fadeIn 3s forwards;
+        }
+
+        .name {
+            font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 9;
+            }
+        }
+
+        .image-gif {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+        }
+
+        .image-gif img {
+            max-width: 100%;
+            height: 60%;
+            width: 60%;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            /* Added box shadow for better emphasis */
+        }
+
+        .image-about {
+            border-style: solid;
+            border-color: aqua;
+            border-width: 5px;
+        }
+
+        .scroll-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background: rgba(0, 0, 0, 0);
+            /* Set your desired background color */
+            padding: 20px;
+        }
+
+        .scroll-content {
+            display: inline-block;
+            animation: scroll 35s linear infinite;
+        }
+
+        .scroll-item {
+            display: inline-block;
+            text-align: center;
+            margin: 0 15px;
+            filter: brightness(1.2) contrast(1.2) saturate(1.2);
+            /* Apply filters for a beautiful effect */
+            padding: 30px;
+        }
+
+        .scroll-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 30px;
+            display: block;
+            margin: 0 auto 10px;
+            box-shadow: 0 0 20px white;
+
+        }
+
+        .scroll-item p {
+            font-size: 35px;
+            margin: 0;
+            font-weight: bold;
+            font-style: serif;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(10%) rotate(0deg);
+            }
+
+            100% {
+                transform: translateX(-130%);
+            }
+        }
+
+
+
+        .email-form {
+            width: 100%;
+            margin: auto;
+            margin-top: 50px;
+            background-color: navy;
+            padding: 20px;
+            border-radius: 30px 30px 0px 0px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+
+        }
+
+        .form-control {
+            width: 100%;
+            border-color: #ddd;
+        }
+
+        .btn-primary {
+            background-color: aqua;
+            border-color: #007bff;
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            color: navy;
+        }
+
+        .btn-primary:hover {
+            background-color: aqua;
+            color: black;
+            border-color: #0056b3;
+        }
+
+        .alert-success {
+            background-color: red;
+            color: white;
+            border-color: #c3e6cb;
+        }
+
+        input {
+            width: 100%;
+            font-family: monospaced;
+            boder-color: blue;
+            border-style: solid;
+            border-radius: 20px;
+            padding: 5px;
+        }
+
+        label {
+            padding: 3px;
+            font-size: 20px;
+            font-family: serif;
+            color: white;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            /* Semi-transparent background */
+            text-align: center;
+            padding: 10px 0;
+            color: white;
+            z-index: 1000;
+        }
+
+        .back-to-top {
+            height: 45px;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            display: none;
+            /* Hidden by default */
+            position: fixed;
+            bottom: 30px;
+            /* Place the button 30px from the bottom */
+            right: 30px;
+            /* Place the button 30px from the right */
+            z-index: 1000;
+            /* Ensure the button is above other elements */
+            font-size: 20px;
+            /* Adjust the size of the button */
+            background-color: navy;
+            /* Button background color */
+            color: white;
+            /* Button text color */
+            padding: 10px 15px;
+            /* Button padding */
+            border: none;
+            /* Remove button border */
+            border-radius: 50%;
+            /* Make the button round */
+            cursor: pointer;
+            /* Change the cursor on hover */
+            box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+            /* Add a shadow for better visibility */
+        }
+
+        .center-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: auto;
+            padding: 30px;
+        }
+
+        .good-at {
+            border-radius: 50%;
+        }
+
+        .splash-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-image: url("https://i.ibb.co/KbWDwsk/network.jpg");
+            background-size: 100% 100%;
+            z-index: 9999;
+            /* Ensure splash screen is on top */
+            text-align: center;
+            /* Center text horizontally */
+        }
+
+        .splash-logo {
+            width: 200px;
+            /* Adjust size as needed */
+            height: 200px;
+            border-radius: 50%;
+            /* Circular image */
+            border-color: aqua;
+            border-style: solid;
+            border-width: 5px;
+
+        }
+
+        .splash-screen h1,
+        .splash-screen h5,
+        .splash-screen h3 {
+            margin: 10px 0;
+            /* Margin between text elements */
+        }
+
+        .splash-screen h1,
+        h3 {
+            font-size: 25px;
+            /* Adjust font size as needed */
+            color: white;
+            /* Text color */
+            font-family: cursive;
+            /* Font family */
+        }
+
+        .splash-screen h5 {
+            font-size: 18px;
+            /* Adjust font size as needed */
+            color: white;
+            /* Text color */
+            font-family: cursive;
+            /* Font family */
+        }
+
+        /* Hide main content initially */
+        .d-none {
+            display: none;
+        }
+
+        .typewriter {
+            font-size: 24px;
+            color: white;
+            border-right: 2px solid #333;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: blink 0.75s step-end infinite;
+            font-family: monospace;
+        }
+
+        @keyframes blink {
+
+            from,
+            to {
+                border-color: transparent;
+            }
+
+            50% {
+                border-color: #333;
+            }
+        }
+
+        .abc-section {
+            margin: 50px auto;
+            max-width: 800px;
+            padding: 20px;
+            background-color: navy;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .xyz-heading,
+        .xyz-subheading {
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .pqrs-container {
+            background-color: green;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease-in-out;
+            ;
+        }
+
+        .pqrs-container:hover {
+            transform: scale(1.1);
+            background-color: green;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px;
+            justify-content: center;
+            align-items: center;
+            width: auto;
+        }
+
+        .box-shadow {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        h4,
+        h5 {
+            margin: 0;
+            padding: 5px;
+            font-size: 14px;
+        }
+        .menu-btn {
+            background: none;
+            color: black;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-right: 20px;
+            }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</head>
+
+<body>
+    <div id="splash-screen" class="splash-screen">
+
+        
+        <div class="container text-center mt-5">
+            <div class="typewriter" id="typewriter2"></div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                var text2 = ["K. Phani Kumar Sharma.", "Welcome to my portfolio."];
+
+                function typewriterEffect(elementId, textArray, speed = 70, skipDelay = 15) {
+                    var part;
+                    var i = 0;
+                    var offset = 0;
+                    var len = textArray.length;
+                    var forwards = true;
+                    var skip_count = 0;
+                    var skip_delay = skipDelay;
+
+                    setInterval(function () {
+                        if (forwards) {
+                            if (offset >= textArray[i].length) {
+                                ++skip_count;
+                                if (skip_count == skip_delay) {
+                                    forwards = false;
+                                    skip_count = 0;
+                                }
+                            }
+                        } else {
+                            if (offset == 0) {
+                                forwards = true;
+                                i++;
+                                offset = 0;
+                                if (i >= len) {
+                                    i = 0;
+                                }
+                            }
+                        }
+                        part = textArray[i].substr(0, offset);
+                        if (skip_count == 0) {
+                            if (forwards) {
+                                offset++;
+                            } else {
+                                offset--;
+                            }
+                        }
+                        $('#' + elementId).text(part);
+                    }, speed);
+                }
+
+                // Second typewriter
+                typewriterEffect("typewriter2", text2);
+            });
+        </script>
+
+        <img src="https://i.ibb.co/HtWqMMf/parrotsec.webp" alt="parrotlogo" class="splash-logo">
+        <h3>Assistant Kelvin</h3>
+
+    </div>
+    <div id="main-content" class="d-none">
+        <div class="bg-pentagon">
+            <header>
+                
+                
+            
+            
+                <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                    <button class="menu-btn" id="menu-btn">
+                        <span class="navbar-toggler-icon"></span></br>
+                    </button>
+                    <a class="navbar-brand" href="#" style = "background:lightblue; border-radius:20px 0 0 20px; font-family:cursive;padding:7px;">K.Phani Kumar Sharma</a>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                <a class="nav-link" href="#about"><i class="fas fa-user"></i> &nbsp;&nbsp;About</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#skills"><i class="fas fa-cogs"></i> &nbsp;&nbsp;Skills</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#projects"><i class="fas fa-project-diagram"></i> &nbsp;&nbsp;Projects</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#contact"><i class="fas fa-envelope"></i> &nbsp;&nbsp;Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#settings"><i class="fas fa-cog"></i> &nbsp;&nbsp;Settings</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="gallery.html" target="_blank"><i class="fa-solid fa-image"></i> &nbsp;&nbsp;Gallery</a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+<script>
+        $(document).ready(function() {
+            $('#menu-btn').click(function() {
+                $('#navbarNav').toggleClass('show');
+            });
+        });
+</script>
+            </header>
+            <main>
+                <div class="profile"></br></br></br></br>
+                    <img src="myprofile.jpg" alt="Phani Kumar Sharma">
+                    <h1>k. Phani Kumar Sharma</h1>
+                </div>
+                <div class="container text-center">
+
+                    <div class="typewriter" id="typewriter"></div>
+                </div>
+                <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+                <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+                <script>
+                    $(document).ready(function () {
+                        var words = ["This is K.Phani kumar Sharma", "Welcome to my portfolio.", "Fullstack web developer.", "A profissional priest", "Python developer", "Java developer", "Experienced priest", "Story writter", "Passionated web developer.", "I love creating beautiful and functional websites.", "Enjoy your visit!"," Explore more....."];
+                        var part;
+                        var i = 0;
+                        var offset = 0;
+                        var len = words.length;
+                        var forwards = true;
+                        var skip_count = 0;
+                        var skip_delay = 15;
+                        var speed = 80;
+
+                        var wordflick = function () {
+                            setInterval(function () {
+                                if (forwards) {
+                                    if (offset >= words[i].length) {
+                                        ++skip_count;
+                                        if (skip_count == skip_delay) {
+                                            forwards = false;
+                                            skip_count = 0;
+                                        }
+                                    }
+                                } else {
+                                    if (offset == 0) {
+                                        forwards = true;
+                                        i++;
+                                        offset = 0;
+                                        if (i >= len) {
+                                            i = 0;
+                                        }
+                                    }
+                                }
+                                part = words[i].substr(0, offset);
+                                if (skip_count == 0) {
+                                    if (forwards) {
+                                        offset++;
+                                    } else {
+                                        offset--;
+                                    }
+                                }
+                                $('#typewriter').text(part);
+                            }, speed);
+                        };
+
+                        wordflick();
+                    });
+                </script>
+        </div></br>
+        <section id = "about">
+        <h2>About me</h2></br></br>
+        <p style = "font-size:15px;font-style:monospace" align = "center"><big><strong>Hi</strong></big>, my name is K. Phani Kumar. I am a professional full-stack web developer and an experienced Hindu priest. I love coding, and my passion for it has driven me to design many websites using various frameworks and languages with great architecture. In addition to my technical skills, I am also a Hindu priest with extensive experience in conducting poojas. I am capable of handling large-scale ceremonies, and it is my pleasure to utilize my diverse talents.
+        </br> Comming to my info I am from vengapuram (village),Balijipeta (mandal),Parvathipuram manyam(dist),A.P</p></br>
+        </section>
+    </br>
+        <h2>My Skills</h2></br>
+        <h1 style="font-size:40px;" align="center">I am good at </h1></br>
+
+        <img src="https://i.ibb.co/4sKdtJk/image1.webp" alt="I am good at" border="0" class="good-at"
+            style="height:400px;width:400px;" align="center">
+        <section id="skills">
+            <div class="scroll-container">
+                <div class="scroll-content">
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/jwtgFx0/c.png" alt="C">
+                        <p>C</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/FXBhBzS/png-transparent-the-c-programming-language-computer-programming-programmer-others-blue-class-logo-th.png"
+                            alt="C++">
+                        <p>C++</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/H4C9ZQz/2048px-HTML5-logo-and-wordmark-svg.png" alt="HTML5">
+                        <p>HTML</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/gVtfVrK/CSS-Logo.png" alt="CSS">
+                        <p>CSS</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/ZKJKWpD/3d-javascript-logo-design-free-png.png" alt="JavaScript">
+                        <p>JavaScript</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/y8vFxKZ/62a76aadbd73a4af5c5d4fc5.png" alt="Node.js">
+                        <p>Jquery</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/82Lh0Cq/ajax.png" alt="AJAX">
+                        <p>AJAX</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/4fTVNxJ/angular.png" alt="Angular">
+                        <p>Angular</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/xzkNy3j/xml-symbol-icon-vector-logo-003.png" alt="XML">
+                        <p>XML</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/MZB0x1m/png-clipart-bootstrap-logo-thumbnail-tech-companies.png"
+                            alt="Bootstrap">
+                        <p>Bootstrap</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/nsmC4gV/c1a67ff6609782e262d2daefc1ecf333.png" alt="MongoDB">
+                        <p>Tailwind</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/RzYVRsr/800px-Python-logo-notext-svg.png" alt="Python">
+                        <p>Python</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/XD4Kcqj/582d8348873b7e0fdfaa78320dd3b918.jpg" alt="Java">
+                        <p>Java</p>
+                    </div>
+
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/02gt4Rh/1-Yj3-Hpcm-Eu-O7br-Krfrdh-OA.png" alt="React">
+                        <p>Git</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/fNKtBRN/github-logo.png" alt="GitHub">
+                        <p>GitHub</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/mzWgJVq/microsoft-office3327.jpg" alt="Microsoft Office">
+                        <p>Microsoft Office</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/KwJyg4m/O31-t0p-D-400x400.jpg"alt="MySQL" class="dev-section">
+                        </br>
+                         <p class="dev-section">Numpy</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/gTQ9b81/c6h7rok9c2v31.jpg" alt="Pandas" class="dev-section">
+                        <p class="dev-section">Pandas</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/7Jm8Mdn/course-18061-image.png" alt="Ruby" class="dev-section">
+                        <p class="dev-section">Matplotlib</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/mbYgXxf/5940844-ad8b.jpg" alt="SQL" class="dev-section">
+                        <p class="dev-section">BeautifulSoup</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/tpZXCSC/django-hexbin.png" alt="Django" class="dev-section">
+                        <p class="dev-section">Django</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/PDB9Fs8/SQLite-logo.png" alt="SQLite" class="dev-section">
+                        <p class="dev-section">SQLite</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/BNp1qFY/what-is-kotlin-banner-image.png" alt="Kotlin"
+                            class="dev-section">
+                        <p class="dev-section">Kotlin</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/TTgmYh3/download.png" alt="SQL" border="0" class="dev-section">
+                        <p class="dev-section">SQL</p>
+                    </div>
+                    <div class="scroll-item">
+                        <img src="https://i.ibb.co/Vq1DVQw/images-14.jpg" alt="android" border="0" class="dev-section">
+                        <p class="dev-section">Android studio</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+
+    </section>
+    <hr style="border-color:white;border-style:solid;"></br>
+    <section id="ability">
+        <h1 style="font-size:40px;" align="center">Who I am ?</h1></br>
+        <hr></br>
+
+        <div class="enhanced-text">
+            <div class="image-gif">
+                <img src="https://i.ibb.co/JmnCBrm/who-i-am.jpg" alt="who-i-am" border="0" class="image-about">
+            </div>
+            <p style="color:white;">Salutations! I am <span class="name">k. Phani Kumar Sharma</span>, a
+                distinguished professional
+                encompassing roles as a seasoned software engineer, dedicated Hindu priest, proficient full-stack
+                web developer, adept data scientist and analyst, skilled Android developer, and innovative prompt
+                engineer. My journey in these diverse domains reflects my insatiable thirst for knowledge and
+                relentless pursuit of excellence.</p>
+            <p>Driven by an innate curiosity and a fervent dedication to continuous learning, I thrive on mastering
+                new technologies and crafting solutions that transcend conventional boundaries. My expertise spans
+                across a wide spectrum of programming languages, empowering me to conceive and execute a multitude
+                of impactfull projects.</p>
+            <p>As a fervid storyteller, I channel my passion for coding into narratives of innovation and
+                problem-solving, weaving together intricate technical details with creative flair. My professional
+                journey is a testament to my unwavering commitment to pushing the boundaries of what is possible,
+                both in the digital realm and beyond.</p>
+
+        </div>
+
+    </section></br>
+    <hr style="border-color:white;border-style:solid;width:100%;border-width:4px;"></br>
+    <div class="center-button">
+        <button id="unlock" class="btn btn-danger">
+            <i class="fas fa-lock"></i> Unlock Developer's Mode
+        </button>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(".dev-section").hide();
+            $("#ability").hide();
+            $("#unlock").click(function () {
+                var passcode = prompt("Enter the passcode to unlock the developer's mode");
+                const password = "developers@123";
+                if (passcode === password) {
+                    alert("Welcome to developer's mode");
+                    $(".dev-section").show();
+                    $("#ability").show();
+                    $(" #unlock").hide();
+                } else {
+                    alert("Incorrect passcode.");
+                }
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+
+    <h1 style="font-size:40px;" align="center">With good experience</h1>
+    </main></br>
+    <hr></br>
+    <section class="abc-section">
+        <h2 class="xyz-heading">My Education</h2>
+        <div class="pqrs-container">
+            <h3 class="xyz-subheading"><i class="fa-solid fa-school"></i> Primary Schooling</h3>
+            <img src="https://i.ibb.co/sw5yX18/school.jpg" alt="Primary School" style="border-radius:20px;"></br>
+            <h4>1<sup>st</sup>-3<sup>rd</sup> classes in Sri Bharathi School</h4></br>
+            <h4>3<sup>rd</sup>-5<sup>th</sup> classes in Sri Chaitanya School</h4></br>
+            <h4>5<sup>th</sup>-10<sup>th</sup> classes in Sri Kanchi Kamakoti integrated "Veda Patashala"</h4></br>
+        </div>
+        </br></br></br>
+        <div class="pqrs-container">
+            <h3 class="xyz-subheading"><i class="fa-solid fa-university"></i> College Studies</h3>
+            <img src="https://i.ibb.co/S0GLyRj/college.jpg" alt="College" style="border-radius:20px;"></br>
+            <h4 align="center">Diploma in "Computer Science Engineering 2022 - 2025"</h4>
+        </div>
+    </section>
+
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <img src="https://i.ibb.co/t8W2LJG/thisbgimage.png" alt="thisbgimage" border="0" class="center">
+        <div class="project-container">
+            <div class="project" data-url="https://phanikumar-sharma.github.io/Chakra-Educations/index.html">
+                <p>Chakra Educational Academy </p>
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="project" data-url="hhttps://phanikumar-sharma.github.io/Hand-cricket/">
+                <p>Hand-Cricket - A game</p>
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="project" data-url="https://phanikumar-sharma.github.io/quadrix-github.io/">
+                <p>Quadrix - A game</p>
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="project" data-url="https://phanikumar-sharma.github.io/INTRO-BOOK/">
+                <p>Intro -Book a book in digital version</p>
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="project" data-url="https://phanikumar-sharma.github.io/PHANI-KUMAR-SHARMA02.github.io/">
+                <p>Distance converter</p>
+                <i class="fas fa-play"></i>
+            </div>
+            <div class="project" data-url="https://phanikumar-sharma.github.io/phanikumar01.github.io/">
+                <p>Resume generator -- basic</p>
+                <i class="fas fa-play"></i>
+            </div>
+        </div>
+    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const projects = document.querySelectorAll('.project');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {threshold: 0.5});
+
+            projects.forEach(project => {
+                observer.observe(project);
+            });
+
+            projects.forEach(project => {
+                project.querySelector('i').addEventListener('click', function () {
+                    window.location.href = project.getAttribute('data-url');
+                });
+            });
+        });
+
+    </script>
+    </br></br>
+    <div class="mail" style="width:100%; display: flex; justify-content: center; align-items: center;">
+        <img src="https://i.ibb.co/6bxxvX6/contact.jpg" alt="contact"
+            style="border-radius: 50%; width: 150px; height: 150px;">
+    </div>
+
+    <h1 align="center" style="color:white;font-size:40px; font-family:serif;">Contact me</h1></br>
+    <hr>
+
+    <section id="contact">
+        <div class="container">
+            <div class="email-form">
+                <form id="emailForm"></br></br>
+                    <div class="form-group">
+                        <label for="email">Your Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                    </div></br></br>
+                    <div class="form-group">
+                        <label for="subject">Subject</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Enter subject" required>
+                    </div></br></br>
+                    <button type="submit" class="btn btn-primary" id="sendEmailBtn"><i
+                            class="fas fa-envelope"></i>&nbsp; Send Email</button></br>
+                </form>
+                <div class="alert alert-success mt-3" id="successMessage" style="display: none;">
+                    Email sent successfully!
+                </div>
+                <script>
+                    $(document).ready(function () {
+                        $('#sendEmailBtn').click(function () {
+                            if ($('#email').val() === '') {
+                                alert('Please fill out your email address.');
+                                return;
+                            }
+
+                            var subject = encodeURIComponent('Your Subject Here');
+                            var mailtoLink = 'mailto:' + $('#email').val() + '?subject=' + subject;
+
+                            window.location.href = mailtoLink;
+
+                            $('#successMessage').fadeIn().delay(3000).fadeOut();
+                            $('#emailForm').trigger('reset');
+                        });
+                    });
+                </script>
+
+            </div>
+        </div>
+    </section>
+    </br>
+    <hr>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.querySelector('.menu-btn').addEventListener('click', function () {
+            document.querySelector('.sidebar').style.right = '0';
+            document.querySelector('.close-btn').style.display = 'block';
+        });
+
+        document.querySelector('.close-btn').addEventListener('click', function () {
+            document.querySelector('.sidebar').style.right = '-250px';
+            document.querySelector('.close-btn').style.display = 'none';
+        });
+
+        $('a').click(function () {
+            $('html, body').animate({
+                scrollTop: $($(this).attr('href')).offset().top - 100
+            }, 800);
+            return false;
+        });
+        });
+    </script>
+    <footer>
+        <p>&copy; 2024 k. Phani Kumar Sharma</p>
+    </footer>
+    <button class="back-to-top" onclick="scrollToTop()"><i class="fas fa-arrow-up"></i></button>
+    <script>
+        
+        function scrollToTop() {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        }
+
+        window.onscroll = function () {
+            const backToTopButton = document.querySelector('.back-to-top');
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        };
+    </script>
+    <audio id="splash-audio" src="parrot2.wav" preload="auto"></audio>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            const audio = $('#splash-audio')[0];
+
+            // Play the audio and handle transition
+            audio.play().then(() => {
+                audio.onended = function () {
+                    setTimeout(function () {
+                        $('#splash-screen').fadeOut(1000, function () {
+                            $('#main-content').removeClass('d-none');
+                        });
+                    }, 1000); // 1 second delay after audio ends
+                };
+            }).catch((error) => {
+                console.error('Audio playback failed:', error);
+                $('#splash-screen').fadeOut(1000, function () {
+                    $('#main-content').removeClass('d-none');
+                });
+            });
+        });
+    </script>
+    </div>
+</body>
+
+</html>
