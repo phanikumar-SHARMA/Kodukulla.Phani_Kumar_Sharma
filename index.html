@@ -118,8 +118,8 @@
         }
 
         .project {
-            background:white;
-            border: 1px solid #ccc;
+            background: black;
+            border: 3px solid white;
             border-radius: 20px;
             padding: 20px;
             width: 300px;
@@ -128,7 +128,7 @@
             opacity: 0;
             transition: opacity 1.0s ease-in-out;
             box-shadow: 0 20px rgba(30, 30, 30, 0.7);
-            color: black;
+            color:white;
         }
 
         .project p {
@@ -817,20 +817,20 @@
                         <p class="dev-section">BeautifulSoup</p>
                     </div>
                     <div class="scroll-item">
-                        <img src="https://i.ibb.co/tpZXCSC/django-hexbin.png" alt="Django" class="dev-section">
+                        <img src="https://i.ibb.co/tpZXCSC/django-hexbin.png" alt="Django">
                         <p class="dev-section">Django</p>
                     </div>
                     <div class="scroll-item">
-                        <img src="https://i.ibb.co/PDB9Fs8/SQLite-logo.png" alt="SQLite" class="dev-section">
+                        <img src="https://i.ibb.co/PDB9Fs8/SQLite-logo.png" alt="SQLite">
                         <p class="dev-section">SQLite</p>
                     </div>
                     <div class="scroll-item">
                         <img src="https://i.ibb.co/BNp1qFY/what-is-kotlin-banner-image.png" alt="Kotlin"
-                            class="dev-section">
+                            >
                         <p class="dev-section">Kotlin</p>
                     </div>
                     <div class="scroll-item">
-                        <img src="https://i.ibb.co/TTgmYh3/download.png" alt="SQL" border="0" class="dev-section">
+                        <img src="https://i.ibb.co/TTgmYh3/download.png" alt="SQL" border="0">
                         <p class="dev-section">SQL</p>
                     </div>
                     <div class="scroll-item">
@@ -870,31 +870,10 @@
 
     </section></br>
     <hr style="border-color:white;border-style:solid;width:100%;border-width:4px;"></br>
-    <div class="center-button">
-        <button id="unlock" class="btn btn-light">
-            <i class="fas fa-lock"></i>Advanced technologies I know
-        </button>
-    </div>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-    <script>
-        $(document).ready(function () {
-            $(".dev-section").hide();
-            $("#ability").hide();
-            $("#unlock").click(function () {
-                var passcode = prompt("Enter the passcode to unlock the developer's mode");
-                const password = "developers@123";
-                if (passcode === password) {
-                    alert("Welcome to developer's mode");
-                    $(".dev-section").show();
-                    $("#ability").show();
-                    $(" #unlock").hide();
-                } else {
-                    alert("Incorrect passcode.");
-                }
-            });
-        });
-    </script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
 
