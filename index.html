@@ -15,6 +15,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="path/to/favicon-16x16.png">
     <link rel="manifest" href="path/to/site.webmanifest">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
 
 
     <style>
@@ -550,10 +551,11 @@
             cursor: pointer;
             margin-right: 20px;
             }
-        iframe {
+       
+        #pdf-viewer {
             width: 100%;
-            height: 100vh;
-            border: none;
+            height: 600px;
+            border: 1px solid black;
         }
     </style>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -862,16 +864,57 @@
                 </div>
             </div>
     </div>
-<section id = "certificate">
-    <iframe src="Phani Kumar Sharma Django Certificate.pdf" type="application/pdf"></iframe>
-    <iframe src="Phani Kumar Sharma K.pdf" type="application/pdf"></iframe>
-     <script>
+    
+ <section id="certificate">
+        <div id="pdf-viewer"></div>
+        <div id="pdf-viewer-2"></div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.10.377/pdf.min.js"></script>
+    <script>
+        const url1 = 'Phani Kumar Sharma Django Certificate.pdf';
+        const url2 = 'Phani Kumar Sharma K.pdf';
+
+        const loadPDF = (url, containerId) => {
+            const container = document.getElementById(containerId);
+            const loadingTask = pdfjsLib.getDocument(url);
+
+            loadingTask.promise.then(function(pdf) {
+                console.log('PDF loaded');
+
+                pdf.getPage(1).then(function(page) {
+                    console.log('Page loaded');
+
+                    const scale = 1.5;
+                    const viewport = page.getViewport({ scale: scale });
+
+                    const canvas = document.createElement('canvas');
+                    const context = canvas.getContext('2d');
+                    canvas.height = viewport.height;
+                    canvas.width = viewport.width;
+
+                    container.appendChild(canvas);
+
+                    const renderContext = {
+                        canvasContext: context,
+                        viewport: viewport
+                    };
+                    page.render(renderContext);
+                });
+            }, function(reason) {
+                console.error(reason);
+            });
+        };
+
         // Disable right-clicking
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
+
+        // Load the two PDFs
+        loadPDF(url1, 'pdf-viewer');
+        loadPDF(url2, 'pdf-viewer-2');
     </script>
-    </section>
     <hr style="border-color:white;border-style:solid;"></br>
     <section id="ability">
         <h1 style="font-size:40px;" align="center">Who I am ?</h1></br>
