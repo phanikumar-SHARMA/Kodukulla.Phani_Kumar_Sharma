@@ -111,26 +111,51 @@
         }
 
         .project-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
-        }
-
         .project {
-            background: black;
-            border: 3px solid white;
-            border-radius: 20px;
-            padding: 20px;
-            width: 300px;
-            height: 200px;
-            text-align: center;
-            opacity: 0;
-            transition: opacity 1.0s ease-in-out;
-            box-shadow: 0 20px rgba(30, 30, 30, 0.7);
-            color:white;
-        }
+    position: relative;
+    background: black;
+    border: 3px solid white;
+    border-radius: 20px;
+    padding: 20px;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 1.0s ease-in-out;
+    box-shadow: 0 20px rgba(30, 30, 30, 0.7);
+    color: white;
+    margin: 15px;
+    cursor: pointer;
+}
 
+/* Ensure the project appears smoothly */
+.project-container .project {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+}
+
+.project:hover {
+    transform: translateY(-10px); /* Add hover effect to lift the project */
+    opacity: 1;
+    box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
+}
+
+.eye-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.project-details {
+    display: none;
+    padding: 10px;
+    border-top: 1px solid #ccc;
+    margin-top: 10px;
+}
+
+        
         .project p {
             margin: 10px 0;
             font-size: 25px;
@@ -313,6 +338,7 @@
             border-color: #ddd;
         }
 
+        
         .btn-primary {
             background-color: aqua;
             border-color: #007bff;
@@ -917,35 +943,80 @@
 
 
     <section id="projects">
-        <h2>Projects</h2>
-        <img src="https://i.ibb.co/t8W2LJG/thisbgimage.png" alt="thisbgimage" border="0" class="center">
-        <div class="project-container">
-            <div class="project" data-url="https://phanikumar-sharma.github.io/Chakra-Educations/index.html">
-                <p>Chakra Educational Academy </p>
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="project" data-url="hhttps://phanikumar-sharma.github.io/Hand-cricket/">
-                <p>Hand-Cricket - A game</p>
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="project" data-url="https://phanikumar-sharma.github.io/quadrix-github.io/">
-                <p>Quadrix - A game</p>
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="project" data-url="https://phanikumar-sharma.github.io/INTRO-BOOK/">
-                <p>Intro -Book a book in digital version</p>
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="project" data-url="https://phanikumar-sharma.github.io/PHANI-KUMAR-SHARMA02.github.io/">
-                <p>Distance converter</p>
-                <i class="fas fa-play"></i>
-            </div>
-            <div class="project" data-url="https://phanikumar-sharma.github.io/phanikumar01.github.io/">
-                <p>Resume generator -- basic</p>
-                <i class="fas fa-play"></i>
+    <h2>Projects</h2>
+    <img src="https://i.ibb.co/t8W2LJG/thisbgimage.png" alt="thisbgimage" border="0" class="center">
+    <div class="project-container">
+        <div class="project">
+            <p>Chakra Educational Academy</p>
+            <i class="fas fa-eye eye-icon" onclick="toggleDetails(this)"></i>
+            <div class="project-details">
+                <p><strong>Languages:</strong> HTML, CSS, JavaScript</p>
+                <p><strong>Tools:</strong> Bootstrap</p>
             </div>
         </div>
-    </section>
+        <div class="project">
+            <p>Hand-Cricket - A game</p>
+            <i class="fas fa-eye eye-icon" onclick="toggleDetails(this)"></i>
+            <div class="project-details">
+                <p><strong>Languages:</strong> HTML, CSS, JavaScript</p>
+                <p><strong>Tools:</strong> None</p>
+            </div>
+        </div>
+        <div class="project">
+            <p>Quadrix - A game</p>
+            <i class="fas fa-eye eye-icon" onclick="toggleDetails(this)"></i>
+            <div class="project-details">
+                <p><strong>Languages:</strong> HTML, CSS, JavaScript</p>
+                <p><strong>Tools:</strong> None</p>
+            </div>
+        </div>
+        <div class="project">
+            <p>Intro - Book a book in digital version</p>
+            <i class="fas fa-eye eye-icon" onclick="toggleDetails(this)"></i>
+            <div class="project-details">
+                <p><strong>Languages:</strong> HTML, CSS, JavaScript</p>
+                <p><strong>Tools:</strong> None</p>
+            </div>
+        </div>
+        <div class="project">
+            <p>Distance converter</p>
+            <i class="fas fa-eye eye-icon" onclick="toggleDetails(this)"></i>
+            <div class="project-details">
+                <p><strong>Languages:</strong> HTML, CSS, JavaScript</p>
+                <p><strong>Tools:</strong> Bootstrap</p>
+            </div>
+        </div>
+        <div class="project">
+            <p>Resume generator -- basic</p>
+            <i class="fas fa-eye eye-icon" onclick="toggleDetails(this)"></i>
+            <div class="project-details">
+                <p><strong>Languages:</strong> HTML, CSS, JavaScript</p>
+                <p><strong>Tools:</strong> None</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    
+    <script>
+        function toggleProjectDetails(icon) {
+    // Find the project details container within the same project card
+    const projectContainer = icon.closest('.flex');
+    const details = projectContainer.querySelector('.project-details');
+    
+    if (details.classList.contains('hidden')) {
+        // Show details and switch to close icon
+        details.classList.remove('hidden');
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        // Hide details and switch to eye open icon
+        details.classList.add('hidden');
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
+        }
+        
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             const projects = document.querySelectorAll('.project');
