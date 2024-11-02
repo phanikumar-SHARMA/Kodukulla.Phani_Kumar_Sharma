@@ -1,0 +1,2412 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Portfolio</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Royal Font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+        integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOM7UgxPbb8aONgOzNnC1bF5ZEX4n0D5UeUCU/a" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        /* Top Navigation Bar */
+        .top-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 10px 20px;
+            background-color: white;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .top-nav h1 {
+            font-family: 'Playfair Display', serif;
+            /* Royal Font */
+            font-size: 1.5rem;
+            /* Adjust size as needed */
+            color: brown;
+            /* Bright color */
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+
+        }
+
+        /* Responsive Background Image Section with Layers */
+        .background-image-section {
+            position: relative;
+            background-image: url('https://i.ibb.co/VDc7drw/Chakra-admin.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: left;
+            height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            /* Aligns items at the top */
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+            padding: 5%;
+            margin-top: 70px;
+            /* Push down for fixed top nav */
+        }
+
+        /* Hide loader after loading */
+        .hidden {
+            display: none;
+        }
+
+        /* Container for the animated line and circles */
+        .decorative-hr-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        /* Large center circle */
+        .center-circle {
+            width: 20px;
+            height: 20px;
+            background: #d4af7f;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            position: relative;
+            z-index: 1;
+            /* Ensure it's above the lines */
+        }
+
+        /* Extending lines */
+        .decorative-hr-line {
+            width: 0;
+            height: 5px;
+            background: #d4af7f;
+            transition: width 1.5s ease-in-out;
+            position: relative;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            /* Align end circles to the edge */
+        }
+
+        /* Left and right line spacing */
+        .decorative-hr-line.left {
+            margin-right: 10px;
+            justify-content: flex-start;
+        }
+
+        .decorative-hr-line.right {
+            margin-left: 10px;
+            justify-content: flex-end;
+        }
+
+        /* Small circles at the ends of lines */
+        .end-circle {
+            width: 10px;
+            height: 10px;
+            background: #d4af7f;
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 1.5s ease-in-out;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        /* Active state to trigger animations */
+        .decorative-hr-container.active .center-circle {
+            opacity: 1;
+            transform: scale(1.5);
+            /* Slight scaling for emphasis */
+        }
+
+        .decorative-hr-container.active .decorative-hr-line.left {
+            width: 40%;
+        }
+
+        .decorative-hr-container.active .decorative-hr-line.right {
+            width: 40%;
+        }
+
+        .decorative-hr-container.active .end-circle {
+            opacity: 1;
+            transform: translateY(-50%);
+            /* Aligns circles with line ends */
+        }
+
+
+        #technical {
+            font-family: Arial, sans-serif;
+        }
+
+        .card-body p {
+            font-size: 1.1em;
+            color: #333;
+            margin: 0.3em 0;
+        }
+
+        .arrow-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1em;
+        }
+
+        .arrow-icon i {
+            color: #333;
+        }
+
+
+        .profile-img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #card-full {
+            height: auto;
+            border-style: solid;
+            border-color: #d4af7f;
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        h2 {
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        #img-grow {
+            overflow: hidden;
+        }
+
+        .bg-border {
+            background-color: #d4af7f;
+            padding: 20px;
+            justify-content: center;
+
+        }
+
+        h3 {
+            font-size: calc(1.5vw + 1em);
+            text-align: center;
+            display: none;
+            /* Hidden by default */
+            font-weight: 600;
+            /* Adjust font weight for emphasis */
+            margin-bottom: 20px;
+            /* Space below the heading */
+            transition: all 0.3s ease;
+            /* Smooth transition */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            /* Subtle text shadow */
+            font-family: Garamond, serif;
+        }
+
+        .down-arrow {
+            text-align: center;
+            /* Center align the arrow */
+        }
+
+        .down-arrow i {
+            font-size: 2em;
+            /* Size of the down arrow */
+            color: #007BFF;
+            /* Change to your desired color */
+            transition: transform 0.3s ease;
+            /* Smooth transform on hover */
+        }
+
+        .down-arrow i:hover {
+            transform: translateY(5px);
+            /* Subtle downward movement on hover */
+        }
+
+
+        /* Fieldset and Legend Styling */
+        fieldset {
+            border: 2px solid #333;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 600px;
+            margin: auto;
+            text-align: center;
+        }
+
+        legend {
+            width: auto;
+            margin: 0 auto;
+            padding: 0;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Image Styling */
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid #d4af7f;
+            /* Adjust color as needed */
+            object-fit: cover;
+        }
+
+        /* Section Styling */
+        .section-container {
+            margin-top: 20px;
+            text-align: left;
+        }
+
+        .section-heading {
+            font-size: 1.5em;
+            color: #333;
+            border-bottom: 2px solid #d4af7f;
+            /* Heading border */
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .content {
+            font-size: 1em;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .highlight {
+            color: #d4af7f;
+            font-weight: bold;
+        }
+
+        /* List Styling */
+        .overview-list {
+            list-style-type: circle;
+            padding-left: 20px;
+        }
+
+        .overview-list li {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive Styling */
+        @media (max-width: 600px) {
+            .profile-image {
+                width: 120px;
+                height: 120px;
+            }
+
+            .section-heading {
+                font-size: 1.3em;
+            }
+        }
+
+        .social-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            font-family: Arial, sans-serif;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+            font-size: 2.5em;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            text-align: center;
+        }
+
+        .social-link.instagram i {
+            color: #E4405F;
+        }
+
+        .social-link.facebook i {
+            color: #1877F2;
+        }
+
+        .social-link.linkedin i {
+            color: #0077B5;
+        }
+
+        .social-link.snapchat i {
+            color: #FFFC00;
+        }
+
+        .section-container {
+            margin-top: 20px;
+            text-align: left;
+            overflow: hidden;
+            /* Prevent overflow for sliding effect */
+        }
+
+        .section-heading {
+            font-size: 1.5em;
+            color: #333;
+            border-bottom: 2px solid #d4af7f;
+            /* Heading border */
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+        }
+
+        .project-card {
+            border: solid 1px #d4af7f;
+            /* Border color */
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            cursor: pointer;
+            opacity: 0;
+            /* Start hidden */
+            transform: translateY(50%);
+            /* Start from below */
+            transition: opacity 0.5s, transform 0.8s;
+            /* Slower animation transition */
+        }
+
+        .project-card.show {
+            opacity: 1;
+            /* Show when class is added */
+            transform: translateY(0);
+            /* Move to original position */
+        }
+
+        .project-img {
+            height: 200px;
+            object-fit: cover;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .project-title {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .project-description {
+            color: #555;
+        }
+
+        .icon-button {
+            border: 2px solid #d4af7f;
+            /* Button border color */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            transition: background-color 0.3s, transform 0.2s;
+            margin-top: 10px;
+            /* Spacing above the icon button */
+        }
+
+        .icon-button:hover {
+            background-color: #d4af7f;
+            /* Change background on hover */
+        }
+
+        .icon-button i {
+            color: gold;
+            /* Icon color */
+            transition: color 0.3s;
+        }
+
+        .modal-header {
+            border-bottom: none;
+            border-radius: 20px 20px 0 0;
+            background-color: #d4af7f;
+            /* Modal header color */
+            color: white;
+            /* Modal header text color */
+
+        }
+
+        .modal-dialog,
+        .modal-content {
+            background-color: rgb(300, 300, 300, 0);
+            border: none;
+        }
+
+        .modal-body {
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+            background-color: #f8f9fa;
+            /* Modal body background color */
+            border: solid 1px #d4af7f;
+            /* Modal border color */
+            border-radius: 0 0 20px 20px;
+            /* Modal border radius */
+            padding: 20px;
+            /* Padding for modal */
+        }
+
+        /* Fade-in animation for modal */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+    <style>
+        .certificate-section {
+            margin-top: 20px;
+        }
+
+        .section-heading {
+            font-size: 1.5em;
+            color: #333;
+            border-bottom: 2px solid #d4af7f;
+            /* Heading border */
+            padding-bottom: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-heading i {
+            margin-right: 10px;
+            /* Space between icon and title */
+            color: #d4af7f;
+            /* Icon color */
+        }
+
+        .certificate-container {
+            position: relative;
+            padding: 20px;
+            /* Padding inside the container */
+            border: solid 1px #d4af7f;
+            /* Border color */
+            border-radius: 15px;
+            margin-bottom: 20px;
+            background-color: #f8f9fa;
+            display: flex;
+            /* Use flexbox for alignment */
+            overflow: hidden;
+            /* Hide overflow */
+        }
+
+        .certificate-ribbon {
+            position: absolute;
+            top: 0;
+            /* Align with the top of the container */
+            right: 0;
+            /* Position it to the right edge of the container */
+            background-color: #28a745;
+            /* Green ribbon color */
+            color: white;
+            padding: 10px 5px;
+            /* Adjusted padding */
+            border-radius: 0px;
+            /* Rounded corners */
+            z-index: 1;
+            /* Ensure ribbon appears above the container */
+            writing-mode: vertical-rl;
+            /* Vertical text */
+            text-align: center;
+            /* Center align the text */
+            height: 100%;
+            /* Match height of the container */
+            width: 40px;
+            /* Reduced width of the ribbon */
+            display: flex;
+            align-items: center;
+            /* Center text vertically */
+            justify-content: center;
+            /* Center text horizontally */
+        }
+
+        .certificate-image {
+            width: 100%;
+            max-width: 100%;
+            /* Limit image size */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-right: 20px;
+            /* Space between image and ribbon */
+            cursor: pointer;
+            /* Indicate the image is clickable */
+        }
+
+        .stars-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .star {
+            color: gold;
+            /* Star color */
+            font-size: 20px;
+            /* Star size */
+            margin: 0 2px;
+            /* Space between stars */
+        }
+
+        hr {
+            border-top: 1px solid #d4af7f;
+            /* Horizontal line color */
+            margin: 20px 0;
+        }
+
+        /* Modal styles */
+        .modal-content {
+            background-color: #fff;
+            border-radius: 15px;
+            /* Rounded corners for the modal */
+        }
+
+        .modal-header {
+            background-color: #d4af7f;
+            /* Header background color matches icon border color */
+            color: white;
+            /* Header text color */
+            width: 100%;
+            /* Full width for header */
+            text-align: center;
+            /* Center the header text */
+        }
+
+        .modal-body {
+            padding: 0;
+            /* Remove padding for the image */
+            text-align: center;
+            /* Center the image */
+        }
+
+        #fullImage {
+            width: 100%;
+            /* Make image responsive */
+            border-radius: 10px;
+            /* Rounded corners for the image */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Add shadow */
+        }
+
+        /* Set a custom size for the modal */
+        .modal-lg {
+            max-width: 800px;
+            /* Increase the max width of the modal */
+        }
+
+        /* Overlay to prevent downloads/screenshots */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.01);
+            /* Almost transparent */
+            z-index: 10;
+            /* Above the image */
+        }
+    </style>
+    <style>
+        body {
+            background-color: #f0f3f5;
+            font-family: Arial, sans-serif;
+        }
+
+        .bar-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            margin-top: 30px;
+            height: 400px;
+            position: relative;
+            border-left: 3px solid #2c3e50;
+            border-bottom: 3px solid #2c3e50;
+            padding-left: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .bar {
+            width: 60px;
+            margin: 0 10px;
+            position: relative;
+            bottom: 0;
+            height: 0;
+            opacity: 0;
+            transition: height 2s ease, opacity 0.5s;
+            border-radius: 0;
+        }
+
+        .bar.active {
+            opacity: 1;
+            height: var(--height);
+        }
+
+        .percentage {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: 16px;
+            color: #34495e;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+
+        /* Consistent, distinct colors for each bar */
+        .bar[data-index="1"] {
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+        }
+
+        .bar[data-index="2"] {
+            background: linear-gradient(45deg, #a18cd1, #fbc2eb);
+        }
+
+        .bar[data-index="3"] {
+            background: linear-gradient(45deg, #fbc2eb, #a6c1ee);
+        }
+
+        .bar[data-index="4"] {
+            background: linear-gradient(45deg, #89f7fe, #66a6ff);
+        }
+
+        .bar-label {
+            text-align: center;
+            font-weight: bold;
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(180deg);
+        }
+
+        .percentage i {
+            font-size: 1.2em;
+            margin-bottom: 5px;
+            color: #033b72;
+        }
+
+        .percentage-100 {
+            color: gold;
+            /* Optional: give the 100% icon a gold color */
+            font-size: 1.4em;
+        }
+
+
+        /* Transparent style for 5th sem */
+        .bar.placeholder {
+            background-color: transparent;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            color: #2c3e50;
+            animation: none;
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        .grid {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .grid-line {
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            border-top: 1px dashed rgba(44, 62, 80, 0.3);
+        }
+
+        .grid-line:nth-child(1) {
+            top: 80%;
+        }
+
+        .grid-line:nth-child(2) {
+            top: 60%;
+        }
+
+        .grid-line:nth-child(3) {
+            top: 40%;
+        }
+
+        .grid-line:nth-child(4) {
+            top: 20%;
+        }
+    </style>
+
+    <style>
+        /* Container for the timeline */
+        .timeline {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Vertical line */
+        .timeline::before {
+            content: "";
+            position: absolute;
+            left: 38px;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: brown;
+            z-index: 1;
+        }
+
+        /* Timeline item */
+        .timeline-item {
+            position: relative;
+            padding: 20px 20px 20px 70px;
+            margin-bottom: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Circle on the line */
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 30px;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background-color: #fff;
+            border: 3px solid brown;
+            border-radius: 50%;
+            z-index: 2;
+        }
+
+        /* Timeline content styling */
+        .timeline-content {
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            color: #fff;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        /* Custom colors for each item */
+        .timeline-item.communication .timeline-content {
+            background-color: #3498db;
+            /* Blue for Communication */
+        }
+
+        .timeline-item.creativity .timeline-content {
+            background-color: #e67e22;
+            /* Orange for Creativity */
+        }
+
+        .timeline-item.ai .timeline-content {
+            background-color: #9b59b6;
+            /* Purple for AI */
+        }
+
+        .timeline-item.problem-solving .timeline-content {
+            background-color: #2ecc71;
+            /* Green for Problem Solving */
+        }
+
+        .timeline-item.leadership .timeline-content {
+            background-color: #e74c3c;
+            /* Red for Leadership */
+        }
+
+        .timeline-item.project-management .timeline-content {
+            background-color: #f39c12;
+            /* Yellow for Project Management */
+        }
+
+        .timeline-item.resource-management .timeline-content {
+            background-color: #1abc9c;
+            /* Teal for Resource Management */
+        }
+
+        /* Hover effect for timeline content */
+        .timeline-content:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            font-weight: bold;
+        }
+    </style>
+    <!--  Mail sheet styles -->
+    <style>
+        .mail-whole-container {
+            width: 100%;
+            justify-content: center;
+            display: flex;
+        }
+
+        .mail-container {
+            animation: mail-lightEffect 2s infinite alternate;
+            max-width: 500px;
+            width: 100%;
+            padding: 16px;
+        }
+
+        @keyframes mail-lightEffect {
+            0% {
+                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            100% {
+                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
+            }
+        }
+
+        .mail-fieldset {
+            border: 2px solid #8B4513;
+            border-radius: 8px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .mail-legend {
+            font-size: 20px;
+            font-weight: bold;
+            color: #8B4513;
+            text-align: center;
+            padding: 0 10px;
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+        }
+
+        .mail-input-field {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .mail-label {
+            position: absolute;
+            left: 12px;
+            top: 14px;
+            background-color: white;
+            padding: 0 5px;
+            color: #8B4513;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .mail-input {
+            transition: all 0.3s;
+            border: 2px solid #D2B48C;
+            padding: 12px;
+            border-radius: 4px;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .mail-input:focus {
+            border-color: #8B4513;
+            outline: none;
+        }
+
+        .mail-input:focus+.mail-label,
+        .mail-input:not(:placeholder-shown)+.mail-label {
+            top: -10px;
+            font-size: 12px;
+            color: #8B4513;
+        }
+
+        .mail-spinner {
+            display: none;
+            border: 4px solid rgba(255, 255, 255, 0.4);
+            border-top: 4px solid #ffffff;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: mail-spin 1s linear infinite;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        @keyframes mail-spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .mail-button {
+            background-color: brown;
+            justify-content: center;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            color: white;
+            font-weight: bold;
+            height: 50px;
+            width: 100%;
+            position: relative;
+        }
+
+        .contact-image-animation {
+            border-radius: 50%;
+            width: 300px;
+            height: 300px;
+        }
+
+        .typewriter {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid black;
+            width: 0;
+            animation: typing 2s steps(20, end) forwards, blink-caret 0.5s step-end infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink-caret {
+            50% {
+                border-color: transparent;
+            }
+        }
+    </style>
+    <style>
+        .scroll-container {
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            background: rgba(0, 0, 0, 0);
+            /* Set your desired background color */
+            padding: 20px;
+        }
+
+        .scroll-content {
+            display: inline-block;
+            animation: scroll 35s linear infinite;
+        }
+
+        .scroll-item {
+            display: inline-block;
+            text-align: center;
+            margin: 0 15px;
+            filter: brightness(1.2) contrast(1.2) saturate(1.2);
+            /* Apply filters for a beautiful effect */
+            padding: 30px;
+        }
+
+        .scroll-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 30px;
+            display: block;
+            margin: 0 auto 10px;
+            box-shadow: 0 0 20px white;
+
+        }
+
+        .scroll-item p {
+            font-size: 35px;
+            margin: 0;
+            font-weight: bold;
+            font-style: serif;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(10%) rotate(0deg);
+            }
+
+            100% {
+                transform: translateX(-130%);
+            }
+        }
+    </style>
+    <style>
+        .custom-button {
+
+            color: rgb(10, 10, 10);
+            font-size: 1.5rem;
+            padding: 25px;
+            border-radius: 50px;
+            text-transform: uppercase;
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .custom-button .fa-arrow-right {
+            padding: 15px;
+            border-radius: 50px;
+            background-color: black;
+            color: white;
+            margin-left: 10px;
+            height: 90px;
+            width: 90px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navigation Bar -->
+    <div class="top-nav">
+        <h1>K. Phani Kumar</h1>
+    </div>
+    </br>
+    <div class="bg-border">
+        <!-- Content with background image -->
+        <div class="background-image-section" id="home"></div>
+    </div>
+    <br>
+    <div class="decorative-hr-container">
+        <div class="decorative-hr-line left">
+            <div class="end-circle"></div>
+        </div>
+        <div class="center-circle"></div>
+        <div class="decorative-hr-line right">
+            <div class="end-circle"></div>
+        </div>
+    </div>
+
+    <h3>
+        Welcome to my portfolio website.<br>
+        Explore about me
+    </h3>
+    <div class="down-arrow">
+        <i class="fas fa-chevron-down"></i>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("h3").slideDown(3000); // Adjust the duration as needed
+        });
+    </script>
+
+    <!-- Directly displaying the Card Section -->
+    <div class="container-fluid mt-5 px-4" id="technical">
+        <h2 class="text-center mb-4" style="font-size: calc(1.5vw + 1em);">Technical Portfolio Section</h2>
+        <div class="card mb-3 mx-auto" style="max-width: 90%;" id="card-full">
+            <div class="row no-gutters">
+                <div class="col-md-4" style="padding: 15px;">
+                    <div id="img-grow">
+                        <img src="https://i.ibb.co/VDc7drw/Chakra-admin.png" class="profile-img" alt="Profile Image">
+                    </div>
+                </div>
+
+                <div class="col-md-8 d-flex align-items-center">
+                    <div class="card-body text-center">
+                        <p><strong>Name:</strong> K.V.K. Phani Kumar Sharma</p>
+                        <p><strong>Profession 1:</strong> Software Engineer</p>
+                        <p><strong>Profession 2:</strong> Hindu Priest</p>
+                        <hr style="border-color:black;background-color:black;">
+                        <p><strong>Know more</strong></p>
+                        <div class="arrow-icon">
+                            <i class="fas fa-arrow-down fa-2x mt-3"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="decorative-hr-container">
+        <div class="decorative-hr-line left">
+            <div class="end-circle"></div>
+        </div>
+        <div class="center-circle"></div>
+        <div class="decorative-hr-line right">
+            <div class="end-circle"></div>
+        </div>
+    </div>
+    <fieldset>
+        <legend><img src="https://i.ibb.co/JtcSLh6/file-n-WJ3f-SB5kw-Olyt16od-Wot-Fz-Z-2-2.jpg" alt="Profile Image"
+                class="profile-image"></legend>
+
+        <section class="section-container">
+            <div class="section-heading">About Me</div>
+            <p class="content">
+                <span class="highlight">Hi,</span> I'm <span class="highlight">K. Phani Kumar</span>, a dedicated
+                full-stack web developer and experienced Hindu priest. My passion for coding drives me to design
+                websites with modern frameworks and solid architecture. Alongside my technical skills, I have extensive
+                experience in conducting traditional poojas, capable of managing large ceremonies with
+                precision.<br><br>
+                I'm from <span class="highlight">Vengapuram (village), Balijipeta (mandal), Parvathipuram Manyam
+                    (district), A.P.</span>, and I take pride in utilizing my diverse talents to serve my community and
+                clients.
+            </p>
+        </section>
+
+        <!-- Overview Section -->
+        <section class="section-container">
+            <div class="section-heading">Overview of My Skills</div>
+            <ul class="overview-list content">
+                <li>Python full-stack web developer (Django)</li>
+                <li>Data scientist</li>
+                <li>Data analyst</li>
+                <li>Web scrapper</li>
+                <li>Android developer (intermediate level, currently learning)</li>
+                <li>Skilled Hindu priest</li>
+                <li>Certified programmer</li>
+                <li>Quick learner</li>
+                <li>Good knowledge in data structures (intermediate level)</li>
+                <li>Self-taught in programming</li>
+                <li>Keen on learning and adapting to new technologies</li>
+            </ul>
+        </section>
+    </fieldset>
+
+    <div class="decorative-hr-container">
+        <div class="decorative-hr-line left">
+            <div class="end-circle"></div>
+        </div>
+        <div class="center-circle"></div>
+        <div class="decorative-hr-line right">
+            <div class="end-circle"></div>
+        </div>
+    </div>
+    <!--_Skill chart-section_-->
+
+    <div style="justify-content: center;display:flex"> <img src="https://i.ibb.co/4sKdtJk/image1.webp"
+            alt="I am good at" border="0" class="good-at" style="height:300px;width:300px;border-radius:50%;"
+            align="center"></div>
+    <div class="container mt-5">
+
+        <h2 class="text-center">Skills Chart</h2>
+        <ul class="timeline">
+
+            <!-- Communication Skill -->
+            <li class="timeline-item communication">
+                <div class="timeline-content">
+                    <h4><i class="fas fa-comments"></i> Communication</h4>
+                    <p>I possess exceptional communication skills that enable me to articulate ideas clearly and engage
+                        effectively with team members and stakeholders, ensuring alignment and collaboration throughout
+                        projects.</p>
+                </div>
+            </li>
+
+            <!-- Creativity Skill -->
+            <li class="timeline-item creativity">
+                <div class="timeline-content">
+                    <h4><i class="fas fa-paint-brush"></i> Creativity</h4>
+                    <p>My creativity allows me to approach challenges with an innovative mindset, producing original
+                        solutions that enhance project outcomes while also considering aesthetic aspects that engage and
+                        inspire.</p>
+                </div>
+            </li>
+
+            <!-- AI Usage by Prompting Skill -->
+            <li class="timeline-item ai">
+                <div class="timeline-content">
+                    <h4><i class="fas fa-robot"></i> AI Usage by Prompting</h4>
+                    <p>I am skilled in leveraging artificial intelligence tools through effective prompt crafting,
+                        enabling improved efficiency and the generation of actionable insights that drive project
+                        success.</p>
+                </div>
+            </li>
+
+            <!-- Problem Solving Skill -->
+            <li class="timeline-item problem-solving">
+                <div class="timeline-content">
+                    <h4><i class="fas fa-tools"></i> Problem Solving</h4>
+                    <p>With a strong analytical approach, I excel at identifying issues and developing structured
+                        solutions that address complex challenges, resulting in effective strategies and successful
+                        implementations.</p>
+                </div>
+            </li>
+
+            <!-- Leadership Skill -->
+            <li class="timeline-item leadership">
+                <div class="timeline-content">
+                    <h4><i class="fas fa-user-tie"></i> Leadership</h4>
+                    <p>My leadership style fosters a collaborative environment, motivating teams to achieve shared goals
+                        while nurturing individual growth and promoting a culture of accountability and excellence.</p>
+                </div>
+            </li>
+
+            <!-- Project Management Skill -->
+            <li class="timeline-item project-management">
+                <div class="timeline-content">
+                    <h4><i class="fas fa-project-diagram"></i> Project Management</h4>
+                    <p>I have extensive experience in managing projects from inception to completion, utilizing
+                        strategic planning and organization to deliver results on time and within budget while
+                        maintaining high quality.</p>
+                </div>
+            </li>
+
+            <!-- Resource Management Skill -->
+            <li class="timeline-item resource-management">
+                <div class="timeline-content">
+                    <h4><i class="fas fa-clipboard-list"></i> Resource Management</h4>
+                    <p>I effectively manage resources to maximize productivity, ensuring optimal allocation and
+                        utilization throughout the project lifecycle, which leads to enhanced outcomes and efficiency.
+                    </p>
+                </div>
+            </li>
+
+        </ul>
+    </div>
+    <script>
+        $(document).ready(function () {
+            const section = $('.bar-container'); // The section with bars
+            const bars = $('.bar');
+
+            function animateBars() {
+                bars.each(function () {
+                    const bar = $(this);
+                    const heightPercentage = parseFloat(bar.css('--height'));
+                    const percentageElem = bar.find('.percentage');
+
+                    // Ensure bar grows and displays the percentage
+                    bar.addClass('active');
+
+                    let count = 0;
+                    const interval = setInterval(function () {
+                        if (count < heightPercentage) {
+                            count += 0.5;
+                            percentageElem.html(count.toFixed(1) + '%');
+                        } else {
+                            // Display cup icon at 100%
+                            percentageElem.html(heightPercentage === 100 ? '<i class="fas fa-trophy"></i> 100%' : heightPercentage.toFixed(1) + '%');
+                            clearInterval(interval);
+                        }
+                    }, 15);
+                });
+            }
+
+            // Observer to start animation when section is in viewport
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateBars();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 }); // 50% visibility triggers the animation
+
+            observer.observe(section[0]);
+        });
+
+    </script>
+    <!--_-->
+    <div class="decorative-hr-container">
+        <div class="decorative-hr-line left">
+            <div class="end-circle"></div>
+        </div>
+        <div class="center-circle"></div>
+        <div class="decorative-hr-line right">
+            <div class="end-circle"></div>
+        </div>
+    </div>
+
+    <!--______________________________________________________languages scroller_______________________________________-->
+
+    <h2 align="center">Programming Languages I Know</h2>
+    <section id="skills">
+        <div class="scroll-container">
+            <div class="scroll-content">
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/jwtgFx0/c.png" alt="C">
+                    <p>C</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/FXBhBzS/png-transparent-the-c-programming-language-computer-programming-programmer-others-blue-class-logo-th.png"
+                        alt="C++">
+                    <p>C++</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/H4C9ZQz/2048px-HTML5-logo-and-wordmark-svg.png" alt="HTML5">
+                    <p>HTML</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/gVtfVrK/CSS-Logo.png" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/ZKJKWpD/3d-javascript-logo-design-free-png.png" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/y8vFxKZ/62a76aadbd73a4af5c5d4fc5.png" alt="Node.js">
+                    <p>Jquery</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/82Lh0Cq/ajax.png" alt="AJAX">
+                    <p>AJAX</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/4fTVNxJ/angular.png" alt="Angular">
+                    <p>Angular</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/xzkNy3j/xml-symbol-icon-vector-logo-003.png" alt="XML">
+                    <p>XML</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/sWmHDHH/uml-tutorial.png" alt="UML">
+                    <p>UML</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/MZB0x1m/png-clipart-bootstrap-logo-thumbnail-tech-companies.png"
+                        alt="Bootstrap">
+                    <p>Bootstrap</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/nsmC4gV/c1a67ff6609782e262d2daefc1ecf333.png" alt="MongoDB">
+                    <p>Tailwind</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/TTgmYh3/download.png" alt="SQL" border="0">
+                    <p class="dev-section">SQL</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/RzYVRsr/800px-Python-logo-notext-svg.png" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/XD4Kcqj/582d8348873b7e0fdfaa78320dd3b918.jpg" alt="Java">
+                    <p>Java</p>
+                </div>
+
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/02gt4Rh/1-Yj3-Hpcm-Eu-O7br-Krfrdh-OA.png" alt="React">
+                    <p>Git</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/fNKtBRN/github-logo.png" alt="GitHub">
+                    <p>GitHub</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/mzWgJVq/microsoft-office3327.jpg" alt="Microsoft Office">
+                    <p>Microsoft Office</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/tpZXCSC/django-hexbin.png" alt="Django">
+                    <p class="dev-section">Django</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/KwJyg4m/O31-t0p-D-400x400.jpg" alt="MySQL" class="dev-section">
+                    </br>
+                    <p class="dev-section">Numpy</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/gTQ9b81/c6h7rok9c2v31.jpg" alt="Pandas" class="dev-section">
+                    <p class="dev-section">Pandas</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/7Jm8Mdn/course-18061-image.png" alt="Ruby" class="dev-section">
+                    <p class="dev-section">Matplotlib</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/mbYgXxf/5940844-ad8b.jpg" alt="SQL" class="dev-section">
+                    <p class="dev-section">BeautifulSoup</p>
+                </div>
+
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/PDB9Fs8/SQLite-logo.png" alt="SQLite">
+                    <p class="dev-section">SQLite</p>
+                </div>
+
+
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/Vq1DVQw/images-14.jpg" alt="android" border="0" class="dev-section">
+                    <p class="dev-section">Android Development</p>
+                </div>
+            </div>
+        </div>
+        </div>
+        </br>
+        <div class="decorative-hr-container">
+            <div class="decorative-hr-line left">
+                <div class="end-circle"></div>
+            </div>
+            <div class="center-circle"></div>
+            <div class="decorative-hr-line right">
+                <div class="end-circle"></div>
+            </div>
+        </div>
+        <!--_Certifications-section_-->
+
+        <div class="container mt-5">
+            <div class="certificate-section">
+                <div class="section-heading">
+                    <i class="fas fa-certificate"></i> Certifications
+                </div>
+                <hr>
+
+                <!-- Certificate 1 -->
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">Django Certification</div>
+                    <img src="Django.png" class="certificate-image" alt="Certificate 1" data-toggle="modal"
+                        data-target="#certificateModal" data-image="Django.png">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">Certificate Name 2</div>
+                    <img src="scrap.jpg" class="certificate-image" alt="Web scrapping" data-toggle="modal"
+                        data-target="#certificateModal" data-image="scrap.jpg">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">Prompting certificate</div>
+                    <img src="prompt.png" class="certificate-image" alt="Certificate 3" data-toggle="modal"
+                        data-target="#certificateModal" data-image="prompt.png">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+                <!-- Certificate 4 -->
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">C++ and Java basics certification</div>
+                    <img src="cppandjava.png" class="certificate-image" alt="Certificate 4" data-toggle="modal"
+                        data-target="#certificateModal" data-image="cppandjava.png">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+
+                <!-- Add more certificates as needed... -->
+
+            </div>
+        </div>
+
+        <!-- Modal for displaying certificate image -->
+        <div class="modal fade" id="certificateModal" tabindex="-1" role="dialog"
+            aria-labelledby="certificateModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                <!-- Use modal-lg for larger size -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="certificateModalLabel">Certificate</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="overlay"></div> <!-- Overlay to prevent downloads/screenshots -->
+                        <img src="" id="fullImage" alt="Full Certificate">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Set the image source for the modal
+                $('#certificateModal').on('show.bs.modal', function (event) {
+                    var button = $(event.relatedTarget); // Button that triggered the modal
+                    var image = button.data('image'); // Extract info from data-* attributes
+                    var modal = $(this);
+                    modal.find('#fullImage').attr('src', image); // Update the modal's image source
+                });
+            });
+        </script>
+        <!---->
+
+        <div class="decorative-hr-container">
+            <div class="decorative-hr-line left">
+                <div class="end-circle"></div>
+            </div>
+            <div class="center-circle"></div>
+            <div class="decorative-hr-line right">
+                <div class="end-circle"></div>
+            </div>
+        </div>
+        <!-- ______________________________________Projects-section_-->
+        <div style="justify-content: center;display: flex;">
+            <img src="https://i.ibb.co/t8W2LJG/thisbgimage.png" alt="thisbgimage" border="0" class="center">
+        </div>
+        <div class="container mt-5">
+            <div class="section-container">
+                <div class="section-heading"><i class="fa-solid fa-briefcase"
+                        style="color:#d4af7f;"></i>&nbsp;&nbsp;Projects Section </div>
+                <div class="row"></br>
+                    <!-- Project Card 1 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal1">
+                            <img src="https://i.ibb.co/h26P7bp/jobs.jpg" class="card-img-top project-img"
+                                alt="Project 1">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Jobs-24</h5>
+                                <p class="card-text project-description">This website is made withe the main motto of
+                                    job providing for the users who are searching for jos and provide oppurtunities to
+                                    the companies to post the job offers.</p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal1">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 2 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal2">
+                            <img src="https://i.ibb.co/TPLFjv2/cb.jpg" class="card-img-top project-img" alt="Project 2">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Cook-Book</h5>
+                                <p class="card-text project-description">Social media cooking platform where you can
+                                    share your food ideas and proceedures with the world.Find hotels near you.A good
+                                    platform for bachelors to make their cooking process easy.</p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal2">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 3 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal3">
+                            <img src="https://i.ibb.co/y6ySFSy/chakra.jpg" class="card-img-top project-img"
+                                alt="Project 3">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Chakra-Educations</h5>
+                                <p class="card-text project-description">Educational website for students.They can
+                                    learn,play,Quizes,calculators,historical books,Text-Books are available and are
+                                    integrated with state government.</p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal3">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 4 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal4">
+                            <img src="https://i.ibb.co/GQ51txd/scrappy.jpg" class="card-img-top project-img"
+                                alt="Project 4">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Scrappy-Web</h5>
+                                <p class="card-text project-description">In this website we can get the complete code of
+                                    a wesite link and is completly free to use.</p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal4">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 5 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal5">
+                            <img src="https://i.ibb.co/fdKp9RK/resume.jpg" class="card-img-top project-img"
+                                alt="Project 5">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Resume Generator</h5>
+                                <p class="card-text project-description">Build a profissional resume with this
+                                    website.Choose any of the template within 50+ resume templates. </p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal5">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 5 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal6">
+                            <img src="https://i.ibb.co/5cMDxNj/qr.png" class="card-img-top project-img" alt="Project 5">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Intro-QR</h5>
+                                <p class="card-text project-description">A QR code genrator website which generates a
+                                    profissional QR code with your details.Just scan and see. </p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal6">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 6 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal7">
+                            <img src="https://i.ibb.co/9mDMtpt/digital-progress.png" class="card-img-top project-img"
+                                alt="Project 6">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Digital-Progress</h5>
+                                <p class="card-text project-description">Generate a digital progress card with student
+                                    details,performance,marks and marks analysis and marks QR.</p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal7">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 6 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal8">
+                            <img src="https://i.ibb.co/2qs8DkZ/introbook.png" class="card-img-top project-img"
+                                alt="Project 5">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Intro-Book</h5>
+                                <p class="card-text project-description">A profile book card for your personal intrests
+                                    and details to share with your friends and family menbers. </p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal8">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 5 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal9">
+                            <img src="https://i.ibb.co/vj2jrdH/quadrix.jpg" class="card-img-top project-img"
+                                alt="Project 5">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Quadrix</h5>
+                                <p class="card-text project-description">Quadrix is a 2 player game.It is much like XOX
+                                    game with 4*4 matrix grids with score boards with high graphics.</p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal9">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Project Card 5 -->
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal10">
+                            <img src="https://i.ibb.co/wsk92Mh/hc.jpg" class="card-img-top project-img" alt="Project 5">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Hand-cricket</h5>
+                                <p class="card-text project-description">It is a 2 player game looks like cards for
+                                    playng digital cricket.It also contains score boards for score count.</p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal10">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal11">
+                            <img src="https://i.ibb.co/jykH7QB/distance.png" class="card-img-top project-img"
+                                alt="Project 5">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">Distance converter</h5>
+                                <p class="card-text project-description">Convert the distances and perform many
+                                    convertion operations.convert any form to any other form. </p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal11">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 project-card-container">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal12">
+                            <img src="https://i.ibb.co/QfR31Kz/images.png" class="card-img-top project-img"
+                                alt="Project 5">
+                            <div class="card-body">
+                                <h5 class="card-title project-title">MojiTub</h5>
+                                <p class="card-text project-description">Place you can find many emojies and images and
+                                    download them.Find the best to share with your friends. </p>
+                                <div class="icon-button" data-toggle="modal" data-target="#projectModal12">
+                                    <i class="fas fa-eye"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modals for Projects -->
+        <div class="modal fade" id="projectModal1" tabindex="-1" aria-labelledby="projectModalLabel1"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel1">
+                            <i class="fas fa-briefcase"></i> Jobs-24
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>Django</li>
+                            <li>Python</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>Tail-Block</li>
+                            <li>Popper.js</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModalLabel2"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel2">
+                            <i class="fas fa-book"></i> Cook-Book
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>Django</li>
+                            <li>Python</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>Tail-Block</li>
+                            <li>Popper.js</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal3" tabindex="-1" aria-labelledby="projectModalLabel3"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel3">
+                            <i class="fas fa-graduation-cap"></i> Chakra-Educations
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>Tail-Block</li>
+                            <li>Popper.js</li>
+                            <li>Ajax</li>
+                            <li>jQuery</li>
+                            <li>Bulma</li>
+                            <li>Gmail APIs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal4" tabindex="-1" aria-labelledby="projectModalLabel4"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel4">
+                            <i class="fas fa-globe"></i> Scrappy-Web
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>Django</li>
+                            <li>Python</li>
+                            <li>BeautifulSoup</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal5" tabindex="-1" aria-labelledby="projectModalLabel5"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel5">
+                            <i class="fas fa-file-alt"></i> Resume Generator
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal6" tabindex="-1" aria-labelledby="projectModalLabel6"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel6">
+                            <i class="fas fa-qrcode"></i> Intro-QR
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>Django</li>
+                            <li>Python</li>
+                            <li>Pandas</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal7" tabindex="-1" aria-labelledby="projectModalLabel7"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel7">
+                            <i class="fas fa-chart-line"></i> Digital Progress
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>Python</li>
+                            <li>Pandas</li>
+                            <li>Numpy</li>
+                            <li>Matplotlib</li>
+                            <li>Seaborn</li>
+                            <li>QR</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal8" tabindex="-1" aria-labelledby="projectModalLabel8"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel8">
+                            <i class="fas fa-book-reader"></i> Intro-Book
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>Angular.js</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>Tail-Block</li>
+                            <li>Popper.js</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal9" tabindex="-1" aria-labelledby="projectModalLabel9"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel9">
+                            <i class="fas fa-swatchbook"></i> Quadrix
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal10" tabindex="-1" aria-labelledby="projectModalLabel10"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel10">
+                            <i class="fas fa-project-diagram"></i> Hand-cricket
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal11" tabindex="-1" aria-labelledby="projectModalLabel11"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel11">
+                            <i class="fas fa-bookmark"></i> Distance converter
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>Tailwind</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="projectModal12" tabindex="-1" aria-labelledby="projectModalLabel12"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel12">
+                            <i class="fas fa-video"></i> MojiTub
+                        </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span>&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <ul style="list-style-type: disc; padding-left: 20px;">
+                            <li>Django</li>
+                            <li>Python</li>
+                            <li>BeautifulSoup</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>JavaScript</li>
+                            <li>Bootstrap</li>
+                            <li>jQuery</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Font Awesome CDN for icons -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const projectCards = document.querySelectorAll('.project-card');
+
+                const options = {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1 // Trigger when 10% of the card is visible
+                };
+
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const card = entry.target;
+                            card.classList.add('show'); // Add class to show the card
+                            observer.unobserve(card); // Stop observing once the card is visible
+                        }
+                    });
+                }, options);
+
+                projectCards.forEach(card => {
+                    observer.observe(card);
+                });
+            });
+        </script>
+
+
+        <!---->
+        <div class="decorative-hr-container">
+            <div class="decorative-hr-line left">
+                <div class="end-circle"></div>
+            </div>
+            <div class="center-circle"></div>
+            <div class="decorative-hr-line right">
+                <div class="end-circle"></div>
+            </div>
+        </div>
+        <!--_ACHEDEMIC-SECTION_-->
+        <div class="container my-5" id="academic-marks-section">
+            <h2 class="text-center">My Academic Performance in Diploma</h2>
+            <br><br><br>
+            <div class="bar-container">
+                <div class="grid">
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                    <div class="grid-line"></div>
+                </div>
+                <!-- Bar elements with initial height of 0 for animation -->
+                <div class="bar" style="--height: 87.2%;" data-index="1" data-toggle="tooltip" title="523 out of 600">
+                    <div class="percentage"><i class="fas fa-trophy"></i><br>0%</div>
+                    <div class="bar-label">10th Marks</div>
+                </div>
+                <div class="bar" style="--height: 92.3%;" data-index="2" data-toggle="tooltip"
+                    title="Diploma 1st Year: 92.3%">
+                    <div class="percentage"><i class="fas fa-trophy"></i><br>0%</div>
+                    <div class="bar-label">Diploma 1st Year</div>
+                </div>
+                <div class="bar" style="--height: 97.1%;" data-index="3" data-toggle="tooltip" title="3rd Sem: 97.1%">
+                    <div class="percentage"><i class="fas fa-trophy"></i><br>0%</div>
+                    <div class="bar-label">3rd Sem</div>
+                </div>
+                <div class="bar" style="--height: 96.8%;" data-index="4" data-toggle="tooltip" title="4th Sem: 96.8%">
+                    <div class="percentage"><i class="fas fa-trophy"></i><br>0%</div>
+                    <div class="bar-label">4th Sem</div>
+                </div>
+                <!-- Placeholder for 5th Semester without a bar -->
+                <div class="bar placeholder" data-toggle="tooltip" title="5th Sem: Not Released Yet">
+                    <div class="bar-label">5th Sem (Not Released)</div>
+                </div>
+            </div>
+        </div>
+
+
+        <script>
+            $(document).ready(function () {
+                const section = $('.bar-container'); // The section with bars
+                const bars = $('.bar');
+
+                function animateBars() {
+                    bars.each(function () {
+                        const bar = $(this);
+                        const heightPercentage = parseFloat(bar.css('--height'));
+                        const percentageElem = bar.find('.percentage');
+
+                        // Ensure bar grows and displays the percentage
+                        bar.addClass('active');
+
+                        let count = 0;
+                        const interval = setInterval(function () {
+                            if (count < heightPercentage) {
+                                count += 0.5;
+                                percentageElem.html(count.toFixed(1) + '%');
+                            } else {
+                                // Display cup icon at 100%
+                                percentageElem.html(heightPercentage === 100 ? '<i class="fas fa-trophy"></i> 100%' : heightPercentage.toFixed(1) + '%');
+                                clearInterval(interval);
+                            }
+                        }, 15);
+                    });
+                }
+
+                // Observer to start animation when section is in viewport
+                const observer = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            animateBars();
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.5 }); // 50% visibility triggers the animation
+
+                observer.observe(section[0]);
+            });
+
+        </script>
+
+
+
+        <!---->
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const hrContainers = document.querySelectorAll(".decorative-hr-container");
+
+                function isInViewport(element) {
+                    const rect = element.getBoundingClientRect();
+                    return (
+                        rect.top >= -50 && // Added an offset for better triggering
+                        rect.left >= 0 &&
+                        rect.bottom <= (window.innerHeight + 50 || document.documentElement.clientHeight + 50) &&
+                        rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                    );
+                }
+
+                function onScroll() {
+                    hrContainers.forEach(container => {
+                        if (isInViewport(container)) {
+                            container.classList.add("active"); // Trigger animation
+                        }
+                    });
+                }
+
+                // Run on scroll and on load
+                window.addEventListener("scroll", onScroll);
+                onScroll(); // Check on load in case already in viewport
+            });
+        </script>
+        </br>
+        <div class="decorative-hr-container">
+            <div class="decorative-hr-line left">
+                <div class="end-circle"></div>
+            </div>
+            <div class="center-circle"></div>
+            <div class="decorative-hr-line right">
+                <div class="end-circle"></div>
+            </div>
+        </div>
+
+        <div class="section-heading" style="color:#834d06; text-align:center;"><i
+                class="fa-solid fa-envelope"></i>&nbsp;Contact me</div>
+        <div class="row"></br></div>
+        <!--___________________________________contact_____________________________________________-->
+        <div class="mail-animation-center" style="justify-content:center;display:flex;">
+            <img src="https://i.ibb.co/Q8DDxDn/Animation-1730529031905.gif" class="contact-image-animation"
+                alt="Animation-1730529031905">
+        </div>
+
+
+        </br>
+        <div class="container text-center">
+            <div class="social-section">
+                <a href="https://www.instagram.com/phani_k_sharma.k?igsh=MnNrZ2F2aWx0bnlr" target="_blank" class="social-link instagram">
+                    <div class="icon-wrapper"><i class="fab fa-instagram"></i></div> <span
+                        class="typewriter">Instagram</span>
+                </a>
+                <a href="https://www.facebook.com/share/19qrekcTHE/?mibextid=qi2Omg" target="_blank" class="social-link facebook">
+                    <div class="icon-wrapper"><i class="fab fa-facebook"></i></div> <span
+                        class="typewriter">Facebook</span>
+                </a>
+                <a href="https://www.linkedin.com/in/phani-kumar-sharma-kodukulla-63a268302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link linkedin">
+                    <div class="icon-wrapper"><i class="fab fa-linkedin"></i></div> <span
+                        class="typewriter">LinkedIn</span>
+                </a>
+                <a href="https://www.snapchat.com/add/phanikumar2122?share_id=kBiPJ_usHGM&locale=en-IN" target="_blank" class="social-link snapchat">
+                    <div class="icon-wrapper"><i class="fab fa-snapchat"></i></div> <span
+                        class="typewriter">Snapchat</span>
+                </a>
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                let animated = false;
+
+                $(window).scroll(function () {
+                    const sectionOffset = $('.social-section').offset().top;
+                    const windowScroll = $(window).scrollTop();
+                    const windowHeight = $(window).height();
+
+                    // Check if the social-section is in view
+                    if (windowScroll + windowHeight >= sectionOffset && !animated) {
+                        animated = true;
+                        $('.typewriter').css('animation-play-state', 'running');
+                    }
+                });
+            });
+
+
+        </script>>
+        <!-- ___________________________________________________________________Mail_________________________________________________________-->
+        <div class="mail" style="display: flex; align-items: center; width: 100%;">
+            <hr style="flex-grow: 1; border: 1px solid #ccc;">
+            <img src="https://i.ibb.co/6bxxvX6/contact.jpg" alt="contact"
+                style="border-radius: 50%; width: auto; height: 150px; margin: 0 10px;">
+            <hr style="flex-grow: 1; border: 1px solid #ccc;">
+        </div>
+        </br>
+        <div class="mail-whole-container">
+            <div class="mail-container mail-bg-white mail-rounded-lg mail-shadow-md">
+                <fieldset class="mail-fieldset">
+                    <legend class="mail-legend">Gmail</legend>
+                    <form id="mail-contactForm">
+                        <div class="mail-input-field">
+                            <input type="text" id="mail-name" placeholder=" " required class="mail-input" />
+                            <label for="mail-name" class="mail-label">Name</label>
+                        </div>
+                        <div class="mail-input-field">
+                            <input type="email" id="mail-email" placeholder=" " required class="mail-input" />
+                            <label for="mail-email" class="mail-label">Email</label>
+                        </div>
+                        <div class="mail-input-field">
+                            <textarea id="mail-message" rows="4" placeholder=" " required class="mail-input"></textarea>
+                            <label for="mail-message" class="mail-label">Message</label>
+                        </div>
+                        <button type="button" id="mail-draftButton" class="mail-button">
+                            <i class="mail-icon fas fa-paper-plane"></i>
+                            <span class="mail-spinner"></span>
+                        </button>
+                    </form>
+                </fieldset>
+
+            </div>
+
+            <script>
+                document.getElementById('mail-draftButton').addEventListener('click', function () {
+                    const name = document.getElementById('mail-name').value;
+                    const email = document.getElementById('mail-email').value;
+                    const message = document.getElementById('mail-message').value;
+
+                    const mailtoLink = `mailto:phanikumark715@gmail.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0D%0AEmail:%20${encodeURIComponent(email)}%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
+
+                    const icon = document.querySelector('#mail-draftButton i');
+                    const spinner = document.querySelector('.mail-spinner');
+
+                    icon.style.display = 'none';
+                    spinner.style.display = 'block';
+
+                    setTimeout(function () {
+                        window.location.href = mailtoLink;
+                    }, 2000);
+                });
+
+            </script>
+        </div>
+    </section>
+    <div class="decorative-hr-container">
+        <div class="decorative-hr-line left">
+            <div class="end-circle"></div>
+        </div>
+        <div class="center-circle"></div>
+        <div class="decorative-hr-line right">
+            <div class="end-circle"></div>
+        </div>
+    </div>
+    <div class="container text-center mt-5">
+        <a href="https://yourportfolio.com" class="custom-button" role="button">
+            Visit My Preest Portfolio
+            <i class="fas fa-arrow-right"></i>
+        </a>
+    </div>
+</body>
+
+</html>
