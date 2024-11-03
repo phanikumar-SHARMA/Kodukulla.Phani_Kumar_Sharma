@@ -878,124 +878,119 @@
     </style>
     <!--  Mail sheet styles -->
     <style>
-        .mail-whole-container {
-            width: 100%;
-            justify-content: center;
-            display: flex;
-        }
+       .mail-whole-container {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
 
-        .mail-container {
-            animation: mail-lightEffect 2s infinite alternate;
-            max-width: 500px;
-            width: 100%;
-            padding: 16px;
-        }
+.mail-container {
+    animation: mail-lightEffect 2s infinite alternate;
+    max-width: 500px;
+    width: 100%;
+    padding: 16px;
+}
 
-        @keyframes mail-lightEffect {
-            0% {
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            }
+@keyframes mail-lightEffect {
+    0% { box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); }
+    100% { box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2); }
+}
 
-            100% {
-                box-shadow: 0 8px 40px rgba(0, 0, 0, 0.2);
-            }
-        }
+.mail-fieldset {
+    border: 2px solid #8B4513;
+    border-radius: 8px;
+    padding: 20px;
+    position: relative;
+}
 
-        .mail-fieldset {
-            border: 2px solid #8B4513;
-            border-radius: 8px;
-            padding: 20px;
-            position: relative;
-        }
+.mail-legend {
+    font-size: 20px;
+    font-weight: bold;
+    color: #8B4513;
+    text-align: center;
+    padding: 0 10px;
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+}
 
-        .mail-legend {
-            font-size: 20px;
-            font-weight: bold;
-            color: #8B4513;
-            text-align: center;
-            padding: 0 10px;
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-        }
+.mail-input-field {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
 
-        .mail-input-field {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
+.mail-label {
+    position: absolute;
+    left: 12px;
+    top: 14px;
+    background-color: white;
+    padding: 0 5px;
+    color: #8B4513;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    z-index: 1;
+}
 
-        .mail-label {
-            position: absolute;
-            left: 12px;
-            top: 14px;
-            background-color: white;
-            padding: 0 5px;
-            color: #8B4513;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            pointer-events: none;
-            z-index: 1;
-        }
+.mail-input {
+    transition: all 0.3s;
+    border: 2px solid #D2B48C;
+    padding: 12px;
+    border-radius: 4px;
+    width: 100%;
+    font-size: 16px;
+}
 
-        .mail-input {
-            transition: all 0.3s;
-            border: 2px solid #D2B48C;
-            padding: 12px;
-            border-radius: 4px;
-            width: 100%;
-            font-size: 16px;
-        }
+.mail-input:focus {
+    border-color: #8B4513;
+    outline: none;
+}
 
-        .mail-input:focus {
-            border-color: #8B4513;
-            outline: none;
-        }
+.mail-input:focus+.mail-label,
+.mail-input:not(:placeholder-shown)+.mail-label {
+    top: -10px;
+    font-size: 12px;
+    color: #8B4513;
+}
 
-        .mail-input:focus+.mail-label,
-        .mail-input:not(:placeholder-shown)+.mail-label {
-            top: -10px;
-            font-size: 12px;
-            color: #8B4513;
-        }
+.mail-spinner {
+    display: none;
+    border: 4px solid rgba(255, 255, 255, 0.4);
+    border-top: 4px solid #ffffff;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: mail-spin 1s linear infinite;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
-        .mail-spinner {
-            display: none;
-            border: 4px solid rgba(255, 255, 255, 0.4);
-            border-top: 4px solid #ffffff;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
-            animation: mail-spin 1s linear infinite;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        }
+@keyframes mail-spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-        @keyframes mail-spin {
-            0% {
-                transform: rotate(0deg);
-            }
+.mail-button {
+    background-color: brown;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    color: white;
+    font-weight: bold;
+    height: 50px;
+    width: 100%;
+    position: relative;
+    cursor: pointer;
+}
 
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .mail-button {
-            background-color: brown;
-            justify-content: center;
-            display: flex;
-            align-items: center;
-            padding: 10px 20px;
-            color: white;
-            font-weight: bold;
-            height: 50px;
-            width: 100%;
-            position: relative;
-        }
+.mail-button:hover {
+    background-color: #a0522d;
+}
 
         .contact-image-animation {
             border-radius: 50%;
@@ -1505,6 +1500,21 @@
                     <span class="star"><i class="fas fa-star"></i></span>
                 </div>
 
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">SQL mastry certificate</div>
+                    <img src="sql.jpg" class="certificate-image" alt="Certificate 4" data-toggle="modal"
+                        data-target="#certificateModal" data-image="sql.jpg">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+
+               
+
                 <!-- Certificate 2 -->
                 <div class="certificate-container">
                     <div class="certificate-ribbon">Web scraping with python certification </div>
@@ -1534,8 +1544,21 @@
                 </div>
                 <div class="certificate-container">
                     <div class="certificate-ribbon">Web development certificate</div>
-                    <img src="UC-2addc660-2590-49ae-aee6-d28b51d39bf5.jpg" class="certificate-image" alt="Certificate 4" data-toggle="modal"
-                        data-target="#certificateModal" data-image="UC-2addc660-2590-49ae-aee6-d28b51d39bf5.jpg">
+                    <img src="UC-2addc660-2590-49ae-aee6-d28b51d39bf5.jpg" class="certificate-image" alt="Certificate 4"
+                        data-toggle="modal" data-target="#certificateModal"
+                        data-image="UC-2addc660-2590-49ae-aee6-d28b51d39bf5.jpg">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">Python mastrey certificate</div>
+                    <img src="python.jpg" class="certificate-image" alt="Certificate 4" data-toggle="modal"
+                        data-target="#certificateModal" data-image="python.jpg">
                 </div>
                 <div class="stars-container">
                     <span class="star"><i class="fas fa-star"></i></span>
@@ -2310,19 +2333,23 @@
         </br>
         <div class="container text-center">
             <div class="social-section">
-                <a href="https://www.instagram.com/phani_k_sharma.k?igsh=MnNrZ2F2aWx0bnlr" target="_blank" class="social-link instagram">
+                <a href="https://www.instagram.com/phani_k_sharma.k?igsh=MnNrZ2F2aWx0bnlr" target="_blank"
+                    class="social-link instagram">
                     <div class="icon-wrapper"><i class="fab fa-instagram"></i></div> <span
                         class="typewriter">Instagram</span>
                 </a>
-                <a href="https://www.facebook.com/share/19qrekcTHE/?mibextid=qi2Omg" target="_blank" class="social-link facebook">
+                <a href="https://www.facebook.com/share/19qrekcTHE/?mibextid=qi2Omg" target="_blank"
+                    class="social-link facebook">
                     <div class="icon-wrapper"><i class="fab fa-facebook"></i></div> <span
                         class="typewriter">Facebook</span>
                 </a>
-                <a href="https://www.linkedin.com/in/phani-kumar-sharma-kodukulla-63a268302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="social-link linkedin">
+                <a href="https://www.linkedin.com/in/phani-kumar-sharma-kodukulla-63a268302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+                    target="_blank" class="social-link linkedin">
                     <div class="icon-wrapper"><i class="fab fa-linkedin"></i></div> <span
                         class="typewriter">LinkedIn</span>
                 </a>
-                <a href="https://www.snapchat.com/add/phanikumar2122?share_id=kBiPJ_usHGM&locale=en-IN" target="_blank" class="social-link snapchat">
+                <a href="https://www.snapchat.com/add/phanikumar2122?share_id=kBiPJ_usHGM&locale=en-IN" target="_blank"
+                    class="social-link snapchat">
                     <div class="icon-wrapper"><i class="fab fa-snapchat"></i></div> <span
                         class="typewriter">Snapchat</span>
                 </a>
@@ -2377,6 +2404,8 @@
                             <i class="mail-icon fas fa-paper-plane"></i>
                             <span class="mail-spinner"></span>
                         </button>
+                        
+                        </button>
                     </form>
                 </fieldset>
 
@@ -2384,22 +2413,28 @@
 
             <script>
                 document.getElementById('mail-draftButton').addEventListener('click', function () {
-                    const name = document.getElementById('mail-name').value;
-                    const email = document.getElementById('mail-email').value;
-                    const message = document.getElementById('mail-message').value;
+    const name = document.getElementById('mail-name').value;
+    const email = document.getElementById('mail-email').value;
+    const message = document.getElementById('mail-message').value;
 
-                    const mailtoLink = `mailto:phanikumark715@gmail.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0D%0AEmail:%20${encodeURIComponent(email)}%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
+    const mailtoLink = `mailto:phanikumark715@gmail.com?subject=Contact%20Form%20Submission&body=Name:%20${encodeURIComponent(name)}%0D%0AEmail:%20${encodeURIComponent(email)}%0D%0AMessage:%0D%0A${encodeURIComponent(message)}`;
 
-                    const icon = document.querySelector('#mail-draftButton i');
-                    const spinner = document.querySelector('.mail-spinner');
+    const icon = document.querySelector('#mail-draftButton i');
+    const spinner = document.querySelector('.mail-spinner');
 
-                    icon.style.display = 'none';
-                    spinner.style.display = 'block';
+    // Hide icon and show spinner
+    icon.style.display = 'none';
+    spinner.style.display = 'block';
 
-                    setTimeout(function () {
-                        window.location.href = mailtoLink;
-                    }, 2000);
-                });
+    // Redirect after a delay
+    setTimeout(function () {
+        window.location.href = mailtoLink;
+        
+        // Reset icon and spinner after redirect
+        icon.style.display = 'block';
+        spinner.style.display = 'none';
+    }, 2000);
+});
 
             </script>
         </div>
