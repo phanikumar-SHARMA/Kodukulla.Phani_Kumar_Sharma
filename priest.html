@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devotional Section</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Custom CSS -->
+   <!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+  <style>
+    body {
+      background:peachpuff;
+      font-family: 'Georgia', serif;
+      color: #ffffff;
+      overflow-x: hidden; /* Prevent horizontal scrolling */
+      
+    }
+
+    /* Video background section */
+    .video-bg {
+      position: relative;
+      width: 100%;
+      height: 120vh; /* Full screen height */
+      overflow: hidden;
+    }
+
+    /* Background video styling */
+    .background-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* Cover the area */
+      transform: translate(-50%, -50%); /* Center the video */
+      z-index: -1;
+    }
+
+    /* Overlay for dimming the video */
+    .overlay {
+      height: 100%;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.4); /* Darker overlay for better text visibility */
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    /* Header with name */
+    .name {
+      font-size: 40px;
+      font-weight: bold;
+      color: #ffffff;
+      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+      position: relative;
+      z-index: 2;
+      margin-top: 20vh; /* Positioning below the top */
+      text-align: center;
+    }
+
+    /* Circular image styling */
+    .circular-image {
+      border-radius: 50%;
+      border: 5px solid #ffffff;
+      width: 300px;
+      height: 300px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
+      object-fit: cover;
+      transition: transform 0.3s;
+      position: relative;
+      z-index: 2;
+      display: block;
+      margin: 0 auto; /* Center the image */
+    }
+
+    .circular-image:hover {
+      transform: scale(1.05);
+    }
+
+    /* Om symbol line animation */
+    .hr-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .line {
+      width: 0;
+      height: 3px;
+      background-color: rgb(255, 0, 0);
+      transition: width 3s ease;
+    }
+
+    .line-left {
+      margin-right: 10px;
+      animation: extendLeft 3s forwards;
+    }
+
+    .line-right {
+      margin-left: 10px;
+      animation: extendRight 3s forwards;
+    }
+
+    .om-symbol {
+      font-size: 60px; /* Slightly larger symbol */
+      color: #ff0000;
+      padding: 0 15px;
+    }
+
+    .line-end-arrow {
+      font-size: 24px;
+      color: #ff0000;
+    }
+
+    @keyframes extendLeft {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+
+    @keyframes extendRight {
+      0% {
+        width: 0;
+      }
+      100% {
+        width: 100%;
+      }
+    }
+
+    /* Additional sections styling */.content {
+  position: relative;
+  z-index: 2; /* Ensure this appears above the video when scrolling */
+  padding: 0px;
+  background-color: peachpuff; /* Light background for readability */
+  overflow-x: hidden;
+  justify-content: center;
+  display: flex;
+  flex-direction: column; /* Changed to column to stack elements vertically */
+}
+
+
+
+    /* WhatsApp-style image viewer */
+    .status-viewer {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      z-index: 3;
+      color: rgb(248, 1, 1);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    .status-viewer img {
+      max-width: 80%;
+      max-height: 80%;
+    }
+
+    .close-btn,
+    .arrow-btn {
+      font-size: 30px;
+      color: rgb(255, 0, 0);
+      position: absolute;
+      cursor: pointer;
+    }
+
+    .close-btn {
+      top: 20px;
+      right: 20px;
+    }
+
+    .arrow-btn {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .arrow-left {
+      left: 20px;
+    }
+
+    .arrow-right {
+      right: 20px;
+    }
+  </style>
+   <style>
+    body {
+        font-family: 'Baloo Tamma 2', cursive;
+        background-color: #f5f5f5;
+        color:brown;
+    }
+    
+    .phone-frame {
+        width: 330px;
+        height: 700px;
+        border: 16px solid lightblue;
+        border-radius: 36px;
+        background-color: white;
+        position: relative;
+        overflow-y: auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        margin: 20px auto;
+    }
+    
+    .phone-frame::before {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 5px;
+        background: #333;
+        border-radius: 10px;
+        position: absolute;
+        top: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .phone-frame::after {
+        content: '';
+        display: none;
+        width: 35px;
+        height: 35px;
+        background: #333;
+        border-radius: 50%;
+        position: fixed;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .status-bar {
+        display: flex;
+        justify-content: space-between;
+        padding: 5px 10px;
+        font-size: 12px;
+        color: #666;
+        font-weight: bold;
+        
+    }
+    
+    .cover-photo {
+        width: 100%;
+        height: 150px;
+        background-image: url('https://i.ibb.co/4gCmfMn/backs.jpg');
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+    
+    .profile-picture {
+        position: absolute;
+        bottom: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 5px solid white;
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+    }
+    
+    .profile-name {
+        margin-top: 60px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        color: #333;
+    }
+    
+    .profile-details {
+        display: flex;
+        justify-content: center;
+        font-size: 16px;
+        margin-top: 20px;
+        padding: 0 15px;
+    }
+    
+    .profile-details .labels, .profile-details .values {
+        text-align: left;
+    }
+    
+    .profile-details .labels {
+        font-weight: bold;
+        margin-right: 15px;
+    }
+    
+    .section-heading {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 30px;
+        text-align: center;
+        color: #333;
+    }
+    
+    .section-heading::after {
+        content: '';
+        display: block;
+        width: 50px;
+        height: 2px;
+        background: #333;
+        margin: 10px auto 0;
+    }
+    
+    .photos {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding: 10px;
+    }
+    
+    .photos img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+        opacity: 0;
+        transform: translateX(-100%);
+        transition: all 0.6s ease;
+    }
+    
+    .photos img.visible {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    
+    /* Smooth scroll effect for photos */
+    .phone-frame:hover .photos img {
+        opacity: 1;
+        transform: translateX(0);
+    }
+   
+
+        h1 {
+            color: white;
+            background-color: rgb(247, 97, 4);
+            padding: 20px 40px;
+            clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+            font-size: 3rem;
+            
+            transform: scale(0.5);
+            text-align: center;
+            transition: opacity 1.5s ease, transform 1.5s ease;
+        }
+        .unique-image-container {
+    position: relative; /* Positioning context for the image wrapper */
+    overflow: hidden; /* Hide overflow to prevent images from exceeding container */
+}
+
+.image-wrapper {
+    width: 100%;
+    height: 200px; /* Set fixed height for images */
+    overflow: hidden; /* Hide overflow on the image wrapper */
+    transition: transform 0.3s; /* Smooth transition for the grow effect */
+    border-radius:20px;
+}
+
+.image-wrapper img {
+    width: 100%; /* Ensure images fill the wrapper */
+    height: 100%; /* Set images to fill height of the wrapper */
+    object-fit: cover; /* Maintain aspect ratio while covering the entire area */
+}
+
+.image-wrapper:hover {
+    transform: scale(1.1); /* Grow effect on hover */
+}
+
+h5 {
+    margin-top: 10px; /* Add space between image and name */
+}
+
+h2 {
+    margin-top: 40px; /* Space above the heading */
+}
+
+.dot {
+    font-size: 30px; /* Size of the dots */
+    margin: 0 10px; /* Space between dots */
+}
+
+.image-container {
+    margin-bottom: 30px; /* Space below image containers */
+    border-radius:20px;
+}
+.custom-container {
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+            background-color: #f8f9fa;
+        }
+
+        .custom-image {
+            width: 100%;
+        }
+
+        .custom-text {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .custom-heading {
+            font-size: 1.5rem;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .custom-description {
+            font-size: 1rem;
+            color: #555;
+        }
+</style>
+</head>
+
+<body>
+  <!-- Video Background Section -->
+  <div class="video-bg">
+    <!-- Background video -->
+    <video class="background-video" autoplay loop muted>
+      <source src="bgvideo.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+
+    <!-- Overlay for dimming the video -->
+    <div class="overlay"></div>
+
+    <!-- Header with name -->
+    <h4 class="name">K. Phani Kumar Sharma</h4>
+    <h4 class="name">కె. ఫణి కుమార్ శర్మ</h4>
+    <div class="hr-line">
+      <i class="fas fa-arrow-left line-end-arrow"></i>
+      <div class="line line-left"></div>
+      <span class="om-symbol">ॐ</span>
+      <div class="line line-right"></div>
+      <i class="fas fa-arrow-right line-end-arrow"></i>
+    </div>
+    <!-- Circular image -->
+    <img src="myprofile.jpg" alt="K. Phani Kumar Sharma" class="circular-image" onclick="showStatusViewer()">
+    </br> </br> </br>
+</div>
+    <!-- Om Symbol Line Animation -->
+    <div class="hr-line">
+      <i class="fas fa-arrow-left line-end-arrow"></i>
+      <div class="line line-left"></div>
+      <span class="om-symbol">ॐ</span>
+      <div class="line line-right"></div>
+      <i class="fas fa-arrow-right line-end-arrow"></i>
+    </div>
+  <!-- Additional Content Section (appears over the video) -->
+  <div style = "justify-content:center;display:flex;background-color:peachpuff;">
+ 
+  <div class="content">
+        
+
+   
+    
+    <body id = "phone">
+        <div class="phone-frame">
+            <div class="status-bar">
+                <div class="time">11:36</div>
+                <div class="icons">
+                    <i class="fas fa-signal"></i>
+                    <i class="fas fa-wifi"></i>
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+            <div class="cover-photo">
+                <img src="myprofile.jpg" alt="Profile picture of a person" class="profile-picture">
+            </div>
+            <div class="profile-header">
+                <div class="profile-name">కె. ఫణి కుమార్ శర్మ</div>
+            </div>
+            <div class="contents">
+                <div class="section-heading">వ్యక్తిగత వివరాలు</div>
+                <div class="profile-details">
+                  <div class="labels">
+                    <p>పేరు:</p></br>
+                    <p>విద్య:</p>
+                    <p>వర్గం:</p>
+                    <p>ఉపవర్గం:</p>
+                    <p>గోత్రం:</p>
+                    <p>శాఖ:</p>
+                    <p>వేదం:</p>
+                    <p>విద్యాభ్యాసం:</p></br>
+                    <p>వృత్తి:</p>
+                </div>
+                <div class="values">
+                    <p>కె. ఫణి కుమార్ శర్మ</p>
+                    <p>స్మార్తం</p>
+                    <p>హిందూ</p>
+                    <p>బ్రాహ్మణులు</p>
+                    <p>గౌతమస</p>
+                    <p>వెల్లాట్లు</p>
+                    <p>కృష్ణ యజుర్వేదం</p>
+                    <p>శ్రీ కంచి కామకోటి స్మార్త పాఠశాల</p>
+                    <p>స్మార్త విద్యార్థి, స్మార్త పూరోహితుడు</p>
+                </div>
+                
+                </div>
+                <div class="section-heading">ఫోటోలు</div>
+                <div class="photos">
+                    <img src="myprofile.jpg" alt="Photo 1">
+                    <img src="https://i.ibb.co/VDc7drw/Chakra-admin.png" alt="Photo 2">
+                     </div>
+            </div>
+        </div>
+    </body>
+    
+    
+
+  </div>
+
+  <!-- WhatsApp-style Status Viewer -->
+  <div id="statusViewer" class="status-viewer">
+    <i class="fas fa-times close-btn" onclick="closeStatusViewer()"></i>
+    <i class="fas fa-chevron-left arrow-btn arrow-left" onclick="previousImage()"></i>
+    <img id="statusImage" src="status1.jpg" alt="Status Image">
+    <i class="fas fa-chevron-right arrow-btn arrow-right" onclick="nextImage()"></i>
+  </div>
+
+
+
+
+</br></br>
+</div>
+<div class="hr-line">
+  <i class="fas fa-arrow-left line-end-arrow"></i>
+  <div class="line line-left"></div>
+  <span class="om-symbol">ॐ</span>
+  <div class="line line-right"></div>
+  <i class="fas fa-arrow-right line-end-arrow"></i>
+</div>
+
+<div class="i-can-do" style = "background-color:peachpuff;">
+  <h1 id="animated-heading">What I Can Do Is?</h1>
+  <div id="image-gallery" class="container">
+      <div class="row">
+          <!-- First three images will be visible initially -->
+          <div class="col-md-4 image-container unique-image-container">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/X3KHqHq/annaprasanaa.jpg" alt="Annaprasana" class="img-fluid lazy" data-src="https://i.ibb.co/X3KHqHq/annaprasanaa.jpg">
+              </div>
+              <h5 class="text-center">అన్నప్రాసన</h5>
+          </div>
+          <div class="col-md-4 image-container unique-image-container">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/XzGKLhd/gruhapravesam.jpg" alt="Gruhapravesam" class="img-fluid lazy" data-src="https://i.ibb.co/XzGKLhd/gruhapravesam.jpg">
+              </div>
+              <h5 class="text-center">గ్రహప్రవేశం</h5>
+          </div>
+          <div class="col-md-4 image-container unique-image-container">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/99xWSr6/ganesh-mandapam.jpg" alt="Ganesh Mandapam" class="img-fluid lazy" data-src="https://i.ibb.co/99xWSr6/ganesh-mandapam.jpg">
+              </div>
+              <h5 class="text-center">గణేష్ మండపం</h5>
+          </div>
+
+          <!-- Hidden extra images -->
+          <div class="col-md-4 image-container unique-image-container extra-image d-none">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/f9FMwMY/diva-kalyanam.jpg" alt="Diva Kalyanam" class="img-fluid lazy" data-src="https://i.ibb.co/f9FMwMY/diva-kalyanam.jpg">
+              </div>
+              <h5 class="text-center">దైవ కళ్యాణం</h5> <!-- Changed from దివా to దైవ -->
+          </div>
+          <div class="col-md-4 image-container unique-image-container extra-image d-none">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/nD9C4Sy/barasala.jpg" alt="Barasala" class="img-fluid lazy" data-src="https://i.ibb.co/nD9C4Sy/barasala.jpg">
+              </div>
+              <h5 class="text-center">బరసాల</h5>
+          </div>
+          <div class="col-md-4 image-container unique-image-container extra-image d-none">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/bQzqvtL/rudram.jpg" alt="Rudram" class="img-fluid lazy" data-src="https://i.ibb.co/bQzqvtL/rudram.jpg">
+              </div>
+              <h5 class="text-center">రుద్రం</h5>
+          </div>
+          <div class="col-md-4 image-container unique-image-container extra-image d-none">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/C2DfS2K/vratam1.jpg" alt="Vratam" class="img-fluid lazy" data-src="https://i.ibb.co/C2DfS2K/vratam1.jpg">
+              </div>
+              <h5 class="text-center">వ్రతం</h5>
+          </div>
+          <div class="col-md-4 image-container unique-image-container extra-image d-none">
+              <div class="image-wrapper">
+                  <img src="https://i.ibb.co/C85Wc2x/varalakshmi-vratam.jpg" alt="Varalakshmi Vratam" class="img-fluid lazy" data-src="https://i.ibb.co/C85Wc2x/varalakshmi-vratam.jpg">
+              </div>
+              <h5 class="text-center">వరలక్ష్మి వ్రతం</h5>
+          </div>
+      </div>
+      <div class="col-md-4 image-container unique-image-container extra-image d-none">
+        <div class="image-wrapper">
+            <img src="https://i.ibb.co/7NSBWXc/pooja.jpg" alt="nitya pooja" class="img-fluid lazy" data-src="https://i.ibb.co/7NSBWXc/pooja.jpg">
+        </div>
+        <h5 class="text-center">Many more</h5>
+    </div>
+</div>
+      <!-- Down arrow button -->
+      <div class="text-center my-4">
+          <i id="show-more" class="fas fa-arrow-down fa-2x"></i>
+      </div>
+      <h2 class="text-center">And many more. For contacting view my info-card</h2>
+      <!-- Three large horizontal dots -->
+      <div class="text-center my-4">
+          <span class="dot">•</span>
+          <span class="dot">•</span>
+          <span class="dot">•</span>
+      </div>
+  </div>
+</div>
+
+
+
+<script>$(document).ready(function() {
+  // Display first three images initially
+  $(".image-container").slice(0, 3).removeClass("d-none").hide().slideDown(600);
+
+  // Show more functionality with down arrow
+  $("#show-more").click(function() {
+    $(".extra-image").removeClass("d-none").hide().slideDown(600);
+    $(this).fadeOut(); // Fade out the down arrow after clicked
+  });
+
+  // Trigger animations when the section enters the viewport
+  $(window).on("scroll", function() {
+    if ($("#image-gallery").isInViewport()) {
+      $(".image-container").each(function(i) {
+        $(this).delay(i * 150).slideDown(600);
+      });
+    }
+    
+    // Lazy load images
+    $("img.lazy").each(function() {
+      if ($(this).isInViewport()) {
+        $(this).attr("src", $(this).data("src")).removeClass("lazy");
+      }
+    });
+  });
+});
+
+// jQuery plugin to check if an element is in the viewport
+$.fn.isInViewport = function() {
+  var elementTop = $(this).offset().top;
+  var elementBottom = elementTop + $(this).outerHeight();
+  var viewportTop = $(window).scrollTop();
+  var viewportBottom = viewportTop + $(window).height();
+  return elementBottom > viewportTop && elementTop < viewportBottom;
+};
+
+// Error handling for images
+$("img").on("error", function() {
+  $(this).attr("src", "path/to/placeholder-image.jpg"); // Set a placeholder image
+});
+
+</script>
+<div class="hr-line">
+  <i class="fas fa-arrow-left line-end-arrow"></i>
+  <div class="line line-left"></div>
+  <span class="om-symbol">ॐ</span>
+  <div class="line line-right"></div>
+  <i class="fas fa-arrow-right line-end-arrow"></i>
+</div>
+<div class = "i-am-from"  style = "background-color:peachpuff;">
+  <h1 id="animated-heading">I studied at </h1>
+  <div class="container">
+    <div class="custom-container">
+        <img src="https://i.ibb.co/VC88RvG/school.jpg" alt="School" class="custom-image img-fluid">
+        <div class="custom-text">
+          <h3 class="custom-heading">Sri Kanchi Kamakoti Smarta Patashala</h3>
+          <p class="custom-description">
+              Located in Samalkot, Kakinada, this traditional school provided me with an enriching education from 8th to 10th grade. Here, I was taught both Smartha Vidya (traditional Hindu knowledge) and general education in English medium.
+          </p>
+         <hr><hr><hr>
+          <h3 class="custom-heading"> శ్రీ కంచి కామకోటి స్మార్త పాఠశాల </h3>
+          <p class="custom-description-telugu">
+              
+              ఈ పాఠశాల సమలకోట, కాకినాడలో ఉంది. 8వ తరగతి నుండి 10వ తరగతి వరకు నా విద్యను ఇక్కడ పూర్తి చేసుకున్నాను. స్మార్త విద్యతో పాటు, ఇంగ్లీష్ మాధ్యమంలో సాధారణ విద్య కూడా మా పాఠశాలలో నేర్పించబడింది.
+          </p>
+           </div>
+    </div>
+  </br>
+</div>
+
+</div>
+  <!-- jQuery and Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const images = ['status1.jpg', 'status2.jpg', 'status3.jpg'];
+    let currentImageIndex = 0;
+
+    function showStatusViewer() {
+      document.getElementById('statusViewer').style.display = 'flex';
+      updateStatusImage();
+    }
+
+    function closeStatusViewer() {
+      document.getElementById('statusViewer').style.display = 'none';
+    }
+
+    function previousImage() {
+      currentImageIndex = (currentImageIndex === 0) ? images.length - 1 : currentImageIndex - 1;
+      updateStatusImage();
+    }
+
+    function nextImage() {
+      currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
+      updateStatusImage();
+    }
+
+    function updateStatusImage() {
+      document.getElementById('statusImage').src = images[currentImageIndex];
+    }
+  </script>
+  
+<!-- Three large horizontal dots -->
+<div class="text-center my-4">
+    <span class="dot">•</span>
+    <span class="dot">•</span>
+    <span class="dot">•</span>
+</div>
+</div>
+</div>
+<div class="hr-line">
+  <i class="fas fa-arrow-left line-end-arrow"></i>
+  <div class="line line-left"></div>
+  <span class="om-symbol">ॐ</span>
+  <div class="line line-right"></div>
+  <i class="fas fa-arrow-right line-end-arrow"></i>
+</div>
+<h1 id="animated-heading">Thank you </h1>
+<h1 id="animated-heading">ధన్యవాదాలు</h1>
+</body>
+
+</html>
