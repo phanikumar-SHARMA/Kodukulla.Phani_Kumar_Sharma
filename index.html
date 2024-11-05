@@ -43,21 +43,34 @@
 
         }
 
-        /* Responsive Background Image Section with Layers */
         .background-image-section {
-            position: relative;
-            
-            
-            height: 100vh;
             display: flex;
-            align-items: flex-start;
-            /* Aligns items at the top */
-            color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color:brown;
+            text-align: center;
+        }
+
+        /* Typewriter effect */
+        .typewriter-effect h5 {
             overflow: hidden;
-            padding: 5%;
-            margin-top: 70px;
-            /* Push down for fixed top nav */
+            border-right: .15em solid white;
+            white-space: nowrap;
+            margin: 0 auto;
+            letter-spacing: .15em;
+            animation: typing-effect 3.5s steps(30, end), blink-caret-effect 0.75s step-end infinite;
+        }
+
+        @keyframes typing-effect {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink-caret-effect {
+            from, to { border-color: transparent; }
+            50% { border-color: white; }
         }
 
         /* Hide loader after loading */
@@ -1109,14 +1122,14 @@
     </br>
     <div class="bg-border">
         <!-- Content with background image -->
-        <div class="background-image-section" id="home">
+         <div class="background-image-section" id="home">
         <div class="container">
             <h1 class="display-4 text-center">K. V. K. Phani Kumar Sharma</h1>
-            <div class="typewriter">
+            <div class="typewriter-effect">
                 <h5 class="text-center">Python Fullstack | Hindu Priest | Web Scraper | Intermediate Data Science and Analysis</h5>
             </div>
         </div>
-    </div>
+         </div>
 
     </div>
     <br>
