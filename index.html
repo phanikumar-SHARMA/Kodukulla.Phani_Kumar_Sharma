@@ -19,30 +19,9 @@
 
     <style>
         /* Top Navigation Bar */
-        .top-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 10px 20px;
-            background-color: white;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
+       .navbar {
+            background-color: transparent !important;
         }
-
-        .top-nav h1 {
-            font-family: 'Playfair Display', serif;
-            /* Royal Font */
-            font-size: 1.5rem;
-            /* Adjust size as needed */
-            color: brown;
-            /* Bright color */
-            margin: 0;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-
-        }
-
         .background-image-section {
             display: flex;
             flex-direction: column;
@@ -1099,9 +1078,28 @@
 <body>
 
     <!-- Top Navigation Bar -->
-    <div class="top-nav">
-        <h1>K. Phani Kumar</h1>
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">K. Phani Kumar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Add any additional links if needed -->
+                <li class="nav-item">
+                    <a class="nav-link" href="#home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
     </div>
+</nav>
     </br>
     <div class="bg-border">
       <!-- Content with Background Image and Neon Light Effect -->
