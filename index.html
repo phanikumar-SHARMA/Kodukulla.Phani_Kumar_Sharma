@@ -18,6 +18,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <style>
+    /* Transparent navbar with smooth color transition on scroll */
         .navbar {
             background-color: transparent;
             transition: background-color 0.3s ease;
@@ -1113,45 +1114,58 @@
                 <li class="nav-item">
                     <a class="nav-link" href=".skill-chart">Skills</a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href=".skills">Coding-knowledge</a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href=".certification">Certificates</a>
                 </li>
-                 <li class="nav-item">
+                <li class="nav-item">
                     <a class="nav-link" href=".projects">Projects</a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href=".achadamics">Study statastics</a>
+                <li class="nav-item">
+                    <a class="nav-link" href=".achadamics">Study statistics</a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href=".cotact">Contact</a>
+                <li class="nav-item">
+                    <a class="nav-link" href=".contact">Contact</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
 <script>
-    // Change navbar color on scroll
-    $(window).scroll(function () {
-        if ($(this).scrollTop() > 50) {
-            $('.navbar').addClass('scrolled');
-        } else {
-            $('.navbar').removeClass('scrolled');
-        }
-    });
+    $(document).ready(function() {
+        // Change navbar color on scroll
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 50) {
+                $('.navbar').addClass('scrolled');
+            } else {
+                $('.navbar').removeClass('scrolled');
+            }
+        });
 
-    // Collapse navbar after clicking a menu item
-    $('.navbar-nav .nav-link').on('click', function () {
-        $('.navbar-collapse').collapse('hide');
-    });
+        // Toggle navbar after clicking a menu item and switch icon
+        $('.navbar-toggler').on('click', function () {
+            var isExpanded = $('#navbarNav').hasClass('show');
 
-    // Toggle navbar on clicking the button
-    $('.navbar-toggler').on('click', function () {
-        $('#navbarNav').collapse('toggle');
+            if (isExpanded) {
+                $(this).find('span').removeClass('fa-times').addClass('navbar-toggler-icon');
+            } else {
+                $(this).find('span').removeClass('navbar-toggler-icon').addClass('fa fa-times');
+            }
+            
+            $('#navbarNav').collapse('toggle');
+        });
+
+        // Close navbar on link click and reset the icon
+        $('.navbar-nav .nav-link').on('click', function () {
+            $('#navbarNav').collapse('hide');
+            $('.navbar-toggler').find('span').removeClass('fa-times').addClass('navbar-toggler-icon');
+        });
     });
 </script>
+
 
 </body>
 
