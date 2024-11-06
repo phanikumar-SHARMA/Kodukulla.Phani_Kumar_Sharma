@@ -1121,15 +1121,102 @@
     </div>
     </br>
     <div class="bg-border">
-        <!-- Content with background image -->
-         <div class="background-image-section" id="home">
-        <div class="container">
-            <h1 class="display-4 text-center" style = "font-family:monospaced;" >K. V. K. Phani Kumar Sharma</h1>
-            <div class="typewriter-effect">
-                <h5 class="text-center">Python Fullstack </br>Hindu Priest </br>Web Scraper </br>Intermediate Data Science </br>and Analysis</h5>
-            </div>
+      <!-- Content with Background Image and Neon Light Effect -->
+<div class="background-image-section" id="home">
+    <div class="container text-center">
+        <!-- Neon effect for h1 -->
+        <h1 class="display-4 neon-text">K. V. K. Phani Kumar Sharma</h1>
+        <!-- Typewriter effect section with enhanced styling -->
+        <div class="typewriter-effect">
+            <h5>Python Fullstack <br> Hindu Priest <br> Web Scraper <br> Intermediate Data Science <br> and Analysis</h5>
         </div>
-         </div>
+    </div>
+</div>
+
+<style>
+    /* Container and Background Styling */
+    .background-image-section {
+        background-image: url('your-background-image.jpg'); /* Replace with your image URL */
+        background-size: cover;
+        background-position: center;
+        color: #ffffff;
+        padding: 100px 0;
+        position: relative;
+    }
+
+    /* Neon Effect for h1 */
+    .neon-text {
+        font-family: 'Monospace', sans-serif;
+        color: #fff;
+        font-size: 3rem;
+        text-transform: uppercase;
+        position: relative;
+        animation: neon-glow 1.5s ease-in-out infinite alternate;
+    }
+
+    .neon-text::before, .neon-text::after {
+        content: attr(data-text);
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+    }
+
+    .neon-text::before {
+        color: #0ff;
+        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff;
+    }
+
+    .neon-text::after {
+        color: #f0f;
+        text-shadow: 0 0 10px #f0f, 0 0 20px #f0f, 0 0 30px #f0f;
+    }
+
+    @keyframes neon-glow {
+        from {
+            text-shadow: 
+                0 0 5px #fff,
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 30px #0ff,
+                0 0 40px #f0f,
+                0 0 70px #f0f,
+                0 0 80px #f0f;
+        }
+        to {
+            text-shadow: 
+                0 0 10px #fff,
+                0 0 15px #0ff,
+                0 0 25px #0ff,
+                0 0 35px #0ff,
+                0 0 45px #f0f,
+                0 0 85px #f0f,
+                0 0 100px #f0f;
+        }
+    }
+
+    /* Typewriter Effect for Subtitle */
+    .typewriter-effect h5 {
+        font-family: 'Courier New', monospace;
+        font-size: 1.5rem;
+        color: #ffffff;
+        animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
+        white-space: nowrap;
+        overflow: hidden;
+        border-right: 3px solid #ffffff;
+    }
+
+    @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+    }
+
+    @keyframes blink-caret {
+        50% { border-color: transparent; }
+    }
+</style>
 
     </div>
     <br>
