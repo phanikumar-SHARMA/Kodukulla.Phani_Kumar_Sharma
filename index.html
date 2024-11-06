@@ -1125,7 +1125,8 @@
         position: relative;
     }
 
-   .multi-neon-text {
+    /* Enhanced Multi-color Neon Effect for h1 */
+    .multi-neon-text {
         font-family: 'Monospace', sans-serif;
         font-size: 3rem;
         color: #fff;
@@ -1144,37 +1145,37 @@
         z-index: -1;
     }
 
-    /* Color Layers for Neon Effect */
+    /* Brighten up Neon Layers */
     .multi-neon-text::before {
-        color: #0ff;
-        text-shadow: 0 0 10px #0ff, 0 0 20px #0ff, 0 0 30px #0ff, 0 0 40px #ff00ff;
+        color: #00e6e6;
+        text-shadow: 0 0 8px #00e6e6, 0 0 16px #00e6e6, 0 0 24px #00e6e6, 0 0 32px #ff00ff;
     }
 
     .multi-neon-text::after {
         color: #ff4d4d;
-        text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff00ff, 0 0 40px #ffff00;
+        text-shadow: 0 0 8px #ff4d4d, 0 0 16px #ff4d4d, 0 0 24px #ff00ff, 0 0 32px #ffff00;
     }
 
-    /* Multi-Color Glow Animation */
+    /* Multi-Color Glow Animation with More Spread */
     @keyframes multi-neon-glow {
         0% {
             text-shadow: 
-                0 0 10px #ff00ff,
-                0 0 20px #00ffff,
+                0 0 12px #ff00ff,
+                0 0 18px #00ffff,
                 0 0 30px #ffff00,
                 0 0 40px #ff4d4d;
         }
         50% {
             text-shadow: 
-                0 0 10px #00ff00,
-                0 0 20px #ff00ff,
+                0 0 12px #00ff00,
+                0 0 18px #ff00ff,
                 0 0 30px #ff4d4d,
                 0 0 40px #ffff00;
         }
         100% {
             text-shadow: 
-                0 0 10px #ff4d4d,
-                0 0 20px #ffff00,
+                0 0 12px #ff4d4d,
+                0 0 18px #ffff00,
                 0 0 30px #00ffff,
                 0 0 40px #ff00ff;
         }
@@ -2541,7 +2542,7 @@
     </div>
     <div class="container text-center mt-5">
         <a href="priest.html" class="custom-button" role="button">
-            Visit My Preest Portfolio
+            Visit My Priest Portfolio
             <i class="fas fa-arrow-right"></i>
         </a>
     </div>
