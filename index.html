@@ -1105,13 +1105,28 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#home">Home</a>
+                    <a class="nav-link" href="#">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href=".about">About</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#contact">Contact</a>
+                    <a class="nav-link" href=".skill-chart">Skills</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href=".skills">Coding-knowledge</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href=".certification">Certificates</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href=".projects">Projects</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href=".achadamics">Study statastics</a>
+                </li>
+                 <li class="nav-item">
+                    <a class="nav-link" href=".cotact">Contact</a>
                 </li>
             </ul>
         </div>
@@ -1297,7 +1312,7 @@
     <fieldset>
         <legend><img src="https://i.ibb.co/JtcSLh6/file-n-WJ3f-SB5kw-Olyt16od-Wot-Fz-Z-2-2.jpg" alt="Profile Image"
                 class="profile-image"></legend>
-
+<section class = "about">
         <section class="section-container">
             <div class="section-heading">About Me</div>
             <p class="content">
@@ -1311,8 +1326,9 @@
                 clients.
             </p>
         </section>
-
+</section>
         <!-- Overview Section -->
+      
         <section class="section-container">
             <div class="section-heading">Overview of My Skills</div>
             <ul class="overview-list content">
@@ -1346,7 +1362,7 @@
             alt="I am good at" border="0" class="good-at" style="height:300px;width:300px;border-radius:50%;"
             align="center"></div>
     <div class="container mt-5">
-
+  <section class = "skills-chart">
         <h2 class="text-center">Skills Chart</h2>
         <ul class="timeline">
 
@@ -1421,6 +1437,7 @@
 
         </ul>
     </div>
+</section>
     <script>
         $(document).ready(function () {
             const section = $('.bar-container'); // The section with bars
@@ -1477,7 +1494,7 @@
     <!--______________________________________________________languages scroller_______________________________________-->
 
     <h2 align="center">Programming Languages I Know</h2>
-    <section id="skills">
+    <section id="skills" class = "skills">
         <div class="scroll-container">
             <div class="scroll-content">
                 <div class="scroll-item">
@@ -1590,6 +1607,7 @@
             </div>
         </div>
         </div>
+    </section>
         </br>
         <div class="decorative-hr-container">
             <div class="decorative-hr-line left">
@@ -1601,7 +1619,7 @@
             </div>
         </div>
         <!--_Certifications-section_-->
-
+<section class = "certification">
         <div class="container mt-5">
             <div class="certificate-section">
                 <div class="section-heading">
@@ -1708,7 +1726,7 @@
 
             </div>
         </div>
-
+</section>
         <!-- Modal for displaying certificate image -->
         <div class="modal fade" id="certificateModal" tabindex="-1" role="dialog"
             aria-labelledby="certificateModalLabel" aria-hidden="true">
@@ -1755,6 +1773,7 @@
             </div>
         </div>
         <!-- ______________________________________Projects-section_-->
+    <section class = "projects">
         <div style="justify-content: center;display: flex;">
             <img src="https://i.ibb.co/t8W2LJG/thisbgimage.png" alt="thisbgimage" border="0" class="center">
         </div>
@@ -1975,6 +1994,7 @@
             </div>
         </div>
 
+    </section>
         <div class="modal fade" id="projectModal2" tabindex="-1" aria-labelledby="projectModalLabel2"
             aria-hidden="true">
             <div class="modal-dialog">
@@ -2322,6 +2342,7 @@
             </div>
         </div>
         <!--_ACHEDEMIC-SECTION_-->
+    <section class = "achadamics">
         <div class="container my-5" id="academic-marks-section">
             <h2 class="text-center">My Academic Performance in Diploma</h2>
             <br><br><br>
@@ -2400,7 +2421,7 @@
             });
 
         </script>
-
+    </section>
 
 
         <!---->
@@ -2442,7 +2463,7 @@
                 <div class="end-circle"></div>
             </div>
         </div>
-
+<section class = "contact">
         <div class="section-heading" style="color:#834d06; text-align:center;"><i
                 class="fa-solid fa-envelope"></i>&nbsp;Contact me</div>
         <div class="row"></br></div>
@@ -2533,7 +2554,7 @@
                 </fieldset>
 
             </div>
-
+        </section>
             <script>
                 document.getElementById('mail-draftButton').addEventListener('click', function () {
     const name = document.getElementById('mail-name').value;
