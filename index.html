@@ -998,56 +998,53 @@
         }
     </style>
     <style>
-        .scroll-container {
-            width: 100%;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-            background: rgba(0, 0, 0, 0);
-            /* Set your desired background color */
-            padding: 20px;
-        }
+    .scroll-container {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    background: rgba(0, 0, 0, 0);
+    padding: 20px;
+}
 
-        .scroll-content {
-            display: inline-block;
-            animation: scroll 35s linear infinite;
-        }
+.scroll-content {
+    display: inline-block;
+    animation: scroll 35s linear infinite;
+}
 
-        .scroll-item {
-            display: inline-block;
-            text-align: center;
-            margin: 0 15px;
-            filter: brightness(1.2) contrast(1.2) saturate(1.2);
-            /* Apply filters for a beautiful effect */
-            padding: 30px;
-        }
+.scroll-item {
+    display: inline-block;
+    text-align: center;
+    margin: 0 15px;
+    filter: brightness(1.2) contrast(1.2) saturate(1.2);
+    padding: 30px;
+}
 
-        .scroll-item img {
-            width: 150px;
-            height: 150px;
-            border-radius: 30px;
-            display: block;
-            margin: 0 auto 10px;
-            box-shadow: 0 0 20px white;
+.scroll-item img {
+    width: 150px;
+    height: 150px;
+    border-radius: 30px;
+    display: block;
+    margin: 0 auto 10px;
+    box-shadow: 0 0 20px white;
+}
 
-        }
+.scroll-item p {
+    font-size: 35px;
+    margin: 0;
+    font-weight: bold;
+    font-style: serif;
+}
 
-        .scroll-item p {
-            font-size: 35px;
-            margin: 0;
-            font-weight: bold;
-            font-style: serif;
-        }
+@keyframes scroll {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
 
-        @keyframes scroll {
-            0% {
-                transform: translateX(10%) rotate(0deg);
-            }
-
-            100% {
-                transform: translateX(-130%);
-            }
-        }
     </style>
     <style>
         .custom-button {
@@ -1470,18 +1467,17 @@
     </div>
 
     <!--______________________________________________________languages scroller_______________________________________-->
-
-    <h2 align="center">Programming Languages I Know</h2>
+  <h2 align="center">Programming Languages I Know</h2>
     <section id="skills">
         <div class="scroll-container">
             <div class="scroll-content">
+                <!-- Original set of items -->
                 <div class="scroll-item">
                     <img src="https://i.ibb.co/jwtgFx0/c.png" alt="C">
                     <p>C</p>
                 </div>
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/FXBhBzS/png-transparent-the-c-programming-language-computer-programming-programmer-others-blue-class-logo-th.png"
-                        alt="C++">
+                    <img src="https://i.ibb.co/FXBhBzS/png-transparent-the-c-programming-language-computer-programming-programmer-others-blue-class-logo-th.png" alt="C++">
                     <p>C++</p>
                 </div>
                 <div class="scroll-item">
@@ -1517,8 +1513,7 @@
                     <p>UML</p>
                 </div>
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/MZB0x1m/png-clipart-bootstrap-logo-thumbnail-tech-companies.png"
-                        alt="Bootstrap">
+                    <img src="https://i.ibb.co/MZB0x1m/png-clipart-bootstrap-logo-thumbnail-tech-companies.png" alt="Bootstrap">
                     <p>Bootstrap</p>
                 </div>
                 <div class="scroll-item">
@@ -1526,8 +1521,8 @@
                     <p>Tailwind</p>
                 </div>
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/TTgmYh3/download.png" alt="SQL" border="0">
-                    <p class="dev-section">SQL</p>
+                    <img src="https://i.ibb.co/TTgmYh3/download.png" alt="SQL">
+                    <p>SQL</p>
                 </div>
                 <div class="scroll-item">
                     <img src="https://i.ibb.co/RzYVRsr/800px-Python-logo-notext-svg.png" alt="Python">
@@ -1537,7 +1532,6 @@
                     <img src="https://i.ibb.co/XD4Kcqj/582d8348873b7e0fdfaa78320dd3b918.jpg" alt="Java">
                     <p>Java</p>
                 </div>
-
                 <div class="scroll-item">
                     <img src="https://i.ibb.co/02gt4Rh/1-Yj3-Hpcm-Eu-O7br-Krfrdh-OA.png" alt="React">
                     <p>Git</p>
@@ -1552,38 +1546,145 @@
                 </div>
                 <div class="scroll-item">
                     <img src="https://i.ibb.co/tpZXCSC/django-hexbin.png" alt="Django">
-                    <p class="dev-section">Django</p>
+                    <p>Django</p>
                 </div>
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/KwJyg4m/O31-t0p-D-400x400.jpg" alt="MySQL" class="dev-section">
-                    </br>
-                    <p class="dev-section">Numpy</p>
+                    <img src="https://i.ibb.co/84S7Z0V/node.png" alt="Node.js">
+                    <p>Node.js</p>
                 </div>
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/gTQ9b81/c6h7rok9c2v31.jpg" alt="Pandas" class="dev-section">
-                    <p class="dev-section">Pandas</p>
+                    <img src="https://i.ibb.co/KwJyg4m/O31-t0p-D-400x400.jpg" alt="Numpy">
+                    <p>Numpy</p>
                 </div>
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/7Jm8Mdn/course-18061-image.png" alt="Ruby" class="dev-section">
-                    <p class="dev-section">Matplotlib</p>
+                    <img src="https://i.ibb.co/gTQ9b81/c6h7rok9c2v31.jpg" alt="Pandas">
+                    <p>Pandas</p>
                 </div>
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/mbYgXxf/5940844-ad8b.jpg" alt="SQL" class="dev-section">
-                    <p class="dev-section">BeautifulSoup</p>
+                    <img src="https://i.ibb.co/7Jm8Mdn/course-18061-image.png" alt="Matplotlib">
+                    <p>Matplotlib</p>
                 </div>
-
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/mbYgXxf/5940844-ad8b.jpg" alt="BeautifulSoup">
+                    <p>BeautifulSoup</p>
+                </div>
                 <div class="scroll-item">
                     <img src="https://i.ibb.co/PDB9Fs8/SQLite-logo.png" alt="SQLite">
-                    <p class="dev-section">SQLite</p>
+                    <p>SQLite</p>
                 </div>
-
-
                 <div class="scroll-item">
-                    <img src="https://i.ibb.co/Vq1DVQw/images-14.jpg" alt="android" border="0" class="dev-section">
-                    <p class="dev-section">Android Development</p>
+                    <img src="https://i.ibb.co/Vq1DVQw/images-14.jpg" alt="Android Development">
+                    <p>Android Development</p>
                 </div>
             </div>
-        </div>
+            <!-- Duplicate content for seamless scrolling -->
+            <div class="scroll-content">
+               <div class="scroll-item">
+                    <img src="https://i.ibb.co/jwtgFx0/c.png" alt="C">
+                    <p>C</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/FXBhBzS/png-transparent-the-c-programming-language-computer-programming-programmer-others-blue-class-logo-th.png" alt="C++">
+                    <p>C++</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/H4C9ZQz/2048px-HTML5-logo-and-wordmark-svg.png" alt="HTML5">
+                    <p>HTML</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/gVtfVrK/CSS-Logo.png" alt="CSS">
+                    <p>CSS</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/ZKJKWpD/3d-javascript-logo-design-free-png.png" alt="JavaScript">
+                    <p>JavaScript</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/y8vFxKZ/62a76aadbd73a4af5c5d4fc5.png" alt="Node.js">
+                    <p>Jquery</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/82Lh0Cq/ajax.png" alt="AJAX">
+                    <p>AJAX</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/4fTVNxJ/angular.png" alt="Angular">
+                    <p>Angular</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/xzkNy3j/xml-symbol-icon-vector-logo-003.png" alt="XML">
+                    <p>XML</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/sWmHDHH/uml-tutorial.png" alt="UML">
+                    <p>UML</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/MZB0x1m/png-clipart-bootstrap-logo-thumbnail-tech-companies.png" alt="Bootstrap">
+                    <p>Bootstrap</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/nsmC4gV/c1a67ff6609782e262d2daefc1ecf333.png" alt="MongoDB">
+                    <p>Tailwind</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/TTgmYh3/download.png" alt="SQL">
+                    <p>SQL</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/RzYVRsr/800px-Python-logo-notext-svg.png" alt="Python">
+                    <p>Python</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/XD4Kcqj/582d8348873b7e0fdfaa78320dd3b918.jpg" alt="Java">
+                    <p>Java</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/02gt4Rh/1-Yj3-Hpcm-Eu-O7br-Krfrdh-OA.png" alt="React">
+                    <p>Git</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/fNKtBRN/github-logo.png" alt="GitHub">
+                    <p>GitHub</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/mzWgJVq/microsoft-office3327.jpg" alt="Microsoft Office">
+                    <p>Microsoft Office</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/tpZXCSC/django-hexbin.png" alt="Django">
+                    <p>Django</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/84S7Z0V/node.png" alt="Node.js">
+                    <p>Node.js</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/KwJyg4m/O31-t0p-D-400x400.jpg" alt="Numpy">
+                    <p>Numpy</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/gTQ9b81/c6h7rok9c2v31.jpg" alt="Pandas">
+                    <p>Pandas</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/7Jm8Mdn/course-18061-image.png" alt="Matplotlib">
+                    <p>Matplotlib</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/mbYgXxf/5940844-ad8b.jpg" alt="BeautifulSoup">
+                    <p>BeautifulSoup</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/PDB9Fs8/SQLite-logo.png" alt="SQLite">
+                    <p>SQLite</p>
+                </div>
+                <div class="scroll-item">
+                    <img src="https://i.ibb.co/Vq1DVQw/images-14.jpg" alt="Android Development">
+                    <p>Android Development</p>
+                </div>
+            </div>
+            </div>
         </div>
     </section>
         </br>
