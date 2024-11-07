@@ -1101,7 +1101,35 @@
     .navbar-brand {
       margin-right: 20px;
     }
+         /* Basic styling for the button */
+        #back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #333;
+            color: white;
+            font-size: 24px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none; /* Hidden by default */
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            transition: opacity 0.3s;
+        }
         
+        /* Hover effect */
+        #back-to-top:hover {
+            background-color: #555;
+        }
+        
+        /* Optional smooth scrolling for the whole page */
+        html {
+            scroll-behavior: smooth;
+        }
     </style>
 </head>
 
@@ -2679,6 +2707,26 @@
             <i class="fas fa-arrow-right"></i>
         </a>
     </div>
+    <!-- Back to Top Button -->
+    <button id="back-to-top" title="Back to Top">↑</button>
+
+    <script>
+        // Show the button when the user scrolls down 100px from the top
+        const backToTopButton = document.getElementById("back-to-top");
+
+        window.onscroll = function() {
+            if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+                backToTopButton.style.display = "flex";
+            } else {
+                backToTopButton.style.display = "none";
+            }
+        };
+
+        // Scroll to top when the button is clicked
+        backToTopButton.onclick = function() {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+    </script>
 </body>
 
 </html>
