@@ -1092,11 +1092,70 @@
             height: 90px;
             width: 90px;
         }
+
+        /* Glass effect for navbar */
+    .glass-navbar {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 10px;
+      padding: 0.5rem 1rem;
+    }
+
+    /* Brown color for navbar links */
+    .navbar-brand, .nav-link {
+      color: brown !important;
+      font-weight: bold;
+    }
+
+    /* Adjust navbar toggler color */
+    .navbar-toggler {
+      border-color: brown;
+    }
+    .navbar-toggler-icon {
+      background-color: brown;
+    }
     </style>
 </head>
 
 <body>
 
+ <nav class="navbar navbar-expand-lg glass-navbar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">K.V.K.Phani Kumar Sharma</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+           <li class="nav-item">
+                    <a class="nav-link" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#about">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skill-chart">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#skills">Coding-knowledge</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#certification">Certificates</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#projects">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#achadamics">Study statistics</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#contact">Contact</a>
+                </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
 
 
 
@@ -1257,7 +1316,7 @@
     <fieldset>
         <legend><img src="https://i.ibb.co/JtcSLh6/file-n-WJ3f-SB5kw-Olyt16od-Wot-Fz-Z-2-2.jpg" alt="Profile Image"
                 class="profile-image"></legend>
-<section class = "about">
+<section id = "about">
         <section class="section-container">
             <div class="section-heading">About Me</div>
             <p class="content">
@@ -1307,7 +1366,7 @@
             alt="I am good at" border="0" class="good-at" style="height:300px;width:300px;border-radius:50%;"
             align="center"></div>
     <div class="container mt-5">
-  <section class = "skills-chart">
+  <section id = "skills-chart">
         <h2 class="text-center">Skills Chart</h2>
         <ul class="timeline">
 
@@ -1439,7 +1498,7 @@
     <!--______________________________________________________languages scroller_______________________________________-->
 
     <h2 align="center">Programming Languages I Know</h2>
-    <section id="skills" class = "skills">
+    <section id="skills">
         <div class="scroll-container">
             <div class="scroll-content">
                 <div class="scroll-item">
@@ -1564,7 +1623,7 @@
             </div>
         </div>
         <!--_Certifications-section_-->
-<section class = "certification">
+<section id = "certification">
         <div class="container mt-5">
             <div class="certificate-section">
                 <div class="section-heading">
@@ -1718,7 +1777,7 @@
             </div>
         </div>
         <!-- ______________________________________Projects-section_-->
-    <section class = "projects">
+    <section id = "projects">
         <div style="justify-content: center;display: flex;">
             <img src="https://i.ibb.co/t8W2LJG/thisbgimage.png" alt="thisbgimage" border="0" class="center">
         </div>
@@ -2287,7 +2346,7 @@
             </div>
         </div>
         <!--_ACHEDEMIC-SECTION_-->
-    <section class = "achadamics">
+    <section id = "achadamics">
         <div class="container my-5" id="academic-marks-section">
             <h2 class="text-center">My Academic Performance in Diploma</h2>
             <br><br><br>
@@ -2408,7 +2467,7 @@
                 <div class="end-circle"></div>
             </div>
         </div>
-<section class = "contact">
+<section id = "contact">
         <div class="section-heading" style="color:#834d06; text-align:center;"><i
                 class="fa-solid fa-envelope"></i>&nbsp;Contact me</div>
         <div class="row"></br></div>
