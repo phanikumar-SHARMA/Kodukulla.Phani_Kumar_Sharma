@@ -1175,60 +1175,7 @@
     /* Container and Background Styling */
   
     /* Enhanced Multi-color Neon Effect for h1 */
-    .multi-neon-text {
-        font-family: 'Monospace', sans-serif;
-        font-size: 3rem;
-        color: #fff;
-        text-transform: uppercase;
-        position: relative;
-        animation: multi-neon-glow 2s ease-in-out infinite alternate;
-    }
-
-    .multi-neon-text::before, .multi-neon-text::after {
-        content: attr(data-text);
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-    }
-
-    /* Brighten up Neon Layers */
-    .multi-neon-text::before {
-        color: #00e6e6;
-        text-shadow: 0 0 8px #00e6e6, 0 0 16px #00e6e6, 0 0 24px #00e6e6, 0 0 32px #ff00ff;
-    }
-
-    .multi-neon-text::after {
-        color: #ff4d4d;
-        text-shadow: 0 0 8px #ff4d4d, 0 0 16px #ff4d4d, 0 0 24px #ff00ff, 0 0 32px #ffff00;
-    }
-
-    /* Multi-Color Glow Animation with More Spread */
-    @keyframes multi-neon-glow {
-        0% {
-            text-shadow: 
-                0 0 12px #ff00ff,
-                0 0 18px #00ffff,
-                0 0 30px #ffff00,
-                0 0 40px #ff4d4d;
-        }
-        50% {
-            text-shadow: 
-                0 0 12px #00ff00,
-                0 0 18px #ff00ff,
-                0 0 30px #ff4d4d,
-                0 0 40px #ffff00;
-        }
-        100% {
-            text-shadow: 
-                0 0 12px #ff4d4d,
-                0 0 18px #ffff00,
-                0 0 30px #00ffff,
-                0 0 40px #ff00ff;
-        }
-    }
+    
 
     /* Typewriter Effect for Subtitle */
     .typewriter-effect h5 {
@@ -1811,6 +1758,30 @@
                     <div class="certificate-ribbon">Python mastrey certificate</div>
                     <img src="python.jpg" class="certificate-image" alt="Certificate 4" data-toggle="modal"
                         data-target="#certificateModal" data-image="python.jpg">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">Digital Business skills certification</div>
+                    <img src="certificate(1).jpg" class="certificate-image" alt="Web scrapping" data-toggle="modal"
+                        data-target="#certificateModal" data-image="certificate(1).jpg">
+                </div>
+                <div class="stars-container">
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                    <span class="star"><i class="fas fa-star"></i></span>
+                </div>
+                <div class="certificate-container">
+                    <div class="certificate-ribbon">Inventory management certification</div>
+                    <img src="certificate.jpg" class="certificate-image" alt="Web scrapping" data-toggle="modal"
+                        data-target="#certificateModal" data-image="certificate.jpg">
                 </div>
                 <div class="stars-container">
                     <span class="star"><i class="fas fa-star"></i></span>
