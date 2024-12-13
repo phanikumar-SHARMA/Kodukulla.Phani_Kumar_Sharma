@@ -19,17 +19,7 @@
 
     <style>
     /* Transparent navbar with smooth color transition on scroll */
-       
-        .background-image-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            color:white;
-            text-align: center;
-            background-color: #d4af7f;
-        }
+   
 
         /* Typewriter effect */
        
@@ -1154,75 +1144,175 @@
       </div>
     </div>
   </nav>
-
-  <!-- Bootstrap JS Bundle with Popper (important for toggling) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-
-    <div class="bg-border">
-      <!-- Content with Background Image and Neon Light Effect -->
-<div class="background-image-section" id="home">
-    <div class="container text-center">
-        <!-- Multi-color Neon Effect for h1 -->
-        <h1 class="display-4 multi-neon-text" style = "font-family: 'Courier New', monospace;">K. V. K. Phani Kumar Sharma</h1>
-        <!-- Typewriter effect section with enhanced styling --></br></br>
-        <div class="typewriter-effect">
-            <h5>Python Fullstack <br> Hindu Priest <br> Web Scraper <br> Intermediate Data Science <br> and Analysis</h5>
-        </div>
-    </div>
-</div>
-
 <style>
-    /* Container and Background Styling */
-  
-    /* Enhanced Multi-color Neon Effect for h1 */
-    
-
-    /* Typewriter Effect for Subtitle */
-    .typewriter-effect h5 {
-        font-family: 'Courier New', monospace;
-        font-size: 1.5rem;
-        color: #ffffff;
-        animation: typing 3s steps(30, end), blink-caret .75s step-end infinite;
-        white-space: nowrap;
-        overflow: hidden;
-        border-right: 3px solid #ffffff;
+       .body {
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: #1e3c72; /* fallback color */
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"%3E%3Cpolygon points="20,0 40,20 20,40 0,20" fill="rgba(255, 255, 255, 0.1)" /%3E%3C/svg%3E');
+      background-size: 80px 80px; /* default size for desktop */
+      background-repeat: repeat;
     }
 
-    @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
+    .full-screen {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+      text-align: center;
+      position: relative;
     }
 
-    @keyframes blink-caret {
-        50% { border-color: transparent; }
+    .content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      max-width: 1200px;
+      width: 100%;
+      padding: 20px;
+    }
+
+    .image-container {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 8px solid #fff;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    h1 {
+      font-size: 3.5rem;
+      margin-top: 30px;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: .15em solid #fff;
+      width: 0;
+      animation: typewriter 5s steps(40) 1s forwards;
+    }
+
+    p {
+      font-size: 1.4rem;
+      margin-top: 30px;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      line-height: 1.8;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .skills-list {
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.8);
+      margin-top: 30px;
+      list-style: none;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .skills-list li {
+      background-color: rgba(255, 255, 255, 0.2);
+      padding: 10px 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .skills-list li:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes typewriter {
+      from {
+        width: 0;
+      }
+      to {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.5rem;
+      }
+
+      .image-container {
+        width: 200px;
+        height: 200px;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      .skills-list {
+        font-size: 1rem;
+      }
+
+      body, html {
+        background-size: 50px 50px; /* smaller diamond size for mobile */
+      }
+    }
+
+    /* Hover effect on image */
+    .image-container:hover {
+      transform: scale(1.1);
     }
 </style>
-
+  <!-- Bootstrap JS Bundle with Popper (important for toggling) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <div class = "body">
+ <div class="full-screen">
+    <div class="content">
+      <div class="image-container">
+        <img src="your-image.jpg" alt="k.v.k. Phani Kumar Sharma">
+      </div>
+      <h1>k.v.k. Phani Kumar Sharma</h1>
+      <p>Hello! I am a Software Developer,Hindu  priest , passionate about coding and creating innovative web solutions. Let's connect!</p>
+      
+      <!-- Custom Skills Buttons -->
+      <ul class="skills-list">
+        <li>Python</li>
+        <li>Java</li>
+        <li>Full Stack Web Development</li>
+        <li>Django</li>
+        <li>Flask</li>
+        <li>Working on Data Science</li>
+        <li>Data Analysis</li>
+        <li>Backend Developer</li>
+        <li>Web Scraper</li>
+        <li>Hindu Priest</li>
+      </ul>
     </div>
-    <br>
-    <div class="decorative-hr-container">
-        <div class="decorative-hr-line left">
-            <div class="end-circle"></div>
-        </div>
-        <div class="center-circle"></div>
-        <div class="decorative-hr-line right">
-            <div class="end-circle"></div>
-        </div>
-    </div>
+  </div>
 
-    <h3>
-        Welcome to my portfolio website.<br>
-        Explore about me
-    </h3>
-    <div class="down-arrow">
-        <i class="fas fa-chevron-down"></i>
+  <script>
+    // jQuery to animate the image on hover
+    $(".image-container").hover(function() {
+      $(this).css("transform", "scale(1.1)");
+      $(this).css("transition", "all 0.3s ease");
+    }, function() {
+      $(this).css("transform", "scale(1)");
+    });
+  </script>
     </div>
-    <script>
-        $(document).ready(function () {
-            $("h3").slideDown(3000); // Adjust the duration as needed
-        });
-    </script>
-
     <!-- Directly displaying the Card Section -->
     <div class="container-fluid mt-5 px-4" id="technical">
         <h2 class="text-center mb-4" style="font-size: calc(1.5vw + 1em);">Technical Portfolio Section</h2>
