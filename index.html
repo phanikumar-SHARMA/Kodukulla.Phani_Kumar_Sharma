@@ -322,69 +322,83 @@
             margin-bottom: 10px;
         }
 
-        .project-card {
-            border: solid 1px #d4af7f;
-            /* Border color */
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
-            cursor: pointer;
-            opacity: 0;
-            /* Start hidden */
-            transform: translateY(50%);
-            /* Start from below */
-            transition: opacity 0.5s, transform 0.8s;
-            /* Slower animation transition */
-        }
+  .project-card {
+    border: solid 1px #d4af7f; /* Border color */
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    opacity: 0; /* Start hidden */
+    transform: translateY(50%); /* Start from below */
+    transition: opacity 0.5s, transform 0.8s; /* Slower animation transition */
+    flex: 1 1 calc(33.33% - 10px); /* Adjust size based on screen size */
+    margin-bottom: 20px; /* Remove bottom margin to avoid space */
+    display: none; /* Start with display none until shown */
+}
 
-        .project-card.show {
-            opacity: 1;
-            /* Show when class is added */
-            transform: translateY(0);
-            /* Move to original position */
-        }
+.project-card.show {
+    opacity: 1; /* Show when class is added */
+    transform: translateY(0); /* Move to original position */
+    display: block; /* Display the element when filtered */
+}
 
-        .project-img {
-            height: 200px;
-            object-fit: cover;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
+.project-img {
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
 
-        .project-title {
-            font-weight: bold;
-            color: #333;
-        }
+.project-title {
+    font-weight: bold;
+    color: #333;
+}
 
-        .project-description {
-            color: #555;
-        }
+.project-description {
+    color: #555;
+}
 
-        .icon-button {
-            border: 2px solid #d4af7f;
-            /* Button border color */
-            border-radius: 50%;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: white;
-            transition: background-color 0.3s, transform 0.2s;
-            margin-top: 10px;
-            /* Spacing above the icon button */
-        }
+.project-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 0; /* Remove space between items */
+    justify-content: flex-start; /* Align items to the start */
+    width: 100%; /* Ensure container uses full width */
+}
 
-        .icon-button:hover {
-            background-color: #d4af7f;
-            /* Change background on hover */
-        }
+.icon-button {
+    border: 2px solid #d4af7f; /* Button border color */
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-top: 10px; /* Spacing above the icon button */
+}
 
-        .icon-button i {
-            color: gold;
-            /* Icon color */
-            transition: color 0.3s;
-        }
+.icon-button:hover {
+    background-color: #d4af7f; /* Change background on hover */
+}
+
+.icon-button i {
+    color: gold; /* Icon color */
+    transition: color 0.3s;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 768px) {
+    .project-card {
+        flex: 1 1 calc(50% - 10px); /* Two cards per row for medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        flex: 1 1 100%; /* One card per row for small screens */
+    }
+}
 
         .modal-header {
             border-bottom: none;
@@ -1942,11 +1956,146 @@
             <div class="section-container">
                 <div class="section-heading"><i class="fa-solid fa-briefcase"
                         style="color:#d4af7f;"></i>&nbsp;&nbsp;Projects Section </div>
+                         <!-- Project Card 1 -->
+      <div class="filter-options mb-4 text-center">
+    <label for="filter-select" class="mr-2">Filter by:</label>
+    <select id="filter-select" class="filter-select">
+        <option value="all">
+            <i class="fas fa-th"></i> All
+        </option>
+        <option value="games">
+            <i class="fas fa-gamepad"></i> Games
+        </option>
+        <option value="static">
+            <i class="fas fa-laptop-code"></i> Static Websites
+        </option>
+        <option value="dynamic">
+            <i class="fas fa-cogs"></i> Dynamic Websites
+        </option>
+        <option value="data-science">
+            <i class="fas fa-chart-line"></i> Data Science
+        </option>
+    </select>
+</div>
+
+<style>
+.filter-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.filter-select {
+    font-size: 16px;
+    padding: 10px 15px;
+    border: 1px solid #d4af7f;
+    border-radius: 5px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+}
+
+.filter-select i {
+    margin-right: 8px; /* Space between icon and text */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-select {
+        font-size: 14px; /* Smaller font size on medium screens */
+    }
+}
+
+@media (max-width: 480px) {
+    .filter-select {
+        font-size: 12px; /* Even smaller font size on smaller screens */
+    }
+}
+
+</style>
+    <script>
+   document.addEventListener('DOMContentLoaded', function() {
+    // Initially, make sure all project cards are visible
+    const projectCards = document.querySelectorAll('.project-card');
+    projectCards.forEach(card => {
+        card.style.display = 'block'; // Show all cards by default
+    });
+
+    // Filtering functionality with plain JavaScript
+    document.querySelectorAll('.filter-btn').forEach(button => {
+        button.addEventListener('click', () => {
+            const filter = button.getAttribute('data-filter');
+            
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                
+                if (filter === 'all' || filter === category) {
+                    card.style.display = 'block'; // Show the card if it matches the filter
+                } else {
+                    card.style.display = 'none'; // Hide the card if it doesn't match
+                }
+            });
+        });
+    });
+
+    // Filtering functionality with select dropdown
+    document.getElementById('filter-select').addEventListener('change', function() {
+        const filter = this.value;
+        
+        projectCards.forEach(card => {
+            const category = card.getAttribute('data-category');
+            
+            if (filter === 'all' || filter === category) {
+                card.style.display = 'block'; // Show the card if it matches the filter
+            } else {
+                card.style.display = 'none'; // Hide the card if it doesn't match
+            }
+        });
+    });
+
+    // jQuery filtering functionality
+    $('.filter-btn').click(function() {
+        const category = $(this).data('filter'); // Get the filter category
+        const projectCards = $('.project-card'); // Select all project cards
+
+        projectCards.each(function() {
+            const cardCategory = $(this).data('category'); // Get the category of each card
+            
+            // Show or hide based on category match
+            if (category === 'all' || category === cardCategory) {
+                $(this).fadeIn().addClass('show'); // Apply fade-in and show class
+            } else {
+                $(this).fadeOut().removeClass('show'); // Hide and remove 'show' class
+            }
+        });
+
+        // After filtering, reset layout for correct display
+        adjustLayout();
+    });
+
+    // Adjust layout to remove any space between cards when filtered
+    function adjustLayout() {
+        $('.project-container').css({
+            'display': 'flex',
+            'flex-wrap': 'wrap',
+            'gap': '0', // Remove space between cards
+            'justify-content': 'flex-start'
+        });
+
+        $('.project-card').css({
+            'flex': '1 1 calc(33.33% - 10px)', // Adjust flex properties for 3 cards per row
+            'margin': '0 5px', // Remove space between cards horizontally
+            'box-sizing': 'border-box'
+        });
+    }
+});
+
+    </script>
                 <div class="row"></br>
-                    <!-- Project Card 1 -->
+                   
 
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal13">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal13" data-category="dynamic">
                             <img src="https://i.ibb.co/rd066xX/Screenshot-2024-11-30-181338.png" class="card-img-top project-img"
                                 alt="Project-13">
                             <div class="card-body">
@@ -1959,7 +2108,7 @@
                         </div>
                     </div>
  <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal14">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal14" data-category="dynamic">
                             <img src="https://i.ibb.co/vJhSZVY/Screenshot-2024-11-30-181202.png" class="card-img-top project-img"
                                 alt="Project 1">
                             <div class="card-body">
@@ -1974,7 +2123,7 @@
                     </div>
                     
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal1">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal1" data-category="dynamic">
                             <img src="https://i.ibb.co/h26P7bp/jobs.jpg" class="card-img-top project-img"
                                 alt="Project 1">
                             <div class="card-body">
@@ -1990,7 +2139,7 @@
                     </div>
                     
                      <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal15">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal15" data-category="static">
                             <img src="https://i.ibb.co/Dgkj8Ny/Screenshot-2024-11-30-181228.png" class="card-img-top project-img"
                                 alt="Project 1">
                             <div class="card-body">
@@ -2005,7 +2154,7 @@
                     
                     <!-- Project Card 2 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal2">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal2" data-category="dynamic">
                             <img src="https://i.ibb.co/TPLFjv2/cb.jpg" class="card-img-top project-img" alt="Project 2">
                             <div class="card-body">
                                 <h5 class="card-title project-title">Cook-Book</h5>
@@ -2020,7 +2169,7 @@
                     </div>
                     <!-- Project Card 3 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal3">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal3" data-category="static">
                             <img src="https://i.ibb.co/y6ySFSy/chakra.jpg" class="card-img-top project-img"
                                 alt="Project 3">
                             <div class="card-body">
@@ -2036,7 +2185,7 @@
                     </div>
                     <!-- Project Card 4 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal4">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal4" data-category="static">
                             <img src="https://i.ibb.co/GQ51txd/scrappy.jpg" class="card-img-top project-img"
                                 alt="Project 4">
                             <div class="card-body">
@@ -2051,7 +2200,7 @@
                     </div>
                     <!-- Project Card 5 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal5">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal5" data-category="static">
                             <img src="https://i.ibb.co/fdKp9RK/resume.jpg" class="card-img-top project-img"
                                 alt="Project 5">
                             <div class="card-body">
@@ -2066,7 +2215,7 @@
                     </div>
                     <!-- Project Card 5 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal6">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal6" data-category="static">
                             <img src="https://i.ibb.co/5cMDxNj/qr.png" class="card-img-top project-img" alt="Project 5">
                             <div class="card-body">
                                 <h5 class="card-title project-title">Intro-QR</h5>
@@ -2080,7 +2229,7 @@
                     </div>
                     <!-- Project Card 6 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal7">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal7" data-category="data-science">
                             <img src="https://i.ibb.co/9mDMtpt/digital-progress.png" class="card-img-top project-img"
                                 alt="Project 6">
                             <div class="card-body">
@@ -2095,7 +2244,7 @@
                     </div>
                     <!-- Project Card 6 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal8">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal8" data-category="static">
                             <img src="https://i.ibb.co/2qs8DkZ/introbook.png" class="card-img-top project-img"
                                 alt="Project 5">
                             <div class="card-body">
@@ -2110,7 +2259,7 @@
                     </div>
                     <!-- Project Card 5 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal9">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal9" data-category="games">
                             <img src="https://i.ibb.co/vj2jrdH/quadrix.jpg" class="card-img-top project-img"
                                 alt="Project 5">
                             <div class="card-body">
@@ -2125,7 +2274,7 @@
                     </div>
                     <!-- Project Card 5 -->
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal10">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal10" data-category="games">
                             <img src="https://i.ibb.co/wsk92Mh/hc.jpg" class="card-img-top project-img" alt="Project 5">
                             <div class="card-body">
                                 <h5 class="card-title project-title">Hand-cricket</h5>
@@ -2138,7 +2287,7 @@
                         </div>
                     </div>
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal11">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal11" data-category="static">
                             <img src="https://i.ibb.co/jykH7QB/distance.png" class="card-img-top project-img"
                                 alt="Project 5">
                             <div class="card-body">
@@ -2151,8 +2300,9 @@
                             </div>
                         </div>
                     </div>
+                    
                     <div class="col-md-4 project-card-container">
-                        <div class="card project-card" data-toggle="modal" data-target="#projectModal12">
+                        <div class="card project-card" data-toggle="modal" data-target="#projectModal12" data-category="static">
                             <img src="https://i.ibb.co/QfR31Kz/images.png" class="card-img-top project-img"
                                 alt="Project 5">
                             <div class="card-body">
