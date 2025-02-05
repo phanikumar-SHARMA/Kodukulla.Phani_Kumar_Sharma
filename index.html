@@ -210,51 +210,7 @@
             align-items: center;
         }
 
-        /* Image Styling */
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 3px solid #d4af7f;
-            /* Adjust color as needed */
-            object-fit: cover;
-        }
-
-        /* Section Styling */
-        .section-container {
-            margin-top: 20px;
-            text-align: left;
-        }
-
-        .section-heading {
-            font-size: 1.5em;
-            color: #333;
-            border-bottom: 2px solid #d4af7f;
-            /* Heading border */
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
-
-        .content {
-            font-size: 1em;
-            line-height: 1.6;
-            color: #555;
-        }
-
-        .highlight {
-            color: #d4af7f;
-            font-weight: bold;
-        }
-
-        /* List Styling */
-        .overview-list {
-            list-style-type: circle;
-            padding-left: 20px;
-        }
-
-        .overview-list li {
-            margin-bottom: 8px;
-        }
+       
 
         /* Responsive Styling */
         @media (max-width: 600px) {
@@ -1321,48 +1277,106 @@
     <h2 class="text-center mb-4" style="font-size: calc(1.5vw + 1em);">Technical Portfolio Section</h2>
 </div>
 <br>
-<section id="about">
-    <!-- Optional decorative HR can be removed here if not needed -->
+<div style = "justify-content:center;display:flex;">
+<fieldset>
+    <legend>
+        <img src="https://i.ibb.co/JtcSLh6/file-n-WJ3f-SB5kw-Olyt16od-Wot-Fz-Z-2-2.jpg" alt="Profile Image" class="profile-image">
+    </legend>
+
+    <section class="section-container">
+        <div class="section-heading">About Me</div>
+        <p class="contents" style  ="color:black;">
+            <span class="highlight">Hi,</span> I'm <span class="highlight">K. Phani Kumar</span>, a dedicated
+            full-stack web developer and experienced Hindu priest. My passion for coding drives me to design
+            websites with modern frameworks and solid architecture. Alongside my technical skills, I have extensive
+            experience in conducting traditional poojas, capable of managing large ceremonies with
+            precision.<br><br>
+            I'm from <span class="highlight">Vengapuram (village), Balijipeta (mandal), Parvathipuram Manyam
+                (district), A.P.</span>, and I take pride in utilizing my diverse talents to serve my community and
+            clients.
+        </p>
+    </section>
+</fieldset>
+</div>
+<!-- Overview Section -->
+<div style="justify-content:center; display:flex; border-radius:20px; overflow:hidden;">
+    <img src="Mobile App Development.gif" style="height:60%; width:60%;">
+</div>
+
+<section class="section-container">
+    <div class="section-heading">Overview of My Skills</div>
+    
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Python full-stack web developer (Django)
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Data scientist
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Data analyst
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Web scrapper
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Android developer (intermediate level, currently learning)
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Skilled Hindu priest
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Certified programmer
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Quick learner
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Good knowledge in data structures (intermediate level)
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Self-taught in programming
+    </div>
+    <div class="skill-item">
+        <span class="tick-mark">&#10004;</span> Keen on learning and adapting to new technologies
+    </div>
 </section>
 
-    <fieldset>
-        <legend><img src="https://i.ibb.co/JtcSLh6/file-n-WJ3f-SB5kw-Olyt16od-Wot-Fz-Z-2-2.jpg" alt="Profile Image"
-                class="profile-image"></legend>
+<style>
+    .skill-item {
+        display: flex;
+        align-items: center;
+        font-size: 18px;
+        margin: 5px 0;
+        color:rgb(13, 13, 13); /* Adjust based on your theme */
+    }
 
-        <section class="section-container">
-            <div class="section-heading">About Me</div>
-            <p class="content">
-                <span class="highlight">Hi,</span> I'm <span class="highlight">K. Phani Kumar</span>, a dedicated
-                full-stack web developer and experienced Hindu priest. My passion for coding drives me to design
-                websites with modern frameworks and solid architecture. Alongside my technical skills, I have extensive
-                experience in conducting traditional poojas, capable of managing large ceremonies with
-                precision.<br><br>
-                I'm from <span class="highlight">Vengapuram (village), Balijipeta (mandal), Parvathipuram Manyam
-                    (district), A.P.</span>, and I take pride in utilizing my diverse talents to serve my community and
-                clients.
-            </p>
-        </section>
-        <!-- Overview Section -->
-      <div style = "justify-content:center;display:flex; border-radius:20px;overflow:hidden;">
-          <img src = "Mobile App Development.gif" style = "height:60%;width:60%;"></img>
-      </div>
-        <section class="section-container">
-            <div class="section-heading">Overview of My Skills</div>
-            <ul class="overview-list content">
-                <li>Python full-stack web developer (Django)</li>
-                <li>Data scientist</li>
-                <li>Data analyst</li>
-                <li>Web scrapper</li>
-                <li>Android developer (intermediate level, currently learning)</li>
-                <li>Skilled Hindu priest</li>
-                <li>Certified programmer</li>
-                <li>Quick learner</li>
-                <li>Good knowledge in data structures (intermediate level)</li>
-                <li>Self-taught in programming</li>
-                <li>Keen on learning and adapting to new technologies</li>
-            </ul>
-        </section>
-    </fieldset>
+    .tick-mark {
+        color: #00c853; /* Green tick */
+        font-size: 22px;
+        margin-right: 10px;
+    }
+
+    .section-container {
+        background: none; /* Adjust based on theme */
+        padding: 20px;
+        border-radius: 10px;
+          color:rgb(13, 13, 13); /* Adjust based on your theme */
+    }
+
+    .section-heading {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #00c853;
+    }
+
+    .profile-image {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #00c853;
+    }
+</style>
 
 </br></br>
 
