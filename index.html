@@ -19,6 +19,7 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
     <style>
         .decorative-hr-container {
@@ -953,110 +954,125 @@
             }
         }
     </style>
+  
     <style>
-    .scroll-container {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    position: relative;
-    background: rgba(0, 0, 0, 0);
-    padding: 20px;
-}
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
 
-.scroll-content {
-    display: inline-block;
-    animation: scroll 35s linear infinite;
-}
+            .custom-navbar {
+            background: #2c2f33; /* Dark background for the navbar */
+            border-radius: 0;
+            padding: 0.5rem 1rem;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: background 0.3s; /* Smooth transition for background */
+        }
 
-.scroll-item {
-    display: inline-block;
-    text-align: center;
-    margin: 0 15px;
-    filter: brightness(1.2) contrast(1.2) saturate(1.2);
-    padding: 30px;
-}
+        /* Apply the handwritten font here */
+        .custom-navbar-brand {
+            font-family: 'Dancing Script', cursive; /* Use Dancing Script for a cursive look */
+            color: #d4af7f !important;
+            font-weight: normal; /* Lighter weight for a more signature look */
+            font-size: 2.5rem; /* Adjust font size as needed */
+            position: absolute; /* Allow movement */
+            left: 1rem; /* Default left position */
+            transition: opacity 0.3s, transform 0.3s; /* Smooth transition for opacity and centering */
+        }
 
-.scroll-item img {
-    width: 150px;
-    height: 150px;
-    border-radius: 30px;
-    display: block;
-    margin: 0 auto 10px;
-    box-shadow: 0 0 20px white;
-}
+        .hidden {
+            opacity: 0; /* Hide brand with opacity */
+            visibility: hidden; /* Prevents layout shift */
+        }
 
-.scroll-item p {
-    font-size: 35px;
-    margin: 0;
-    font-weight: bold;
-    font-style: serif;
-}
+        .custom-sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px; /* Hidden by default */
+            height: 100%;
+            width: 300px;
+            background-color:black;
+            transition: 0.5s;
+            z-index: 999;
+        }
 
-@keyframes scroll {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
-}
+        .custom-sidebar-nav {
+            list-style-type: none;
+            padding: 10px;
+        }
 
-    </style>
-    <style>
-        .custom-button {
+        .custom-nav-item {
+            width: 100%;
+        }
 
-            color: rgb(10, 10, 10);
-            font-size: 1.5rem;
-            padding: 25px;
-            border-radius: 50px;
+        .custom-nav-link {
+            display: block;
+            padding: 15px 20px;
+            font-size: 1.2rem;
+            color: #d4af7f;
+            text-align: left;
             text-transform: uppercase;
-            display: inline-flex;
-            align-items: center;
+            text-decoration: none;
+            border:3px solid white;
+            border-radius:50px;
+  margin-bottom: 17px;
         }
 
-        .custom-button .fa-arrow-right {
-            padding: 15px;
-            border-radius: 50px;
-            background-color: black;
-            color: white;
-            margin-left: 10px;
-            height: 90px;
-            width: 90px;
+        .custom-nav-link:hover {
+            background-color: white;
+            border:3px solid brown;
+            color:brown;
+            text-decoration: none;
+
         }
 
-     .glass-navbar {
-      background: rgba(300,300,300,0.1);
-     
-      border-radius: 10px;
-      padding: 0.5rem 1rem;
-    }
+        .custom-close-btn {
+            background: none;
+            border: none;
+            color: #d4af7f;
+            font-size: 2rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+        }
 
-    /* Brown color for navbar links */
-    .navbar-brand, .nav-link {
-      color: #d4af7f !important;
-      font-weight: bold;
-    }
+        .hamburger {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 1002;
+        }
 
-    /* Custom styling for the toggler icon */
-    .navbar-toggler {
-      border: none;
-      outline: none;
-    }
-    .navbar-toggler-icon {
-      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 16 16"%3E%3Cpath fill="brown" d="M1.5 4.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM1.5 8.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1zM1.5 12.5h13a.5.5 0 0 0 0-1h-13a.5.5 0 0 0 0 1z"%3E%3C/path%3E%3C/svg%3E');
-    }
+        .line {
+            width: 30px;
+            height: 4px;
+            background-color: #d4af7f; /* Changed to fit the theme */
+            transition: all 0.3s;
+        }
 
-    /* Separator styling */
-    .navbar-nav .nav-item:not(:last-child) .nav-link::after {
-      content: " |";
-      color: #d4af7f;
-      margin-left: 8px;
-    }
+        .active {
+            left: 0; /* Show the sidebar */
+        }
 
-    /* Add space between brand and nav items */
-    .navbar-brand {
-      margin-right: 20px;
-    }
+        .open .line:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .open .line:nth-child(2) {
+            opacity: 0;
+        }
+
+        .open .line:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
          /* Basic styling for the button */
         #back-to-top {
             position: fixed;
@@ -1090,26 +1106,50 @@
 </head>
 
 <body style = "overflow-x: hidden;" >
- <nav class="navbar navbar-expand-lg glass-navbar">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">K.V.K.Phani Kumar Sharma</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills-chart">Skills</a></li>
-          <li class="nav-item"><a class="nav-link" href="#skills">Coding-knowledge</a></li>
-          <li class="nav-item"><a class="nav-link" href="#certification">Certificates</a></li>
-          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-          <li class="nav-item"><a class="nav-link" href="#achadamics">Study statistics</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+  <nav class="custom-navbar">
+        <div class="container-fluid">
+            <a class="custom-navbar-brand" href="#">K.V.K.Phani Kumar Sharma</a>
+        </div>
+    </nav>
+
+    <div class="custom-sidebar" id="sidebar">
+        <button id="close-btn" class="custom-close-btn"><i class="fas fa-times"></i></button>
+        <ul class="custom-sidebar-nav">
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#">Home</a></li>
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#about">About</a></li>
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#skills-chart">Skills</a></li>
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#skills">Knowledge</a></li>
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#certification">Certificates</a></li>
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#projects">Projects</a></li>
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#achadamics">Study Statistics</a></li>
+            <li class="custom-nav-item"><a class="custom-nav-link" href="#contact">Contact</a></li>
         </ul>
-      </div>
     </div>
-  </nav>
+
+    <div class="hamburger" id="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#hamburger, #close-btn').click(function() {
+                $('#sidebar').toggleClass('active');
+                $('#hamburger').toggleClass('open');
+
+                // Toggle visibility of the brand when sidebar is active
+                if ($('#sidebar').hasClass('active')) {
+                    $('.custom-navbar-brand').addClass('hidden'); // Hide brand
+                    $('#sidebar').css('left', '0');
+                } else {
+                    $('.custom-navbar-brand').removeClass('hidden'); // Show brand
+                    $('#sidebar').css('left', '-300px');
+                }
+            });
+        });
+    </script>
 <style>
        .body {
       height: 120vh;
