@@ -974,13 +974,14 @@
 
         /* Apply the handwritten font here */
         .custom-navbar-brand {
-            font-family: monospaced; /* Use Dancing Script for a cursive look */
+            font-family: monospace; /* Use Dancing Script for a cursive look */
             color: #d4af7f !important;
-            font-weight: normal; /* Lighter weight for a more signature look */
-            font-size:auto; /* Adjust font size as needed */
+            font-size: 1.25rem; /* 20px */
+    font-weight: 500;
             position: absolute; /* Allow movement */
             left: 1rem; /* Default left position */
             transition: opacity 0.3s, transform 0.3s; /* Smooth transition for opacity and centering */
+            background-color:black;
         }
 
         .hidden {
@@ -992,7 +993,7 @@
             position: fixed;
             top: 0;
             left: -300px; /* Hidden by default */
-            height: 100%;
+            height: 100vh;
             width: 300px;
             background-color:black;
             transition: 0.5s;
@@ -1030,7 +1031,7 @@
         }
 
         .custom-close-btn {
-            background: none;
+            background:black;
             border: none;
             color: #d4af7f;
             font-size: 2rem;
