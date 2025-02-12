@@ -961,119 +961,128 @@
             margin: 0;
             overflow-x: hidden; /* Prevent horizontal scroll */
         }
+.custom-navbar {
+    background: black; /* Ensuring the navbar background stays black */
+    border-radius: 0;
+    padding: 0.5rem 1rem;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    transition: background 0.3s; /* Smooth transition */
+}
 
-            .custom-navbar {
-            background: black; /* Dark background for the navbar */
-            border-radius: 0;
-            padding: 0.5rem 1rem;
-            position: fixed;
-            width: 100%;
-            z-index: 1000;
-            transition: background 0.3s; /* Smooth transition for background */
-        }
+/* Updated brand styling */
+.custom-navbar-brand {
+    font-family: monospace;
+    color: #d4af7f !important;
+    font-size: 1.75rem; /* Increased font size */
+    font-weight: italic;
+    position: absolute;
+    left:0;
+    transition: opacity 0.3s, transform 0.3s;
+    background-color: black; /* Ensuring black background */
+    padding: 5px 10px; /* Slight padding for better visibility */
+    width:100%;
+     text-decoration: none;
+}
+.custom-navbar-brand:hover{
+    font-family: monospace;
+    color: #d4af7f !important;
+    font-size: 1.75rem; /* Increased font size */
+    font-weight: italic;
+    position: absolute;
+    left:0;
+    transition: opacity 0.3s, transform 0.3s;
+    background-color: black; /* Ensuring black background */
+    padding: 5px 10px; /* Slight padding for better visibility */
+    width:100%;
+     text-decoration: none;
+}
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
 
-        /* Apply the handwritten font here */
-        .custom-navbar-brand {
-            font-family: monospace; /* Use Dancing Script for a cursive look */
-            color: #d4af7f !important;
-            font-size: 1.25rem; /* 20px */
-    font-weight: 500;
-            position: absolute; /* Allow movement */
-            left: 1rem; /* Default left position */
-            transition: opacity 0.3s, transform 0.3s; /* Smooth transition for opacity and centering */
-            background-color:black;
-        }
+/* Sidebar styling */
+.custom-sidebar {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    height: 100vh;
+    width: 300px;
+    background-color: black;
+    transition: 0.5s;
+    z-index: 999;
+}
 
-        .hidden {
-            opacity: 0; /* Hide brand with opacity */
-            visibility: hidden; /* Prevents layout shift */
-        }
+.custom-sidebar-nav {
+    list-style-type: none;
+    padding: 10px;
+}
 
-        .custom-sidebar {
-            position: fixed;
-            top: 0;
-            left: -300px; /* Hidden by default */
-            height: 100vh;
-            width: 300px;
-            background-color:black;
-            transition: 0.5s;
-            z-index: 999;
-        }
+.custom-nav-item {
+    width: 100%;
+}
 
-        .custom-sidebar-nav {
-            list-style-type: none;
-            padding: 10px;
-        }
+.custom-nav-link {
+    display: block;
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    color: #d4af7f;
+    text-align: left;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: 3px solid white;
+    border-radius: 50px;
+    margin-bottom: 17px;
+}
 
-        .custom-nav-item {
-            width: 100%;
-        }
+.custom-nav-link:hover {
+    background-color: white;
+    border: 3px solid brown;
+    color: brown;
+    text-decoration: none;
+}
 
-        .custom-nav-link {
-            display: block;
-            padding: 15px 20px;
-            font-size: 1.2rem;
-            color: #d4af7f;
-            text-align: left;
-            text-transform: uppercase;
-            text-decoration: none;
-            border:3px solid white;
-            border-radius:50px;
-  margin-bottom: 17px;
-        }
+.custom-close-btn {
+    display:none;
+}
 
-        .custom-nav-link:hover {
-            background-color: white;
-            border:3px solid brown;
-            color:brown;
-            text-decoration: none;
+/* Hamburger menu styling */
+.hamburger {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    z-index: 1002;
+}
 
-        }
+.line {
+    width: 30px;
+    height: 4px;
+    background-color: #d4af7f;
+    transition: all 0.3s;
+}
 
-        .custom-close-btn {
-            background:none;
-            border: none;
-            color: #d4af7f;
-            font-size: 2rem;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-        }
+.active {
+    left: 0;
+}
 
-        .hamburger {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            z-index: 1002;
-        }
+.open .line:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
 
-        .line {
-            width: 30px;
-            height: 4px;
-           background-color: #d4af7f;  /* Changed to fit the theme */
-            transition: all 0.3s;
-        }
+.open .line:nth-child(2) {
+    opacity: 0;
+}
 
-        .active {
-            left: 0; /* Show the sidebar */
-        }
+.open .line:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
 
-        .open .line:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px);
-        }
-
-        .open .line:nth-child(2) {
-            opacity: 0;
-        }
-
-        .open .line:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -5px);
-        }
          /* Basic styling for the button */
         #back-to-top {
             position: fixed;
@@ -1839,6 +1848,14 @@
                 <div class="card-body">
                     <i class="fas fa-wind mb-3 skill-icon"></i>
                     <h5 class="skill-name">Tailwind CSS</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 col-6">
+            <div class="card skill-box azure text-center">
+                <div class="card-body">
+                    <i class="fab fa-microsoft mb-3 skill-icon"></i>
+                    <h5 class="skill-name">MS Office</h5>
                 </div>
             </div>
         </div>
