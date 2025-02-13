@@ -1,215 +1,956 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>K.V.K.Phani Kumar Sharma's preest portfolio</title>
-  <link rel="icon" type="image/png" sizes="32x32" href="myprofile.jpg"> 
-  <link rel="apple-touch-icon" sizes="180x180" href="myprofile.jpg">
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <!-- Font Awesome CSS for icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-  <!-- Custom CSS -->
-   <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.Phani Kumar Sharma | Priest Portfolio</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            overflow-x: hidden;
+        }
+        .animated-hr {
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #ff4500, #ff0000, #0000ff);
+            animation: moveGradient 5s linear infinite;
+        }
+        @keyframes moveGradient {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .spiritual-quotes {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-top: 20px;
+        }
+        .spiritual-quotes h3 {
+            font-size: 24px;
+            color: #ff4500;
+            margin-bottom: 15px;
+        }
+        .spiritual-quotes p {
+            font-size: 18px;
+            color: #333;
+            font-style: italic;
+            margin: 10px 0;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+       .slider img {
+    width: 100%;
+    height: 100%;
+    padding:0px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    filter: contrast(1.1) brightness(1.1) saturate(1.5);
+       }
 
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-
-  <style>
-    body {
-      background:peachpuff;
-      font-family: 'Georgia', serif;
-      color: #ffffff;
-      overflow-x: hidden; /* Prevent horizontal scrolling */
-      
-    }
-
-    /* Video background section */
-    .video-bg {
-      position: relative;
-      width: 100%;
-      height: 180vh; /* Full screen height */
-      overflow: hidden;
-    }
-
-    /* Background video styling */
-    .background-video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100%;
-      height: 100%;
-      object-fit: cover; /* Cover the area */
-      transform: translate(-50%, -50%); /* Center the video */
-      z-index: -1;
-    }
-
-    /* Overlay for dimming the video */
-    .overlay {
-      height: 100%;
-      width: 100%;
-      background: rgba(0, 0, 0, 0.4); /* Darker overlay for better text visibility */
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1;
-    }
-
-    /* Header with name */
-    .name {
-      font-size: 40px;
-      font-weight: bold;
-      color: #ffffff;
-      text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
-      position: relative;
-      z-index: 2;
-      margin-top: 20vh; /* Positioning below the top */
-      text-align: center;
-    }
-
-    /* Circular image styling */
-    .circular-image {
-      border-radius: 50%;
-      border: 5px solid #ffffff;
-      width: 300px;
-      height: 300px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.4);
-      object-fit: cover;
-      transition: transform 0.3s;
-      position: relative;
-      z-index: 2;
-      display: block;
-      margin: 0 auto; /* Center the image */
-    }
-
-    .circular-image:hover {
-      transform: scale(1.05);
-    }
-
-    /* Om symbol line animation */
-    .hr-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 30px;
-      position: relative;
-      z-index: 2;
-    }
-
-    .line {
-      width: 0;
-      height: 3px;
-      background-color: rgb(255, 0, 0);
-      transition: width 3s ease;
-    }
-
-    .line-left {
-      margin-right: 10px;
-      animation: extendLeft 3s forwards;
-    }
-
-    .line-right {
-      margin-left: 10px;
-      animation: extendRight 3s forwards;
-    }
-
-    .om-symbol {
-      font-size: 60px; /* Slightly larger symbol */
-      color: #ff0000;
-      padding: 0 15px;
-    }
-
-    .line-end-arrow {
-      font-size: 24px;
-      color: #ff0000;
-    }
-
-    @keyframes extendLeft {
-      0% {
-        width: 0;
+        .slider img.active {
+            opacity: 1;
+        }
+        .slider-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 50;
+            background: auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .slider-content h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #ffd700;
+        }
+        .slider-content p {
+            font-size: 18px;
+            font-style: italic;
+            color: #fff;
+        }
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 100;
+            border-radius: 50%; /* Make buttons round */
+            width: 40px;   /* Set a fixed width */
+            height: 40px;  /* Set a fixed height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .slider-btn:hover {
+            background: rgba(0, 0, 0, 0.7); /* Darken on hover */
+        }
+        .slider-btn.left {
+            left: 10px;
+        }
+        .slider-btn.right {
+            right: 10px;
+        }
+        .slider-dasher {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            z-index: 100;
+        }
+        .slider-dasher span {
+            width: 10px;
+            height: 10px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .slider-dasher span.active {
+            background: #ff4500;
+        }
+        .footer {
+            background: linear-gradient(90deg, #0000ff, #ff0000);
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 10px;
+        }
+        .fa-solid{
+           font-size:50px;
+        }
+        .my-details{
+display: flex;
+justify-content:center;
+flex-direction:column;
+align-items:center;
+ height: 100vh;
+      font-family: 'Product Sans', sans-serif;
+      background:brown; /* fallback color */
+      background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"%3E%3Cpolygon points="20,0 40,20 20,40 0,20" fill="rgba(255, 255, 255, 0.1)" /%3E%3C/svg%3E');
+      background-size:100px;
+      background-repeat: repeat;
+           background-position:fixed;
+        }
+        header{
+            color:brown;
+            background-color:rgb(255,255,255,0.5);
+            padding:10px;
+            border:3px solid white;
+            font-size:15px;
+            border-radius:20px;
+            margin-left:10px;
+            margin-right:10px;
+            margin-top:10px;
+            align-items:center;
+        }
+        .header-section{
+            width:100%;
+            padding:30px;
+            background-color:brown;
+        }
+        @media (max-width: 768px) {
+      h1 {
+        font-size: 1.7rem;
       }
-      100% {
-        width: 100%;
+
+      .image-container {
+        width: 200px;
+        height: 200px;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+
+
+        .my-details{
+        background-size: 50px 50px; /* smaller diamond size for mobile */
       }
     }
 
-    @keyframes extendRight {
-      0% {
-        width: 0;
-      }
-      100% {
-        width: 100%;
-      }
+    </style>
+
+   
+
+</head>
+<body>
+<div class = "header-section">
+    <!-- Bootstrap Navbar -->
+   <header class="header-custom fixed-top">
+    <div class="container-fluid d-flex justify-content-between align-items-center">
+        <h3 class="header-title">కె.ఫణి కుమార్ శర్మ పోర్ట్ఫోలియో</h3>
+    </div>
+</header>
+</div>
+
+<div class = "my-details">
+ <img src="./my-image.jpg" class="profile-image" style="border-radius: 50%; border: 3px solid white;height:300px;width:300px;">
+
+ <div class="container text-center">
+    <div class="social-section">
+        <a href="https://www.instagram.com/phani_k_sharma.k?igsh=MnNrZ2F2aWx0bnlr" target="_blank"
+            class="social-link instagram">
+            <div class="icon-wrapper"><i class="fab fa-instagram"></i></div> <span
+                class="typewriter">Instagram</span>
+        </a>
+        <a href="https://www.facebook.com/share/19qrekcTHE/?mibextid=qi2Omg" target="_blank"
+            class="social-link facebook">
+            <div class="icon-wrapper"><i class="fab fa-facebook"></i></div> <span
+                class="typewriter">Facebook</span>
+        </a>
+        <a href="https://www.linkedin.com/in/phani-kumar-sharma-kodukulla-63a268302?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app"
+            target="_blank" class="social-link linkedin">
+            <div class="icon-wrapper"><i class="fab fa-linkedin"></i></div> <span
+                class="typewriter">LinkedIn</span>
+        </a>
+        <a href="https://www.snapchat.com/add/phanikumar2122?share_id=kBiPJ_usHGM&locale=en-IN" target="_blank"
+            class="social-link snapchat">
+            <div class="icon-wrapper"><i class="fab fa-snapchat"></i></div> <span
+                class="typewriter">Snapchat</span>
+        </a>
+    </div>
+</div>
+
+<style>
+    .social-section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        background: transparent;
+        padding: 20px;
+    }
+    .social-link {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: white;
+        font-size: 18px;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .social-link:hover {
+        transform: scale(1.1);
+    }
+    .icon-wrapper {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.2);
+        transition: background 0.3s ease;
+    }
+    .social-link.instagram:hover .icon-wrapper {
+        background: #E1306C;
+    }
+    .social-link.facebook:hover .icon-wrapper {
+        background: #1877F2;
+    }
+    .social-link.linkedin:hover .icon-wrapper {
+        background: #0077B5;
+    }
+    .social-link.snapchat:hover .icon-wrapper {
+        background: #FFFC00;
+    }
+    .fab {
+        font-size: 24px;
+    }
+</style>
+
+</div>
+    <div class="content mt-5">
+        <h1 class="animate__animated animate__fadeInDown text-center">కె.ఫణి కుమార్ శర్మ పోర్ట్ఫోలియోకు స్వాగతం</h1>
+        <p class="animate__animated animate__fadeInUp text-center">ఆధ్యాత్మిక మార్గదర్శకత్వం మరియు దైవిక ఆచారాలను భక్తితో అనుభవించండి.</p>
+        <hr class="animated-hr">
+        <div class="slider">
+            <img src="./image-devot.jpeg" alt="Slide 1" class="active slide-image">
+            <img src="./image-devot.jpeg" alt="Slide 2" class = "slide-image">
+            <img src="./image-devot.jpeg" alt="Slide 3" class = "slide-image">
+            <div class="slider-content">
+          
+                <h2>కె.ఫణి కుమార్ శర్మ</h2>
+                <p>స్మార్త పురోహితుడు</p>
+            </div>
+            <button class="slider-btn left" onclick="prevSlide()"><i class="fa fa-chevron-left"></i></button>
+            <button class="slider-btn right" onclick="nextSlide()"><i class="fa fa-chevron-right"></i></button>
+            <div class="slider-dasher">
+                <span class="active" onclick="goToSlide(0)"></span>
+                <span onclick="goToSlide(1)"></span>
+                <span onclick="goToSlide(2)"></span>
+            </div>
+        </div>
+
+
+       
+    <script>
+        $(window).scroll(function() {
+            if ($(window).scrollTop() >= $("#about-section").offset().top - 100) {
+                $("#about-text").addClass("animate-typeWriter");
+            }
+        });
+    </script>
+<section id="what-i-can-do" class="container-fluid mt-5 pt-5 pb-5">
+    <div class="row">
+        <div class="col-md-12 text-center heading">
+            <h2>నేను చేసే కొన్ని ముఖ్యమైన పూజలు</h2>
+            <p>మీ జీవితంలో ఆనందం, శ్రేయస్సు కోసం నేను చేసే కొన్ని ప్రత్యేక పూజలు ఇక్కడ ఉన్నాయి.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                 <i class="fa-solid fa-om"></i> <!-- Ganapathi Pooja -->
+                </div>
+                <h3 class="pooja-title">గణపతి పూజ</h3>
+                <p class="pooja-description">విఘ్నాలను తొలగించి శుభారంభం చేయడానికి.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                    <i class="fa-solid fa-om"></i> <!-- Satyanarayana Vratam -->
+                </div>
+                <h3 class="pooja-title">సత్యనారాయణ వ్రతం</h3>
+                <p class="pooja-description">సంతోషం, శాంతి, సంపద కోసం.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                  <i class="fa-solid fa-om"></i> <!-- Varalakshmi Vratam -->
+                </div>
+                <h3 class="pooja-title">వరలక్ష్మీ వ్రతం</h3>
+                <p class="pooja-description">అష్టలక్ష్ముల ఆశీస్సులు పొందడానికి.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>  <!-- Vaastu Homam -->
+                </div>
+                <h3 class="pooja-title">వాస్తు హోమం</h3>
+                <p class="pooja-description">గృహంలో వాస్తు దోషాలు నివారించడానికి.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                 <i class="fa-solid fa-om"></i> <!-- Gruha Pravesam -->
+                </div>
+                <h3 class="pooja-title">గృహ ప్రవేశం</h3>
+                <p class="pooja-description">నూతన గృహంలోకి ప్రవేశించే ముందు చేసే పూజ.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i> <!-- Ganapathi Homam -->
+                </div>
+                <h3 class="pooja-title">గణపతి హోమం</h3>
+                <p class="pooja-description">శుభకార్యాలకు ఆటంకాలు తొలగించడానికి.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+               <i class="fa-solid fa-om"></i> <!-- Punyahavachanam -->
+                </div>
+                <h3 class="pooja-title">పుణ్యాహవాచనం</h3>
+                <p class="pooja-description">శుద్ధి మరియు పవిత్రత కోసం.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>  <!-- Navagraha Homam -->
+                </div>
+                <h3 class="pooja-title">నవగ్రహ హోమం</h3>
+                <p class="pooja-description">గ్రహ దోషాలు నివారించడానికి.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>  <!-- Namakaranam -->
+                </div>
+                <h3 class="pooja-title">నామకరణం</h3>
+                <p class="pooja-description">శిశువుకు పేరు పెట్టే వేడుక.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                    <i class="fa-solid fa-om"></i> <!-- Annaprasana -->
+                </div>
+                <h3 class="pooja-title">అన్నప్రాసన</h3>
+                <p class="pooja-description">పిల్లలకు మొదటిసారి అన్నం తినిపించే వేడుక.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                 <i class="fa-solid fa-om"></i> <!-- Deva Kalyanam -->
+                </div>
+                <h3 class="pooja-title">దేవ కళ్యాణం</h3>
+                <p class="pooja-description">దేవతా మూర్తుల కళ్యాణోత్సవం.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                 <i class="fa-solid fa-om"></i> <!-- Nomulu -->
+                </div>
+                <h3 class="pooja-title">నోములు</h3>
+                <p class="pooja-description">కొన్ని ముఖ్యమైన నోములు: అట్ల తద్ది, బోనాల నోము, ఉండ్రాళ్ల నోము, నాగ పంచమి నోము.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>  <!-- Devi Navaratrulu -->
+                </div>
+                <h3 class="pooja-title">దేవి నవరాత్రులు</h3>
+                <p class="pooja-description">దుర్గాదేవికి తొమ్మిది రోజుల ప్రత్యేక పూజలు.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>  <!-- Ganapathi Navaratrulu -->
+                </div>
+                <h3 class="pooja-title">గణపతి నవరాత్రులు</h3>
+                <p class="pooja-description">గణపతికి తొమ్మిది రోజుల ప్రత్యేక పూజలు.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>  <!-- Sakala Devatala Poojalu -->
+                </div>
+                <h3 class="pooja-title">సకల దేవతల పూజలు</h3>
+                <p class="pooja-description">అన్ని దేవతలకు ప్రత్యేక పూజలు.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                  <i class="fa-solid fa-om"></i> <!-- Muhurtam Pettadam -->
+                </div>
+                <h3 class="pooja-title">ముహూర్తం పెట్టడం</h3>
+                <p class="pooja-description">శుభకార్యాలకు ముహూర్తం నిర్ణయించడం.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i> <!-- Prarambhotsavalu (Openings) -->
+                </div>
+                <h3 class="pooja-title">ప్రారంభోత్సవాలు</h3>
+                <p class="pooja-description">నూతన వ్యాపారాలు మరియు ఇతర ప్రారంభోత్సవాలు.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                    <i class="fa-solid fa-om"></i> <!-- Bhoomi Pooja -->
+                </div>
+                <h3 class="pooja-title">భూమి పూజ</h3>
+                <p class="pooja-description">నూతన నిర్మాణాలు ప్రారంభించే ముందు భూమికి చేసే పూజ.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>  <!-- Rudrabhishekam -->
+                </div>
+                <h3 class="pooja-title">రుద్రాభిషేకం</h3>
+                <p class="pooja-description">శివుడికి చేసే అభిషేకం.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i> <!-- Shanthi Pooja -->
+                </div>
+                <h3 class="pooja-title">శాంతి పూజ</h3>
+                <p class="pooja-description">గృహ శాంతి మరియు కుటుంబ సభ్యులకు శాంతి కోసం చేసే పూజ.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                    <i class="fa-solid fa-om"></i>  <!-- Ayush Homam -->
+                </div>
+                <h3 class="pooja-title">ఆయుష్ హోమం</h3>
+                <p class="pooja-description">ఆరోగ్యం మరియు దీర్ఘాయుష్షు కోసం చేసే హోమం.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="pooja-card">
+                <div class="pooja-icon">
+                   <i class="fa-solid fa-om"></i>
+                </div>
+                <h3 class="pooja-title">ఇంకా అనేక రకాల పూజలు</h3>
+                <p class="pooja-description">మీ అవసరాలకు తగ్గట్టుగా మరెన్నో పూజలు అందుబాటులో ఉన్నాయి.</p>
+                <a href="#contact" class="btn btn-pooja">వివరాలు</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+      .heading {
+        text-align: center;
+        margin-bottom: 2rem;
     }
 
-    /* Additional sections styling */.content {
-  position: relative;
-  z-index: 2; /* Ensure this appears above the video when scrolling */
-  padding: 0px;
-  background-color: peachpuff; /* Light background for readability */
-  overflow-x: hidden;
-  justify-content: center;
+    .heading h2 {
+        font-family: 'Arial', sans-serif;
+        font-size: 2.2rem;
+        color: #333;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+
+    .heading p {
+        font-family: 'Arial', sans-serif;
+        font-size: 1rem;
+        color: #777;
+    }
+
+    .pooja-card-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap:0;
+    }
+
+    .pooja-card {
+        width: auto;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        padding: 20px;
+        text-align: center;
+        background-color: #fff;
+    }
+
+    .pooja-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .pooja-icon {
+        margin-bottom: 10px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #555;
+    }
+
+    .pooja-title {
+        font-family: 'Arial', sans-serif;
+        font-size: 1.2rem;
+        color: #444;
+        margin-bottom: 5px;
+        font-weight:bold;
+    }
+
+    .pooja-description {
+        font-family: 'Arial', sans-serif;
+        font-size: 0.9rem;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    .btn-pooja {
+        background-color: #007bff;
+        color: #fff;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Arial', sans-serif;
+        font-size: 0.9rem;
+        transition: background-color 0.2s ease;
+    }
+
+    .btn-pooja:hover {
+        background-color: #0056b3;
+    }
+    .image-center{
+        width:100%;
+        justify-content:center;
+        display:flex;
+    }
+    .namam{
+        border-radius:50%;
+        width:300px;
+    }
+ .center-container {
   display: flex;
-  flex-direction: column; /* Changed to column to stack elements vertically */
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
 }
 
+.line {
+  height: 3px;
+  background-color: rgb(255, 0, 0);
+  width: 0; /* Initially hidden */
+  transition: width 3s ease-in-out;
+}
+
+.om-symbol {
+  font-size: 70px;
+  color: #ff0000;
+  font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(255, 0, 0, 0.5);
+  padding: 0 20px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.om-symbol:hover {
+  transform: scale(1.1);
+}
+
+.line-end-arrow {
+  font-size: 28px;
+  color: #ff0000;
+  transition: transform 0.3s ease-in-out;
+}
+
+.line-end-arrow:hover {
+  transform: translateY(-3px);
+}
+
+@keyframes extendLeft {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 50%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes extendRight {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  50% {
+    width: 50%;
+    opacity: 1;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* When class 'animate' is added, animation triggers */
+.line-left.animate {
+  animation: extendLeft 3s forwards ease-in-out;
+}
+
+.line-right.animate {
+  animation: extendRight 3s forwards ease-in-out;
+}
+
+</style>
+  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider img');
+        const dashers = document.querySelectorAll('.slider-dasher span');
+        const quotes = [
+            { title: "కె.ఫణి కుమార్ శర్మ", text: "స్మార్త పురోహితుడు" },
+            { title: "కె.ఫణి కుమార్ శర్మ", text: "కృష్ణ యజుర్వేదం" },
+            { title: "కె.ఫణి కుమార్ శర్మ", text: "పూజారి" }
+        ];
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+            dashers.forEach((dasher, i) => {
+                dasher.classList.toggle('active', i === index);
+            });
+            document.querySelector('.slider-content h2').textContent = quotes[index].title;
+            document.querySelector('.slider-content p').textContent = quotes[index].text;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            showSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            showSlide(currentSlide);
+        }
+
+        setInterval(nextSlide, 9000); // Auto slide every 5 seconds
+    </script>
+ <div class="center-container" id="om-section">
+  <span class="line line-left"></span>
+  <i class="om-symbol">ॐ</i>
+  <span class="line line-right"></span>
+</div>
 
 
-    /* WhatsApp-style image viewer */
-    .status-viewer {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.9);
-      z-index: 3;
-      color: rgb(248, 1, 1);
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-    }
+    <div class = "image-center">
+<img class = "namam" src = "./namam.png">
 
-    .status-viewer img {
-      max-width: 80%;
-      max-height: 80%;
-    }
+    </div>
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+  let observer = new IntersectionObserver(
+    function (entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelector(".line-left").classList.add("animate");
+          document.querySelector(".line-right").classList.add("animate");
+        }
+      });
+    },
+    { threshold: 0.5 } // Triggers when 50% of the section is in view
+  );
 
-    .close-btn,
-    .arrow-btn {
-      font-size: 30px;
-      color: rgb(255, 0, 0);
-      position: absolute;
-      cursor: pointer;
-    }
+  observer.observe(document.querySelector("#om-section"));
+});
 
-    .close-btn {
-      top: 20px;
-      right: 20px;
-    }
+<!-- Styles -->
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
 
-    .arrow-btn {
-      top: 50%;
-      transform: translateY(-50%);
-    }
+  .i-am-from {
+    background-image: linear-gradient(to bottom, #ffc2b3, #ffd7be);
+    background-size: 100% 300%;
+    transition: background-position 0.5s ease-out;
+    background-position: 0% 100%;
+  }
 
-    .arrow-left {
-      left: 20px;
-    }
+  .i-am-from:hover {
+    background-position: 100% 0;
+  }
 
-    .arrow-right {
-      right: 20px;
-    }
-  </style>
-   <style>
+  .container {
+    max-width: 800px;
+    margin: 40px auto;
+  }
+
+  .animated-heading {
+    font-size: 48px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+  }
+
+  .card {
+    border: none;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .card-body {
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .card-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  .card-text {
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .img-fluid {
+    width: 100%;
+    height: auto;
+  }
+
+  .rounded-start {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .custom-heading {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .custom-description {
+    font-size: 14px;
+    color: #666;
+  }
+
+  .custom-description-telugu {
+    font-size: 14px;
+    color: #666;
+    text-align: justify;
+  }
+
+  .row {
+    margin-bottom: 20px;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 10px 0;
+  }
+</style>
+
+<!-- Content -->
+</script></br>
+<div class="i-am-from py-5" style="background-color: peachpuff;">
+  <div class="container">
+    <div class="animated-heading"><h1 align = "center">I studied at</h1></div>
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card shadow-lg">
+          <div class="row g-0">
+            <div class="col-md-4">
+              <img src="./aadishankaracharya.jpeg" alt="School" class="img-fluid rounded-start" style="object-fit: cover; height: 100%;">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h3 class="card-title custom-heading">Sri Kanchi Kamakoti Smarta Patashala</h3>
+                <p class="card-text custom-description">
+                  Located in Samalkot, Kakinada, this traditional school provided me with an enriching education from 8th to 10th grade. Here, I was taught both Smartha Vidya (traditional Hindu knowledge) and general education in English medium. The school's emphasis on Smartha Vidya not only helped me develop a deep understanding of our culture and traditions but also instilled in me a sense of pride and responsibility towards our community.
+                </p>
+                <hr class="my-4">
+                <h3 class="card-title custom-heading">శ్రీ కంచి కామకోటి స్మార్త పాఠశాల</h3>
+                <p class="card-text custom-description-telugu">
+                  ఈ పాఠశాల సమలకోట, కాకినాడలో ఉంది. 8వ తరగతి నుండి 10వ తరగతి వరకు నా విద్యను ఇక్కడ పూర్తి చేసుకున్నాను. స్మార్త విద్యతో పాటు, ఇంగ్లీష్ మాధ్యమంలో సాధారణ విద్య కూడా మా పాఠశాలలో నేర్పించబడింది. 
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  </br>
+</div>
+
+</div>
+
+
+
+<div class="contact-container text-center p-5" style="background-color: #f8f9fa; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);" id = "contact">
+    <h2 class="mb-4" style="font-size: 2.5rem; color: #343a40;">Contact Me</h2>
+    <div class="contact-info">
+        <a href="mailto:phanikumark715@gmail.com" class="btn btn-primary btn-lg" style="font-size: 1.2rem; padding: 10px 30px; border-radius: 25px; text-decoration: none;">
+            <i class="fas fa-envelope me-2"></i> phanikumark715@gmail.com
+        </a>
+    </div>
+</div>
+  <style>
     body {
         font-family: 'Baloo Tamma 2', cursive;
         background-color: #f5f5f5;
@@ -447,31 +1188,9 @@ h2 {
       Your browser does not support the video tag.
     </video>
 
-    <!-- Overlay for dimming the video -->
-    <div class="overlay"></div>
-
-    <!-- Header with name -->
-    <h4 class="name">K. Phani Kumar Sharma</h4>
-    <h4 class="name">కె. ఫణి కుమార్ శర్మ</h4>
-    <div class="hr-line">
-      <i class="fas fa-arrow-left line-end-arrow"></i>
-      <div class="line line-left"></div>
-      <span class="om-symbol">ॐ</span>
-      <div class="line line-right"></div>
-      <i class="fas fa-arrow-right line-end-arrow"></i>
-    </div>
-    <!-- Circular image -->
-    <img src="myprofile.jpg" alt="K. Phani Kumar Sharma" class="circular-image" onclick="showStatusViewer()">
-    </br> </br> </br>
-</div>
+   
     <!-- Om Symbol Line Animation -->
-    <div class="hr-line">
-      <i class="fas fa-arrow-left line-end-arrow"></i>
-      <div class="line line-left"></div>
-      <span class="om-symbol">ॐ</span>
-      <div class="line line-right"></div>
-      <i class="fas fa-arrow-right line-end-arrow"></i>
-    </div>
+
   <!-- Additional Content Section (appears over the video) -->
   <div style = "justify-content:center;display:flex;background-color:peachpuff;">
  
@@ -504,8 +1223,6 @@ h2 {
                     <p>విద్య:</p>
                     <p>వర్గం:</p>
                     <p>ఉపవర్గం:</p>
-                    <p>గోత్రం:</p>
-                    <p>శాఖ:</p>
                     <p>వేదం:</p>
                     <p>విద్యాభ్యాసం:</p></br>
                     <p>వృత్తి:</p>
@@ -515,237 +1232,18 @@ h2 {
                     <p>స్మార్తం</p>
                     <p>హిందూ</p>
                     <p>బ్రాహ్మణులు</p>
-                    <p>గౌతమస</p>
-                    <p>వెల్లాట్లు</p>
                     <p>కృష్ణ యజుర్వేదం</p>
                     <p>శ్రీ కంచి కామకోటి స్మార్త పాఠశాల</p>
                     <p>స్మార్త విద్యార్థి, స్మార్త పూరోహితుడు</p>
                 </div>
                 
                 </div>
-                <div class="section-heading">ఫోటోలు</div>
-                <div class="photos">
-                    <img src="myprofile.jpg" alt="Photo 1">
-                    <img src="https://i.ibb.co/VDc7drw/Chakra-admin.png" alt="Photo 2">
-                     </div>
-            </div>
+               
         </div>
     </body>
     
     
 
   </div>
-
-  <!-- WhatsApp-style Status Viewer -->
-  <div id="statusViewer" class="status-viewer">
-    <i class="fas fa-times close-btn" onclick="closeStatusViewer()"></i>
-    <i class="fas fa-chevron-left arrow-btn arrow-left" onclick="previousImage()"></i>
-    <img id="statusImage" src="https://i.ibb.co/VDc7drw/Chakra-admin.png" alt="Status Image">
-    <i class="fas fa-chevron-right arrow-btn arrow-right" onclick="nextImage()"></i>
-  </div>
-
-
-
-
-</br></br>
-</div>
-<div class="hr-line">
-  <i class="fas fa-arrow-left line-end-arrow"></i>
-  <div class="line line-left"></div>
-  <span class="om-symbol">ॐ</span>
-  <div class="line line-right"></div>
-  <i class="fas fa-arrow-right line-end-arrow"></i>
-</div>
-
-<div class="i-can-do" style = "background-color:peachpuff;">
-  <h1 id="animated-heading">What I Can Do Is?</h1>
-  <div id="image-gallery" class="container">
-      <div class="row">
-          <!-- First three images will be visible initially -->
-          <div class="col-md-4 image-container unique-image-container">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/X3KHqHq/annaprasanaa.jpg" alt="Annaprasana" class="img-fluid lazy" data-src="https://i.ibb.co/X3KHqHq/annaprasanaa.jpg">
-              </div>
-                </div>
-          <div class="col-md-4 image-container unique-image-container">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/XzGKLhd/gruhapravesam.jpg" alt="Gruhapravesam" class="img-fluid lazy" data-src="https://i.ibb.co/XzGKLhd/gruhapravesam.jpg">
-              </div>
-                </div>
-          <div class="col-md-4 image-container unique-image-container">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/99xWSr6/ganesh-mandapam.jpg" alt="Ganesh Mandapam" class="img-fluid lazy" data-src="https://i.ibb.co/99xWSr6/ganesh-mandapam.jpg">
-              </div>
-               </div>
-
-          <!-- Hidden extra images -->
-          <div class="col-md-4 image-container unique-image-container extra-image d-none">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/f9FMwMY/diva-kalyanam.jpg" alt="Diva Kalyanam" class="img-fluid lazy" data-src="https://i.ibb.co/f9FMwMY/diva-kalyanam.jpg">
-              </div>
-               </div>
-          <div class="col-md-4 image-container unique-image-container extra-image d-none">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/nD9C4Sy/barasala.jpg" alt="Barasala" class="img-fluid lazy" data-src="https://i.ibb.co/nD9C4Sy/barasala.jpg">
-              </div>
-               </div>
-          <div class="col-md-4 image-container unique-image-container extra-image d-none">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/bQzqvtL/rudram.jpg" alt="Rudram" class="img-fluid lazy" data-src="https://i.ibb.co/bQzqvtL/rudram.jpg">
-              </div>
-              </div>
-          <div class="col-md-4 image-container unique-image-container extra-image d-none">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/C2DfS2K/vratam1.jpg" alt="Vratam" class="img-fluid lazy" data-src="https://i.ibb.co/C2DfS2K/vratam1.jpg">
-              </div>
-                 </div>
-          <div class="col-md-4 image-container unique-image-container extra-image d-none">
-              <div class="image-wrapper">
-                  <img src="https://i.ibb.co/C85Wc2x/varalakshmi-vratam.jpg" alt="Varalakshmi Vratam" class="img-fluid lazy" data-src="https://i.ibb.co/C85Wc2x/varalakshmi-vratam.jpg">
-              </div>
-                 </div>
-      </div>
-      <div class="col-md-4 image-container unique-image-container extra-image d-none">
-        <div class="image-wrapper">
-            <img src="https://i.ibb.co/7NSBWXc/pooja.jpg" alt="nitya pooja" class="img-fluid lazy" data-src="https://i.ibb.co/7NSBWXc/pooja.jpg">
-        </div>
-           </div>
-</div>
-      <!-- Down arrow button -->
-      <div class="text-center my-4">
-          <i id="show-more" class="fas fa-arrow-down fa-2x"></i>
-      </div>
-      <h2 class="text-center">And many more. For contacting <a href = "index.html">Go to my main page contact section</a></h2>
-      <!-- Three large horizontal dots -->
-      <div class="text-center my-4">
-          <span class="dot">•</span>
-          <span class="dot">•</span>
-          <span class="dot">•</span>
-      </div>
-  </div>
-</div>
-
-
-
-<script>$(document).ready(function() {
-  // Display first three images initially
-  $(".image-container").slice(0, 3).removeClass("d-none").hide().slideDown(600);
-
-  // Show more functionality with down arrow
-  $("#show-more").click(function() {
-    $(".extra-image").removeClass("d-none").hide().slideDown(600);
-    $(this).fadeOut(); // Fade out the down arrow after clicked
-  });
-
-  // Trigger animations when the section enters the viewport
-  $(window).on("scroll", function() {
-    if ($("#image-gallery").isInViewport()) {
-      $(".image-container").each(function(i) {
-        $(this).delay(i * 150).slideDown(600);
-      });
-    }
-    
-    // Lazy load images
-    $("img.lazy").each(function() {
-      if ($(this).isInViewport()) {
-        $(this).attr("src", $(this).data("src")).removeClass("lazy");
-      }
-    });
-  });
-});
-
-// jQuery plugin to check if an element is in the viewport
-$.fn.isInViewport = function() {
-  var elementTop = $(this).offset().top;
-  var elementBottom = elementTop + $(this).outerHeight();
-  var viewportTop = $(window).scrollTop();
-  var viewportBottom = viewportTop + $(window).height();
-  return elementBottom > viewportTop && elementTop < viewportBottom;
-};
-
-// Error handling for images
-$("img").on("error", function() {
-  $(this).attr("src", "path/to/placeholder-image.jpg"); // Set a placeholder image
-});
-
-</script>
-<div class="hr-line">
-  <i class="fas fa-arrow-left line-end-arrow"></i>
-  <div class="line line-left"></div>
-  <span class="om-symbol">ॐ</span>
-  <div class="line line-right"></div>
-  <i class="fas fa-arrow-right line-end-arrow"></i>
-</div>
-<div class = "i-am-from"  style = "background-color:peachpuff;">
-  <h1 id="animated-heading">I studied at </h1>
-  <div class="container">
-    <div class="custom-container">
-        <img src="https://i.ibb.co/VC88RvG/school.jpg" alt="School" class="custom-image img-fluid">
-        <div class="custom-text">
-          <h3 class="custom-heading">Sri Kanchi Kamakoti Smarta Patashala</h3>
-          <p class="custom-description">
-              Located in Samalkot, Kakinada, this traditional school provided me with an enriching education from 8th to 10th grade. Here, I was taught both Smartha Vidya (traditional Hindu knowledge) and general education in English medium.
-          </p>
-         <hr><hr><hr>
-          <h3 class="custom-heading"> శ్రీ కంచి కామకోటి స్మార్త పాఠశాల </h3>
-          <p class="custom-description-telugu">
-              
-              ఈ పాఠశాల సమలకోట, కాకినాడలో ఉంది. 8వ తరగతి నుండి 10వ తరగతి వరకు నా విద్యను ఇక్కడ పూర్తి చేసుకున్నాను. స్మార్త విద్యతో పాటు, ఇంగ్లీష్ మాధ్యమంలో సాధారణ విద్య కూడా మా పాఠశాలలో నేర్పించబడింది.
-          </p>
-           </div>
-    </div>
-  </br>
-</div>
-
-</div>
-  <!-- jQuery and Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const images = ['status1.jpg', 'status2.jpg', 'status3.jpg'];
-    let currentImageIndex = 0;
-
-    function showStatusViewer() {
-      document.getElementById('statusViewer').style.display = 'flex';
-      updateStatusImage();
-    }
-
-    function closeStatusViewer() {
-      document.getElementById('statusViewer').style.display = 'none';
-    }
-
-    function previousImage() {
-      currentImageIndex = (currentImageIndex === 0) ? images.length - 1 : currentImageIndex - 1;
-      updateStatusImage();
-    }
-
-    function nextImage() {
-      currentImageIndex = (currentImageIndex === images.length - 1) ? 0 : currentImageIndex + 1;
-      updateStatusImage();
-    }
-
-    function updateStatusImage() {
-      document.getElementById('statusImage').src = images[currentImageIndex];
-    }
-  </script>
-  
-<!-- Three large horizontal dots -->
-<div class="text-center my-4">
-    <span class="dot">•</span>
-    <span class="dot">•</span>
-    <span class="dot">•</span>
-</div>
-</div>
-</div>
-<div class="hr-line">
-  <i class="fas fa-arrow-left line-end-arrow"></i>
-  <div class="line line-left"></div>
-  <span class="om-symbol">ॐ</span>
-  <div class="line line-right"></div>
-  <i class="fas fa-arrow-right line-end-arrow"></i>
-</div>
-<h1 id="animated-heading">Thank you </h1>
-<h1 id="animated-heading">ధన్యవాదాలు</h1>
 </body>
-
 </html>
