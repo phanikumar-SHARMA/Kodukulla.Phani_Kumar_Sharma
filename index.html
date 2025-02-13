@@ -20,8 +20,15 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/@coreui/icons@2.0.0-beta.3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Product+Sans:wght@400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-k6RqeWeci5ZR/Lv4MR0sA0FfDOMk5PgpZAGtZIO8cfi2u0xqF1TJQITtP+zZveBqnULYUN2r4cFpsZx5e6hPuQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <style>
+    body{
+        font-family: 'Product Sans', sans-serif !important;
+    }
         .decorative-hr-container {
             display: flex;
             align-items: center;
@@ -973,7 +980,6 @@
 
 /* Updated brand styling */
 .custom-navbar-brand {
-    font-family: monospace;
     color: #d4af7f !important;
     font-size: 1.25rem; /* Increased font size */
     font-weight: italic;
@@ -981,12 +987,12 @@
     left:0;
     transition: opacity 0.3s, transform 0.3s;
     background-color: black; /* Ensuring black background */
-    padding: 5px 10px; /* Slight padding for better visibility */
+    padding: 15px 10px; /* Slight padding for better visibility */
     width:100%;
      text-decoration: none;
 }
 .custom-navbar-brand:hover{
-    font-family: monospace;
+    
     color: #d4af7f !important;
     font-size: 1.25rem; /* Increased font size */
     font-weight: italic;
@@ -994,7 +1000,7 @@
     left:0;
     transition: opacity 0.3s, transform 0.3s;
     background-color: black; /* Ensuring black background */
-    padding: 5px 10px; /* Slight padding for better visibility */
+     padding: 15px 10px; /* Slight padding for better visibility */
     width:100%;
      text-decoration: none;
 }
@@ -1167,8 +1173,8 @@
     </script>
 <style>
        .body {
-      height: 120vh;
-      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      font-family: 'Product Sans', sans-serif;
       background:black; /* fallback color */
       background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40"%3E%3Cpolygon points="20,0 40,20 20,40 0,20" fill="rgba(255, 255, 255, 0.1)" /%3E%3C/svg%3E');
       background-size: 80px 80px; /* default size for desktop */
@@ -1201,6 +1207,7 @@
       border-radius: 50%;
       overflow: hidden;
       border: 8px solid #fff;
+      padding:10px;
       box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
       transition: transform 0.3s ease;
     }
@@ -1236,26 +1243,6 @@
       margin-right: auto;
     }
 
-    .skills-list {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: rgba(255, 255, 255, 0.8);
-      margin-top: 30px;
-      list-style: none;
-      padding: 0;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .skills-list li {
-      background-color: rgba(255, 255, 255, 0.2);
-      padding: 10px 20px;
-      border-radius: 20px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
 
     .skills-list li:hover {
       transform: scale(1.1);
@@ -1284,9 +1271,6 @@
         font-size: 1.2rem;
       }
 
-      .skills-list {
-        font-size: 1rem;
-      }
 
         .body{
         background-size: 50px 50px; /* smaller diamond size for mobile */
@@ -1309,15 +1293,15 @@
         <img src="IMG_20241116_090815~2.jpg" alt="k.v.k. Phani Kumar Sharma">
       </div>
     </br>
-      <h1>K.Phani Kumar</h1>
-      <p>Hello! I am a Software Developer,Hindu  priest , passionate about coding and creating innovative web solutions. Let's connect!</p>
-      
-      <!-- Custom Skills Buttons -->
-      <ul class="skills-list">
-        <li>Full Stack Web Development</li>
-        <li>Data Science and analysis </li>
-        <li>Hindu Priest</li>
-      </ul>
+   <h1>🚀 K. Phani Kumar Sharma 🔱</h1>  
+<p>  
+    👨‍💻 Full-Stack Developer | 🕉️ Vedic Priest | 🔥 Tech Innovator  
+    Crafting 🔧 sleek web solutions by day, chanting 📿 sacred mantras by soul.  
+    Blending logic 🧠 with spirituality ✨, modern code 💻 with ancient wisdom 📜.  
+    Let’s connect, innovate, and create something legendary! 🚀⚡  
+</p>
+
+
     </div>
   </div>
 
@@ -1331,10 +1315,94 @@
     });
   </script>
     </div>
+    
+
+<style>
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .custom-btn {
+            font-size: 18px;
+            font-weight: bold;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            cursor: pointer;
+            transition: all 0.3s ease-in-out;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+ .custom-btn:hover{
+     text-decoration: none;
+ }
+        .green-btn {
+            background: linear-gradient(45deg, #28a745, #218838);
+        }
+
+        .orange-btn {
+            background: linear-gradient(45deg, #fd7e14, #dc6707);
+        }
+
+        .custom-btn i {
+            font-size: 22px;
+        }
+
+        /* Click Animation */
+        .custom-btn:active {
+            transform: scale(0.9);
+        }
+    </style>
+     <div class="decorative-hr-container">
+        <div class="decorative-hr-line left">
+            <div class="end-circle"></div>
+        </div>
+        <div class="center-circle"></div>
+        <div class="decorative-hr-line right">
+            <div class="end-circle"></div>
+        </div>
+    </div>
+<h2 align = "center">View my other Portfolios</h2>
+    <div class="btn-container">
+        <a href="#" id="greenBtn" class="custom-btn green-btn">
+            <i class="fas fa-code"></i> Developer
+        </a>
+        <a href="#" id="orangeBtn" class="custom-btn orange-btn">
+            <i class="fas fa-praying-hands"></i> Priest
+        </a>
+    </div>
+<div class="decorative-hr-container">
+        <div class="decorative-hr-line left">
+            <div class="end-circle"></div>
+        </div>
+        <div class="center-circle"></div>
+        <div class="decorative-hr-line right">
+            <div class="end-circle"></div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            $("#greenBtn").click(function (e) {
+                e.preventDefault();
+                window.location.href = "#";
+            });
+
+            $("#orangeBtn").click(function (e) {
+                e.preventDefault();
+                window.location.href = "priest.html";
+            });
+        });
+    </script>
     <!-- Directly displaying the Card Section -->
-   <div class="container-fluid mt-5 px-4" id="technical">
-    <h2 class="text-center mb-4" style="font-size: calc(1.5vw + 1em);">Technical Portfolio Section</h2>
-</div>
+   
 <br>
 <style>
     .containerzzz {
@@ -1359,10 +1427,11 @@
         }
 
         .profile-image {
-            width: 100px;
-            height: 100px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            border: 3px solid #00c853;
+            border: 3px solid rgb(97, 33, 6);
+            padding:10px;
         }
 
         .section-container {
@@ -1377,8 +1446,8 @@
         }
 
         .contents {
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 30px;
+            line-height: 1.9;
             color: #333;
         }
 
@@ -1426,7 +1495,7 @@
             }
 
             .contents {
-                font-size: 14px;
+                font-size: 20px;
             }
 
             .skill-item {
@@ -1682,7 +1751,7 @@
 }
 
 .skill-name {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
 }
 .c { background: linear-gradient(135deg, #A8B9CC, #C6D9E3); }
 .cpp { background: linear-gradient(135deg, #00599C, #0072B8); }
@@ -1852,7 +1921,7 @@
             <div class="card skill-box tailwind text-center">
                 <div class="card-body">
                     <i class="fas fa-wind mb-3 skill-icon"></i>
-                    <h5 class="skill-name">Tailwind CSS</h5>
+                    <h5 class="skill-name">Tailwind</h5>
                 </div>
             </div>
         </div>
@@ -3051,6 +3120,150 @@
                 <div class="end-circle"></div>
             </div>
         </div>
+
+
+<style>
+    
+
+    .education-section {
+        width: 100%;
+        justify-content: center;
+        display: flex;
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+        margin-top: 20px;
+    }
+
+    .edu-item-1-school {
+        border: 2px solid #d4af7f; /* Thicker border for emphasis */
+        border-radius: 10px; /* Rounded corners */
+        padding: 20px;
+        text-align: center;
+        background-color: #3b2a2a; /* Darker brown for better contrast */
+        width: 45%; /* Smaller width for better responsiveness */
+        margin: 10px; /* Added margin between items */
+        transition: transform 0.3s, box-shadow 0.3s; /* Animated effects */
+        position: relative; /* Position relative for the icon effect */
+        overflow: hidden;
+    }
+
+    .edu-item-1-school:hover {
+        transform: scale(1.05); /* Scale effect on hover */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Shadow on hover */
+    }
+
+    .headings-education {
+        color: #d4af7f;
+        font-size: 1.5rem; /* Increase font size for emphasis */
+        margin-bottom: 15px; /* Space below heading */
+    }
+
+    .item-1-body {
+        color: #f0e68c; /* Soft color for text */
+        font-size: 1rem; /* Base size for body text */
+    }
+
+    .body-items-bold {
+        font-size: 1.3rem; /* Slightly larger for school/college names */
+        margin-bottom: 8px; /* Space below school/college names */
+        display: block; /* Makes the bold items take up the full width */
+    }
+
+    ul {
+        list-style-type: square; /* Custom bullet style */
+        padding-left: 20px; /* Indent for the list */
+        margin: 10px 0; /* Spacing around the list */
+    }
+
+    ul li {
+        margin-bottom: 5px; /* Space between list items */
+        transition: color 0.3s; /* Smooth color transition */
+    }
+
+    ul li:hover {
+        color: #d4af7f; /* Color change on hover */
+    }
+
+    hr {
+        border: none;
+        height: 2px;
+        background-color: #d4af7f; /* Better colored separator */
+        margin: 15px 0; /* Space around hr */
+    }
+
+    @media (max-width: 768px) {
+        .edu-item-1-school {
+            width: 90%; /* Width on smaller screens */
+        }
+    }
+
+    /* Add more visual effects */
+    .edu-item-1-school::before {
+        content: '';
+        position: absolute;
+        top: -30px;
+        left: -30px;
+        right: -30px;
+        bottom: -30px;
+        border: 2px dashed #d4af7f; /* Dashed border effect */
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .edu-item-1-school:hover::before {
+        opacity: 1; /* Show the dashed border on hover */
+    }
+
+    /* Add icons for items */
+    .item-icon {
+        font-size: 0.8rem; /* Icon size */
+        color: #d4af7f;
+        margin-right: 5px; /* Spacing between icon and text */
+    }
+</style>
+
+<h2 align="center" style="color: #d4af7f; margin-bottom: 30px;">My Education</h2>
+<div class="education-section">
+    <div class="edu-item-1-school">
+        <h5 align="left" class="headings-education">
+            <i class="fas fa-school"></i> &nbsp; School Education
+        </h5>
+        <hr>
+        <div class="item-1-body">
+            <b class="body-items-bold">
+                Sri Kanchi Kamakoti Integrated Veda Patashala (Gurukulam)
+            </b>
+            <div class="element">
+                <ul>
+                    <li><span class="item-icon"><i class="fas fa-book"></i></span>General academic education</li>
+                    <li><span class="item-icon"><i class="fas fa-pen-nib"></i></span>Vedic education (Cultural)</li>
+                </ul>
+            </div>
+            <hr>
+            <b class="body-items-bold">
+                Sri Chaitanya Techno School
+            </b>
+        </div>
+    </div>
+
+    <div class="edu-item-1-school">
+        <h5 align="left" class="headings-education">
+            <i class="fas fa-university"></i> &nbsp; College Education
+        </h5>
+        <hr>
+        <div class="item-1-body">
+            <b class="body-items-bold">
+                Sai Ganapathi Polytechnic College
+            </b>
+            <div class="element">
+                <ul>
+                    <li><span class="item-icon"><i class="fas fa-laptop-code"></i></span>DCME</li>
+                    <li><span class="item-icon"><i class="fas fa-graduation-cap"></i></span>Diploma in Computer Science Engineering</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
         <!--_ACHEDEMIC-SECTION_-->
     <section id = "achadamics">
         <div class="container my-5" id="academic-marks-section">
@@ -3303,12 +3516,99 @@
             <div class="end-circle"></div>
         </div>
     </div>
-    <div class="container text-center mt-5">
-        <a href="priest.html" class="custom-button" role="button">
-            Visit My Priest Portfolio
-            <i class="fas fa-arrow-right"></i>
-        </a>
+  <div class="unique-container text-center mt-5">
+    <div class="unique-card">
+        <div class="unique-card-body">
+            <a href="priest.html" class="unique-button" role="button">
+                <span class="unique-button-text">Visit My Priest Portfolio</span>
+                <div class="unique-button-icon">
+                    <i class="fas fa-arrow-right" id="unique-arrow-icon"></i>
+                </div>
+            </a>
+            <div class="unique-button-hover"></div>
+        </div>
     </div>
+</div>
+<style>
+.unique-container {
+    margin-top: 5rem;
+}
+
+.unique-card {
+    background-color: #f0f8ff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.unique-card-body {
+    padding: 25px;
+    position: relative;
+}
+
+.unique-button {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    color: #2c3e50;
+    font-size: 24px;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.unique-button:hover {
+    color: #1abc9c;
+}
+
+.unique-button-text {
+    line-height: 1.5;
+    transition: transform 0.3s ease;
+}
+
+.unique-button-icon {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.unique-button-hover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(26, 188, 156, 0.2);
+    transform: scale(0);
+    transition: transform 0.4s ease;
+}
+
+.unique-button:hover .unique-button-hover {
+    transform: scale(1);
+}
+
+#unique-arrow-icon {
+    transition: transform 0.3s ease;
+}
+
+.unique-button:hover #unique-arrow-icon {
+    transform: translateX(5px);
+}
+</style>
+<script>
+$(document).ready(function() {
+    $('.unique-button').on('click', function() {
+        $(this).find('.unique-button-hover').addClass('activated');
+    });
+
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('.unique-button').length) {
+            $('.unique-button-hover').removeClass('activated');
+        }
+    });
+});
+</script>
     <!-- Back to Top Button with Font Awesome Icon -->
     <button id="back-to-top" title="Back to Top">
         <i class="fas fa-arrow-up"></i>
