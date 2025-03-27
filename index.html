@@ -1776,6 +1776,56 @@
             transform: translateX(5px);
         }
     </style>
+    <style>
+     .terminal-container {
+            width:80%;
+            background-color: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            font-family:monospace;
+        }
+        .terminal-header {
+            background-color: #444;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        .terminal-buttons {
+            display: flex;
+            gap: 8px;
+        }
+        .terminal-button {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        .close-btn { background-color: #FF5F57; }
+        .minimize-btn { background-color: #FFBD2E; }
+        .expand-btn { background-color: #28CA41; }
+        .terminal-content {
+            color: #0F0;
+            padding: 30px;
+            white-space: pre-wrap;
+            font-size: 16px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .key-color { color: #FF6B6B; }
+        .string-color { color: #4ECDC4; }
+        .bracket-color { color: #FFD93D; }
+        .skill-color { color: #00BFFF; }
+        .link-color { 
+            color: #00FF00;
+            text-decoration: underline;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .link-color:hover {
+            color: #00CC00;
+        }
+    </style>
 
     <!--______________________________________________________Script starts here___________________________________________________________-->
 
@@ -2155,6 +2205,260 @@
             <div class="end-circle"></div>
         </div>
     </div>
+
+<div style = "justify-content:center;display:flex;">
+   <div class="terminal-container">
+        <div class="terminal-header">
+            <div class="terminal-buttons">
+                <div class="terminal-button close-btn"></div>
+                <div class="terminal-button minimize-btn"></div>
+                <div class="terminal-button expand-btn"></div>
+            </div>
+        </div>
+        <div class="terminal-content" id="terminal-text"></div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const terminalContent = document.getElementById('terminal-text');
+            
+            // Comprehensive profile data
+            const profileData = {
+                personal: {
+                    name: "K. Phani Kumar",
+                    professions: ["Software Engineer", "Hindu Priest"],
+                    contact: {
+                        email: "phanikumark715@gmail.com",
+                        portfolio: "https://phanikumar-kodukulla.vercel.app/",
+                        location: "A.P, India"
+                    }
+                },
+                skills: {
+                    technical: {
+                        domains: [
+                            "Full Stack Development",
+                            "Frontend Development",
+                            "Backend Development",
+                            "Data Structures & Algorithms",
+                            "Web scraping",
+                            "Data Analysis -- Beginner"
+                        ],
+                        languages: [
+                            "C",
+    "C++",
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "Python",
+    "Java",
+    "TypeScript",
+
+    // Web Technologies
+    "JQuery",
+    "AJAX",
+    "Angular",
+    "React",
+    "Bootstrap",
+    "Tailwind",
+
+    // Frameworks & Platforms
+    "Node.js",
+    "Django",
+    "Flask",
+    "MS Azure",
+
+    // Version Control
+    "Git", 
+    "GitHub",
+
+    // Data & Databases
+    "XML",
+    "NumPy",
+    "Pandas", 
+    "Matplotlib",
+    "BeautifulSoup",
+    "SQLite",
+    "SQL",
+
+    // Tools
+    "Postman",
+    "MS Office",
+
+    // Mobile Development
+    "Android Dev"
+                        ],
+                       frontend: [
+        // Web Technologies & Languages
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "TypeScript",
+        
+        // Frontend Frameworks
+        "React",
+        "Angular",
+        "JQuery",
+        "Bootstrap",
+        "Tailwind"
+    ],
+    backend: [
+        // Programming Languages
+        "Python",
+        "Java",
+        "C",
+        "C++",
+        
+        // Backend Frameworks
+        "Node.js",
+        "Django",
+        "Flask",
+        "MS Azure"
+    ],
+    databases: [
+        // Database Technologies
+        "SQL",
+        "SQLite",
+        "XML",
+        
+        // Data Libraries
+        "NumPy",
+        "Pandas",
+        "Matplotlib",
+        "BeautifulSoup"
+    ],
+    tools: [
+        // Development Tools
+        "Git",
+        "GitHub",
+        "Postman",
+        "MS Office"
+    ],
+                        tools: [
+                            "Git", 
+                            "Git Hub"
+                        ]
+                    },
+                    softSkills: [
+                        "Problem Solving",
+                        "Team Collaboration",
+                        "Quick Learning",
+                        "Communication"
+                    ]
+                },
+                education: {
+                    degree: "Diploma in Computer Science Engineering",
+                    graduationYear: 2025
+                },
+
+                resume: "Download Resume"
+            };
+
+            // Create formatted terminal text with colorful syntax
+            const formatText = () => {
+                let text = `<span class="bracket-color">{</span>\n`;
+                
+                // Personal Information
+                text += `  <span class="key-color">"personal"</span>: <span class="bracket-color">{</span>\n`;
+                text += `    <span class="key-color">"name"</span>: <span class="string-color">"${profileData.personal.name}"</span>,\n`;
+                text += `    <span class="key-color">"professions"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.personal.professions.forEach((prof, index) => {
+                    text += `      <span class="string-color">"${prof}"</span>${index < profileData.personal.professions.length - 1 ? ',' : ''}\n`;
+                });
+                text += `    <span class="bracket-color">]</span>,\n`;
+                text += `    <span class="key-color">"contact"</span>: <span class="bracket-color">{</span>\n`;
+                text += `      <span class="key-color">"email"</span>: <span class="string-color">"${profileData.personal.contact.email}"</span>,\n`;
+                text += `      <span class="key-color">"phone"</span>: <span class="string-color">"${profileData.personal.contact.phone}"</span>,\n`;
+                text += `      <span class="key-color">"location"</span>: <span class="string-color">"${profileData.personal.contact.location}"</span>\n`;
+                text += `    <span class="bracket-color">}</span>\n`;
+                text += `  <span class="bracket-color">}</span>,\n`;
+
+                // Technical Skills
+                text += `  <span class="key-color">"skills"</span>: <span class="bracket-color">{</span>\n`;
+                text += `    <span class="key-color">"technical"</span>: <span class="bracket-color">{</span>\n`;
+                
+                // Domains
+                text += `      <span class="key-color">"domains"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.skills.technical.domains.forEach((domain, index) => {
+                    text += `        <span class="skill-color">"${domain}"</span>${index < profileData.skills.technical.domains.length - 1 ? ',' : ''}\n`;
+                });
+                text += `      <span class="bracket-color">]</span>,\n`;
+                
+                // Languages
+                text += `      <span class="key-color">"languages"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.skills.technical.languages.forEach((lang, index) => {
+                    text += `        <span class="skill-color">"${lang}"</span>${index < profileData.skills.technical.languages.length - 1 ? ',' : ''}\n`;
+                });
+                text += `      <span class="bracket-color">]</span>,\n`;
+                
+                // Frontend
+                text += `      <span class="key-color">"frontend"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.skills.technical.frontend.forEach((tech, index) => {
+                    text += `        <span class="skill-color">"${tech}"</span>${index < profileData.skills.technical.frontend.length - 1 ? ',' : ''}\n`;
+                });
+                text += `      <span class="bracket-color">]</span>,\n`;
+                
+                // Backend
+                text += `      <span class="key-color">"backend"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.skills.technical.backend.forEach((tech, index) => {
+                    text += `        <span class="skill-color">"${tech}"</span>${index < profileData.skills.technical.backend.length - 1 ? ',' : ''}\n`;
+                });
+                text += `      <span class="bracket-color">]</span>,\n`;
+                
+                // Databases
+                text += `      <span class="key-color">"databases"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.skills.technical.databases.forEach((db, index) => {
+                    text += `        <span class="skill-color">"${db}"</span>${index < profileData.skills.technical.databases.length - 1 ? ',' : ''}\n`;
+                });
+                text += `      <span class="bracket-color">]</span>,\n`;
+                
+                // Tools
+                text += `      <span class="key-color">"tools"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.skills.technical.tools.forEach((tool, index) => {
+                    text += `        <span class="skill-color">"${tool}"</span>${index < profileData.skills.technical.tools.length - 1 ? ',' : ''}\n`;
+                });
+                text += `      <span class="bracket-color">]</span>\n`;
+                
+                text += `    <span class="bracket-color">}</span>,\n`;
+                
+                // Soft Skills
+                text += `    <span class="key-color">"softSkills"</span>: <span class="bracket-color">[</span>\n`;
+                profileData.skills.softSkills.forEach((skill, index) => {
+                    text += `      <span class="skill-color">"${skill}"</span>${index < profileData.skills.softSkills.length - 1 ? ',' : ''}\n`;
+                });
+                text += `    <span class="bracket-color">]</span>\n`;
+                text += `  <span class="bracket-color">}</span>,\n`;
+
+                // Education
+                text += `  <span class="key-color">"education"</span>: <span class="bracket-color">{</span>\n`;
+                text += `    <span class="key-color">"degree"</span>: <span class="string-color">"${profileData.education.degree}"</span>,\n`;
+                text += `    <span class="key-color">"graduationYear"</span>: <span class="skill-color">${profileData.education.graduationYear}</span>\n`;
+                text += `  <span class="bracket-color">}</span>,\n`;
+
+                // Resume Download
+                text += `  <span class="key-color">"resume"</span>: <span class="string-color">"<a href='resume.pdf' id='resume-download' class='link-color'>${profileData.resume}</a>"</span>\n`;
+                
+                text += `<span class="bracket-color">}</span>`;
+                return text;
+            };
+
+            terminalContent.innerHTML = formatText();
+
+            // Add download functionality
+            const resumeLink = document.getElementById('resume-download');
+            resumeLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                const link = document.createElement('a');
+                link.href = 'resume.pdf';
+                link.download = 'K_Phani_Kumar_Resume.pdf';
+                link.click();
+            });
+        });
+    </script>
+
+</div>
 
     <!-- Directly displaying the Card Section -->
 
