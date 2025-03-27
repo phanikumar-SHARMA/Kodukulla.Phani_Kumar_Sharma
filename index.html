@@ -764,7 +764,7 @@
     <style>
         body {
             background-color: white;
-            font-family: Arial, sans-serif;
+            
             overflow-x: hidden;
         }
 
@@ -1811,8 +1811,9 @@
             font-size: 16px;
             max-height: 500px;
             overflow-y: auto;
-        }
-        .key-color { color: #FF6B6B; }
+          font-family: "Courier New", Courier, monospace;
+ }
+        .key-color { color: #FF6B6B;font-weight:bold;}
         .string-color { color: #4ECDC4; }
         .bracket-color { color: #FFD93D; }
         .skill-color { color: #00BFFF; }
@@ -2370,7 +2371,6 @@
                 text += `    <span class="bracket-color">]</span>,\n`;
                 text += `    <span class="key-color">"contact"</span>: <span class="bracket-color">{</span>\n`;
                 text += `      <span class="key-color">"email"</span>: <span class="string-color">"${profileData.personal.contact.email}"</span>,\n`;
-                text += `      <span class="key-color">"phone"</span>: <span class="string-color">"${profileData.personal.contact.phone}"</span>,\n`;
                 text += `      <span class="key-color">"location"</span>: <span class="string-color">"${profileData.personal.contact.location}"</span>\n`;
                 text += `    <span class="bracket-color">}</span>\n`;
                 text += `  <span class="bracket-color">}</span>,\n`;
@@ -2501,9 +2501,7 @@
     <div style="position: relative; z-index: 2;">
       <!-- Header with Icon -->
       <div style="display: flex; align-items: center; margin-bottom: 30px; position: relative;">
-        <div style="background-color: #d4af7f; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(212, 175, 127, 0.3); margin-right: 20px;">
-          <i class="fas fa-lightbulb" style="color: white; font-size: 24px;"></i>
-        </div>
+        
         <h2 style="font-size: 32px; font-weight: 700; color: #2c3e50; margin: 0; letter-spacing: 0.5px;">Professional Skills</h2>
         <div style="flex-grow: 1; height: 2px; background: linear-gradient(90deg, #d4af7f 0%, rgba(212, 175, 127, 0) 100%); margin-left: 20px;"></div>
       </div>
@@ -3099,7 +3097,7 @@
                 <div class="col-md-8 col-lg-7 mb-4">
                     <div style="background-color: white; border-radius: 10px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: transform 0.3s ease, box-shadow 0.3s ease; border-left: 4px solid #d4af7f; padding: 30px;">
                         <div style="display: flex; align-items: center; margin-bottom: 25px;">
-                            <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background-color: #e8d1b5; border-radius: 50%; margin-right: 25px; color: #b89060;">
+                            <div style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center; background-color:none; border-radius: 50%; margin-right: 25px; color: #b89060;">
                                 <i class="fas fa-medal" style="font-size: 36px;"></i>
                             </div>
                             <div>
