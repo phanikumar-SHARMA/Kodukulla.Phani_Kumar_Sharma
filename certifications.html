@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phai's Certifications | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #00ff9d;
+            --secondary-color: #00b8ff;
+            --dark-bg: #1a1a1a;
+            --darker-bg: #121212;
+            --light-text: #f5f5f5;
+            --dark-text: #333;
+            --card-bg: #252525;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--darker-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .certs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .cert-item {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cert-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .cert-image-container {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .cert-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+
+        .cert-ribbon {
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--dark-text);
+            font-weight: bold;
+            padding: 5px 30px;
+            transform: rotate(45deg);
+            z-index: 1;
+            font-size: 0.8rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        .cert-info {
+            padding: 20px;
+        }
+
+        .cert-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--light-text);
+        }
+
+        .stars-container {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .star {
+            color: gold;
+            margin-right: 2px;
+        }
+
+        .view-cert-btn {
+            display: inline-block;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            color: var(--dark-text);
+            padding: 8px 16px;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .view-cert-btn:hover {
+            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .cert-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cert-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 90%;
+            max-width: 900px;
+            max-height: 90vh;
+        }
+
+        .full-cert-image {
+            width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+            border-radius: 5px;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2rem;
+            color: var(--light-text);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: var(--light-text);
+            background: rgba(0, 0, 0, 0.6);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .modal-nav:hover {
+            background: rgba(0, 255, 157, 0.3);
+            color: var(--primary-color);
+        }
+
+        .prev-cert {
+            left: -60px;
+        }
+
+        .next-cert {
+            right: -60px;
+        }
+
+        .modal-title {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            color: var(--light-text);
+            font-size: 1.2rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .certs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+
+            .modal-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+
+            .prev-cert {
+                left: 10px;
+            }
+
+            .next-cert {
+                right: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section id="certification" class="certification-section">
+        <div class="container">
+            <h2 class="section-title"><i class="fas fa-certificate"></i>&nbsp;K.Phani's Certifications</h2>
+
+            <div class="certs-grid">
+                <!-- Certificate 1 -->
+                <div class="cert-item" data-cert-id="1">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">C Programming</div>
+                        <img src="c.png" class="cert-image" alt="C Programming Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">C Programming Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 2 -->
+                <div class="cert-item" data-cert-id="2">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">C++ Programming</div>
+                        <img src="cpp.png" class="cert-image" alt="C++ Programming Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">C++ Programming Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 3 -->
+                <div class="cert-item" data-cert-id="3">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Python Mastery</div>
+                        <img src="python.jpg" class="cert-image" alt="Python Mastery Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Python Mastery Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 4 -->
+                <div class="cert-item" data-cert-id="4">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">SQL Mastery</div>
+                        <img src="sql.jpg" class="cert-image" alt="SQL Mastery Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">SQL Mastery Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 5 -->
+                <div class="cert-item" data-cert-id="5">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">CSS HackerRank</div>
+                        <img src="css.jpg" class="cert-image" alt="CSS HackerRank Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">CSS HackerRank Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 6 -->
+                <div class="cert-item" data-cert-id="6">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">React JS Bootcamp</div>
+                        <img src="react.jpg" class="cert-image" alt="React JS Bootcamp Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">React JS Bootcamp Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 7 -->
+                <div class="cert-item" data-cert-id="7">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">React JS Projects</div>
+                        <img src="reactclone.jpg" class="cert-image" alt="React JS Projects Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">React JS Projects Bootcamp</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 8 -->
+                <div class="cert-item" data-cert-id="8">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Git and GitHub</div>
+                        <img src="git.jpg" class="cert-image" alt="Git and GitHub Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Git and GitHub Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 9 -->
+                <div class="cert-item" data-cert-id="9">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">ChatGPT Bootcamp</div>
+                        <img src="chatgpt.jpg" class="cert-image" alt="ChatGPT Bootcamp Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">ChatGPT Bootcamp Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 10 -->
+                <div class="cert-item" data-cert-id="10">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Web Development</div>
+                        <img src="web.jpg" class="cert-image" alt="Web Development Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Web Development Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 11 -->
+                <div class="cert-item" data-cert-id="11">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Django</div>
+                        <img src="django.png" class="cert-image" alt="Django Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Django Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 12 -->
+                <div class="cert-item" data-cert-id="12">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Web Scraping</div>
+                        <img src="webscrap.jpg" class="cert-image" alt="Web Scraping with Python">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Web Scraping with Python</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 13 -->
+                <div class="cert-item" data-cert-id="13">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Prompting</div>
+                        <img src="prompt.png" class="cert-image" alt="Prompting Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Prompting Certificate</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 14 -->
+                <div class="cert-item" data-cert-id="14">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">New Product Development</div>
+                        <img src="npd.jpg" class="cert-image" alt="New Product Development Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">New Product Development</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 15 -->
+                <div class="cert-item" data-cert-id="15">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Digital Business Skills</div>
+                        <img src="dbs.jpg" class="cert-image" alt="Digital Business Skills Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Digital Business Skills</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 16 -->
+                <div class="cert-item" data-cert-id="16">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">Inventory Management</div>
+                        <img src="im.jpg" class="cert-image" alt="Inventory Management Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">Inventory Management</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+
+                <!-- Certificate 17 -->
+                <div class="cert-item" data-cert-id="17">
+                    <div class="cert-image-container">
+                        <div class="cert-ribbon">C++ and Java Basics</div>
+                        <img src="java.png" class="cert-image" alt="C++ and Java Basics Certificate">
+                    </div>
+                    <div class="cert-info">
+                        <h3 class="cert-title">C++ and Java Basics</h3>
+                        <div class="stars-container">
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                            <span class="star"><i class="fas fa-star"></i></span>
+                        </div>
+                        <button class="view-cert-btn">View Certificate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Certificate Viewing -->
+    <div class="cert-modal" id="certModal">
+        <div class="modal-content">
+            <button class="close-modal" id="closeModal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-nav prev-cert" id="prevCert">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <img src="" class="full-cert-image" id="fullCertImage" alt="Certificate">
+            <div class="modal-nav next-cert" id="nextCert">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            <h3 class="modal-title" id="modalTitle"></h3>
+        </div>
+    </div>
+
+    <script>
+        // Certificate data
+        const certifications = [{
+                id: 1,
+                title: "C Programming Certificate",
+                image: "c.png",
+                ribbon: "C Programming"
+            },
+            {
+                id: 2,
+                title: "C++ Programming Certificate",
+                image: "cpp.png",
+                ribbon: "C++ Programming"
+            },
+            {
+                id: 3,
+                title: "Python Mastery Certificate",
+                image: "python.jpg",
+                ribbon: "Python Mastery"
+            },
+            {
+                id: 4,
+                title: "SQL Mastery Certificate",
+                image: "sql.jpg",
+                ribbon: "SQL Mastery"
+            },
+            {
+                id: 5,
+                title: "CSS HackerRank Certificate",
+                image: "css.jpg",
+                ribbon: "CSS HackerRank"
+            },
+            {
+                id: 6,
+                title: "React JS Bootcamp Certificate",
+                image: "react.jpg",
+                ribbon: "React JS Bootcamp"
+            },
+            {
+                id: 7,
+                title: "React JS Projects Bootcamp",
+                image: "reactclone.jpg",
+                ribbon: "React JS Projects"
+            },
+            {
+                id: 8,
+                title: "Git and GitHub Certificate",
+                image: "git.jpg",
+                ribbon: "Git and GitHub"
+            },
+            {
+                id: 9,
+                title: "ChatGPT Bootcamp Certificate",
+                image: "chatgpt.jpg",
+                ribbon: "ChatGPT Bootcamp"
+            },
+            {
+                id: 10,
+                title: "Web Development Certificate",
+                image: "web.jpg",
+                ribbon: "Web Development"
+            },
+            {
+                id: 11,
+                title: "Django Certificate",
+                image: "django.png",
+                ribbon: "Django"
+            },
+            {
+                id: 12,
+                title: "Web Scraping with Python",
+                image: "webscrap.jpg",
+                ribbon: "Web Scraping"
+            },
+            {
+                id: 13,
+                title: "Prompting Certificate",
+                image: "prompt.png",
+                ribbon: "Prompting"
+            },
+            {
+                id: 14,
+                title: "New Product Development",
+                image: "npd.jpg",
+                ribbon: "New Product Development"
+            },
+            {
+                id: 15,
+                title: "Digital Business Skills",
+                image: "dbs.jpg",
+                ribbon: "Digital Business Skills"
+            },
+            {
+                id: 16,
+                title: "Inventory Management",
+                image: "im.jpg",
+                ribbon: "Inventory Management"
+            },
+            {
+                id: 17,
+                title: "C++ and Java Basics",
+                image: "java.png",
+                ribbon: "C++ and Java Basics"
+            }
+        ];
+        // Get DOM elements
+        const modal = document.getElementById('certModal');
+        const modalImage = document.getElementById('fullCertImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const closeBtn = document.getElementById('closeModal');
+        const prevBtn = document.getElementById('prevCert');
+        const nextBtn = document.getElementById('nextCert');
+        const certItems = document.querySelectorAll('.cert-item');
+        const viewButtons = document.querySelectorAll('.view-cert-btn');
+        // Current certificate index
+        let currentCertIndex = 0;
+        // Function to open modal
+        function openModal(certId) {
+            const certIndex = certifications.findIndex(cert => cert.id === certId);
+            if (certIndex !== -1) {
+                currentCertIndex = certIndex;
+                updateModalContent();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+            }
+        }
+        // Function to close modal
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = ''; // Allow scrolling again
+        }
+        // Function to navigate to previous certificate
+        function prevCert() {
+            currentCertIndex = (currentCertIndex - 1 + certifications.length) % certifications.length;
+            updateModalContent();
+        }
+        // Function to navigate to next certificate
+        function nextCert() {
+            currentCertIndex = (currentCertIndex + 1) % certifications.length;
+            updateModalContent();
+        }
+        // Function to update modal content
+        function updateModalContent() {
+            const cert = certifications[currentCertIndex];
+            modalImage.src = cert.image;
+            modalImage.alt = cert.title;
+            modalTitle.textContent = cert.title;
+        }
+        // Event listeners for all certificates
+        certItems.forEach(item => {
+            const certId = parseInt(item.getAttribute('data-cert-id'));
+            item.addEventListener('click', () => openModal(certId));
+        });
+        // Event listeners for all view buttons
+        viewButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent triggering the cert-item click event
+                const certId = parseInt(button.closest('.cert-item').getAttribute('data-cert-id'));
+                openModal(certId);
+            });
+        });
+        // Event listeners for modal controls
+        closeBtn.addEventListener('click', closeModal);
+        prevBtn.addEventListener('click', prevCert);
+        nextBtn.addEventListener('click', nextCert);
+        // Close modal when clicking outside of modal content
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                } else if (e.key === 'ArrowLeft') {
+                    prevCert();
+                } else if (e.key === 'ArrowRight') {
+                    nextCert();
+                }
+            }
+        });
+        // Initialize with a cool staggered animation
+        window.addEventListener('DOMContentLoaded', () => {
+            certItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+
+</html>
