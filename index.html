@@ -607,57 +607,7 @@
             box-shadow: 0 0 0 4px rgba(0, 255, 157, 0.2);
         }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .skill-item {
-            background-color: var(--card-bg);
-            padding: 30px;
-            border-radius: 10px;
-            text-align: center;
-            transition: var(--transition);
-            transform-style: preserve-3d;
-            transform: perspective(500px) translateZ(0);
-            box-shadow: var(--card-shadow);
-        }
-
-        .skill-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            transition: var(--transition);
-        }
-
-        .skill-item h3 {
-            margin-bottom: 15px;
-        }
-
-        .skill-bar {
-            width: 100%;
-            height: 8px;
-            background-color: rgba(245, 245, 245, 0.1);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .skill-level {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 4px;
-            transition: width 1.5s ease;
-        }
-
+        
         /* Certificates Section */
         .certificates-grid {
             display: grid;
@@ -1168,6 +1118,128 @@
                 min-width: 280px;
             }
         }
+
+         .tech-expertise-section {
+            padding: 60px 0;
+            background-color:black;
+        }
+        
+        .tech-expertise-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            background-color:black;
+        }
+        
+        .tech-expertise-heading {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #00ff9d;
+            position: relative;
+            background-color:black;
+        }
+        
+        .tech-expertise-heading i {
+            margin-right: 10px;
+            color: #00ff9d;
+        }
+        
+        /* Skills Scrolling Animation */
+        .tech-expertise-carousel {
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+            padding: 20px 0;
+        }
+        
+        .tech-expertise-slider {
+            display: flex;
+            width: fit-content;
+            animation: tech-expertise-scroll 30s linear infinite;
+        }
+        
+        .tech-expertise-slider:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes tech-expertise-scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+        
+        .tech-expertise-list {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .tech-expertise-card {
+            min-width: 120px;
+            height: 120px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: black;
+            color:#00ff9d;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            transition: all 0.3s ease;
+            background: black;
+        }
+        i{
+            color:#00ff9d;
+        }
+        
+        .tech-expertise-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .tech-expertise-symbol {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: #3498db;
+            background: black;
+        }
+        
+        .tech-expertise-card h3 {
+            font-size: 16px;
+            font-weight: 500;
+            margin: 0;
+            text-align: center;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .tech-expertise-slider {
+                animation-duration: 20s;
+            }
+            
+            .tech-expertise-card {
+                min-width: 100px;
+                height: 100px;
+            }
+            
+            .tech-expertise-symbol {
+                font-size: 24px;
+            }
+            
+            .tech-expertise-card h3 {
+                font-size: 14px;
+            }
+        }
+        
+        @media (min-width: 1441px) {
+            .tech-expertise-slider {
+                animation-duration: 40s;
+            }
+        }
     </style>
 </head>
 
@@ -1443,183 +1515,378 @@
         <hr class="custom-hr">
     </div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
-        <div class="container">
-            <h2 class="section-title"><i class="fas fa-code"></i> Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-cuttlefish"></i>
+     <!-- Skills Section -->
+    <section id="tech-expertise" class="tech-expertise-section">
+        <div class="tech-expertise-wrapper">
+            <h2 class="tech-expertise-heading"><i class="fas fa-code"></i> Skills</h2>
+            <div class="tech-expertise-carousel">
+                <div class="tech-expertise-slider">
+                    <div class="tech-expertise-list">
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-cuttlefish"></i>
+                            </div>
+                            <h3>C</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>C++</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h3>HTML</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h3>CSS</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <h3>JavaScript</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <h3>JQuery</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h3>AJAX</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <h3>Java</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h3>React</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-git"></i>
+                            </div>
+                            <h3>Git</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h3>GitHub</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-bootstrap"></i>
+                            </div>
+                            <h3>Bootstrap</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <h3>Tailwind</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <h3>MS Office</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <h3>Node.js</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>Django</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-fire-alt"></i>
+                            </div>
+                            <h3>Flask</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <h3>MS Azure</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>XML</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>NumPy</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <h3>Pandas</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Matplotlib</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>BeautifulSoup</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>SQLite</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>SQL</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <h3>Postman</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-android"></i>
+                            </div>
+                            <h3>Android Dev</h3>
+                        </div>
                     </div>
-                    <h3>C</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
+                    <!-- Clone of the skills for infinite scrolling -->
+                    <div class="tech-expertise-list">
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-cuttlefish"></i>
+                            </div>
+                            <h3>C</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>C++</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-html5"></i>
+                            </div>
+                            <h3>HTML</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <h3>CSS</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <h3>JavaScript</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-code-branch"></i>
+                            </div>
+                            <h3>JQuery</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h3>AJAX</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <h3>Python</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-java"></i>
+                            </div>
+                            <h3>Java</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <h3>React</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-git"></i>
+                            </div>
+                            <h3>Git</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-github"></i>
+                            </div>
+                            <h3>GitHub</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-bootstrap"></i>
+                            </div>
+                            <h3>Bootstrap</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <h3>Tailwind</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <h3>MS Office</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <h3>Node.js</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-server"></i>
+                            </div>
+                            <h3>Django</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-fire-alt"></i>
+                            </div>
+                            <h3>Flask</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-microsoft"></i>
+                            </div>
+                            <h3>MS Azure</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <h3>XML</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h3>NumPy</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-table"></i>
+                            </div>
+                            <h3>Pandas</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h3>Matplotlib</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-search"></i>
+                            </div>
+                            <h3>BeautifulSoup</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>SQLite</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <h3>SQL</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fas fa-paper-plane"></i>
+                            </div>
+                            <h3>Postman</h3>
+                        </div>
+                        <div class="tech-expertise-card">
+                            <div class="tech-expertise-symbol">
+                                <i class="fab fa-android"></i>
+                            </div>
+                            <h3>Android Dev</h3>
+                        </div>
                     </div>
-                    <h3>C++</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-html5"></i>
-                    </div>
-                    <h3>HTML</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <h3>CSS</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-js-square"></i>
-                    </div>
-                    <h3>JavaScript</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-code-branch"></i>
-                    </div>
-                    <h3>JQuery</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-exchange-alt"></i>
-                    </div>
-                    <h3>AJAX</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3>Python</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-java"></i>
-                    </div>
-                    <h3>Java</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-react"></i>
-                    </div>
-                    <h3>React</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-git"></i>
-                    </div>
-                    <h3>Git</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3>GitHub</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-bootstrap"></i>
-                    </div>
-                    <h3>Bootstrap</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-wind"></i>
-                    </div>
-                    <h3>Tailwind</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-microsoft"></i>
-                    </div>
-                    <h3>MS Office</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-node-js"></i>
-                    </div>
-                    <h3>Node.js</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-server"></i>
-                    </div>
-                    <h3>Django</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-fire-alt"></i>
-                    </div>
-                    <h3>Flask</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-microsoft"></i>
-                    </div>
-                    <h3>MS Azure</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>XML</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-calculator"></i>
-                    </div>
-                    <h3>NumPy</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-table"></i>
-                    </div>
-                    <h3>Pandas</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-chart-bar"></i>
-                    </div>
-                    <h3>Matplotlib</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-search"></i>
-                    </div>
-                    <h3>BeautifulSoup</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>SQLite</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>SQL</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fas fa-paper-plane"></i>
-                    </div>
-                    <h3>Postman</h3>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon">
-                        <i class="fab fa-android"></i>
-                    </div>
-                    <h3>Android Dev</h3>
                 </div>
             </div>
         </div>
     </section>
 
+    <script>
+        // Adjust animation speed based on screen width
+        function adjustTechExpertiseSpeed() {
+            const screenWidth = window.innerWidth;
+            let duration = 30; // Default speed in seconds
+            
+            if (screenWidth < 768) {
+                duration = 20; // Faster on mobile
+            } else if (screenWidth > 1440) {
+                duration = 40; // Slower on large screens
+            }
+            
+            document.querySelector('.tech-expertise-slider').style.animationDuration = duration + 's';
+        }
+        
+        // Run on load and when window resizes
+        window.addEventListener('load', adjustTechExpertiseSpeed);
+        window.addEventListener('resize', adjustTechExpertiseSpeed);
+    </script>
+<!-- ++++++++++++++++++++++++++++++++++++++++++++END=====================================================-->
     <div class="custom-hr-container">
         <span class="dot"></span>
         <span class="dot"></span>
@@ -1777,7 +2044,7 @@
     </div>
 
     <!-- Desktop Education Section -->
-    <section class="edu-section" id = "education">
+    <section class="edu-section" id = "education" style = "background-color:black;">
         <div class="edu-container">
             <div class="edu-image-wrapper">
                 <img src="open-book.png" alt="Studying Illustration" class="edu-img" style="border-radius:50%;">
