@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K.Phani Kumar Sharma - Hindu Priest (Purohit)</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --neon-blue: #00ffff;
+            --dark-blue: #001a1a;
+            --black: #000000;
+            --white: #ffffff;
+            --neon-glow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: -300px;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-blue) 100%);
+            border-right: 2px solid var(--neon-blue);
+            transition: left 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar .nav-links {
+            padding: 80px 20px 20px;
+        }
+
+        .sidebar .nav-links a {
+            display: block;
+            color: var(--white);
+            text-decoration: none;
+            padding: 15px 20px;
+            margin: 10px 0;
+            border: 1px solid transparent;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar .nav-links a:hover {
+            border-color: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+            transform: translateX(10px);
+        }
+
+        /* Menu Toggle */
+        .menu-toggle {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001;
+            background: var(--black);
+            border: 2px solid var(--neon-blue);
+            color: var(--white);
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .menu-toggle:hover {
+            background: var(--neon-blue);
+            color: var(--black);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, var(--dark-blue) 0%, var(--black) 100%);
+        }
+
+        .hero-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 3px solid var(--neon-blue);
+            box-shadow: var(--neon-glow);
+            object-fit: cover;
+            margin-bottom: 30px;
+        }
+
+        .hero-name-telugu {
+            font-family: 'Dancing Script', cursive;
+            font-size: 3rem;
+            font-weight: 600;
+            color: var(--neon-blue);
+            margin-bottom: 30px;
+        }
+
+        .hero-name-english {
+            font-size: 1.5rem;
+            color: var(--white);
+            margin-bottom: 40px;
+        }
+
+        .scroll-arrow {
+            font-size: 2rem;
+            color: var(--neon-blue);
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--neon-blue);
+            margin-bottom: 50px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        /* Custom HR with Om Symbol */
+        .custom-hr {
+            position: relative;
+            border: none;
+            height: 2px;
+            background: var(--neon-blue);
+            margin: 60px 0;
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .custom-hr::after {
+            content: "ॐ";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--black);
+            color: var(--neon-blue);
+            font-size: 2rem;
+            padding: 10px 20px;
+            border: 2px solid var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* Cards */
+        .service-card {
+            background: var(--dark-blue);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 255, 255, 0.3);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+        }
+
+        /* Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            border: 2px solid var(--neon-blue);
+            cursor: pointer;
+            height: 250px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Modal */
+        .modal-backdrop {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            overflow:scroll;
+        }
+
+        .modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .modal-content img {
+            width: auto;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--neon-blue);
+            color: var(--black);
+            border: none;
+            padding: 15px 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .modal-nav.prev { left: -60px; }
+        .modal-nav.next { right: -60px; }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            background: var(--neon-blue);
+            color: var(--black);
+            border: none;
+            padding: 10px 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        /* Education Timeline */
+        .timeline {
+            position: relative;
+            margin: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: var(--neon-blue);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 50px 0;
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            left: 55%;
+            text-align: left;
+        }
+
+        .timeline-content {
+            background: var(--dark-blue);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 30px;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 20px;
+            height: 20px;
+            background: var(--neon-blue);
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -35px;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -35px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: var(--dark-blue);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+
+        .form-control {
+            background: var(--neon-blue);
+            border: 1px solid var(--white);
+            color: varblack;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+
+        .form-control:focus {
+            background: black;
+            border-color:var(--neon-blue);
+            color: var(--white);
+            box-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .btn-custom {
+            background: var(--black);
+            color: var(--neon-blue);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width:100%;
+        }
+
+        .btn-custom:hover {
+            background: var(--white);
+            color: var(--black);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: var(--dark-blue);
+            border: 1px solid var(--neon-blue);
+            border-radius: 10px;
+            padding: 40px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: var(--neon-blue);
+            margin-right: 20px;
+            width: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-name-telugu {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                width: calc(100% - 40px);
+                left: 40px !important;
+                text-align: left !important;
+            }
+
+            .timeline-item .timeline-content::before {
+                left: -35px !important;
+            }
+
+            .modal-nav {
+                position: static;
+                margin: 10px;
+                transform: none;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        /* Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        header{
+            padding:10px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <!-- Menu Toggle Button -->
+    <button class="menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
+</br>
+    <h2 align = "center"  style = "color:var(--neon-blue);">K.Phani Kumar Sharma</h2>
+</header>
+    <!-- Sidebar -->
+    <nav class="sidebar" id="sidebar">
+        <div class="nav-links">
+            <a href="#home" onclick="closeSidebar()"><i class="fas fa-home"></i> Home</a>
+            <a href="#about" onclick="closeSidebar()"><i class="fas fa-user"></i> About Me</a>
+            <a href="#services" onclick="closeSidebar()"><i class="fas fa-hands-praying"></i> Services</a>
+            <a href="#gallery" onclick="closeSidebar()"><i class="fas fa-images"></i> Gallery</a>
+            <a href="#education" onclick="closeSidebar()"><i class="fas fa-graduation-cap"></i> Education</a>
+            <a href="#experience" onclick="closeSidebar()"><i class="fas fa-medal"></i> Experience</a>
+            <a href="#contact" onclick="closeSidebar()"><i class="fas fa-envelope"></i> Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <img src="my-profile.jpg" alt="K.Phani Kumar Sharma" class="hero-image">
+        <h1 class="hero-name-telugu">కె.ఫణి కుమార్ శర్మ</h1>
+        <p class="hero-name-english">K.Phani Kumar Sharma - Hindu Priest (Purohit)</p>
+        <i class="fas fa-chevron-down scroll-arrow" onclick="scrollToSection('about')"></i>
+    </section>
+
+    <hr class="custom-hr">
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="service-card">
+                        <i class="fas fa-om"></i>
+                        <h3>Experienced Hindu Priest (Purohit)</h3>
+                        <p>Namaste! I am K.Phani Kumar Sharma, a dedicated Hindu Priest with extensive experience in conducting various religious ceremonies and cultural activities. I have completed my traditional Vedic education and have been serving the community with devotion and authenticity.</p>
+                        <p>My journey in spiritual service began with rigorous training in Vedic scriptures, Sanskrit prayers, and ritual procedures. I believe in preserving our ancient traditions while making them accessible to modern families.</p>
+                        <p>With years of experience, I ensure that every ceremony is conducted with proper rituals, maintaining the sanctity and spiritual significance of our Hindu traditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="custom-hr">
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Events I Can Conduct</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h4>Ganapathi Pooja</h4>
+                    <p>Traditional Ganesh worship ceremonies for removing obstacles and ensuring success in new ventures.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Gruha Pravesam</h4>
+                    <p>House warming ceremonies to bless new homes with prosperity and positive energy.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Vivaaham</h4>
+                    <p>Complete wedding ceremonies conducted according to traditional Vedic rituals and customs.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Baarasaala</h4>
+                    <p>Naming ceremonies for newborns with proper Vedic rituals and blessings.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Annapraasana</h4>
+                    <p>First feeding ceremony for children with traditional prayers and blessings.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Satyannarayana Vratam</h4>
+                    <p>Sacred worship of Lord Vishnu for peace, prosperity and fulfillment of wishes.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Rudraabhishekam</h4>
+                    <p>Sacred ablution ceremony for Lord Shiva with proper mantras and offerings.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Mahaanyasa Poorvaka Rudraabhishekam</h4>
+                    <p>Advanced Shiva worship with Mahaanyasa ritual for spiritual purification.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Sankhustaapana</h4>
+                    <p>Sacred conch installation ceremony for spiritual protection and prosperity.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Vara Lakshmi Vratam</h4>
+                    <p>Special worship of Goddess Lakshmi for wealth, prosperity and family welfare.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Noomulu</h4>
+                    <p>Traditional fasting rituals and ceremonies for spiritual purification.</p>
+                </div>
+                <div class="service-card">
+                    <h4>Many More Services</h4>
+                    <p>Various other Hindu ceremonies, pujas, and spiritual services as per tradition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="custom-hr">
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <div class="container">
+            <h2 class="section-title">Cultural Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item" onclick="openModal(0)">
+                    <img src="img-1.jpg" alt="Ganapathi Pooja">
+                </div>
+                <div class="gallery-item" onclick="openModal(1)">
+                    <img src="img-2.jpg" alt="Wedding Ceremony">
+                </div>
+                <div class="gallery-item" onclick="openModal(2)">
+                    <img src="img-3.jpg" alt="Gruha Pravesam">
+                </div>
+                <div class="gallery-item" onclick="openModal(3)">
+                    <img src="img-4.jpg" alt="Rudraabhishekam">
+                </div>
+                <div class="gallery-item" onclick="openModal(4)">
+                    <img src="img-5.jpg" alt="Satyannarayana Vratam">
+                </div>
+                <div class="gallery-item" onclick="openModal(5)">
+                    <img src="img-6.jpg" alt="Vara Lakshmi Vratam">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal for Gallery -->
+    <div class="modal-backdrop" id="galleryModal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <button class="modal-nav prev" onclick="prevImage()">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <img id="modalImage" src="" alt="Gallery Image">
+            <button class="modal-nav next" onclick="nextImage()">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <hr class="custom-hr">
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">My Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Smartam Education</h4>
+                        <h5>Sri Kanchi Kamakoti Integrated Veda Paatashala</h5>
+                        <p>Completed comprehensive Vedic education under the guidance of Sri Kanchi Kamakoti Devasthanam.</p>
+                    </div>
+                </div>
+                 <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h4>Purohitam</h4>
+                        <h5>Experienced in conducting cultural activities.</h5>
+                        <p>Have 5+ years of experience. </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="custom-hr">
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <h2 class="section-title">Experience & Expertise</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <i class="fas fa-calendar-check"></i>
+                        <h4>Years of Service</h4>
+                        <p>Extensive experience in conducting various Hindu ceremonies and rituals with authenticity and devotion.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <i class="fas fa-users"></i>
+                        <h4>Community Service</h4>
+                        <p>Served numerous families in their spiritual journey, maintaining traditional values and customs.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <i class="fas fa-book-open"></i>
+                        <h4>Scriptural Knowledge</h4>
+                        <p>Deep understanding of Vedic scriptures, mantras, and their proper application in ceremonies.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="service-card">
+                        <i class="fas fa-hands-helping"></i>
+                        <h4>Personalized Service</h4>
+                        <p>Customized ceremonies according to family traditions and specific requirements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <hr class="custom-hr">
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Contact Me</h2>
+            <div class="row">
+                <div class="col-lg-6">
+                     <div class="contact-form">
+        <h4>Send a Message</h4>
+        
+        <!-- Email Configuration Section -->
+        <div class="email-config">
+            <label for="recipientEmail" style = "display:none;">Your Email Address (where messages will be sent):</label>
+            <input type="email" id="recipientEmail" placeholder="Enter your email address" value="phanikumark715@gmail.com" style = "display:none;">
+        </div>
+        
+        <form id="contactForm">
+            <input type="text" id="userName" class="form-control" placeholder="Your Name" required>
+            <input type="email" id="userEmail" class="form-control" placeholder="Your Email" required>
+            <input type="tel" id="userPhone" class="form-control" placeholder="Your Phone Number" required>
+            <select id="serviceSelect" class="form-control" required>
+                <option value="">Select Service</option>
+                <option value="Ganapathi Pooja">Ganapathi Pooja</option>
+                <option value="Gruha Pravesam">Gruha Pravesam</option>
+                <option value="Vivaaham">Vivaaham</option>
+                <option value="Baarasaala">Baarasaala</option>
+                <option value="Annapraasana">Annapraasana</option>
+                <option value="Satyannarayana Vratam">Satyannarayana Vratam</option>
+                <option value="Rudraabhishekam">Rudraabhishekam</option>
+                <option value="Other">Other</option>
+            </select>
+            <textarea id="userMessage" class="form-control" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" class="btn btn-custom">Send Message</button>
+        </form>
+    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="contact-info">
+                        <h4>Get in Touch</h4>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h6>Phone</h6>
+                                <p>+91 9014353991</p>
+                            </div>
+                            
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h6>Email</h6>
+                                <p>phanikumark715@gmail.com</p>
+                            </div>
+                             
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h6>Location</h6>
+                                <p>Andhra Pradesh, India</p>
+                            </div>
+                             
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h6>Availability</h6>
+                                <p>Available for ceremonies as per Hindu calendar and auspicious timings</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+ <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevent default form submission
+            
+            // Get form values
+            const name = document.getElementById('userName').value;
+            const email = document.getElementById('userEmail').value;
+            const phone = document.getElementById('userPhone').value;
+            const service = document.getElementById('serviceSelect').value;
+            const message = document.getElementById('userMessage').value;
+            const recipientEmail = document.getElementById('recipientEmail').value;
+            
+            // Validate that all fields are filled
+            if (!name || !email || !phone || !service || !message || !recipientEmail) {
+                alert('Please fill in all fields including your email address at the top.');
+                return;
+            }
+            
+            // Create subject with service and phone number
+            const subject = `${service} - ${phone}`;
+            
+            // Create email body with all the information
+            const emailBody = `Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Service: ${service}
+
+Message:
+${message}
+
+---
+This message was sent from the contact form.`;
+            
+            // Encode the subject and body for URL
+            const encodedSubject = encodeURIComponent(subject);
+            const encodedBody = encodeURIComponent(emailBody);
+            const encodedRecipient = encodeURIComponent(recipientEmail);
+            
+            // Create Gmail compose URL
+            const gmailURL = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodedRecipient}&su=${encodedSubject}&body=${encodedBody}`;
+            
+            // Open Gmail in a new tab
+            window.open(gmailURL, '_blank');
+            
+            // Optional: Show confirmation message
+            alert('Opening Gmail with your message pre-filled!');
+            
+            // Optional: Reset form after sending
+            // document.getElementById('contactForm').reset();
+        });
+        
+    </script>
+    <script>
+        // Sidebar functionality
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        function closeSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.remove('active');
+        }
+
+        // Close sidebar when clicking outside
+        document.addEventListener('click', function(e) {
+            const sidebar = document.getElementById('sidebar');
+            const menuToggle = document.querySelector('.menu-toggle');
+            
+            if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+                closeSidebar();
+            }
+        });
+
+        // Smooth scrolling
+        function scrollToSection(sectionId) {
+            document.getElementById(sectionId).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // Gallery Modal
+        const galleryImages = [
+            'img-1.jpg','img-2.jpg','img-3.jpg','img-4.jpg','img-5.jpg','img-6.jpg'
+        ];
+
+        let currentImageIndex = 0;
+
+        function openModal(index) {
+            currentImageIndex = index;
+            const modal = document.getElementById('galleryModal');
+            const modalImage = document.getElementById('modalImage');
+            
+            modalImage.src = galleryImages[currentImageIndex];
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        function nextImage() {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+        }
+
+        function prevImage() {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            document.getElementById('modalImage').src = galleryImages[currentImageIndex];
+        }
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeModal();
+            } else if (e.key === 'ArrowRight') {
+                nextImage();
+            } else if (e.key === 'ArrowLeft') {
+                prevImage();
+            }
+        });
+
+        // Close modal when clicking outside image
+        document.getElementById('galleryModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! I will contact you soon regarding your ceremony requirements.');
+            this.reset();
+        });
+
+        // Smooth scroll for arrow
+        document.querySelector('.scroll-arrow').addEventListener('click', function() {
+            document.getElementById('about').scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Add scroll animations
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.service-card, .timeline-item');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Initialize scroll animations
+        window.addEventListener('scroll', animateOnScroll);
+        
+        // Set initial state for animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.service-card, .timeline-item');
+            elements.forEach(element => {
+                element.style.opacity = '0';
+                element.style.transform = 'translateY(50px)';
+                element.style.transition = 'all 0.6s ease';
+            });
+            
+            // Trigger initial animation check
+            animateOnScroll();
+        });
+
+        // Add loading effect
+        window.addEventListener('load', function() {
+            document.body.style.opacity = '1';
+        });
+
+        // Navbar active link highlighting
+        window.addEventListener('scroll', function() {
+            const sections = ['home', 'about', 'services', 'gallery', 'education', 'experience', 'contact'];
+            const navLinks = document.querySelectorAll('.sidebar a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                const elementTop = element.offsetTop;
+                const elementHeight = element.offsetHeight;
+                
+                if (window.scrollY >= elementTop - 200 && window.scrollY < elementTop + elementHeight - 200) {
+                    current = section;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+
+    <style>
+        /* Additional styles for animations and effects */
+        body {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar .nav-links a.active {
+            background: var(--neon-blue);
+            color: var(--black);
+            box-shadow: 0 0 20px var(--neon-blue);
+        }
+
+        /* Hover effects for cards */
+        .service-card, .contact-form, .contact-info, .timeline-content {
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover, .contact-form:hover, .contact-info:hover {
+            box-shadow: 0 10px 30px rgba(0, 255, 255, 0.2);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--black);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon-blue);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--white);
+        }
+
+        /* Loading animation for images */
+        .gallery-item img, .hero-image {
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item img:not([src]), .hero-image:not([src]) {
+            opacity: 0;
+        }
+
+        /* Enhanced responsive design */
+        @media (max-width: 576px) {
+            .hero-name-telugu {
+                font-size: 1.8rem;
+            }
+            
+            .hero-name-english {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .service-card {
+                padding: 20px;
+            }
+            
+            .contact-form, .contact-info {
+                padding: 20px;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            .sidebar, .menu-toggle, .modal-backdrop {
+                display: none !important;
+            }
+            
+            body {
+                background: white !important;
+                color: black !important;
+            }
+            
+            .service-card, .contact-form, .contact-info {
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+            }
+        }
+    </style>
+</body>
+</html>
