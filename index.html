@@ -1240,6 +1240,7 @@
                 animation-duration: 40s;
             }
         }
+        
     </style>
 </head>
 
@@ -1275,15 +1276,19 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
             transition: opacity 0.3s ease;
         }
-
+.containerrrrrr {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
         #backToTopBtn:hover {
             opacity: 0.8;
         }
 
         .achievement-section {
             font-family: 'Poppins', sans-serif;
-            padding: 60px 0;
-            background: var(--darker-bg);
+            padding: 20px;
             color: var(--light-text);
         }
 
@@ -1305,49 +1310,251 @@
             }
         }
 
-        .achievement-content {
-            flex: 1;
+        .achievement-section {
+            padding: 80px 20px;
+            min-height:auto;
+            display: flex;
+            align-items: center;
+            position: relative;
         }
 
-        .achievement-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-            margin-bottom: 10px;
+
+
+        .achievement-card {
+            border-radius: 24px;
+            padding: 40px;
+            border: 1px solid var(--border-color);
+            backdrop-filter: blur(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
         }
 
-        .achievement-subtitle {
-            font-size: 1.1rem;
-            font-weight: 500;
-            color: var(--secondary-color);
-            margin-bottom: 15px;
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 24px 24px 0 0;
         }
 
-        .achievement-detail {
-            font-size: 1rem;
-            color: var(--light-text);
-            line-height: 1.6;
+        .achievement-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--hover-shadow);
+            border-color: var(--primary-color);
         }
 
-        .achievement-content i {
-            color: var(--primary-color);
-            margin-right: 8px;
+        .card-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            align-items: center;
         }
 
-        .achievement-image {
-            max-width: 200px;
-            border-radius: 12px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-        }
-
-        .image-wrapper {
+        .image-section {
+            position: relative;
             text-align: center;
         }
 
+        .image-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .achievement-image {
+            width: 340px;
+            height: 340px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 2px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .achievement-image:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-color);
+        }
+
+        .image-badge {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            background: var(--primary-color);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .content-section {
+            text-align: center;
+        }
+
+        .achievement-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--white-text);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .achievement-title i {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+        }
+
+        .achievement-subtitle {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .achievement-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .detail-item {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 20px;
+            border-radius: 12px;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .detail-item:hover {
+            background: rgba(37, 99, 235, 0.15);
+            border-color: var(--primary-color);
+        }
+
+        .detail-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .detail-title {
+            font-weight: 600;
+            color: var(--white-text);
+            margin-bottom: 4px;
+        }
+
+        .detail-text {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+
+        .stats-section {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            color: var(--light-text);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive Design */
         @media (min-width: 768px) {
-            .image-wrapper {
-                order: 2;
-                padding-left: 30px;
+            .card-content {
+                grid-template-columns: 1fr 1.5fr;
+                text-align: left;
+            }
+
+            .content-section {
+                text-align: left;
+            }
+
+            .achievement-title,
+            .achievement-subtitle {
+                justify-content: flex-start;
+            }
+
+            .achievement-details {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .achievement-card {
+                padding: 60px;
+            }
+
+            .section-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .achievement-section {
+                padding: 60px 15px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .achievement-title {
+                font-size: 1.6rem;
+            }
+
+            .achievement-image {
+                width: 240px;
+                height: 170px;
+            }
+
+            .stats-section {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .achievement-details {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Accessibility */
+        .achievement-card:focus-within {
+            outline: 2px solid var(--primary-color);
+            outline-offset: 2px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
             }
         }
     </style>
@@ -1519,7 +1726,7 @@
      <!-- Skills Section -->
     <section id="tech-expertise" class="tech-expertise-section">
         <div class="tech-expertise-wrapper">
-            <h2 class="tech-expertise-heading"><i class="fas fa-code"></i> 25+ Programming Skills</h2>
+            <h2 class="section-title"><i class="fas fa-code"></i>Tech Stack</h2>
             <div class="tech-expertise-carousel">
                 <div class="tech-expertise-slider">
                     <div class="tech-expertise-list">
@@ -1537,36 +1744,6 @@
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
-                                <i class="fab fa-html5"></i>
-                            </div>
-                            <h3>HTML</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fab fa-css3-alt"></i>
-                            </div>
-                            <h3>CSS</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fab fa-js-square"></i>
-                            </div>
-                            <h3>JavaScript</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-code-branch"></i>
-                            </div>
-                            <h3>JQuery</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-exchange-alt"></i>
-                            </div>
-                            <h3>AJAX</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
                                 <i class="fab fa-python"></i>
                             </div>
                             <h3>Python</h3>
@@ -1579,12 +1756,6 @@
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <h3>React</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
                                 <i class="fab fa-git"></i>
                             </div>
                             <h3>Git</h3>
@@ -1594,18 +1765,6 @@
                                 <i class="fab fa-github"></i>
                             </div>
                             <h3>GitHub</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fab fa-bootstrap"></i>
-                            </div>
-                            <h3>Bootstrap</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-wind"></i>
-                            </div>
-                            <h3>Tailwind</h3>
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
@@ -1627,39 +1786,9 @@
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
-                                <i class="fas fa-fire-alt"></i>
-                            </div>
-                            <h3>Flask</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
                                 <i class="fab fa-microsoft"></i>
                             </div>
                             <h3>MS Azure</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3>XML</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <h3>NumPy</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-table"></i>
-                            </div>
-                            <h3>Pandas</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-chart-bar"></i>
-                            </div>
-                            <h3>Matplotlib</h3>
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
@@ -1678,12 +1807,6 @@
                                 <i class="fas fa-database"></i>
                             </div>
                             <h3>SQL</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-paper-plane"></i>
-                            </div>
-                            <h3>Postman</h3>
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
@@ -1708,36 +1831,6 @@
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
-                                <i class="fab fa-html5"></i>
-                            </div>
-                            <h3>HTML</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fab fa-css3-alt"></i>
-                            </div>
-                            <h3>CSS</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fab fa-js-square"></i>
-                            </div>
-                            <h3>JavaScript</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-code-branch"></i>
-                            </div>
-                            <h3>JQuery</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-exchange-alt"></i>
-                            </div>
-                            <h3>AJAX</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
                                 <i class="fab fa-python"></i>
                             </div>
                             <h3>Python</h3>
@@ -1747,12 +1840,6 @@
                                 <i class="fab fa-java"></i>
                             </div>
                             <h3>Java</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fab fa-react"></i>
-                            </div>
-                            <h3>React</h3>
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
@@ -1768,27 +1855,9 @@
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
-                                <i class="fab fa-bootstrap"></i>
-                            </div>
-                            <h3>Bootstrap</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-wind"></i>
-                            </div>
-                            <h3>Tailwind</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
                                 <i class="fab fa-microsoft"></i>
                             </div>
                             <h3>MS Office</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fab fa-node-js"></i>
-                            </div>
-                            <h3>Node.js</h3>
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
@@ -1798,39 +1867,9 @@
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
-                                <i class="fas fa-fire-alt"></i>
-                            </div>
-                            <h3>Flask</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
                                 <i class="fab fa-microsoft"></i>
                             </div>
                             <h3>MS Azure</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-code"></i>
-                            </div>
-                            <h3>XML</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-calculator"></i>
-                            </div>
-                            <h3>NumPy</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-table"></i>
-                            </div>
-                            <h3>Pandas</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
-                                <i class="fas fa-chart-bar"></i>
-                            </div>
-                            <h3>Matplotlib</h3>
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
@@ -1852,12 +1891,6 @@
                         </div>
                         <div class="tech-expertise-card">
                             <div class="tech-expertise-symbol">
-                                <i class="fas fa-paper-plane"></i>
-                            </div>
-                            <h3>Postman</h3>
-                        </div>
-                        <div class="tech-expertise-card">
-                            <div class="tech-expertise-symbol">
                                 <i class="fab fa-android"></i>
                             </div>
                             <h3>Android Dev</h3>
@@ -1866,6 +1899,17 @@
                 </div>
             </div>
         </div>
+        </br>
+        <div style="display: flex; justify-content: center; width: 100%; padding: 50px 0;">
+        <a href="skills.html"
+            style="display: inline-flex; align-items: center; background-color:white; color: #0d0d40; padding: 10px 20px; border-radius: 999px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 16px; font-weight: 500;">
+            <span style="margin-right: 20px;">View All</span>
+            <div
+                style="background-color:var(--primary-color); color:black; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content:center;">
+                <i class="fas fa-arrow-right" style="font-size: 20px;color:black;"></i>
+            </div>
+        </a>
+    </div>
     </section>
 
     <script>
@@ -1897,7 +1941,7 @@
     <!-- Certificates Section -->
     <section id="certificates" class="section dark-bg">
         <div class="container">
-            <h2 class="section-title"><i class="fas fa-certificate"></i> 15+ Certificates</h2>
+            <h2 class="section-title"><i class="fas fa-certificate"></i>Credentials</h2>
             <div class="certificates-grid">
                 <div class="certificate-card">
                     <div class="certificate-front">
@@ -2046,12 +2090,13 @@
 
     <!-- Desktop Education Section -->
     <section class="edu-section" id = "education" style = "background-color:black;">
+     <h2 class="section-title">Education</h2>
         <div class="edu-container">
             <div class="edu-image-wrapper">
                 <img src="open-book.png" alt="Studying Illustration" class="edu-img" style="border-radius:50%;">
             </div>
             <div class="edu-content">
-                <h2 class="edu-title">Education</h2>
+               
 
                 <div class="edu-entry">
                     <div class="edu-icon"><span class="material-icons edu-icon">school</span>
@@ -2176,29 +2221,46 @@
         <hr class="custom-hr">
     </div>
 
-    <h1 align="center" style="color: var(--primary-color);">Achievements</h1>
+    <h2 align="center" class= "section-title"> <i class="fas fa-medal" ></i>
+Achievements</h2>
     </br>
-    <section class="achievement-section" id = "ached">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-10 col-lg-8">
-                    <div class="achievement-card">
-                        <!-- Image -->
+     <section class="achievement-section" id="achievements">
+        <div class="containerrrrrr">
+            
+            <div class="achievement-card">
+                <div class="card-content">
+                    <div class="image-section">
                         <div class="image-wrapper">
-                            <img src="award-1.jpg" alt="Sai Ganapathi College" class="achievement-image">
+                            <img src="award-1.jpg" alt="Sai Ganapathi College Campus" class="achievement-image">
+                            <div class="image-badge" style = "color:black;"> Shield
+                            </div>
                         </div>
-                        <!-- Content -->
-                        <div class="achievement-content">
-                            <h3 class="achievement-title">
-                                <i class="fas fa-school"></i> Sai Ganapathi Polytechnic College
-                            </h3>
-                            <h4 class="achievement-subtitle">
-                                <i class="fas fa-laptop-code"></i> Diploma in Computer Engineering
-                            </h4>
-                            <p class="achievement-detail">
-                                <i class="fas fa-trophy"></i> 2nd Year - Top 2 Rank<br>
-                                <i class="fas fa-award"></i> Outstanding Academic Performance
-                            </p>
+                    </div>
+                    
+                    <div class="content-section">
+                        <h3 class="achievement-title">
+                            <i class="fas fa-university"></i>
+                            Sai Ganapathi Polytechnic College
+                        </h3>
+                        
+                        <h4 class="achievement-subtitle">
+                            <i class="fas fa-laptop-code"></i>
+                            Diploma in Computer Engineering
+                        </h4>
+                        
+                        <div class="achievement-details">
+                            <div class="detail-item">
+                                <i class="fas fa-trophy"></i>
+                                <div class="detail-title">Academic achievement</div>
+                            </div>
+                            
+                            <div class="detail-item">
+                                <i class="fas fa-star"></i>
+                                <div class="detail-title">Percentage</div>
+                                <div class="detail-text">97%</div>
+                            </div>
+                        </div>
+                        
                         </div>
                     </div>
                 </div>
