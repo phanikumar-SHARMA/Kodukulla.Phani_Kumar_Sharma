@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phai's Certifications | Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Professional Certifications | K.Phani Kumar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
     <style>
         :root {
             --primary-color: #00ff9d;
@@ -26,1088 +29,842 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: var(--darker-bg);
             color: var(--light-text);
             line-height: 1.6;
         }
 
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        .main-header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            background-color: var(--dark-bg);
         }
 
-        .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-            font-size: 2.5rem;
+        .main-header h1 {
+            font-size: 3rem;
             font-weight: 700;
             color: var(--primary-color);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-header p {
+            font-size: 1.2rem;
+            color: var(--light-text);
+            opacity: 0.8;
+        }
+
+        .controls-section {
+            background-color: var(--dark-bg);
+            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .search-container {
             position: relative;
+            max-width: 500px;
+            margin: 0 auto 2rem;
         }
 
-        .section-title:after {
-            content: '';
-            position: absolute;
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            border-radius: 2px;
-        }
-
-        .certs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .cert-item {
+        .search-input {
+            width: 100%;
+            padding: 1rem 1rem 1rem 3rem;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
             background-color: var(--card-bg);
-            border-radius: 10px;
+            color: var(--light-text);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 20px rgba(0, 255, 157, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary-color);
+            font-size: 1.2rem;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--primary-color);
+            background: transparent;
+            color: var(--primary-color);
+            border-radius: 30px;
+            font-weight: 500;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            transform: translateY(-2px);
+        }
+
+        .certificates-container {
+            padding: 3rem 0;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 0 1rem;
+        }
+
+        .certificate-card {
+            background-color: var(--card-bg);
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
             transition: var(--transition);
             position: relative;
-            cursor: pointer;
         }
 
-        .cert-item:hover {
+        .certificate-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .cert-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
         }
 
         .cert-image-container {
             position: relative;
             height: 200px;
             overflow: hidden;
+            background: var(--dark-bg);
         }
 
         .cert-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: var(--transition);
         }
 
 
-        .cert-ribbon {
-            position: absolute;
-            top: 20px;
-            right: -35px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            color: var(--dark-text);
+
+        .cert-content {
+            padding: 1.5rem;
+        }
+
+        .org-badge {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .org-logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark-bg);
             font-weight: bold;
-            padding: 5px 30px;
-            transform: rotate(45deg);
-            z-index: 1;
             font-size: 0.8rem;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
-        .cert-info {
-            padding: 20px;
+        .org-name {
+            color: var(--secondary-color);
+            font-weight: 500;
+            font-size: 0.9rem;
         }
 
         .cert-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 10px;
             color: var(--light-text);
+            margin-bottom: 0.8rem;
+            line-height: 1.4;
         }
 
-        .stars-container {
-            display: flex;
-            margin-bottom: 10px;
+        .cert-description {
+            color: rgba(245, 245, 245, 0.8);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
-        .star {
-            color: gold;
-            margin-right: 2px;
-        }
-
-        .view-cert-btn {
-            display: inline-block;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            color: var(--dark-text);
-            padding: 8px 16px;
-            border-radius: 5px;
-            font-weight: 600;
+        .cert-issued {
+            color: var(--secondary-color);
             font-size: 0.9rem;
-            text-decoration: none;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skills-container {
+            margin-bottom: 1.5rem;
+        }
+
+        .skills-label {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .skills-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .view-credentials-btn {
+            width: 100%;
+            padding: 0.8rem;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 10px;
+            font-weight: 500;
             transition: var(--transition);
-            border: none;
             cursor: pointer;
         }
 
-        .view-cert-btn:hover {
-            background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
-            transform: translateY(-2px);
+        .view-credentials-btn:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
         }
 
-        /* Modal */
-        .cert-modal {
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 1000;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .cert-modal.active {
-            display: flex;
-            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
         }
 
         .modal-content {
             position: relative;
-            width: 90%;
-            max-width: 900px;
-            max-height: 90vh;
-        }
-
-        .full-cert-image {
             width: 100%;
-            max-height: 80vh;
-            object-fit: contain;
-            border-radius: 5px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .close-modal {
+        .modal-header {
             position: absolute;
-            top: -40px;
-            right: 0;
-            font-size: 2rem;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             color: var(--light-text);
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
+            font-size: 1.5rem;
+            font-weight: 600;
+            z-index: 10001;
         }
 
-        .close-modal:hover {
-            color: var(--primary-color);
-            transform: scale(1.1);
+        .modal-image {
+            max-width: 90%;
+            max-height: 80%;
+            object-fit: contain;
+            border-radius: 10px;
         }
 
         .modal-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 2rem;
-            color: var(--light-text);
-            background: rgba(0, 0, 0, 0.6);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            background-color: rgba(0, 255, 157, 0.2);
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 1rem;
+            border-radius: 0;
             cursor: pointer;
             transition: var(--transition);
+            font-size: 1.5rem;
         }
 
         .modal-nav:hover {
-            background: rgba(0, 255, 157, 0.3);
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        .modal-prev {
+            left: 30px;
+        }
+
+        .modal-next {
+            right: 30px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: red;
+            padding: 0.8rem;
+            border-radius: 0;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1.5rem;
+        }
+
+        .modal-close:hover {
+            background-color: var(--primary-color);
+            color: var(--dark-bg);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 4rem 0;
+            color: rgba(245, 245, 245, 0.6);
+        }
+
+        .no-results i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
             color: var(--primary-color);
         }
 
-        .prev-cert {
-            left: -60px;
-        }
-
-        .next-cert {
-            right: -60px;
-        }
-
-        .modal-title {
-            position: absolute;
-            bottom: -40px;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            color: var(--light-text);
-            font-size: 1.2rem;
-        }
-
-        /* Responsive Styles */
         @media (max-width: 768px) {
-            .certs-grid {
-                grid-template-columns: 1fr;
+            .main-header h1 {
+                font-size: 2rem;
             }
 
-            .modal-content {
-                width: 95%;
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .modal-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 1.5rem;
+                padding: 0.8rem;
+                font-size: 1.2rem;
             }
 
-            .prev-cert {
-                left: 10px;
+            .modal-prev {
+                left: 15px;
             }
 
-            .next-cert {
-                right: 10px;
+            .modal-next {
+                right: 15px;
             }
         }
     </style>
 </head>
 
 <body>
-    <section id="certification" class="certification-section">
+    <!-- Main Header -->
+    <div class="main-header">
         <div class="container">
-            <h2 class="section-title"><i class="fas fa-certificate"></i>&nbsp;K.Phani's Certifications</h2>
-
-            <div class="certs-grid">
-                <!-- Certificate 1 -->
-                <div class="cert-item" data-cert-id="1">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">C Programming</div>
-                        <img src="c.png" class="cert-image" alt="C Programming Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">C Programming Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 2 -->
-                <div class="cert-item" data-cert-id="2">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">C++ Programming</div>
-                        <img src="cpp.png" class="cert-image" alt="C++ Programming Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">C++ Programming Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 3 -->
-                <div class="cert-item" data-cert-id="3">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Python Mastery</div>
-                        <img src="python.jpg" class="cert-image" alt="Python Mastery Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Python Mastery Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 4 -->
-                <div class="cert-item" data-cert-id="4">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">SQL Mastery</div>
-                        <img src="sql.jpg" class="cert-image" alt="SQL Mastery Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">SQL Mastery Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <div class="cert-item" data-cert-id="18">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">SQL With AI Workshop Certificate</div>
-                        <img src="sqlwithaicert.png" class="cert-image" alt="SQL With AI Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">SQL With AI Workshop Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 5 -->
-                <div class="cert-item" data-cert-id="5">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">CSS HackerRank</div>
-                        <img src="css.jpg" class="cert-image" alt="CSS HackerRank Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">CSS HackerRank Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 6 -->
-                <div class="cert-item" data-cert-id="6">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">React JS Bootcamp</div>
-                        <img src="react.jpg" class="cert-image" alt="React JS Bootcamp Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">React JS Bootcamp Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 7 -->
-                <div class="cert-item" data-cert-id="7">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">React JS Projects</div>
-                        <img src="reactclone.jpg" class="cert-image" alt="React JS Projects Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">React JS Projects Bootcamp</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 8 -->
-                <div class="cert-item" data-cert-id="8">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Git and GitHub</div>
-                        <img src="git.jpg" class="cert-image" alt="Git and GitHub Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Git and GitHub Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 9 -->
-                <div class="cert-item" data-cert-id="9">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">ChatGPT Bootcamp</div>
-                        <img src="chatgpt.jpg" class="cert-image" alt="ChatGPT Bootcamp Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">ChatGPT Bootcamp Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 10 -->
-                <div class="cert-item" data-cert-id="10">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Web Development</div>
-                        <img src="web.jpg" class="cert-image" alt="Web Development Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Web Development Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 11 -->
-                <div class="cert-item" data-cert-id="11">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Django</div>
-                        <img src="django.png" class="cert-image" alt="Django Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Django Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 12 -->
-                <div class="cert-item" data-cert-id="12">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Web Scraping</div>
-                        <img src="webscrap.jpg" class="cert-image" alt="Web Scraping with Python">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Web Scraping with Python</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 13 -->
-                <div class="cert-item" data-cert-id="13">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Prompting</div>
-                        <img src="prompt.png" class="cert-image" alt="Prompting Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Prompting Certificate</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 14 -->
-                <div class="cert-item" data-cert-id="14">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">New Product Development</div>
-                        <img src="npd.jpg" class="cert-image" alt="New Product Development Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">New Product Development</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 15 -->
-                <div class="cert-item" data-cert-id="15">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Digital Business Skills</div>
-                        <img src="dbs.jpg" class="cert-image" alt="Digital Business Skills Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Digital Business Skills</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <!-- Certificate 16 -->
-                <div class="cert-item" data-cert-id="16">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Inventory Management</div>
-                        <img src="im.jpg" class="cert-image" alt="Inventory Management Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Inventory Management</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-
-
-                <div class="cert-item" data-cert-id="19">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">PhonePay data analysis using powerBI</div>
-                        <img src="pbi.png" class="cert-image" alt="Inventory Management Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">PhonePay data analysis using powerBI</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div><div class="cert-item" data-cert-id="20">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">EXCEL using AI Workshop</div>
-                        <img src="excel.png" class="cert-image" alt="Inventory Management Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">EXCEL using AI Workshop</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-                <div class="cert-item" data-cert-id="21">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">Pandas for Mechine Learning</div>
-                        <img src="pandas-cert.jpeg" class="cert-image" alt="Inventory Management Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">Pandas for Mechine Learning</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-
-
-                
-                <!-- Certificate 17 -->
-                <div class="cert-item" data-cert-id="17">
-                    <div class="cert-image-container">
-                        <div class="cert-ribbon">C++ and Java Basics</div>
-                        <img src="java.png" class="cert-image" alt="C++ and Java Basics Certificate">
-                    </div>
-                    <div class="cert-info">
-                        <h3 class="cert-title">C++ and Java Basics</h3>
-                        <div class="stars-container">
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                            <span class="star"><i class="fas fa-star"></i></span>
-                        </div>
-                        <button class="view-cert-btn">View Certificate</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Modal for Certificate Viewing -->
-    <div class="cert-modal" id="certModal">
-        <div class="modal-content">
-            <button class="close-modal" id="closeModal">
-                <i class="fas fa-times"></i>
-            </button>
-            <div class="modal-nav prev-cert" id="prevCert">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            <img src="" class="full-cert-image" id="fullCertImage" alt="Certificate">
-            <div class="modal-nav next-cert" id="nextCert">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <h3 class="modal-title" id="modalTitle"></h3>
+            <h1>Professional Certifications</h1>
+            <p>Showcase of completed courses and professional achievements</p>
         </div>
     </div>
 
+    <!-- Controls Section -->
+    <div class="controls-section">
+        <div class="container">
+            <!-- Search Bar -->
+            <div class="search-container">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" class="search-input" placeholder="Search certificates..." id="searchInput">
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">All Certificates</button>
+                <button class="filter-btn" data-category="web-development">Web Development</button>
+                <button class="filter-btn" data-category="databases">Databases</button>
+                <button class="filter-btn" data-category="machine-learning">Machine Learning</button>
+                <button class="filter-btn" data-category="others">Others</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificates Container -->
+    <div class="certificates-container">
+        <div class="container">
+            <div class="certificates-grid" id="certificatesGrid">
+                <!-- Certificates will be populated by JavaScript -->
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fas fa-search"></i>
+                <h3>No certificates found</h3>
+                <p>Try adjusting your search or filter criteria</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Full Screen View -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal-content">
+            <div class="modal-header" id="modalTitle">Certificate Title</div>
+            <img src="" alt="Certificate" class="modal-image" id="modalImage">
+            <button class="modal-nav modal-prev" id="modalPrev">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="modal-nav modal-next" id="modalNext">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Certificate data
-        const certifications = [{
+        // Certificates Data
+        const certificates = [{
                 id: 1,
                 title: "C Programming Certificate",
                 image: "c.png",
-                ribbon: "C Programming"
+                ribbon: "C Programming",
+                category: "others",
+                description: "Comprehensive course covering C programming fundamentals, data structures, and memory management.",
+                issued: "February 2025",
+                organization: "ScholarHat",
+                skills: ["C Programming", "Data Structures", "Memory Management", "Algorithms", "more..."]
             },
             {
                 id: 2,
                 title: "C++ Programming Certificate",
                 image: "cpp.png",
-                ribbon: "C++ Programming"
+                ribbon: "C++ Programming",
+                category: "others",
+                description: "Advanced C++ programming concepts including OOP, templates, and STL implementation.",
+                issued: "February 2025",
+                organization: "ScholarHat",
+                skills: ["C++", "Object-Oriented Programming", "Templates", "STL", "more..."]
             },
             {
                 id: 3,
                 title: "Python Mastery Certificate",
                 image: "python.jpg",
-                ribbon: "Python Mastery"
+                ribbon: "Python Mastery",
+                category: "machine-learning",
+                description: "Complete Python programming course covering basics to advanced topics and data science libraries.",
+                issued: "November 2024",
+                organization: "Scalar School of Technology",
+                skills: ["Python", "Data Science", "NumPy", "Pandas", "Matplotlib", "more..."]
             },
             {
                 id: 4,
                 title: "SQL Mastery Certificate",
                 image: "sql.jpg",
-                ribbon: "SQL Mastery"
+                ribbon: "SQL Mastery",
+                category: "databases",
+                description: "Advanced SQL course covering complex queries, database design, and optimization techniques.",
+                issued: "November 2024",
+                organization: "Scalar School of Technology",
+                skills: ["SQL", "Database Design", "Query Optimization", "Data Analysis", "more..."]
             },
             {
                 id: 5,
                 title: "CSS HackerRank Certificate",
                 image: "css.jpg",
-                ribbon: "CSS HackerRank"
+                ribbon: "CSS HackerRank",
+                category: "web-development",
+                description: "CSS styling and responsive design certification from HackerRank platform.",
+                issued: "March 2025",
+                organization: "HackerRank",
+                skills: ["CSS", "Responsive Design", "Flexbox", "Grid Layout", "more..."]
             },
             {
                 id: 6,
                 title: "React JS Bootcamp Certificate",
                 image: "react.jpg",
-                ribbon: "React JS Bootcamp"
+                ribbon: "React JS Bootcamp",
+                category: "web-development",
+                description: "Intensive React.js bootcamp covering components, hooks, state management, and modern React patterns.",
+                issued: "February 2025",
+                organization: "LetsUpgrade",
+                skills: ["React.js", "JSX", "Hooks", "State Management", "Component Architecture", "more..."]
             },
             {
                 id: 7,
                 title: "React JS Projects Bootcamp",
                 image: "reactclone.jpg",
-                ribbon: "React JS Projects"
+                ribbon: "React JS Projects",
+                category: "web-development",
+                description: "Hands-on React projects bootcamp including building real-world applications and clones.",
+                issued: "February 2025",
+                organization: "LetsUpgrade",
+                skills: ["React Projects", "Redux", "API Integration", "Performance Optimization", "more..."]
             },
             {
                 id: 8,
                 title: "Git and GitHub Certificate",
                 image: "git.jpg",
-                ribbon: "Git and GitHub"
+                ribbon: "Git and GitHub",
+                category: "others",
+                description: "Version control mastery with Git and GitHub, including collaboration workflows and best practices.",
+                issued: "March 2025",
+                organization: "LetsUpgrade",
+                skills: ["Git", "GitHub", "Version Control", "Collaboration", "Branching", "more..."]
             },
             {
                 id: 9,
                 title: "ChatGPT Bootcamp Certificate",
                 image: "chatgpt.jpg",
-                ribbon: "ChatGPT Bootcamp"
+                ribbon: "ChatGPT Bootcamp",
+                category: "machine-learning",
+                description: "Comprehensive course on AI prompt engineering and effective ChatGPT utilization for productivity.",
+                issued: "February 2025",
+                organization: "LetsUpgrade",
+                skills: ["AI Prompting", "ChatGPT", "Prompt Engineering", "AI Tools", "more..."]
             },
             {
                 id: 10,
                 title: "Web Development Certificate",
                 image: "web.jpg",
-                ribbon: "Web Development"
+                ribbon: "Web Development",
+                category: "web-development",
+                description: "Full-stack web development course covering HTML, CSS, JavaScript, and modern frameworks.",
+                issued: "November 2024",
+                organization: "Udemy",
+                skills: ["HTML", "CSS", "JavaScript", "Full-Stack", "Responsive Design", "more..."]
             },
             {
                 id: 11,
                 title: "Django Certificate",
                 image: "django.png",
-                ribbon: "Django"
+                ribbon: "Django",
+                category: "web-development",
+                description: "Django web framework certification covering MVT architecture, ORM, and web application development.",
+                issued: "2024",
+                organization: "GeeksforGeeks",
+                skills: ["Django", "Python Web Framework", "ORM", "MVT Architecture", "Web APIs", "more..."]
             },
             {
                 id: 12,
                 title: "Web Scraping with Python",
                 image: "webscrap.jpg",
-                ribbon: "Web Scraping"
+                ribbon: "Web Scraping",
+                category: "machine-learning",
+                description: "Advanced web scraping techniques using Python, BeautifulSoup, Selenium, and data extraction methods.",
+                issued: "October 2024",
+                organization: "Great Learning Academy",
+                skills: ["Web Scraping", "BeautifulSoup", "Selenium", "Data Extraction", "Python", "more..."]
             },
             {
                 id: 13,
                 title: "Prompting Certificate",
                 image: "prompt.png",
-                ribbon: "Prompting"
+                ribbon: "Prompting",
+                category: "machine-learning",
+                description: "Advanced AI prompt engineering certification covering techniques for effective AI communication.",
+                issued: "October 2024",
+                organization: "SimpliLearn and SkillUp",
+                skills: ["Prompt Engineering", "AI Communication", "ChatGPT", "AI Optimization", "more..."]
             },
             {
                 id: 14,
                 title: "New Product Development",
                 image: "npd.jpg",
-                ribbon: "New Product Development"
+                ribbon: "New Product Development",
+                category: "others",
+                description: "Product development lifecycle, market research, and innovation management certification.",
+                issued: "March 2025",
+                organization: "Industrial Academia Community",
+                skills: ["Product Development", "Market Research", "Innovation", "Project Management", "more..."]
             },
             {
                 id: 15,
                 title: "Digital Business Skills",
                 image: "dbs.jpg",
-                ribbon: "Digital Business Skills"
+                ribbon: "Digital Business Skills",
+                category: "others",
+                description: "Digital transformation, online business strategies, and e-commerce fundamentals.",
+                issued: "September 2024",
+                organization: "HP Life",
+                skills: ["Digital Marketing", "E-commerce", "Business Strategy", "Digital Transformation",
+                    "more..."
+                ]
             },
             {
                 id: 16,
                 title: "Inventory Management",
                 image: "im.jpg",
-                ribbon: "Inventory Management"
+                ribbon: "Inventory Management",
+                category: "others",
+                description: "Supply chain management, inventory optimization, and logistics planning certification.",
+                issued: "September 2024",
+                organization: "HP Life",
+                skills: ["Inventory Management", "Supply Chain", "Logistics", "Optimization", "more..."]
             },
             {
                 id: 17,
                 title: "C++ and Java Basics",
                 image: "java.png",
-                ribbon: "C++ and Java Basics"
+                ribbon: "C++ and Java Basics",
+                category: "others",
+                description: "Fundamental programming concepts in both C++ and Java with practical implementations.",
+                issued: "August 2024",
+                organization: "Coding School",
+                skills: ["C++", "Java", "Object-Oriented Programming", "Programming Fundamentals", "more..."]
             },
-                                {
+            {
                 id: 18,
                 title: "SQL With AI Workshop",
                 image: "sqlwithaicert.png",
-                ribbon: "SQL with AI"
+                ribbon: "SQL with AI",
+                category: "databases",
+                description: "Modern SQL techniques enhanced with AI tools for advanced data analysis and automation.",
+                issued: "June 2025",
+                organization: "AI for Techies",
+                skills: ["SQL", "AI Integration", "Data Analysis", "Automation", "Advanced Queries", "more..."]
             },
-                                   {
+            {
                 id: 19,
                 title: "PhonePay data analysis using powerBI",
                 image: "pbi.png",
-                ribbon: "PowerBI"
+                ribbon: "PowerBI",
+                category: "machine-learning",
+                description: "Business intelligence and data visualization using PowerBI with real-world PhonePay data analysis.",
+                issued: "June 2025",
+                organization: "WS Cube Tech",
+                skills: ["PowerBI", "Data Visualization", "Business Intelligence", "Data Analysis", "DAX",
+                    "more..."
+                ]
             },
-                                   {
+            {
                 id: 20,
                 title: "EXCEL using AI Workshop",
                 image: "excel.png",
-                ribbon: "Excel with AI"
+                ribbon: "Excel with AI",
+                category: "others",
+                description: "Advanced Excel techniques enhanced with AI tools for data analysis and automation.",
+                issued: "June 2025",
+                organization: "Office Master",
+                skills: ["Excel", "AI Integration", "Data Analysis", "Automation", "Advanced Functions", "more..."]
             },
-                                 {
+            {
                 id: 21,
-                title: "Pandas for Mechine Learning",
+                title: "Pandas for Machine Learning",
                 image: "pandas-cert.jpeg",
-                ribbon: "Pandas for ML"
+                ribbon: "Pandas for ML",
+                category: "machine-learning",
+                description: "Data manipulation and analysis using Pandas library for machine learning applications.",
+                issued: "June 2025",
+                organization: "Intellipaat",
+                skills: ["Pandas", "Data Manipulation", "Machine Learning", "Data Preprocessing", "Python",
+                    "more..."
+                ]
+            },
+            {
+                id: 21,
+                title: "Generative AI Essentials",
+                image: "google-cert.png",
+                ribbon: "GenAI",
+                category: "machine-learning",
+                description: "Generative AI essentails by Google for Mechine Learning",
+                issued: "June 2025",
+                organization: "Google",
+                skills: [
+                    "AI vs GenAI",
+                    "ML Basics",
+                    "LLMs Intro",
+                    "Prompting",
+                    "Text Gen",
+                    "more..."
+                ]
             }
         ];
-        // Get DOM elements
-        const modal = document.getElementById('certModal');
-        const modalImage = document.getElementById('fullCertImage');
-        const modalTitle = document.getElementById('modalTitle');
-        const closeBtn = document.getElementById('closeModal');
-        const prevBtn = document.getElementById('prevCert');
-        const nextBtn = document.getElementById('nextCert');
-        const certItems = document.querySelectorAll('.cert-item');
-        const viewButtons = document.querySelectorAll('.view-cert-btn');
-        // Current certificate index
-        let currentCertIndex = 0;
-        // Function to open modal
-        function openModal(certId) {
-            const certIndex = certifications.findIndex(cert => cert.id === certId);
-            if (certIndex !== -1) {
-                currentCertIndex = certIndex;
-                updateModalContent();
-                modal.classList.add('active');
-                document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-            }
-        }
-        // Function to close modal
-        function closeModal() {
-            modal.classList.remove('active');
-            document.body.style.overflow = ''; // Allow scrolling again
-        }
-        // Function to navigate to previous certificate
-        function prevCert() {
-            currentCertIndex = (currentCertIndex - 1 + certifications.length) % certifications.length;
-            updateModalContent();
-        }
-        // Function to navigate to next certificate
-        function nextCert() {
-            currentCertIndex = (currentCertIndex + 1) % certifications.length;
-            updateModalContent();
-        }
-        // Function to update modal content
-        function updateModalContent() {
-            const cert = certifications[currentCertIndex];
-            modalImage.src = cert.image;
-            modalImage.alt = cert.title;
-            modalTitle.textContent = cert.title;
-        }
-        // Event listeners for all certificates
-        certItems.forEach(item => {
-            const certId = parseInt(item.getAttribute('data-cert-id'));
-            item.addEventListener('click', () => openModal(certId));
+        let currentCertificates = [...certificates];
+        let currentModalIndex = 0;
+        // Initialize the page
+        $(document).ready(function() {
+            renderCertificates(certificates);
+            setupEventListeners();
         });
-        // Event listeners for all view buttons
-        viewButtons.forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent triggering the cert-item click event
-                const certId = parseInt(button.closest('.cert-item').getAttribute('data-cert-id'));
-                openModal(certId);
+
+        function renderCertificates(certs) {
+            const grid = $('#certificatesGrid');
+            const noResults = $('#noResults');
+            if (certs.length === 0) {
+                grid.hide();
+                noResults.show();
+                return;
+            }
+            grid.show();
+            noResults.hide();
+            grid.html('');
+            certs.forEach((cert, index) => {
+                const orgInitials = cert.organization.split(' ').map(word => word[0]).join('');
+                const certCard = `
+                   <div class="certificate-card" data-category="${cert.category}">
+    <div class="cert-badge">${cert.ribbon}</div>
+    <div class="cert-image-container">
+        <img src="${cert.image}" alt="${cert.title}" class="cert-image">
+    </div>
+    <div class="cert-content">
+        <div class="org-badge">
+            <div class="org-logo">${orgInitials}</div>
+            <span class="org-name">${cert.organization}</span>
+        </div>
+        <h3 class="cert-title">${cert.title}</h3>
+        <div class="excellence-rating">
+            <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+            </div></br>
+        </div>
+        <p class="cert-description">${cert.description}</p>
+        <div class="cert-issued">
+            <i class="fas fa-calendar-alt"></i>
+            Issued: ${cert.issued}
+        </div>
+        <div class="skills-container">
+            <div class="skills-label">Skills:</div>
+            <div class="skills-tags">
+                ${cert.skills.map(skill => `<span class="skill-tag">${skill}</span>`).join('')}
+            </div>
+        </div>
+        <button class="view-credentials-btn" onclick="openModal(${index})">
+            View Credentials &nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i>
+        </button>
+    </div>
+</div>
+                `;
+                grid.append(certCard);
             });
-        });
-        // Event listeners for modal controls
-        closeBtn.addEventListener('click', closeModal);
-        prevBtn.addEventListener('click', prevCert);
-        nextBtn.addEventListener('click', nextCert);
-        // Close modal when clicking outside of modal content
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (modal.classList.contains('active')) {
-                if (e.key === 'Escape') {
+            currentCertificates = certs;
+        }
+
+        function setupEventListeners() {
+            // Search functionality
+            $('#searchInput').on('input', function() {
+                const searchTerm = $(this).val().toLowerCase();
+                filterCertificates();
+            });
+            // Filter buttons
+            $('.filter-btn').on('click', function() {
+                $('.filter-btn').removeClass('active');
+                $(this).addClass('active');
+                filterCertificates();
+            });
+            // Modal controls
+            $('#modalClose').on('click', closeModal);
+            $('#modalPrev').on('click', () => navigateModal(-1));
+            $('#modalNext').on('click', () => navigateModal(1));
+            // Close modal on overlay click
+            $('#modalOverlay').on('click', function(e) {
+                if (e.target === this) {
                     closeModal();
-                } else if (e.key === 'ArrowLeft') {
-                    prevCert();
-                } else if (e.key === 'ArrowRight') {
-                    nextCert();
-                }
-            }
-        });
-        // Initialize with a cool staggered animation
-        window.addEventListener('DOMContentLoaded', () => {
-            certItems.forEach((item, index) => {
-                setTimeout(() => {
-                    item.style.opacity = '0';
-                    item.style.transform = 'translateY(20px)';
-                    item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-                    setTimeout(() => {
-                        item.style.opacity = '1';
-                        item.style.transform = 'translateY(0)';
-                    }, 100);
-                }, index * 100);
-            });
-        });
-    </script>
-
-        <script>
-        (function() {
-            'use strict';
-            
-            let devtoolsOpen = false;
-            let warningShown = false;
-            
-            // Function to show warning popup
-            function showWarning() {
-                if (!warningShown) {
-                    console.log('🚫 Sorry, you do not have permission to inspect the code! 🚫');
-                    warningShown = true;
-                    
-                    // Reset warning after 3 seconds
-                    setTimeout(() => {
-                        warningShown = false;
-                    }, 3000);
-                }
-            }
-
-            // Disable right-click context menu
-            document.addEventListener('contextmenu', function(e) {
-                e.preventDefault();
-                showWarning();
-                return false;
-            });
-
-            // Disable text selection
-            document.addEventListener('selectstart', function(e) {
-                e.preventDefault();
-                return false;
-            });
-
-            // Disable drag
-            document.addEventListener('dragstart', function(e) {
-                e.preventDefault();
-                return false;
-            });
-
-            // Disable common keyboard shortcuts
-            document.addEventListener('keydown', function(e) {
-                // Disable F12 (DevTools)
-                if (e.keyCode === 123) {
-                    e.preventDefault();
-                    showWarning();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+I (DevTools)
-                if (e.ctrlKey && e.shiftKey && e.keyCode === 73) {
-                    e.preventDefault();
-                    showWarning();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+J (Console)
-                if (e.ctrlKey && e.shiftKey && e.keyCode === 74) {
-                    e.preventDefault();
-                    showWarning();
-                    return false;
-                }
-                
-                // Disable Ctrl+U (View Source)
-                if (e.ctrlKey && e.keyCode === 85) {
-                    e.preventDefault();
-                    showWarning();
-                    return false;
-                }
-                
-                // Disable Ctrl+Shift+C (Select Element)
-                if (e.ctrlKey && e.shiftKey && e.keyCode === 67) {
-                    e.preventDefault();
-                    showWarning();
-                    return false;
-                }
-                
-                // Disable Ctrl+A (Select All)
-                if (e.ctrlKey && e.keyCode === 65) {
-                    e.preventDefault();
-                    return false;
-                }
-                
-                // Disable Ctrl+S (Save)
-                if (e.ctrlKey && e.keyCode === 83) {
-                    e.preventDefault();
-                    showWarning();
-                    return false;
-                }
-                
-                // Disable Ctrl+P (Print)
-                if (e.ctrlKey && e.keyCode === 80) {
-                    e.preventDefault();
-                    return false;
                 }
             });
-
-            // Detect DevTools opening by checking window size changes
-            let threshold = 160;
-            
-            function detectDevTools() {
-                if (window.outerHeight - window.innerHeight > threshold || 
-                    window.outerWidth - window.innerWidth > threshold) {
-                    if (!devtoolsOpen) {
-                        devtoolsOpen = true;
-                        showWarning();
-                    }
-                } else {
-                    devtoolsOpen = false;
-                }
-            }
-
-            // Check for DevTools every 100ms
-            setInterval(detectDevTools, 100);
-
-            // Detect DevTools using console.log timing
-            let start = performance.now();
-            let check = false;
-            
-            function detectConsole() {
-                console.log('%c', 'font-size: 0;');
-                if (!check) {
-                    check = true;
-                    if (performance.now() - start > 100) {
-                        showWarning();
+            // Keyboard navigation
+            $(document).on('keydown', function(e) {
+                if ($('#modalOverlay').is(':visible')) {
+                    switch (e.key) {
+                        case 'Escape':
+                            closeModal();
+                            break;
+                        case 'ArrowLeft':
+                            navigateModal(-1);
+                            break;
+                        case 'ArrowRight':
+                            navigateModal(1);
+                            break;
                     }
                 }
-            }
-
-            setInterval(detectConsole, 1000);
-
-            // Disable print screen
-            window.addEventListener('keyup', function(e) {
-                if (e.keyCode === 44) {
-                    showWarning();
-                }
             });
+        }
 
-            // Clear console periodically
-            setInterval(function() {
-                console.clear();
-                console.log('%c🚫 Access Denied! This content is protected.', 'color: red; font-size: 20px; font-weight: bold;');
-            }, 1000);
-
-            // Detect if page is opened in frame/iframe
-            if (window.top !== window.self) {
-                window.top.location = window.self.location;
-            }
-
-            // Prevent opening in new window/tab with certain methods
-            window.addEventListener('beforeunload', function(e) {
-                if (devtoolsOpen) {
-                    e.preventDefault();
-                    e.returnValue = '';
-                }
+        function filterCertificates() {
+            const searchTerm = $('#searchInput').val().toLowerCase();
+            const activeCategory = $('.filter-btn.active').data('category');
+            let filtered = certificates.filter(cert => {
+                const matchesSearch = cert.title.toLowerCase().includes(searchTerm) ||
+                    cert.description.toLowerCase().includes(searchTerm) ||
+                    cert.skills.some(skill => skill.toLowerCase().includes(searchTerm)) ||
+                    cert.organization.toLowerCase().includes(searchTerm);
+                const matchesCategory = activeCategory === 'all' || cert.category === activeCategory;
+                return matchesSearch && matchesCategory;
             });
+            renderCertificates(filtered);
+        }
 
-            // Additional protection: Monitor for specific DevTools behavior
-            let devToolsChecker = () => {
-                let widthThreshold = window.outerWidth - window.innerWidth > 160;
-                let heightThreshold = window.outerHeight - window.innerHeight > 160;
-                
-                if (!(heightThreshold && widthThreshold) &&
-                    ((window.Firebug && window.Firebug.chrome && window.Firebug.chrome.isInitialized) || widthThreshold || heightThreshold)) {
-                    showWarning();
-                }
-            };
+        function openModal(index) {
+            currentModalIndex = index;
+            const cert = currentCertificates[index];
+            $('#modalTitle').text(cert.title);
+            $('#modalImage').attr('src', cert.image).attr('alt', cert.title);
+            $('#modalOverlay').fadeIn(300);
+            // Update navigation buttons
+            $('#modalPrev').toggle(currentCertificates.length > 1);
+            $('#modalNext').toggle(currentCertificates.length > 1);
+        }
 
-            setInterval(devToolsChecker, 500);
+        function closeModal() {
+            $('#modalOverlay').fadeOut(300);
+        }
 
-            // Console warning message
-            console.log('%c🚫 STOP!', 'color: red; font-size: 50px; font-weight: bold;');
-            console.log('%cThis is a browser feature intended for developers. Unauthorized access to this code is prohibited.', 'color: red; font-size: 16px;');
-            console.log('%cSorry, you do not have permission to inspect the code', 'color: red; font-size: 16px; font-weight: bold;');
-
-        })();
-
-        // Obfuscate the script tag to make it harder to find and disable
-        setTimeout(function() {
-            let scripts = document.getElementsByTagName('script');
-            for (let i = 0; i < scripts.length; i++) {
-                if (scripts[i].innerHTML.includes('devtoolsOpen')) {
-                    scripts[i].remove();
-                    break;
-                }
+        function navigateModal(direction) {
+            const newIndex = currentModalIndex + direction;
+            if (newIndex >= 0 && newIndex < currentCertificates.length) {
+                currentModalIndex = newIndex;
+                const cert = currentCertificates[currentModalIndex];
+                $('#modalTitle').text(cert.title);
+                $('#modalImage').attr('src', cert.image).attr('alt', cert.title);
             }
-        }, 100);
+        }
+        // Add smooth scrolling for better UX
+        $('html').css('scroll-behavior', 'smooth');
     </script>
-
-    <!-- Additional meta tags to discourage indexing and caching -->
-    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
 </body>
 
 </html>
