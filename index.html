@@ -617,71 +617,166 @@
         }
 
 
-        /* Certificates Section */
         .certificates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
+            margin-bottom: 50px;
         }
 
         .certificate-card {
-            height: 300px;
-            position: relative;
-            transform-style: preserve-3d;
-            transition: transform 0.8s;
-            perspective: 1000px;
-        }
-
-        .certificate-front,
-        .certificate-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            backface-visibility: hidden;
-            border-radius: 10px;
+            background: var(--card-bg);
+            border-radius: 20px;
             overflow: hidden;
             box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 157, 0.2);
         }
 
         .certificate-front {
-            background-color: var(--card-bg);
-            display: flex;
-            flex-direction: column;
+            padding: 30px;
+            text-align: center;
+            position: relative;
         }
 
-        .certificate-front img {
+        .certificate-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--primary-color);
+            color: var(--dark-text);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight:bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .certificate-image {
             width: 100%;
             height: 200px;
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            display: block;
             object-fit: cover;
+            border: 3px solid var(--primary-color);
+            transition: var(--transition);
         }
 
-        .certificate-front h3 {
-            padding: 20px;
+
+        .certificate-title {
+            font-size: 1.4rem;
+            margin: 15px 0 10px;
+            color: var(--light-text);
+            font-weight: 600;
+        }
+
+        .certificate-description {
+            color: rgba(245, 245, 245, 0.8);
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .certificate-date {
+            background: rgba(0, 184, 255, 0.1);
+            color: var(--secondary-color);
+            padding: 8px 15px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .view-credential-btn {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 15px;
+            border-color: white;
+            border-radius: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            width: 100%;
+        }
+
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 90%;
+            max-height: 90%;
             text-align: center;
-            color: var(--primary-color);
         }
 
-        .certificate-back {
-            background: linear-gradient(135deg, var(--darker-bg), var(--card-bg));
-            transform: rotateY(180deg);
-            padding: 30px;
+        .modal-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: var(--light-text);
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1001;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
             display: flex;
-            flex-direction: column;
-            justify-content: center;
             align-items: center;
-            text-align: center;
+            justify-content: center;
         }
 
-        .certificate-back h3 {
+        .close-btn:hover {
             color: var(--primary-color);
-            margin-bottom: 15px;
+            background: rgba(0, 0, 0, 0.8);
         }
 
-        .certificate-back p {
-            margin-bottom: 10px;
-            font-size: 0.9rem;
+        @media (max-width: 768px) {
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .certificate-front {
+                padding: 20px;
+            }
         }
 
         /* Projects Section */
@@ -848,7 +943,7 @@
             opacity: 0.8;
         }
 
-     /* Contact Section */
+        /* Contact Section */
         .contact-section {
             padding: 4rem 2rem;
             background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a1a 100%);
@@ -864,7 +959,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-           
+
             pointer-events: none;
         }
 
@@ -1006,8 +1101,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
         }
 
         .floating-decorations {
@@ -1018,6 +1120,7 @@
             bottom: 0;
             pointer-events: none;
         }
+
         .form-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -1511,7 +1614,7 @@
             }
         }
 
-         .form-container {
+        .form-container {
             background: var(--card-bg);
             padding: 40px;
             border-radius: 20px;
@@ -1663,11 +1766,11 @@
             .form-container {
                 padding: 30px 20px;
             }
-            
+
             .button-group {
                 flex-direction: column;
             }
-            
+
             .form-title {
                 font-size: 2rem;
             }
@@ -1716,8 +1819,15 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(180deg);
+            }
         }
     </style>
 </head>
@@ -2177,20 +2287,20 @@
                 <h2>❤️ Coding || Hindu priest 📿</h2>
                 <p>Freelancer || Leverage AI to work smarter, faster, and deliver higher-quality, higher-quantity
                     results.</p>
-                 <div class="social-media-links">
-                        <a href="https://www.instagram.com/k.phani_kumar_?igsh=N251MjM2bHR6aHdw" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/kodukulla-phani-kumar-sharma-63a268302" target="_blank">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.facebook.com/profile.php?id=61559791637578" target="_blank">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-                        <a href="https://www.snapchat.com/add/phanikumar2122" target="_blank">
-                            <i class="fab fa-snapchat"></i>
-                        </a>
-                    </div>
+                <div class="social-media-links">
+                    <a href="https://www.instagram.com/k.phani_kumar_?igsh=N251MjM2bHR6aHdw" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/kodukulla-phani-kumar-sharma-63a268302" target="_blank">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://www.facebook.com/profile.php?id=61559791637578" target="_blank">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://www.snapchat.com/add/phanikumar2122" target="_blank">
+                        <i class="fab fa-snapchat"></i>
+                    </a>
+                </div>
             </div>
 
         </div>
@@ -2229,8 +2339,8 @@
                             <div class="detail-item email-item" style="text-align:center;">
                                 <i class="fas fa-envelope"></i>
                                 <div class="detail-content">
-                                    <div style="display:inline-flex;align-items:center;" class = "detail-title">
-                                      
+                                    <div style="display:inline-flex;align-items:center;" class="detail-title">
+
                                         phanikumark715@gmail.com
                                     </div>
 
@@ -2519,39 +2629,159 @@
         <hr class="custom-hr">
     </div>
 
+    <style>
+        .certificate-badge .by {
+            height: 35px;
+            width: 35px;
+            border-radius: 50%;
+        }
+    </style>
     <!-- Certificates Section -->
     <section id="certificates" class="section dark-bg">
         <div class="container">
             <h2 class="section-title"><i class="fas fa-certificate"></i>Credentials</h2>
             <div class="certificates-grid">
+                <!-- Certificate 1 -->
                 <div class="certificate-card">
                     <div class="certificate-front">
-                        <img src="prompt.png" alt="AWS Certified">
-                        <h3>Prompting Certified Developer</h3>
-                    </div>
+                        <div class="certificate-badge">
+                            <img src="google.png" class="by">
+                            By Google
+                        </div>
+                        <img src="google-cert.png" alt="Generative AI certification" class="certificate-image">
+                        <h3 class="certificate-title">Generative AI Certification</h3>
+                        <p class="certificate-description">
+                            Completed Google Cloud’s Generative AI course, covering key concepts like foundation models,
+                            prompt engineering, and responsible AI. Gained hands-on experience with tools to build and
+                            deploy generative AI solutions.
+                        </p>
+                        <div class="certificate-date">
+                            <i class="fas fa-calendar-alt"></i> Issued: June 2025
+                        </div>
+                        <button class="view-credential-btn" onclick="openModal('google-cert.png')">
+                            View Credentials <i class="fa-solid fa-arrow-up-right-from-square"></i>
 
+                        </button>
+                    </div>
                 </div>
+
+                <!-- Certificate 2 -->
                 <div class="certificate-card">
                     <div class="certificate-front">
-                        <img src="django.png" alt="React Professional">
-                        <h3>Django Certified Developer</h3>
+                        <div class="certificate-badge">
+                            <img src="geeksforgeeks.png" class="by">By Geeks For Geeks
+                        </div>
+                        <img src="django.png" alt="Django Certified" class="certificate-image">
+                        <h3 class="certificate-title">Django Certified Developer</h3>
+                        <p class="certificate-description">
+                            Professional certification in Django web framework development, including advanced concepts
+                            in web application architecture and deployment.
+                        </p>
+                        <div class="certificate-date">
+                            <i class="fas fa-calendar-alt"></i> Issued: February 2024
+                        </div>
+                        <button class="view-credential-btn" onclick="openModal('django.png')">
+                            View Credentials <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </button>
                     </div>
-
                 </div>
+
+                <!-- Certificate 3 -->
                 <div class="certificate-card">
                     <div class="certificate-front">
-                        <img src="sqlwithaicert.png" alt="Node.js Certified">
-                        <h3>SQL With AI Certified Developer</h3>
+                        <div class="certificate-badge">
+                            <img src="simplilearn.png" class="by">
+                           By SimpliLearn | Skill up
+                        </div>
+                        <img src="prompt.png" alt="Prompting Certified" class="certificate-image">
+                        <h3 class="certificate-title">Specialization in Prompting</h3>
+                        <p class="certificate-description">
+                            Advanced certification in AI prompt engineering, covering techniques for effective
+                            communication with AI models and optimization strategies.
+                        </p>
+                        <div class="certificate-date">
+                            <i class="fas fa-calendar-alt"></i> Issued: Oct 2024
+                        </div>
+                        <button class="view-credential-btn" onclick="openModal('prompt.png')">
+                            View Credential
+                        </button>
                     </div>
-
                 </div>
+
+                <!-- Certificate 4: AWS Cloud Practitioner -->
+                <div class="certificate-card">
+                    <div class="certificate-front">
+                        <div class="certificate-badge">
+                            <img src="scalar.png" class="by">
+                           By Scalar University | Topics
+                        </div>
+                        <img src="python.jpg" alt="Python Certified" class="certificate-image">
+                        <h3 class="certificate-title">Specialization in Python Programming</h3>
+                        <p class="certificate-description">
+                           Comprehensive certification showcasing proficiency in Python — from core syntax and essential data structures to advanced programming concepts and best practices for building robust, real-world applications.
+                        </p>
+
+                        <div class="certificate-date">
+                            <i class="fas fa-calendar-alt"></i> Issued: Nov&nbsp;2023
+                        </div>
+
+                        <button class="view-credential-btn" onclick="openModal('python.jpg')">
+                            View Credentials <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate 5: React Professional -->
+                <div class="certificate-card">
+                    <div class="certificate-front">
+                        <div class="certificate-badge">
+                            <img src="hp.png" class="by">
+                           By HP Life
+                        </div>
+                        <img src="dbs.jpg" alt="Digital Business Certified" class="certificate-image">
+                        <h3 class="certificate-title">Digital Business</h3>
+                        <p class="certificate-description">
+                       Certification centered on modern digital business models, transformation strategies, customer-centric design, digital marketing, and contemporary business practices — with a strong focus on leveraging digital tools to drive innovation and sustainable growth.
+                        </p>
+                        <div class="certificate-date">
+                            <i class="fas fa-calendar-alt"></i> Issued: Sept 2024
+                        </div>
+                        <button class="view-credential-btn" onclick="openModal('dbs.jpg')">
+                            View Credentials <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Certificate 6: CSS Specialist -->
+                <div class="certificate-card">
+                    <div class="certificate-front">
+                        <div class="certificate-badge">
+                            <img src="hrlogo.png" class="by">
+                           By HackerRank
+                        </div>
+                        <img src="css.jpg" alt="CSS Certified" class="certificate-image">
+                        <h3 class="certificate-title">Cascading Style Sheets (CSS)</h3>
+                        <p class="certificate-description">
+                            Certification showcasing strong understanding of CSS fundamentals, responsive design
+                            principles,
+                            layout techniques, and styling best practices.
+                        </p>
+                        <div class="certificate-date">
+                            <i class="fas fa-calendar-alt"></i> Issued: March 2025
+                        </div>
+                        <button class="view-credential-btn" onclick="openModal('css.jpg')">
+                            View Credentials <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                        </button>
+                    </div>
+                </div>
+
             </div>
         </div>
-        </br>
+
         <div style="display: flex; justify-content: center; width: 100%; padding: 50px 0;">
             <a href="certifications.html"
                 style="display: inline-flex; align-items: center; background-color:white; color: #0d0d40; padding: 10px 20px; border-radius: 999px; text-decoration: none; font-family: 'Segoe UI', sans-serif; font-size: 16px; font-weight: 500;">
-                <span style="margin-right: 20px;">View All</span>
+                <span style="margin-right: 20px;">View All Certifications</span>
                 <div
                     style="background-color:var(--primary-color); color:black; border-radius: 50%; width: 40px; height: 40px; display: flex; align-items: center; justify-content:center;">
                     <i class="fas fa-arrow-right" style="font-size: 20px;color:black;"></i>
@@ -2559,6 +2789,58 @@
             </a>
         </div>
     </section>
+
+    <!-- Modal for Full Screen Certificate View -->
+    <div id="certificateModal" class="modal">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modalImage" class="modal-image" src="" alt="Certificate">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('certificateModal');
+            const modalImage = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImage.src = imageSrc;
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('certificateModal');
+            modal.style.display = 'none';
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+        // Close modal when clicking outside the image
+        window.onclick = function(event) {
+            const modal = document.getElementById('certificateModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+        // Close modal with Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+        // Add smooth scrolling animation on load
+        window.addEventListener('load', function() {
+            const cards = document.querySelectorAll('.certificate-card');
+            cards.forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(50px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.6s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 200);
+            });
+        });
+    </script>
 
     <div class="custom-hr-container">
         <span class="dot"></span>
@@ -2854,18 +3136,18 @@
         <span class="dot"></span>
         <hr class="custom-hr">
     </div>
-  <section class="contact-section">
+    <section class="contact-section">
         <div class="contact-wrapper">
             <div class="contact-container">
                 <!-- Contact Info -->
                 <div class="contact-info-section">
                     <div class="section-header">
-                       
-                        <h2 class = "section-title"> <i class="fas fa-envelope"></i>Contact</h2>
+
+                        <h2 class="section-title"> <i class="fas fa-envelope"></i>Contact</h2>
                     </div>
                     <h3>Get In Touch</h3>
                     <p>Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
-                    
+
                     <div class="contact-details-list">
                         <div class="contact-detail-item">
                             <i class="fas fa-map-marker-alt"></i>
@@ -2876,7 +3158,7 @@
                             <span>phanikumark715@gmail.com</span>
                         </div>
                     </div>
-                    
+
                     <div class="social-media-links">
                         <a href="https://www.instagram.com/k.phani_kumar_?igsh=N251MjM2bHR6aHdw" target="_blank">
                             <i class="fab fa-instagram"></i>
@@ -2892,7 +3174,7 @@
                         </a>
                     </div>
                 </div>
-                
+
                 <!-- Contact Form -->
                 <div class="contact-form-section">
                     <div class="floating-decorations">
@@ -2900,23 +3182,26 @@
                         <div class="floating-shape"></div>
                         <div class="floating-shape"></div>
                     </div>
-                    
+
                     <div class="form-header">
                         <h1 class="form-main-title">Get In Touch</h1>
                         <p class="form-description">Let's start a conversation</p>
                     </div>
-                    
+
                     <form class="contact-form" id="contactForm">
                         <div class="input-group">
                             <label for="userName" class="input-label">Your Name</label>
-                            <input type="text" id="userName" class="form-input" placeholder="Enter your full name" required>
+                            <input type="text" id="userName" class="form-input" placeholder="Enter your full name"
+                                required>
                         </div>
-                        
+
                         <div class="input-group">
                             <label for="userMessage" class="input-label">Message</label>
-                            <textarea id="userMessage" class="form-textarea" placeholder="Tell me about your project, question, or how I can help you..." required></textarea>
+                            <textarea id="userMessage" class="form-textarea"
+                                placeholder="Tell me about your project, question, or how I can help you..."
+                                required></textarea>
                         </div>
-                        
+
                         <div class="form-buttons">
                             <button type="button" id="sendEmailBtn" class="action-btn send-btn detail-item">
                                 <svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20">
@@ -2925,10 +3210,11 @@
                                 </svg>
                                 Send Email
                             </button>
-                            
+
                             <button type="button" id="callNowBtn" class="action-btn call-btn detail-item">
                                 <svg class="btn-icon" fill="currentColor" viewBox="0 0 20 20">
-                                    <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                                    <path
+                                        d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
                                 </svg>
                                 Call Now
                             </button>
@@ -2940,46 +3226,38 @@
     </section>
 
     <script>
-      // Email functionality
+        // Email functionality
         document.getElementById('sendEmailBtn').addEventListener('click', function() {
             const userName = document.getElementById('userName').value.trim();
             const userDescription = document.getElementById('userMessage').value.trim();
-            
             if (!userName || !userDescription) {
                 alert('Please fill in all fields before sending.');
                 return;
             }
-            
             const subject = `Contact from ${userName}`;
             const body = `Hi,\n\nMy name is ${userName}.\n\n${userDescription}\n\nBest regards,\n${userName}`;
-            
-            const mailtoLink = `mailto:phanikumark715@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            
+            const mailtoLink =
+                `mailto:phanikumark715@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
             window.location.href = mailtoLink;
         });
-
         // Call functionality
         document.getElementById('callNowBtn').addEventListener('click', function() {
-            const telLink = `tel:+919014353991`; 
+            const telLink = `tel:+919014353991`;
             window.location.href = telLink;
         });
-
         // Add some interactive effects
         const inputs = document.querySelectorAll('.form-input, .form-textarea');
         inputs.forEach(input => {
             input.addEventListener('focus', function() {
                 this.parentElement.style.transform = 'scale(1.02)';
             });
-            
             input.addEventListener('blur', function() {
                 this.parentElement.style.transform = 'scale(1)';
             });
         });
-
         // Form validation
         const form = document.getElementById('contactForm');
         const allInputs = form.querySelectorAll('input, textarea');
-        
         allInputs.forEach(input => {
             input.addEventListener('blur', function() {
                 if (this.hasAttribute('required') && !this.value.trim()) {
@@ -2989,13 +3267,11 @@
                 }
             });
         });
-
         // Smooth animations on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -3004,7 +3280,6 @@
                 }
             });
         }, observerOptions);
-
         // Observe elements for animation
         document.querySelectorAll('.contact-detail-item, .input-group').forEach(el => {
             el.style.opacity = '0';
@@ -3019,7 +3294,9 @@
         <hr class="custom-hr">
     </div>
     </br>
-    <a href="priest.html" class="detail-item" style="width:100%;font-size:auto"><div class = "detail-title">View my priest portfolio</div></a>
+    <a href="priest.html" class="detail-item" style="width:100%;font-size:auto">
+        <div class="detail-title">View my priest portfolio</div>
+    </a>
     <script>
         // Mobile Menu Toggle
         const menuToggle = document.querySelector('.menu-toggle');
