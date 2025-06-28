@@ -744,14 +744,14 @@
                 const certCard = `
                    <div class="certificate-card" data-category="${cert.category}">
     <div class="cert-badge">${cert.ribbon}</div>
-    <div class="cert-image-container">
-        <img src="${cert.image}" alt="${cert.title}" class="cert-image">
-    </div>
-    <div class="cert-content">
-        <div class="org-badge">
+    </br></br>
+    <div class="cert-content"> <div style="position: relative; margin-top: 15px;">
+        <label style="position: absolute; top: -10px; left: 15px; background-color:var(--card-bg); padding: 0 8px; font-size: 14px; color: var(--primary-color); font-weight: 500; z-index: 1;">Issued By:-</label>
+        <div class="org-badge" style="background-color: transparent; border-radius: 10px; border: 2px solid var(--primary-color); padding: 10px; display: flex; align-items: center; gap: 10px;">
             <div class="org-logo">${orgInitials}</div>
             <span class="org-name">${cert.organization}</span>
         </div>
+    </div>
         <h3 class="cert-title">${cert.title}</h3>
         <div class="excellence-rating">
             <div class="stars">
