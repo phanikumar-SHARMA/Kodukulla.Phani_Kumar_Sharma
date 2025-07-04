@@ -394,7 +394,7 @@
     <!-- Main Header -->
     <div class="main-header">
         <div class="container">
-            <h1>Professional Certifications</h1>
+            <h1><span id= "cert-count"></span>Certifications</h1>
             <p>Showcase of completed courses and professional achievements</p>
         </div>
     </div>
@@ -744,6 +744,7 @@
                 ]
             }
         ];
+        let cert_count = document.getElementById("cert-count").innerHTML += `{ ` + certificates.length + ` }  `;
         let currentCertificates = [...certificates];
         let currentModalIndex = 0;
         // Initialize the page
@@ -768,10 +769,7 @@
                 const certCard = `
                    <div class="certificate-card" data-category="${cert.category}">
                   
-    <div class="cert-badge">${cert.ribbon}</div>
-     <div style = "background-color:var(--primary-color);color:black;padding:20px; border-radius:10px;">
-                   <h2>${cert.id}</h2>
-                   </div>
+    
     <div class="cert-content"> <div style="position: relative; margin-top: 15px;">
         <label style="position: absolute; top: -10px; left: 15px; background-color:var(--card-bg); padding: 0 8px; font-size: 14px; color: var(--primary-color); font-weight: 500; z-index: 1;">Issued By:-</label>
         <div class="org-badge" style="background-color: transparent; border-radius: 10px; border: 2px solid var(--primary-color); padding: 10px; display: flex; align-items: center; gap: 10px;">
@@ -780,16 +778,8 @@
         </div>
     </div>
         <h3 class="cert-title">${cert.title}</h3>
-        <div class="excellence-rating">
-            <div class="stars">
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-                <i class="fas fa-star"></i>
-            </div></br>
-        </div>
-        <p class="cert-description">${cert.description}</p>
+    
+       
         <div class="cert-issued">
             <i class="fas fa-calendar-alt"></i>
             Issued: ${cert.issued}
@@ -801,7 +791,7 @@
             </div>
         </div>
         <button class="view-credentials-btn" onclick="openModal(${index})">
-            View Credentials &nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i>
+            View Certificate &nbsp;<i class="fa-solid fa-arrow-up-right-from-square"></i>
         </button>
     </div>
 </div>
