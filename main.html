@@ -1904,13 +1904,8 @@
         .snake-container {
             position: relative;
             min-height: auto;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
             border: 4px solid #333;
             background: black;
-            margin: 40px;
             border-radius: 30px;
             overflow: hidden;
         }
@@ -2644,25 +2639,17 @@
         <div class="particle" style="left: 80%; animation-delay: 14s;"></div>
         <div class="particle" style="left: 90%; animation-delay: 16s;"></div>
     </div>
-    <h1 style="
+    <h2 style="
     display:flex;           /* puts svg + text on one row            */
     align-items:center;     /* vertically aligns them                 */
     justify-content:center; /* centers the whole group in the page    */
     gap:0.5rem;             /* small space between icon and text      */
   ">
-        <svg class="python-icon" viewBox="0 0 256 255" xmlns="http://www.w3.org/2000/svg"
-            style="width:48px; height:48px; flex:none;">
-            <!-- size is optional -->
-            <path
-                d="M126.916.072c-64.832 0-60.784 28.115-60.784 28.115l.072 29.128h61.868v8.745H41.631S.145 61.355.145 126.77c0 65.417 36.21 63.097 36.21 63.097h21.61v-30.356s-1.165-36.21 35.632-36.21h61.362s34.475.557 34.475-33.319V33.97S194.67.072 126.916.072zM92.802 19.66a11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13 11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.13z"
-                fill="#387EB8" />
-            <path
-                d="M128.757 254.126c64.832 0 60.784-28.115 60.784-28.115l-.072-29.127H127.6v-8.745h86.441s41.486 4.705 41.486-60.712c0-65.416-36.21-63.096-36.21-63.096h-21.61v30.355s1.165 36.21-35.632 36.21h-61.362s-34.475-.557-34.475 33.32v56.013s-5.235 33.897 62.519 33.897zm34.114-19.586a11.12 11.12 0 0 1-11.13-11.13 11.12 11.12 0 0 1 11.13-11.131 11.12 11.12 0 0 1 11.13 11.13 11.12 11.12 0 0 1-11.13 11.13z"
-                fill="#FFE052" />
-        </svg>
-        &nbsp;Python&nbsp;packages&nbsp;I&nbsp;published
-    </h1>
+        <i class="fab fa-python"></i>
 
+        &nbsp;Python&nbsp;packages&nbsp;I&nbsp;published
+    </h2>
+    </br>
     <div class="snake-container">
 
         <div class="snake-border"></div>
@@ -2671,16 +2658,6 @@
         </div>
 
         <style>
-            .packages-container {
-                max-width: 1200px;
-                margin: 0 auto;
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-                gap: 30px;
-                padding: 20px;
-                background-color: black;
-            }
-
             .package-card {
                 background: white;
                 border-radius: 12px;
@@ -2760,6 +2737,204 @@
                 text-decoration: underline;
             }
 
+            .packages-container {
+                max-width: 1200px;
+                margin: 0 auto;
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+                gap: 30px;
+                padding: 20px;
+                background-color: black;
+            }
+
+            /* Mobile responsiveness for packages container */
+            @media (max-width: 768px) {
+                .packages-container {
+                    grid-template-columns: 1fr;
+                    gap: 20px;
+                    padding: 15px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .packages-container {
+                    padding: 10px;
+                    gap: 15px;
+                }
+            }
+
+            .package-card {
+                background: white;
+                border-radius: 12px;
+                padding: 25px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                border: 1px solid #e1e8ed;
+                background-color: black;
+            }
+
+            /* Mobile responsiveness for package cards */
+            @media (max-width: 768px) {
+                .package-card {
+                    padding: 20px;
+                    border-radius: 8px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .package-card {
+                    padding: 15px;
+                    margin: 0 5px;
+                }
+            }
+
+            .package-header {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                margin-bottom: 20px;
+            }
+
+            /* Mobile responsiveness for package header */
+            @media (max-width: 480px) {
+                .package-header {
+                    flex-direction: column;
+                    text-align: center;
+                    gap: 10px;
+                    margin-bottom: 15px;
+                }
+            }
+
+            .package-icon {
+                width: 60px;
+                height: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: black;
+                border-radius: 8px;
+                color: white;
+                font-size: 24px;
+            }
+
+            /* Mobile responsiveness for package icon */
+            @media (max-width: 480px) {
+                .package-icon {
+                    width: 50px;
+                    height: 50px;
+                    font-size: 20px;
+                }
+            }
+
+            .package img {
+                background-color: black;
+                border-radius: 8px;
+                color: white;
+                font-size: 24px;
+                padding: 10px;
+            }
+
+            .python-icon {
+                width: 60px;
+                height: 60px;
+            }
+
+            /* Mobile responsiveness for python icon */
+            @media (max-width: 480px) {
+                .python-icon {
+                    width: 50px;
+                    height: 50px;
+                }
+            }
+
+            .package-title {
+                font-size: 24px;
+                font-weight: bold;
+                color: var(--secondary-color);
+                margin-bottom: 5px;
+            }
+
+            /* Mobile responsiveness for package title */
+            @media (max-width: 768px) {
+                .package-title {
+                    font-size: 20px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .package-title {
+                    font-size: 18px;
+                }
+            }
+
+            .package-subtitle {
+                color: yellow;
+                font-size: 14px;
+            }
+
+            /* Mobile responsiveness for package subtitle */
+            @media (max-width: 480px) {
+                .package-subtitle {
+                    font-size: 12px;
+                }
+            }
+
+            .package-description {
+                color: white;
+                line-height: 1.6;
+                margin-bottom: 20px;
+            }
+
+            /* Mobile responsiveness for package description */
+            @media (max-width: 768px) {
+                .package-description {
+                    font-size: 15px;
+                    line-height: 1.5;
+                    margin-bottom: 15px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .package-description {
+                    font-size: 14px;
+                    line-height: 1.4;
+                    margin-bottom: 12px;
+                }
+            }
+
+            .package-links {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            /* Mobile responsiveness for package links */
+            @media (max-width: 480px) {
+                .package-links {
+                    gap: 10px;
+                }
+            }
+
+            .doc-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                color: var(--primary-color);
+                text-decoration: none;
+                font-weight: 500;
+            }
+
+            .doc-link:hover {
+                text-decoration: underline;
+            }
+
+            /* Mobile responsiveness for doc links */
+            @media (max-width: 480px) {
+                .doc-link {
+                    font-size: 14px;
+                    gap: 6px;
+                }
+            }
+
             .install-command {
                 background-color: black;
                 border: 1px solid #e9ecef;
@@ -2769,6 +2944,24 @@
                 font-size: 14px;
                 color: var(--primary-color);
                 border-left: 4px solid white;
+                word-break: break-all;
+                overflow-wrap: break-word;
+            }
+
+            /* Mobile responsiveness for install command */
+            @media (max-width: 768px) {
+                .install-command {
+                    font-size: 13px;
+                    padding: 10px 12px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .install-command {
+                    font-size: 12px;
+                    padding: 8px 10px;
+                    border-radius: 4px;
+                }
             }
         </style>
         </br>
