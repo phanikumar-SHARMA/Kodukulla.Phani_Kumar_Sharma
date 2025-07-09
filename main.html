@@ -144,11 +144,6 @@
             text-decoration: none;
             color: inherit;
             text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .social-link:hover {
-            transform: scale(1.1);
         }
 
         .icon-wrapper {
@@ -322,76 +317,258 @@
             color: rgba(245, 245, 245, 0.7);
         }
 
-        /* 3D Cube */
-        .cube-container {
+        /* Fire Container */
+        .fire-container {
             position: absolute;
             right: 10%;
             top: 50%;
             transform: translateY(-50%);
             width: 200px;
             height: 200px;
-            perspective: 1000px;
+            z-index: 10;
         }
 
-        .cube {
+        .fire {
             width: 100%;
             height: 100%;
             position: relative;
-            transform-style: preserve-3d;
-            animation: rotateCube 15s infinite linear;
-        }
-
-        .cube div {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 255, 157, 0.1);
-            border: 2px solid rgba(0, 255, 157, 0.3);
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 3rem;
-            color: var(--primary-color);
-            transition: var(--transition);
+            transition: opacity 1s ease;
         }
 
-        .cube:hover div {
-            background: rgba(0, 255, 157, 0.2);
-            border-color: var(--primary-color);
+        .fire.extinguished {
+            opacity: 0;
         }
 
-        .front {
-            transform: translateZ(100px);
+        .fire-icon {
+            font-size: 8rem;
+            color: #ff4757;
+            animation: fireFlicker 1s ease-in-out infinite alternate;
+            text-shadow: 0 0 100px #ff6b35, 0 0 40px #ff4757, 0 0 60px #ff3838;
+            box-shadow: 100px solid red;
         }
 
-        .back {
-            transform: translateZ(-100px) rotateY(180deg);
-        }
-
-        .left {
-            transform: translateX(-100px) rotateY(-90deg);
-        }
-
-        .right {
-            transform: translateX(100px) rotateY(90deg);
-        }
-
-        .top {
-            transform: translateY(-100px) rotateX(90deg);
-        }
-
-        .bottom {
-            transform: translateY(100px) rotateX(-90deg);
-        }
-
-        @keyframes rotateCube {
-            from {
-                transform: rotateX(20deg) rotateY(0);
+        @keyframes fireFlicker {
+            0% {
+                transform: scale(1) rotate(-2deg);
+                color: rgb(254, 10, 30);
+                text-shadow: 0 0 1000px rgb(255, 0, 0), 0 0 40px #ff4757, 0 0 60px #ff3838;
             }
 
-            to {
-                transform: rotateX(20deg) rotateY(360deg);
+            50% {
+                transform: scale(1.05) rotate(1deg);
+                color: rgb(255, 136, 0);
+                text-shadow: 0 0 2000px rgb(146, 10, 10), 0 0 40px #ff4757, 0 0 60px #ff3838;
             }
+
+            100% {
+                transform: scale(0.98) rotate(-1deg);
+                color: rgb(255, 218, 84);
+                text-shadow: 0 0 3000 rgb(244, 247, 71), 0 0 40px #ff4757, 0 0 60px #ff3838;
+            }
+        }
+
+        /* Smoke Animation */
+        .smoke-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .smoke-particle {
+            position: absolute;
+            background: radial-gradient(circle, rgba(200, 200, 200, 0.15) 0%, rgba(150, 150, 150, 0.1) 30%, rgba(100, 100, 100, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            opacity: 0;
+            transition: opacity 1s ease;
+            filter: blur(2px);
+        }
+
+        .smoke-particle.clearing {
+            opacity: 0 !important;
+        }
+
+        /* Fan Button */
+        .fan-button {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: black;
+            border: 3px solid #fff;
+            color: white;
+            font-size: 50px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            z-index: 20;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .fan-button i {
+            color: white;
+        }
+
+        .fan-button.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .fan-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        .fan-button.active {
+            animation: fanSpin 0.5s ease-in-out;
+        }
+
+        @keyframes fanSpin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Profile Image - Responsive */
+        .profile-container {
+            position: absolute;
+            right: 10%;
+            top: 40%;
+            transform: translateY(-50%);
+            width: 360px;
+            height: 360px;
+            opacity: 0;
+            transition: opacity 1s ease;
+            border-radius: 50%;
+            overflow: hidden;
+        }
+
+        .profile-container.visible {
+            opacity: 1;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #00d4aa);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 4rem;
+            color: white;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 255, 157, 0.3);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            object-fit: cover;
+        }
+
+        /* Responsive Design for Different Screen Sizes */
+        @media (max-width: 1200px) {
+            .profile-container {
+                width: 300px;
+                height: 300px;
+            }
+
+            .profile-image {
+                font-size: 3.5rem;
+            }
+        }
+
+        /* Additional mobile-specific improvements */
+        @media (max-width: 768px) {
+            .profile-container {
+                position: static;
+                width: 180px;
+                height: 180px;
+                margin: 1rem auto 2rem auto;
+                display: block;
+                transform: none;
+            }
+
+            .profile-image {
+                font-size: 2rem;
+                border-width: 3px;
+                box-shadow: 0 5px 15px rgba(0, 255, 157, 0.2);
+            }
+        }
+
+        /* Ensure container doesn't overflow on small screens */
+        @media (max-width: 480px) {
+            .profile-container {
+                width: 160px;
+                height: 160px;
+                margin: 0.5rem auto 1.5rem auto;
+                max-width: 90vw;
+                max-height: 90vw;
+            }
+
+            .profile-image {
+                font-size: 1.4rem;
+                border-width: 2px;
+                box-shadow: 0 3px 10px rgba(0, 255, 157, 0.15);
+            }
+        }
+
+        /* Extra small screens (like small phones) */
+        @media (max-width: 320px) {
+            .profile-container {
+                width: 150px;
+                height: 150px;
+                margin: 0.5rem auto 1rem auto;
+            }
+
+            .profile-image {
+                font-size: 1.2rem;
+                border-width: 2px;
+                box-shadow: 0 2px 8px rgba(0, 255, 157, 0.1);
+            }
+        }
+
+        /* For very wide screens */
+        @media (min-width: 1600px) {
+            .profile-container {
+                width: 400px;
+                height: 400px;
+            }
+
+            .profile-image {
+                font-size: 5rem;
+            }
+        }
+
+        /* If using actual img tag inside profile-image */
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            border-radius: 50%;
+        }
+
+        /* Alternative approach for background images */
+        .profile-image.has-background-image {
+            background-size: cover;
+            background-position: center top;
+            background-repeat: no-repeat;
         }
 
         /* About Section */
@@ -1346,6 +1523,34 @@
                 height: 50px;
                 font-size: 1.2rem;
             }
+
+            .fire-icon,
+            .fire-container {
+                width: 50%;
+                height: 50%;
+                top: 20%;
+                left: 20%;
+            }
+
+            .fan-button {
+                width: 50px;
+                height: 50px;
+                left: 15px;
+                bottom: 15px;
+                font-size: 25px;
+            }
+
+            .profile-container {
+                width: 150px;
+                height: 150px;
+                top: 14%;
+                left: 30%;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
         }
 
         /* Footer */
@@ -2039,6 +2244,14 @@
                 ;
             }
         }
+
+        .social-media-links i:hover {
+            color: black;
+        }
+
+        .social-media-links:hover {
+            color: black;
+        }
     </style>
 </head>
 
@@ -2482,16 +2695,144 @@
     <section id="home" class="landing">
         <div class="parallax-bg"></div>
         <div class="container">
-            <div class="cube-container">
-                <div class="cube">
-                    <div class="front"><i class="fas fa-code"></i></div>
-                    <div class="back"><i class="fas fa-laptop-code"></i></div>
-                    <div class="left"><i class="fas fa-mobile-alt"></i></div>
-                    <div class="right"><i class="fas fa-server"></i></div>
-                    <div class="top"><i class="fas fa-database"></i></div>
-                    <div class="bottom"><i class="fas fa-cloud"></i></div>
+            <!-- Fire Animation -->
+            <div class="fire-container">
+                <div class="fire" id="fire">
+                    <i class="fas fa-fire fire-icon"></i>
                 </div>
             </div>
+
+            <!-- Profile Image (hidden initially) -->
+            <div class="profile-container" id="profileContainer">
+                <div class="profile-image">
+                    <img src="my-profile.jpg">
+                </div>
+            </div>
+
+            <!-- Smoke Container -->
+            <div class="smoke-container" id="smokeContainer"></div>
+
+            <!-- Fan Button -->
+            <button class="fan-button" id="fanButton">
+                <i class="fas fa-fan"></i>
+            </button>
+
+            <script>
+                class SmokeAnimation {
+                    constructor() {
+                        this.smokeContainer = document.getElementById('smokeContainer');
+                        this.fanButton = document.getElementById('fanButton');
+                        this.fire = document.getElementById('fire');
+                        this.profileContainer = document.getElementById('profileContainer');
+                        this.smokeParticles = [];
+                        this.isClearing = false;
+                        this.smokeFilled = false;
+                        this.init();
+                    }
+                    init() {
+                        this.createSmokeParticles();
+                        this.startSmokeAnimation();
+                        this.fanButton.addEventListener('click', () => this.clearSmoke());
+                    }
+                    createSmokeParticles() {
+                        const particleCount = 300; // Increased for better coverage
+                        for (let i = 0; i < particleCount; i++) {
+                            const particle = document.createElement('div');
+                            particle.className = 'smoke-particle';
+                            // Random size between 80px and 200px for better coverage
+                            const size = Math.random() * 120 + 80;
+                            particle.style.width = size + 'px';
+                            particle.style.height = size + 'px';
+                            // Start from fire position
+                            const fireContainer = document.querySelector('.fire-container');
+                            const fireRect = fireContainer.getBoundingClientRect();
+                            const startX = fireRect.left + fireRect.width / 2;
+                            const startY = fireRect.top;
+                            particle.style.left = startX + 'px';
+                            particle.style.top = startY + 'px';
+                            this.smokeContainer.appendChild(particle);
+                            this.smokeParticles.push(particle);
+                        }
+                    }
+                    startSmokeAnimation() {
+                        // Animation duration: 2 seconds total
+                        const totalDuration = 2000;
+                        const staggerDelay = totalDuration / this.smokeParticles.length;
+                        this.smokeParticles.forEach((particle, index) => {
+                            setTimeout(() => {
+                                this.animateParticle(particle);
+                            }, index * staggerDelay);
+                        });
+                        // Mark smoke as filled after 2 seconds and show fan button
+                        setTimeout(() => {
+                            this.smokeFilled = true;
+                            this.fanButton.classList.add('visible');
+                        }, totalDuration + 200);
+                    }
+                    animateParticle(particle) {
+                        if (this.isClearing) return;
+                        // Get starting position (fire location)
+                        const fireContainer = document.querySelector('.fire-container');
+                        const fireRect = fireContainer.getBoundingClientRect();
+                        const startX = fireRect.left + fireRect.width / 2;
+                        const startY = fireRect.top;
+                        // Calculate random end position to fill entire screen
+                        const endX = Math.random() * window.innerWidth;
+                        const endY = Math.random() * window.innerHeight;
+                        // Fast animation duration (1.5 seconds max)
+                        const duration = Math.random() * 500 + 1000;
+                        particle.style.opacity = '0.8';
+                        particle.style.transition = `all ${duration}ms ease-out`;
+                        particle.style.left = endX + 'px';
+                        particle.style.top = endY + 'px';
+                        // Add rotation and scaling
+                        const rotation = Math.random() * 360;
+                        const scale = Math.random() * 0.5 + 0.8;
+                        particle.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+                        // Keep particles visible longer
+                        setTimeout(() => {
+                            if (!this.isClearing) {
+                                particle.style.opacity = '0.6';
+                            }
+                        }, duration * 0.8);
+                    }
+                    clearSmoke() {
+                        if (!this.smokeFilled || this.isClearing) return;
+                        this.isClearing = true;
+                        // Add spin animation to fan button
+                        this.fanButton.classList.add('active');
+                        setTimeout(() => {
+                            this.fanButton.classList.remove('active');
+                        }, 500);
+                        // Clear all smoke particles
+                        this.smokeParticles.forEach(particle => {
+                            particle.classList.add('clearing');
+                        });
+                        // Extinguish fire
+                        this.fire.classList.add('extinguished');
+                        // Show profile image after 500ms
+                        setTimeout(() => {
+                            this.profileContainer.classList.add('visible');
+                            // Hide fan button after profile image appears
+                            setTimeout(() => {
+                                this.fanButton.style.opacity = '0';
+                                this.fanButton.style.transform = 'scale(0.8)';
+                            }, 500);
+                        }, 500);
+                        // Clean up particles
+                        setTimeout(() => {
+                            this.smokeParticles.forEach(particle => {
+                                particle.remove();
+                            });
+                            this.smokeParticles = [];
+                        }, 1000);
+                    }
+                }
+                // Initialize the animation when page loads
+                window.addEventListener('load', () => {
+                    new SmokeAnimation();
+                });
+            </script>
             <div class="hero-content">
                 <h1>Hi, I'm <span class="highlight">Phani kumar</span></h1>
                 <h2>❤️ Coding || Hindu priest 📿</h2>
@@ -2647,7 +2988,7 @@
   ">
         <i class="fab fa-python"></i>
 
-        &nbsp;Python&nbsp;packages&nbsp;I&nbsp;published
+        &nbsp;Python&nbsp;packages
     </h2>
     </br>
     <div class="snake-container">
