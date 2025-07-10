@@ -320,8 +320,8 @@
         /* Fire Container */
         .fire-container {
             position: absolute;
-            right: 10%;
-            top: 50%;
+            right: 0%;
+            bottom: 0%;
             transform: translateY(-50%);
             width: 200px;
             height: 200px;
@@ -345,30 +345,10 @@
         .fire-icon {
             font-size: 8rem;
             color: #ff4757;
-            animation: fireFlicker 1s ease-in-out infinite alternate;
             text-shadow: 0 0 100px #ff6b35, 0 0 40px #ff4757, 0 0 60px #ff3838;
             box-shadow: 100px solid red;
         }
 
-        @keyframes fireFlicker {
-            0% {
-                transform: scale(1) rotate(-2deg);
-                color: rgb(254, 10, 30);
-                text-shadow: 0 0 1000px rgb(255, 0, 0), 0 0 40px #ff4757, 0 0 60px #ff3838;
-            }
-
-            50% {
-                transform: scale(1.05) rotate(1deg);
-                color: rgb(255, 136, 0);
-                text-shadow: 0 0 2000px rgb(146, 10, 10), 0 0 40px #ff4757, 0 0 60px #ff3838;
-            }
-
-            100% {
-                transform: scale(0.98) rotate(-1deg);
-                color: rgb(255, 218, 84);
-                text-shadow: 0 0 3000 rgb(244, 247, 71), 0 0 40px #ff4757, 0 0 60px #ff3838;
-            }
-        }
 
         /* Smoke Animation */
         .smoke-container {
@@ -1283,7 +1263,6 @@
         .social-media-links a:hover {
             background: linear-gradient(45deg, var(--primary-color), #00d4ff);
             color: var(--dark-text);
-            transform: translateY(-10px) scale(1.1);
             box-shadow: 0 10px 25px rgba(0, 255, 157, 0.4);
         }
 
@@ -2698,7 +2677,6 @@
             <!-- Fire Animation -->
             <div class="fire-container">
                 <div class="fire" id="fire">
-                    <i class="fas fa-fire fire-icon"></i>
                 </div>
             </div>
 
