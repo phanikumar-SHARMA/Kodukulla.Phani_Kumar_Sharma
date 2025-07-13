@@ -1903,6 +1903,10 @@
             color: #3776AB;
         }
 
+        .skill-card[data-skill="powerbi"] .skill-icon {
+            color: #e2ea06ff;
+        }
+
         .skill-card[data-skill="javascript"] .skill-icon {
             color: #F7DF1E;
         }
@@ -3127,9 +3131,140 @@
                 </script>
                 <div class="hero-content">
                     <h1>Hi, I'm <span class="highlight">Phani kumar</span></h1>
-                    <h2>❤️ Coding || Hindu priest 📿</h2>
-                    <p>Freelancer || Leverage AI to work smarter, faster, and deliver higher-quality, higher-quantity
-                        results.</p>
+                    <style>
+                        .typewriter {
+                            border-right: 3px solid #fff;
+                            animation: blink 1s infinite;
+                            min-height: 1.2em;
+                            display: inline-block;
+                        }
+
+                        @keyframes blink {
+
+                            0%,
+                            50% {
+                                border-color: #fff;
+                            }
+
+                            51%,
+                            100% {
+                                border-color: transparent;
+                            }
+                        }
+
+                        .role-1 {
+                            color: #64b5f6;
+                        }
+
+                        .role-2 {
+                            color: #81c784;
+                        }
+
+                        .role-3 {
+                            color: #ffb74d;
+                        }
+
+                        .role-4 {
+                            color: #f06292;
+                        }
+
+                        .role-5 {
+                            color: #ba68c8;
+                        }
+
+                        .role-6 {
+                            color: #4fc3f7;
+                        }
+
+                        .title {
+                            font-size: 2.5em;
+                            color: #fff;
+                            margin: 0;
+                            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+                            font-weight: bold;
+                        }
+                    </style>
+                    <div class="title">
+                        <span class="icon" id="current-icon">💻</span>
+                        <span class="typewriter" id="typewriter-text" style="font-size:30px;"></span>
+                    </div>
+                    <script>
+                        const roles = [{
+                                text: "Full Stack Developer...",
+                                icon: "💻",
+                                class: "role-1"
+                            },
+                            {
+                                text: "Data & Business Analyst...",
+                                icon: "📊",
+                                class: "role-2"
+                            },
+                            {
+                                text: "Web Scraper...",
+                                icon: "🕷️",
+                                class: "role-3"
+                            },
+                            {
+                                text: "Hindu Priest...",
+                                icon: "🕉️",
+                                class: "role-4"
+                            },
+                            {
+                                text: "ML & AI Enthusiast...",
+                                icon: "🤖",
+                                class: "role-5"
+                            },
+                            {
+                                text: "Robotic Engineering Enthusiast...",
+                                icon: "⚙️",
+                                class: "role-6"
+                            }
+                        ];
+                        const typewriterElement = document.getElementById('typewriter-text');
+                        const iconElement = document.getElementById('current-icon');
+                        let currentRoleIndex = 0;
+                        let currentCharIndex = 0;
+                        let isDeleting = false;
+                        let isWaiting = false;
+
+                        function typeWriter() {
+                            const currentRole = roles[currentRoleIndex];
+                            const currentText = currentRole.text;
+                            if (isWaiting) {
+                                setTimeout(() => {
+                                    isWaiting = false;
+                                    isDeleting = true;
+                                    typeWriter();
+                                }, 2000); // Wait 2 seconds before deleting
+                                return;
+                            }
+                            if (isDeleting) {
+                                if (currentCharIndex > 0) {
+                                    typewriterElement.textContent = currentText.substring(0, currentCharIndex - 1);
+                                    currentCharIndex--;
+                                    setTimeout(typeWriter, 50); // Faster deletion
+                                } else {
+                                    isDeleting = false;
+                                    currentRoleIndex = (currentRoleIndex + 1) % roles.length;
+                                    setTimeout(typeWriter, 500); // Pause before next role
+                                }
+                            } else {
+                                if (currentCharIndex < currentText.length) {
+                                    typewriterElement.textContent = currentText.substring(0, currentCharIndex + 1);
+                                    typewriterElement.className = `typewriter ${currentRole.class}`;
+                                    iconElement.textContent = currentRole.icon;
+                                    currentCharIndex++;
+                                    setTimeout(typeWriter, 100); // Typing speed
+                                } else {
+                                    isWaiting = true;
+                                    typeWriter();
+                                }
+                            }
+                        }
+                        // Start the typewriter effect
+                        typeWriter();
+                    </script>
+                    <p>Freelancer || Leverage AI in workflow well.</p>
                     <div class="social-media-links">
                         <a href="https://www.instagram.com/k.phani_kumar_?igsh=N251MjM2bHR6aHdw" target="_blank">
                             <i class="fab fa-instagram"></i>
@@ -3253,7 +3388,13 @@
                                 <div class="skill-name">Python</div>
                                 <div class="skill-category">Backend</div>
                             </div>
-
+                            <div class="skill-card" data-skill="powerbi">
+                                <div class="skill-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="skill-name">Power BI</div>
+                                <div class="skill-category">Analytics</div>
+                            </div>
                             <div class="skill-card" data-skill="javascript">
                                 <div class="skill-icon">
                                     <i class="fab fa-js-square"></i>
@@ -3441,7 +3582,13 @@
                                 <div class="skill-name">Python</div>
                                 <div class="skill-category">Backend</div>
                             </div>
-
+                            <div class="skill-card" data-skill="powerbi">
+                                <div class="skill-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="skill-name">Power BI</div>
+                                <div class="skill-category">Analytics</div>
+                            </div>
                             <div class="skill-card" data-skill="javascript">
                                 <div class="skill-icon">
                                     <i class="fab fa-js-square"></i>
