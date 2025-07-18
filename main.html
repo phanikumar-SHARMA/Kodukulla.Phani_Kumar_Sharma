@@ -3134,7 +3134,17 @@
                 .robot-animation {
                     height: 100px;
                     width: 110px;
+                    animation: moveLeftRight 3s linear infinite alternate;
                 }
+                 @keyframes moveLeftRight {
+                0% {
+                    transform: translateX(0);
+                }
+
+                100% {
+                    transform: translateX(300px);
+                }
+            }
             }
 
             @media (max-width: 480px) {
@@ -3156,8 +3166,8 @@
                 }
 
                 .robot-animation {
-                    height: 80px;
-                    width: 90px;
+                    height: 110px;
+                    width: 120px;
                 }
             }
         </style>
