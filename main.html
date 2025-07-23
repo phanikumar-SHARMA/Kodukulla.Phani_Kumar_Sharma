@@ -8,6 +8,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto+Mono:wght@400;500&display=swap"
         rel="stylesheet">
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#000000">
+
     <!-- Google Font (Dancing Script or Satisfy) -->
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -3697,6 +3700,29 @@
                                     </svg>
                                     View Priest Portfolio
                                 </a>
+                                <button id="install-btn" style="display:none;">Install App</button>
+                                <script>
+                                    let deferredPrompt;
+                                    const installBtn = document.getElementById('install-btn');
+                                    window.addEventListener('beforeinstallprompt', (e) => {
+                                        e.preventDefault();
+                                        deferredPrompt = e;
+                                        installBtn.style.display = 'block';
+                                        installBtn.addEventListener('click', () => {
+                                            installBtn.style.display = 'none';
+                                            deferredPrompt.prompt();
+                                            deferredPrompt.userChoice.then(choice => {
+                                                if (choice.outcome === 'accepted') {
+                                                    console.log('User accepted install');
+                                                } else {
+                                                    console.log('User dismissed install');
+                                                }
+                                                deferredPrompt = null;
+                                            });
+                                        });
+                                    });
+                                </script>
+
                             </div>
                         </div>
                     </div>
@@ -5800,6 +5826,16 @@
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
     </div>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js')
+                    .then(reg => console.log('Service Worker registered:', reg))
+                    .catch(err => console.log('Service Worker error:', err));
+            });
+        }
+    </script>
+
 </body>
 
 </html>
