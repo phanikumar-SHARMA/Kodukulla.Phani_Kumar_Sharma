@@ -551,6 +551,109 @@
         .software-development {
             color: #a55eea;
         }
+        /* FIXED: Certificate Cards Grid - Main Issue */
+.certificates-grid {
+    display: grid;
+    /* FIXED: Better mobile grid with smaller min-width */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    transition: var(--transition);
+    /* FIXED: Ensure grid is visible */
+    opacity: 1;
+    transform: none;
+}
+
+/* FIXED: Mobile responsive improvements */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2.5rem;
+    }
+
+    .certificates-grid {
+        /* FIXED: Single column on mobile with proper spacing */
+        grid-template-columns: 1fr;
+        padding: 1rem 0.5rem;
+        gap: 1rem;
+        /* FIXED: Ensure proper width on mobile */
+        width: 100%;
+        max-width: none;
+    }
+
+    .certificate-card {
+        /* FIXED: Ensure cards are properly sized on mobile */
+        width: 100%;
+        min-height: auto;
+        margin: 0 auto;
+        max-width: 400px;
+    }
+
+    .filter-btn {
+        margin: 0.25rem;
+        /* FIXED: Better mobile button sizing */
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+        max-height: 95vh;
+    }
+
+    .nav-btn {
+        display: none;
+    }
+}
+
+/* FIXED: Additional mobile breakpoint for very small screens */
+@media (max-width: 480px) {
+    .certificates-grid {
+        padding: 0.5rem;
+        gap: 0.8rem;
+    }
+    
+    .certificate-card {
+        max-width: 100%;
+    }
+    
+    .header h1 {
+        font-size: 2rem;
+    }
+    
+    .header p {
+        font-size: 1rem;
+        padding: 0 1rem;
+    }
+    .filter-container{
+         display:none;
+          visibility: hidden;
+    }
+}
+
+/* FIXED: Filter container mobile improvements */
+@media (max-width: 768px) {
+    .filter-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+    }
+
+    .filter-btn {
+        display: inline-flex !important; /* FIXED: Force display on mobile */
+        margin: 0.25rem;
+        width: auto;
+        min-width: 120px;
+        justify-content: center;
+    }
+
+    /* FIXED: Hide dropdown on mobile since buttons work better */
+    .filter-dropdown-wrapper {
+        display: none !important;
+    }
+}
     </style>
 </head>
 
@@ -574,7 +677,7 @@
                 <i class="fas fa-check-circle"></i> Verify & Continue
             </button>
             <p style="color: #666; font-size: 0.8rem; margin-top: 15px;">
-                <i class="fas fa-lock"></i> Your privacy is protected
+                <i class="fas fa-lock"></i> Bot verification system
             </p>
         </div>
     </div>
@@ -1190,21 +1293,63 @@
                 }, 100);
             }, 2000);
         }
-        // Render certificates - FIXED VERSION
-        function renderCertificates(certs) {
-            const grid = document.getElementById('certificatesGrid');
-            grid.innerHTML = '';
-            certs.forEach((cert, index) => {
-                const card = document.createElement('div');
-                card.className = 'certificate-card';
-                card.setAttribute('data-aos', 'fade-up');
-                card.setAttribute('data-aos-delay', (index * 100).toString());
-                card.onclick = () => openModal(cert.id);
-                card.innerHTML = `
+// FIXED: Better filter function
+function filterCertificates(category) {
+    console.log("Filtering category:", category);
+    
+    // Update active button
+    const buttons = document.querySelectorAll('.filter-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    
+    // Find and activate the correct button
+    const matchedBtn = Array.from(buttons).find(btn => {
+        const onclick = btn.getAttribute('onclick');
+        return onclick && onclick.includes(`'${category}'`);
+    });
+    if (matchedBtn) matchedBtn.classList.add('active');
+    
+    // Filter certificates
+    const filteredCerts = category === 'all' ? 
+        certificates : 
+        certificates.filter(cert => cert.category === category);
+    
+    currentCertificates = filteredCerts;
+    
+    // FIXED: Ensure grid remains visible during filtering
+    const grid = document.getElementById('certificatesGrid');
+    if (grid) {
+        // Add smooth transition without hiding content
+        grid.style.transition = 'opacity 0.3s ease';
+        grid.style.opacity = '0.7';
+        
+        setTimeout(() => {
+            renderCertificates(filteredCerts);
+            grid.style.opacity = '1';
+        }, 150);
+    }
+}
+
+// FIXED: Improved renderCertificates function
+function renderCertificates(certs) {
+    const grid = document.getElementById('certificatesGrid');
+    if (!grid) return;
+    
+    grid.innerHTML = '';
+    
+    certs.forEach((cert, index) => {
+        const card = document.createElement('div');
+        card.className = 'certificate-card';
+        card.setAttribute('data-aos', 'fade-up');
+        card.setAttribute('data-aos-delay', Math.min(index * 50, 500).toString()); // FIXED: Limit delay
+        card.onclick = () => openModal(cert.id);
+        
+        card.innerHTML = `
             <div class="card-ribbon">${cert.ribbon}</div>
             <div class="card-image">
-                <img src="${cert.image}" alt="${cert.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-                <div class="fallback-icon" style="display: none; align-items: center; justify-content: center; height: 100%; color: var(--primary-color); font-size: 3rem;">
+                <img src="${cert.image}" alt="${cert.title}" 
+                     style="width: 100%; height: 200px; object-fit: contain; display: block;"
+                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                <div class="fallback-icon" style="display: none; align-items: center; justify-content: center; height: 200px; color: var(--primary-color); font-size: 3rem;">
                     <i class="${cert.icon}"></i>
                 </div>
             </div>
@@ -1224,38 +1369,19 @@
                 </div>
             </div>
         `;
-                grid.appendChild(card);
-            });
-            // Refresh AOS
-            AOS.refresh();
-        }
-        // Filter certificates
-        function filterCertificates(category) {
-            // Update active button
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            // Find the clicked button and make it active
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                if ((category === 'all' && btn.textContent.trim().includes('All Certificates')) ||
-                    (category !== 'all' && btn.onclick && btn.onclick.toString().includes(category))) {
-                    btn.classList.add('active');
-                }
-            });
-            // Filter certificates
-            const filteredCerts = category === 'all' ?
-                certificates :
-                certificates.filter(cert => cert.category === category);
-            currentCertificates = filteredCerts;
-            // Add loading effect for filter
-            const grid = document.getElementById('certificatesGrid');
-            grid.style.opacity = '0.5';
-            grid.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                renderCertificates(filteredCerts);
-                grid.style.opacity = '1';
-                grid.style.transform = 'scale(1)';
-            }, 300);
-        }
+        
+        grid.appendChild(card);
+    });
+    
+    // FIXED: Ensure grid is visible
+    grid.style.display = 'grid';
+    grid.style.opacity = '1';
+    
+    // Refresh AOS animations
+    if (typeof AOS !== 'undefined') {
+        AOS.refresh();
+    }
+}
         // Open modal - FIXED VERSION
         function openModal(certId) {
             const cert = certificates.find(c => c.id === certId);
