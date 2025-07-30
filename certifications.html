@@ -22,7 +22,30 @@
 
     <!-- AOS Animation Library -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+     <script>
+    // Disable right-click
+    document.addEventListener("contextmenu", function (e) {
+      e.preventDefault();
+    });
 
+    // Disable specific key combinations like Ctrl+U, Ctrl+Shift+I, Ctrl+S, etc.
+    document.addEventListener("keydown", function (e) {
+      // Prevent Ctrl+U
+      if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+        e.preventDefault();
+      }
+
+      // Prevent Ctrl+Shift+I (DevTools)
+      if (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === 'i') {
+        e.preventDefault();
+      }
+
+      // Prevent F12 (DevTools)
+      if (e.key === "F12") {
+        e.preventDefault();
+      }
+    });
+  </script>
     <style>
         :root {
             --primary-color: #00ff9d;
