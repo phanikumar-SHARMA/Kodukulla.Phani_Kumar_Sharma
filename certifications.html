@@ -560,7 +560,7 @@
     <div class="main-content" id="mainContent">
         <div class="container-fluid">
             <div class="header">
-                <h1 data-aos="fade-up">Professional Certifications</h1>
+                <h1 data-aos="fade-up"><span id="cert-count"></span>Professional Certifications</h1>
                 <p data-aos="fade-up" data-aos-delay="200">Showcasing my journey of continuous learning and professional
                     development</p>
             </div>
@@ -931,7 +931,8 @@
                 issued: "September 2024",
                 organization: "HP Life",
                 skills: ["Digital Marketing", "E-commerce", "Business Strategy", "Digital Transformation",
-                    "more..."],
+                    "more..."
+                ],
                 icon: "fas fa-chart-line"
             },
             {
@@ -980,7 +981,8 @@
                 issued: "June 2025",
                 organization: "WS Cube Tech",
                 skills: ["PowerBI", "Data Visualization", "Business Intelligence", "Data Analysis", "DAX",
-                    "more..."],
+                    "more..."
+                ],
                 icon: "fas fa-chart-bar"
             },
             {
@@ -1048,8 +1050,36 @@
                     "Project Proposal Letter Design"
                 ],
                 icon: "fab fa-python"
+            },
+            {
+                id: 25,
+                title: "Power BI for Business Analysis",
+                image: "powerbi.jpeg",
+                ribbon: "Power BI",
+                category: "machine-learning",
+                description: "Mastering Power BI for bussiness and data analysis",
+                issued: "June 2025",
+                organization: "Skill Nation",
+                skills: ["Power BI", "Data Analysis",
+                    "Dash Board and Bussiness Analysis"
+                ],
+                icon: "fab fa-chart-bar"
+            },
+            {
+                id: 26,
+                title: "MongoDB",
+                image: "mongodb.jpeg",
+                ribbon: "MongoDB",
+                category: "databases",
+                description: "MongoDB for nosql backend developement",
+                issued: "June 2025",
+                organization: "LetsUpgrade",
+                skills: ["MongoDB", "Backend Development"],
+                icon: "fab fa-chart-bar"
             }
         ];
+        let count_cert = certificates.length;
+        document.getElementById("cert-count").innerHTML += count_cert + ` `;
         let currentCertificates = [...certificates];
         let currentModalIndex = 0;
         let captchaAnswer = 0;
