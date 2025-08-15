@@ -2238,7 +2238,7 @@
 <body>
     <div class="box heavy-animation">
         <header class="container-fluid">
-            <img src="my-profile.jpg" style="height:50px;width:50px;border-radius:50%;">
+            
             Phani Kumar
             <span class="menu-icon" onclick="openNav()">☰</span>
         </header>
@@ -3612,6 +3612,7 @@
                 <hr class="custom-hr">
             </div>
             <h2 class="section-title"><i class="fas fa-user"></i>About Me</h2></br>
+              <div id = "about"></div>
             <div class="professional_profile_container"></br>
                 <!-- Cover Photo Section -->
                 <div class="hero_cover_section">
@@ -3714,6 +3715,7 @@
             </div>
 
             <section class="tech-skills-section">
+            <div id = "skills"></div>
                 <div class="containerzzzzz">
                     <div class="section-header">
                         <h2 class="section-title">
@@ -4134,13 +4136,31 @@
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience</h2>
                     <div class="timeline">
+                         <div class="timeline-item">
+                            <div class="timeline-card">
+                                <div class="timeline-front">
+                                    <h3><i class="fas fa-briefcase"></i> &nbsp; Python Full Stack</h3>
+                                    <p>Internship at Has Soft Technologies</p>
+                                    <p class="date">2024-2025</p>
+                                </div>
+
+                            </div>
+                        </div><div class="timeline-item">
+                            <div class="timeline-card">
+                                <div class="timeline-front">
+                                    <h3><i class="fas fa-briefcase"></i> &nbsp; Python Developer</h3>
+                                    <p>Internship at CodSoft</p>
+                                    <p class="date">1 month-2025</p>
+                                </div>
+
+                            </div>
+                        </div>
                         <div class="timeline-item">
                             <div class="timeline-card">
                                 <div class="timeline-front">
-
-                                    <h3><i class="fas fa-briefcase"></i> &nbsp; 70+ Projects</h3>
-                                    <p>self-employeed | Leveraging AI</p>
-                                    <p class="date">2022 - Present</p>
+                                    <h3><i class="fas fa-briefcase"></i> &nbsp; Data Analyst</h3>
+                                    <p>Internship at Alfido Tech</p>
+                                    <p class="date">1 month-2025</p>
                                 </div>
 
                             </div>
@@ -4158,9 +4178,20 @@
                         <div class="timeline-item">
                             <div class="timeline-card">
                                 <div class="timeline-front">
-                                    <h3><i class="fas fa-briefcase"></i> &nbsp; Core developer and admin</h3>
+                                    <h3><i class="fas fa-briefcase"></i> &nbsp; Founder</h3>
                                     <p>Tech Tool Kits</p>
                                     <p class="date">2025</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-card">
+                                <div class="timeline-front">
+
+                                    <h3><i class="fas fa-briefcase"></i> &nbsp; 90+ Projects</h3>
+                                    <p>self-employeed | Leveraging AI</p>
+                                    <p class="date">2022 - Present</p>
                                 </div>
 
                             </div>
@@ -4513,229 +4544,7 @@
                         }
                     }
                 </style>
-                <style>
-                    .python-book-showcase-unique {
-                        --primary-color: #00ff9d;
-                        --secondary-color: #00b8ff;
-                        --dark-bg: #1a1a1a;
-                        --darker-bg: #121212;
-                        --light-text: #f5f5f5;
-                        --dark-text: #333;
-                        --card-bg: #252525;
-                        --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-                        --transition: all 0.3s ease;
-
-                        background: linear-gradient(135deg, var(--darker-bg) 0%, var(--dark-bg) 100%);
-                        min-height: 100vh;
-                        padding: 40px 0;
-                        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                    }
-
-                    .python-book-showcase-unique .showcase-container {
-                        background: var(--card-bg);
-                        border-radius: 20px;
-                        box-shadow: var(--card-shadow);
-                        overflow: hidden;
-                        transition: var(--transition);
-                        border: 1px solid rgba(0, 255, 157, 0.1);
-                        max-width: 1200px;
-                        margin: 0 auto;
-                    }
-
-                    .python-book-showcase-unique .showcase-container:hover {
-                        transform: translateY(-5px);
-                        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-                        border-color: rgba(0, 255, 157, 0.3);
-                    }
-
-                    .python-book-showcase-unique .showcase-content {
-                        display: grid;
-                        grid-template-columns: 1fr 1fr;
-                        gap: 0;
-                        align-items: center;
-                    }
-
-                    .python-book-showcase-unique .book-image-section {
-                        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-                        padding: 40px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        position: relative;
-                        overflow: hidden;
-                        min-height: 500px;
-                    }
-
-                    .python-book-showcase-unique .book-image-section::before {
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-                        opacity: 0.3;
-                    }
-
-                    .python-book-showcase-unique .book-mockup {
-                        width: 300px;
-                        height: 350px;
-                        background: var(--light-text);
-                        border-radius: 15px;
-                        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-                        position: relative;
-                        transform: perspective(1000px) rotateY(-15deg);
-                        transition: var(--transition);
-                        z-index: 2;
-                        overflow: hidden;
-                    }
-
-                    .python-book-showcase-unique .book-mockup:hover {
-                        transform: perspective(1000px) rotateY(-5deg) scale(1.05);
-                    }
-
-                    .python-book-showcase-unique .book-image {
-                        width: 100%;
-                        height: 100%;
-                        object-fit: cover;
-                        border-radius: 15px;
-                        transition: var(--transition);
-                    }
-
-                    .python-book-showcase-unique .content-section {
-                        padding: 40px;
-                        color: var(--light-text);
-                    }
-
-                    .python-book-showcase-unique .main-title {
-                        font-size: 2.5rem;
-                        font-weight: bold;
-                        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-                        -webkit-background-clip: text;
-                        -webkit-text-fill-color: transparent;
-                        background-clip: text;
-                        margin-bottom: 20px;
-                    }
-
-                    .python-book-showcase-unique .description {
-                        font-size: 1.1rem;
-                        line-height: 1.7;
-                        margin-bottom: 30px;
-                        opacity: 0.9;
-                    }
-
-                    .python-book-showcase-unique .highlights-section {
-                        margin-top: 30px;
-                    }
-
-                    .python-book-showcase-unique .highlight-item {
-                        background: rgba(0, 255, 157, 0.1);
-                        border-left: 4px solid var(--primary-color);
-                        padding: 15px 20px;
-                        margin-bottom: 15px;
-                        border-radius: 0 10px 10px 0;
-                        transition: var(--transition);
-                    }
-
-                    .python-book-showcase-unique .highlight-item:hover {
-                        background: rgba(0, 255, 157, 0.15);
-                        transform: translateX(5px);
-                    }
-
-                    .python-book-showcase-unique .highlight-icon {
-                        color: var(--primary-color);
-                        margin-right: 10px;
-                        font-size: 1.2rem;
-                    }
-
-                    .python-book-showcase-unique .cta-section {
-                        margin-top: 40px;
-                        text-align: center;
-                    }
-
-                    .python-book-showcase-unique .cta-button {
-                        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-                        border: none;
-                        color: var(--dark-text);
-                        padding: 15px 40px;
-                        font-size: 1.1rem;
-                        font-weight: bold;
-                        border-radius: 50px;
-                        transition: var(--transition);
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                        cursor: pointer;
-                    }
-
-                    .python-book-showcase-unique .cta-button:hover {
-                        transform: translateY(-2px);
-                        box-shadow: 0 10px 20px rgba(0, 255, 157, 0.3);
-                        color: var(--dark-text);
-                    }
-
-                    .python-book-showcase-unique .stats-row {
-                        margin-top: 30px;
-                        padding-top: 30px;
-                        border-top: 1px solid rgba(0, 255, 157, 0.2);
-                        display: grid;
-                        grid-template-columns: repeat(3, 1fr);
-                        gap: 20px;
-                    }
-
-                    .python-book-showcase-unique .stat-item {
-                        text-align: center;
-                        padding: 20px;
-                    }
-
-                    .python-book-showcase-unique .stat-number {
-                        font-size: 2rem;
-                        font-weight: bold;
-                        color: var(--primary-color);
-                        display: block;
-                    }
-
-                    .python-book-showcase-unique .stat-label {
-                        font-size: 0.9rem;
-                        opacity: 0.8;
-                        text-transform: uppercase;
-                        letter-spacing: 1px;
-                    }
-
-                    @keyframes float {
-
-                        0%,
-                        100% {
-                            transform: translateY(0px) rotate(0deg);
-                        }
-
-                        50% {
-                            transform: translateY(-10px) rotate(5deg);
-                        }
-                    }
-
-                    @media (max-width: 768px) {
-                        .python-book-showcase-unique .showcase-content {
-                            grid-template-columns: 1fr;
-                        }
-
-                        .python-book-showcase-unique .main-title {
-                            font-size: 2rem;
-                        }
-
-                        .python-book-showcase-unique .book-mockup {
-                            width: 250px;
-                            height: 300px;
-                        }
-
-                        .python-book-showcase-unique .content-section {
-                            padding: 30px 20px;
-                        }
-
-                        .python-book-showcase-unique .stats-row {
-                            grid-template-columns: 1fr;
-                        }
-                    }
-                </style>
+               
                 </br>
 
                 <div class="packages-container">
@@ -4838,60 +4647,304 @@
                 </div>
 
             </div>
+<style>
+          .python-showcase-wrapper-unique {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-            <div class="python-book-showcase-unique">
-                <h2 class="section-title"> <i class="fas fa-book"></i>Books I Published</h2>
-                <div class="container">
-                    <div class="showcase-container">
-                        <div class="row g-0">
-                            <!-- Book Image Section -->
-                            <div class="col-lg-5">
-                                <div class="book-image-section h-100">
-                                    <div class="book-mockup">
-                                        <img src="my-book.jpg" alt="Python Programming Book" class="book-image">
-                                    </div>
-                                </div>
-                            </div>
+        .python-book-header-unique {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-                            <!-- Content Section -->
-                            <div class="col-lg-7">
-                                <div class="content-section">
-                                    <h1 class="main-title">The Alphabet of Python</h1>
-                                    <p class="description">
-                                        A comprehensive guide designed for beginners and aspiring developers who want to
-                                        learn Python from scratch. This book walks you through every fundamental concept
-                                        in Python programming, starting from setting up the environment to mastering
-                                        advanced topics like object-oriented programming and file handling.
-                                    </p>
+        .python-book-header-unique i {
+            margin-right: 10px;
+        }
 
-                                    <div class="highlights-section">
-                                        <div class="highlight-item">
-                                            <i class="fas fa-code highlight-icon"></i>
-                                            <strong>Complete Coverage:</strong> From Python basics to advanced OOP
-                                            concepts
-                                        </div>
-                                        <div class="highlight-item">
-                                            <i class="fas fa-project-diagram highlight-icon"></i>
-                                            <strong>25+ Real Projects:</strong> Hands-on experience with practical
-                                            applications
-                                        </div>
-                                        <div class="highlight-item">
-                                            <i class="fas fa-robot highlight-icon"></i>
-                                            <strong>Jarvis AI Assistant:</strong> Complete project with Gemini API
-                                            integration
-                                        </div>
-                                        <div class="highlight-item">
-                                            <i class="fas fa-graduation-cap highlight-icon"></i>
-                                            <strong>Beginner Friendly:</strong> Step-by-step explanations with real
-                                            examples
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        .python-showcase-card-unique {
+            background: var(--card-bg);
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            gap: 0;
+            transition: all 0.3s ease;
+        }
+
+        .python-showcase-card-unique:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 255, 157, 0.4);
+        }
+
+        .python-book-visual-section-unique {
+            flex: 0 0 300px;
+            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1), rgba(0, 184, 255, 0.1));
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .python-book-visual-section-unique::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50"><circle cx="25" cy="25" r="2" fill="rgba(0,255,157,0.1)"/><circle cx="10" cy="10" r="1" fill="rgba(0,184,255,0.1)"/><circle cx="40" cy="15" r="1.5" fill="rgba(0,255,157,0.08)"/><circle cx="15" cy="40" r="1" fill="rgba(0,184,255,0.08)"/></svg>');
+            animation: python-float-animation-unique 20s ease-in-out infinite;
+            opacity: 0.6;
+        }
+
+        @keyframes python-float-animation-unique {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
+        }
+
+        .python-book-3d-container-unique {
+            width: 180px;
+            height: 240px;
+            position: relative;
+            transform: perspective(800px) rotateY(-15deg);
+            transition: all 0.4s ease;
+            z-index: 2;
+        }
+
+        .python-book-3d-container-unique:hover {
+            transform: perspective(800px) rotateY(-8deg) scale(1.05);
+        }
+
+        .python-book-cover-mockup-unique {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(145deg, var(--primary-color), var(--secondary-color));
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 
+                0 20px 30px rgba(0, 0, 0, 0.3),
+                15px 0 30px rgba(0, 255, 157, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--darker-bg);
+        }
+
+        .python-book-cover-mockup-unique::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: -15px;
+            width: 15px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.4));
+            border-radius: 0 8px 8px 0;
+        }
+
+        .python-book-cover-content-unique {
+            z-index: 3;
+            position: relative;
+        }
+
+        .python-logo-icon-unique {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+        }
+
+        .python-book-cover-title-unique {
+            font-size: 1.3rem;
+            font-weight: 800;
+            line-height: 1.2;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .python-book-content-section-unique {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .python-book-main-title-unique {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .python-book-description-text-unique {
+            color: rgba(245, 245, 245, 0.85);
+            line-height: 1.6;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+        }
+
+        .python-book-features-grid-unique {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .python-feature-item-unique {
+            display: flex;
+            align-items: center;
+            font-size: 0.9rem;
+            color: var(--light-text);
+            padding: 8px 0;
+        }
+
+        .python-feature-item-unique i {
+            color: var(--primary-color);
+            margin-right: 8px;
+            width: 16px;
+            font-size: 1rem;
+        }
+
+        .python-book-stats-container-unique {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .python-book-stat-item-unique {
+            text-align: center;
+        }
+
+        .python-stat-number-unique {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .python-stat-label-unique {
+            color: rgba(245, 245, 245, 0.7);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .python-showcase-card-unique {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .python-book-visual-section-unique {
+                flex: none;
+                width: 100%;
+                padding: 30px;
+            }
+
+            .python-book-3d-container-unique {
+                transform: none;
+                width: 160px;
+                height: 210px;
+            }
+
+            .python-book-content-section-unique {
+                padding: 30px 25px;
+            }
+
+            .python-book-main-title-unique {
+                font-size: 1.7rem;
+            }
+
+            .python-book-features-grid-unique {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .python-book-stats-container-unique {
+                gap: 20px;
+            }
+        }
+    </style>
+
+    <div class="python-showcase-wrapper-unique">
+        <h2 class="section-title">
+            <i class="fas fa-book"></i>Books I Published
+        </h2>
+        
+        <div class="python-showcase-card-unique">
+            <div class="python-book-visual-section-unique">
+                <div class="python-book-3d-container-unique">
+                    <div class="python-book-cover-mockup-unique">
+                        <div class="python-book-cover-content-unique">
+                            <i class="fab fa-python python-logo-icon-unique"></i>
+                            <div class="python-book-cover-title-unique">The Alphabet<br>of Python</div>
                         </div>
                     </div>
                 </div>
             </div>
+            
+            <div class="python-book-content-section-unique">
+                <h1 class="python-book-main-title-unique">The Alphabet of Python</h1>
+                
+                <p class="python-book-description-text-unique">
+                    A comprehensive guide for beginners to master Python programming from scratch. 
+                    Learn through practical projects and real-world applications with step-by-step guidance.
+                </p>
+                
+                <div class="python-book-features-grid-unique">
+                    <div class="python-feature-item-unique">
+                        <i class="fas fa-code"></i>
+                        Complete Python Coverage
+                    </div>
+                    <div class="python-feature-item-unique">
+                        <i class="fas fa-project-diagram"></i>
+                        25+ Real Projects
+                    </div>
+                    <div class="python-feature-item-unique">
+                        <i class="fas fa-robot"></i>
+                        Jarvis AI Assistant
+                    </div>
+                    <div class="python-feature-item-unique">
+                        <i class="fas fa-graduation-cap"></i>
+                        Beginner Friendly
+                    </div>
+                </div>
+                
+                <div class="python-book-stats-container-unique">
+                    <div class="python-book-stat-item-unique">
+                        <span class="python-stat-number-unique">300+</span>
+                        <span class="python-stat-label-unique">Pages</span>
+                    </div>
+                    <div class="python-book-stat-item-unique">
+                        <span class="python-stat-number-unique">25+</span>
+                        <span class="python-stat-label-unique">Projects</span>
+                    </div>
+                    <div class="python-book-stat-item-unique">
+                        <span class="python-stat-number-unique">15</span>
+                        <span class="python-stat-label-unique">Chapters</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     </div>
 
@@ -5191,7 +5244,7 @@
     <section class="education-section" id="education">
 
         <h1 align="center" class="section-title"> <i class="fa-solid fa-book"></i>Education</h1>
-        <div class="container">
+        <div class="container" id = "ached">
 
             <div class="education-grid">
                 <div class="education-card">
@@ -5659,7 +5712,7 @@
                 <div class="contact-info-section">
                     <div class="section-header">
 
-                        <h2 class="section-title"> <i class="fas fa-envelope"></i>Contact</h2>
+                        <h2 class="section-title" id = "contact"> <i class="fas fa-envelope"></i>Contact</h2>
                     </div>
                     <h3>Get In Touch</h3>
                     <p>Have a project in mind or want to discuss potential opportunities? Feel free to reach out!</p>
@@ -6098,3 +6151,4 @@
 </body>
 
 </html>
+
