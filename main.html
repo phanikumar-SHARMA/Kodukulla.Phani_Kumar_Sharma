@@ -11,26 +11,19 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#000000">
 
-    <!-- Google Font (Dancing Script or Satisfy) -->
     <link href="https://fonts.googleapis.com/css2?family=Satisfy&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>𝒦.𝒱.𝒦.𝒫𝒽𝒶𝓃𝒾 𝒦𝓊𝓂𝒶𝓇'𝓈 𝒫𝑜𝓇𝓉𝒻𝑜𝓁𝒾𝑜</title>
     <link rel="icon" type="image/png" sizes="32x32" href="my-profile.jpg">
     <link rel="apple-touch-icon" sizes="180x180" href="my-profile.jpg">
-    <!-- Animate.css CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
-
-    <!-- GSAP (if needed) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         @font-face {
-            /* Optional: use Product Sans if licensed */
             font-family: 'ProductSans';
             src: url('ProductSans-Regular.woff2') format('woff2');
             font-weight: 400;
         }
-
-        /* Base Styles */
         :root {
             --primary-color: #00ff9d;
             --secondary-color: #00b8ff;
@@ -49,14 +42,13 @@
             box-sizing: border-box;
         }
 
-        htm,
+        html,
         body {
             overflow-x: hidden;
         }
 
-        /* Header bar with menu icon */
         header {
-            font-family: ;
+            font-family: 'Poppins', sans-serif;
             font-size: 1.7rem;
             text-align: left;
             padding: 20px;
@@ -482,7 +474,7 @@
             left: calc(50% + 40px);
         }
 
-        .timeline-card:hover {}
+        
 
         .timeline-front,
         .timeline-back {
@@ -2242,7 +2234,6 @@
             Phani Kumar
             <span class="menu-icon" onclick="openNav()">☰</span>
         </header>
-        <!-- Back to Top Button -->
         <button id="backToTopBtn" title="Back to Top">
             <i class="fas fa-arrow-up" style="color:black;"></i>
         </button>
@@ -3400,7 +3391,7 @@
 
         <body>
             <section id="home" class="landing">
-                <!-- Robotic Background -->
+                
                 <div class="robotic-bg">
                     <div class="circuit-line"></div>
                     <div class="circuit-line"></div>
@@ -3444,14 +3435,14 @@
                         <div class="profile-container">
                             <div class="profile-image" id="profileImage">
                                 <div class="demo-image">
-                                    <img src="my-profile-npbg.png" alt="Profile">
+                                    <img src="my-profile.png" alt="Profile" style="margin-top:20px;">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Robot Animation positioned at bottom left -->
+                
                 <img src="robot.gif" class="robot-animation" alt="Robot Animation">
             </section>
 
@@ -3614,16 +3605,16 @@
             <h2 class="section-title"><i class="fas fa-user"></i>About Me</h2></br>
               <div id = "about"></div>
             <div class="professional_profile_container"></br>
-                <!-- Cover Photo Section -->
+                
                 <div class="hero_cover_section">
                     <img src="back-profile.png" alt="Cover Photo">
                 </div>
 
-                <!-- Main Profile Content -->
+                
                 <div class="main_profile_content">
-                    <!-- Profile Header with Image and Info -->
+                    
                     <div class="profile_header_section">
-                        <!-- Profile Picture -->
+                        
                         <div class="profile_avatar_wrapper">
                             <img src="my-profile.jpg" alt="Kodukulla Phani Kumar" class="main_profile_image">
                             <div class="verified_status_badge">
@@ -3635,7 +3626,7 @@
                             </div>
                         </div>
 
-                        <!-- Personal Information -->
+                        
                         <div class="personal_info_section">
                             <h1 class="primary_name_heading">
                                 Kodukulla. Phani Kumar
@@ -3653,7 +3644,7 @@
 
                             <p class="geographic_location_info">Andhra Pradesh, India </p>
 
-                            <!-- Action Buttons -->
+                            
                             <div class="action_buttons_section">
                                 <a href="mailto:phanikumark715@gmail.com" class="action_button" style="color:black;">
                                     <svg class="button_icon" viewBox="0 0 24 24">
@@ -3918,7 +3909,7 @@
 
                             </div>
 
-                            <!-- Duplicate for seamless loop -->
+                            
                             <div class="skills-group">
                                 <div class="skill-card" data-skill="c">
                                     <div class="skill-icon">
@@ -4124,19 +4115,29 @@
                     </div>
                 </div>
             </section>
-            <!-- ++++++++++++++++++++++++++++++++++++++++++++END=====================================================-->
+            
             <div class="custom-hr-container">
                 <span class="dot"></span>
                 <span class="dot"></span>
                 <hr class="custom-hr">
             </div>
 
-            <!-- Experience Section -->
+            
             <section id="experience" class="section dark-bg">
                 <div class="container">
                     <h2 class="section-title"><i class="fas fa-briefcase"></i> Experience</h2>
                     <div class="timeline">
-                         <div class="timeline-item">
+                        <div class="timeline-item">
+                            <div class="timeline-card">
+                                <div class="timeline-front">
+                                    <h3><i class="fas fa-briefcase"></i> &nbsp; Founder &amp; CEO</h3>
+                                    <p>Vishvsamhit</p>
+                                    <p class="date">2025 - Present</p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="timeline-item">
                             <div class="timeline-card">
                                 <div class="timeline-front">
                                     <h3><i class="fas fa-briefcase"></i> &nbsp; Python Full Stack</h3>
@@ -4205,7 +4206,7 @@
                 <hr class="custom-hr">
             </div>
             <h2 class="section-title"><i class="fa-solid fa-newspaper"></i> My Publications</h2>
-            <!-- Background Particles -->
+            
             <div class="bg-particles">
                 <div class="particle" style="left: 10%; animation-delay: 0s;"></div>
                 <div class="particle" style="left: 20%; animation-delay: 2s;"></div>
@@ -4548,7 +4549,7 @@
                 </br>
 
                 <div class="packages-container">
-                    <!-- Code Complexity Analyzer Card -->
+                    
                     <div class="package-card">
                         <div class="package-header">
                             <div class="package-icon">
@@ -4581,7 +4582,7 @@
                         </div>
                     </div>
 
-                    <!-- PyVoiceCraft Card -->
+                    
                     <div class="package-card">
                         <div class="package-header">
                             <div class="package-icon">
@@ -4613,7 +4614,7 @@
                         </div>
                     </div>
 
-                    <!-- APIProtector Card -->
+                    
                     <div class="package-card">
                         <div class="package-header">
                             <div class="package-icon">
@@ -4927,11 +4928,6 @@
                         Beginner Friendly
                     </div>
                 </div>
-                <div class="project-links">
-                            <a href="The_Alphabet_of_Python.pdf" class="btn btn-small"><i class="fas fa-external-link-alt"
-                                    style="color:black;"></i> Read this Book
-                            </a>
-                </div>
                 
                 <div class="python-book-stats-container-unique">
                     <div class="python-book-stat-item-unique">
@@ -4966,12 +4962,12 @@
             border-radius: 50%;
         }
     </style>
-    <!-- Certificates Section -->
+    
     <section id="certificates" class="section dark-bg">
         <div class="container">
             <h2 class="section-title"><i class="fas fa-certificate"></i>Credentials</h2>
             <div class="certificates-grid">
-                <!-- Certificate 1 -->
+                
                 <div class="certificate-card">
                     <div class="certificate-front">
                         <div class="certificate-badge">
@@ -5016,7 +5012,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Certificate 2 -->
+                
                 <div class="certificate-card">
                     <div class="certificate-front">
                         <div class="certificate-badge">
@@ -5031,7 +5027,7 @@
                     </div>
                 </div>
 
-                <!-- Certificate 3 -->
+                
                 <div class="certificate-card">
                     <div class="certificate-front">
                         <div class="certificate-badge">
@@ -5047,7 +5043,7 @@
                     </div>
                 </div>
 
-                <!-- Certificate 4: AWS Cloud Practitioner -->
+                
                 <div class="certificate-card">
                     <div class="certificate-front">
                         <div class="certificate-badge">
@@ -5063,7 +5059,7 @@
                     </div>
                 </div>
 
-                <!-- Certificate 5: React Professional -->
+                
                 <div class="certificate-card">
                     <div class="certificate-front">
                         <div class="certificate-badge">
@@ -5078,29 +5074,24 @@
                         </div>
                     </div>
                 </div>
-                <!-- Git & GitHub Certificate -->
+                
                 <div class="certificate-card">
                     <div class="certificate-front">
                         <div class="certificate-badge">
-                            <!-- org logo -->
                             <img src="lu.jpeg" alt="Organization logo" class="by">
                             By Lets Upgrade
                         </div>
 
-                        <!-- certificate main image -->
                         <img src="git.jpg" alt="Git & GitHub Certified" class="certificate-image">
-
-                        <!-- certificate text -->
                         <h3 class="certificate-title">Git &amp; GitHub Certified Developer</h3>
-
-                        <!-- issue date -->
+                        
                         <div class="certificate-date">
                             <i class="fas fa-calendar-alt"></i> Issued: March&nbsp;2025
                         </div>
                     </div>
                 </div>
 
-                <!-- Certificate 6: CSS Specialist -->
+                
                 <div class="certificate-card">
                     <div class="certificate-front">
                         <div class="certificate-badge">
@@ -5137,7 +5128,7 @@
         <hr class="custom-hr">
     </div>
 
-    <!-- Projects Section -->
+    
     <section id="projects" class="section">
         <div class="container">
             <h2 class="section-title"><i class="fas fa-project-diagram"></i> Projects</h2>
@@ -5146,13 +5137,13 @@
                     <div class="project-image">
                         <img src="ttk.png" alt="E-commerce Platform">
                         <div class="project-tech">
-                            <!-- HTML Icon -->
+                            
                             <i class="fab fa-html5"></i>
 
-                            <!-- CSS Icon -->
+                            
                             <i class="fab fa-css3-alt"></i>
 
-                            <!-- JavaScript Icon -->
+                            
                             <i class="fab fa-js"></i>
 
                             <i class="fas fa-cloud"></i>
@@ -5174,13 +5165,13 @@
                     <div class="project-image">
                         <img src="writeout-image.png" alt="Task Management App">
                         <div class="project-tech">
-                            <!-- HTML Icon -->
+                            
                             <i class="fab fa-html5"></i>
 
-                            <!-- CSS Icon -->
+                            
                             <i class="fab fa-css3-alt"></i>
 
-                            <!-- JavaScript Icon -->
+                            
                             <i class="fab fa-js"></i>
                             <i class="fab fa-python"></i>
                         </div>
@@ -5201,13 +5192,13 @@
                     <div class="project-image">
                         <img src="reportcard.jpeg" alt="Weather Dashboard">
                         <div class="project-tech">
-                            <!-- HTML Icon -->
+                            
                             <i class="fab fa-html5"></i>
 
-                            <!-- CSS Icon -->
+                            
                             <i class="fab fa-css3-alt"></i>
 
-                            <!-- JavaScript Icon -->
+                            
                             <i class="fab fa-js"></i>
 
                             <i class="fas fa-cloud"></i>
@@ -5713,7 +5704,7 @@
     <section class="contact-section">
         <div class="contact-wrapper">
             <div class="contact-container">
-                <!-- Contact Info -->
+                
                 <div class="contact-info-section">
                     <div class="section-header">
 
@@ -5749,7 +5740,7 @@
                     </div>
                 </div>
 
-                <!-- Contact Form -->
+                
                 <div class="contact-form-section">
                     <div class="floating-decorations">
                         <div class="floating-shape"></div>
@@ -6137,7 +6128,7 @@
         }, 100);
     </script>
 
-    <!-- Additional meta tags to discourage indexing and caching -->
+    
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
@@ -6156,7 +6147,4 @@
 </body>
 
 </html>
-
-
-
 
