@@ -14,7 +14,7 @@
 
     <!-- Google Fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Google Icons -->
@@ -48,8 +48,8 @@
   </script>
     <style>
         :root {
-            --primary-color: #00ff9d;
-            --secondary-color: #00b8ff;
+            --primary-color: #10b981;
+            --secondary-color: #6366F1;
             --dark-bg: #1a1a1a;
             --darker-bg: #121212;
             --light-text: #f5f5f5;
@@ -91,10 +91,36 @@
             right: 0;
             bottom: 0;
             background:
-                radial-gradient(circle at 20% 80%, rgba(0, 255, 157, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 20% 80%, rgba(37, 99, 235, 0.1) 0%, transparent 50%),
                 radial-gradient(circle at 80% 20%, rgba(0, 184, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(0, 255, 157, 0.05) 0%, transparent 50%);
+                radial-gradient(circle at 40% 40%, rgba(37, 99, 235, 0.05) 0%, transparent 50%);
             animation: bgFloat 20s ease-in-out infinite;
+        }
+
+        /* Back to Home Button */
+        .back-to-home-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 50px;
+            height: 50px;
+            background: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.2rem;
+            z-index: 1000;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .back-to-home-btn:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.5);
+            color: white;
         }
 
 
@@ -129,11 +155,11 @@
             text-align: center;
             max-width: 400px;
             width: 90%;
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
         .verification-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.8rem;
             font-weight: 600;
             margin-bottom: 1rem;
@@ -183,7 +209,7 @@
 
         .verify-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 255, 157, 0.3);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
         }
 
         /* Main Content */
@@ -202,7 +228,7 @@
         }
 
         .header h1 {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
@@ -267,7 +293,7 @@
 
         .certificate-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 157, 0.2);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.2);
         }
 
         .card-ribbon {
@@ -310,7 +336,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(135deg, rgba(0, 255, 157, 0.1), rgba(0, 184, 255, 0.1));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(0, 184, 255, 0.1));
         }
 
         .card-image i {
@@ -324,7 +350,7 @@
         }
 
         .card-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 0.5rem;
@@ -357,12 +383,12 @@
         }
 
         .skill-tag {
-            background: rgba(0, 255, 157, 0.1);
+            background: rgba(37, 99, 235, 0.1);
             color: var(--primary-color);
             padding: 0.3rem 0.8rem;
             border-radius: 20px;
             font-size: 0.8rem;
-            border: 1px solid rgba(0, 255, 157, 0.3);
+            border: 1px solid rgba(37, 99, 235, 0.3);
         }
 
         /* Fullscreen Modal */
@@ -406,7 +432,7 @@
             max-height: 90%;
             overflow: auto;
             position: relative;
-            border: 1px solid rgba(0, 255, 157, 0.2);
+            border: 1px solid rgba(37, 99, 235, 0.2);
         }
 
         .modal-header {
@@ -415,7 +441,7 @@
         }
 
         .modal-title {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Inter', sans-serif;
             font-size: 2rem;
             font-weight: 600;
             margin-bottom: 1rem;
@@ -453,7 +479,7 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(0, 255, 157, 0.2);
+            background: rgba(37, 99, 235, 0.2);
             border: 1px solid var(--primary-color);
             color: var(--primary-color);
             font-size: 1.5rem;
@@ -484,7 +510,7 @@
         }
 
         .spinner {
-            border: 3px solid rgba(0, 255, 157, 0.3);
+            border: 3px solid rgba(37, 99, 235, 0.3);
             border-top: 3px solid var(--primary-color);
             border-radius: 50%;
             width: 50px;
@@ -659,6 +685,11 @@
 
 <body>
     <div class="animated-bg"></div>
+    
+    <!-- Back to Home Button -->
+    <a href="main.html" class="back-to-home-btn" title="Back to Home">
+        <i class="fas fa-home"></i>
+    </a>
 
     <!-- Bot Verification Overlay -->
     <div class="verification-overlay" id="verificationOverlay">
@@ -1521,7 +1552,7 @@ function renderCertificates(certs) {
                 const cards = document.querySelectorAll('.certificate-card');
                 cards.forEach(card => {
                     card.addEventListener('mouseenter', () => {
-                        card.style.boxShadow = '0 20px 40px rgba(0, 255, 157, 0.3)';
+                        card.style.boxShadow = '0 20px 40px rgba(37, 99, 235, 0.3)';
                     });
                     card.addEventListener('mouseleave', () => {
                         card.style.boxShadow = 'var(--card-shadow)';
@@ -1533,3 +1564,7 @@ function renderCertificates(certs) {
 </body>
 
 </html>
+
+
+
+
